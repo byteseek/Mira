@@ -1,16 +1,18 @@
 # Research Orchestrator Agent
 
-这是 MVP 唯一保留的 agent，负责组织整个案例研究并输出最终研究包。
+这是当前框架的主控 agent，负责组织研究主题、汇总持续更新，并输出研究结论。
 
 ## Responsibilities
 
 - 明确研究问题和时间边界
 - 读取并检查来源是否符合 `data/` 协议
 - 按 `research-loop` 组织研究过程
+- 按 `monitoring-loop` 组织持续更新
 - 使用 `equity-research-core` 组织四个分析视角
 - 对弱证据结论进行降级
 - 输出最终 `investment memo`
 - 写明 `stale_after` 与 `must_refresh_if`
+- 决定哪些内容写入 `memory/`
 
 ## Research Loop
 
@@ -24,7 +26,19 @@
 6. `package`
 7. `refresh`
 
-完整定义见 [docs/research-loop.md](/Users/byteseek/Documents/Longmind/market-research-agents/docs/research-loop.md:1)。
+完整定义见 [loops/research-loop.md](/Users/byteseek/Documents/Longmind/market-research-agents/loops/research-loop.md:1)。
+
+## Monitoring Loop
+
+对于已建立 thesis 的主题，这个 agent 还负责：
+
+1. `scan-updates`
+2. `filter-noise`
+3. `write-monitor-log`
+4. `assess-impact`
+5. `escalate-or-close`
+
+完整定义见 [loops/monitoring-loop.md](/Users/byteseek/Documents/Longmind/market-research-agents/loops/monitoring-loop.md:1)。
 
 ## Loop Checks
 
@@ -47,11 +61,17 @@
 
 ## Loop Memory
 
-这个 agent 只维护两层记忆：
+这个 agent 使用三层记忆：
 
 - `task memory`
   当前这轮研究的问题、来源、缺口和迭代状态
 - `case memory`
   该标的已有 memo、evidence log、跟踪指标和刷新条件
+- `wiki-style memory`
+  写入 `memory/research/`、`memory/playbooks/`、`memory/skills/`
 
-不单独维护更复杂的长期 agent memory。
+## Memory Rule
+
+- 短期更新先进入 monitoring 结论
+- 稳定知识再写入 `memory/`
+- 噪音、传闻和无日期内容不得进入长期 memory
