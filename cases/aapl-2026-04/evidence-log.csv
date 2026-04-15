@@ -1,0 +1,10 @@
+source_id,claim_area,claim_type,used_by_agent,used_by_skill,as_of_date,confidence,notes
+sec_apple_10k_2025,business_model,fact,research-orchestrator,equity-research-core,2025-10-31,high,Primary source for segment mix product and services framing and tariff-related risk disclosures.
+apple_q1_2026_results,financial_quality,fact,research-orchestrator,equity-research-core,2026-01-29,high,Used for latest reported revenue growth EPS growth cash flow and installed base update.
+apple_q1_2026_results,capital_allocation,fact,research-orchestrator,equity-research-core,2026-01-29,high,Supports dividend and shareholder return references.
+financecharts_aapl_summary,valuation_context,fact,research-orchestrator,equity-research-core,2026-04-13,medium,Used for recent close market cap PE ratio and 52-week range.
+stockanalysis_aapl_history,short_term_price_action,fact,research-orchestrator,equity-research-core,2026-04-10,medium,Used for recent daily closes around the April drawdown and rebound.
+barrons_aapl_technical_apr2026,trend_interpretation,inference,research-orchestrator,equity-research-core,2026-04-07,medium,Third-party framing that AAPL was holding its 200-day moving average with upside toward 285 if support near 245 holds.
+macrumors_foldable_delay_2026,event_risk,fact,research-orchestrator,equity-research-core,2026-04-07,medium,Used as event-risk input around foldable iPhone engineering delays and near-term sentiment pressure.
+sec_apple_10k_2025,supply_chain_risk,fact,research-orchestrator,equity-research-core,2025-10-31,high,10-K risk factor cites tariffs and measures as possible supply chain and gross margin headwinds.
+derived_aapl_apr2026_thesis,integrated_thesis,inference,research-orchestrator,equity-research-core,2026-04-14,medium,Derived from filing results market data and recent event sources.
