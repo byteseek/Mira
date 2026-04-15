@@ -1,8 +1,10 @@
-# Market Research Toolbox
+# Mira
 
-一个面向 `Codex`、`Claude Code` 等代理的股票投研工具箱。
+> Mira System
 
-这个仓库不是单一报告模板，也不是一次性问题求解脚本。它提供一套可 clone 的研究框架，用来组织：
+一个面向 `Codex`、`Claude Code` 等代理的股票投研系统。
+
+这个仓库不是单一报告模板，也不是一次性问题求解脚本。它提供一套可 clone 的研究系统框架，用来组织：
 
 - 多源数据
 - 一个核心分析 skill
@@ -11,7 +13,14 @@
 - 分层 memory
 - 一个可复用的 `research package`
 
-当前仓库的最小方向已经升级为“主题驱动的双循环研究框架”。
+`Mira` 的当前最小方向已经升级为“主题驱动的双循环研究框架”。
+
+`Mira` 这个名字用于表达：
+
+- observation
+- insight
+- research-first cognition
+- 可扩展的 agent system
 
 ## V1 Principles
 
@@ -20,6 +29,16 @@
 - 本地材料和网页抓取材料必须使用同一套 source metadata。
 - 每份研究包必须明确时效边界与刷新触发条件。
 - `skills` 负责分析能力，`agents` 负责研究组织，不混用概念。
+
+## Naming
+
+- system: `Mira`
+- current repo role: `Mira` 的 research workspace
+- future-friendly module naming:
+  - `mira-agents`
+  - `mira-skills`
+  - `mira-research`
+  - `mira-exec`
 
 ## Repository Layout
 
