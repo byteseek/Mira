@@ -1,0 +1,2 @@
+method_name,status,role,source_bucket,credibility_score,search_coverage,empirical_validation_mode,comparison_baseline,explanatory_power,repeatability,falsifiability,information_advantage,cost_efficiency,fit_with_mira,follow_through_quality,next_action,notes
+example_method,todo,overlay,reverse_engineered,medium,low,forward_watch,existing_overlay,medium,medium,medium,medium,medium,medium,low,collect_more_sources,Replace with case-specific methodology records.

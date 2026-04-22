@@ -9,11 +9,11 @@
 - 多源数据
 - 一个可路由的核心分析 skill
 - 一个研究 orchestrator
-- 两类 loop
+- 三类 loop
 - 分层 memory
 - 一个可复用的 `research package`
 
-`Mira` 的当前最小方向是“主题驱动的双循环研究框架 + framework routing + optional overlays”。
+`Mira` 的当前最小方向是“主题驱动的双循环研究框架 + framework routing + optional overlays + empirical methodology research”。
 
 `Mira` 这个名字用于表达：
 
@@ -54,15 +54,22 @@
 │       ├── evidence-log.csv
 │       └── investment-memo.md
 ├── data/
+│   ├── methodology-source-policy.md
 │   ├── source-policy.md
 │   ├── source-registry.csv
 │   ├── source-schema.md
 │   └── time-policy.md
 ├── loops/
+│   ├── methodology-research-loop.md
 │   ├── monitoring-loop.md
 │   └── research-loop.md
 ├── memory/
 │   ├── MEMORY-RULES.md
+│   ├── methodologies/
+│   │   ├── adopted.md
+│   │   ├── retired.md
+│   │   ├── todo.md
+│   │   └── trial.md
 │   ├── playbooks/
 │   │   ├── ai-theme-crowding.md
 │   │   └── earnings-reaction.md
@@ -85,6 +92,11 @@
 │           ├── overlay-routing.md
 │           └── supply-chain-overlay.md
 └── templates/
+    ├── methodology-card.md
+    ├── methodology-queue.csv
+    ├── methodology-review-log.csv
+    ├── methodology-search-log.csv
+    ├── variant-perception-checklist.md
     └── research-package/
         ├── case-notes.md
         ├── evidence-log.csv
@@ -102,6 +114,7 @@
 - 获取方式分类
 - 时效窗口与失效条件
 - 常用来源注册表
+- 方法论来源分层规则
 
 ### 2. Core Skill
 
@@ -162,12 +175,20 @@ overlay 用于沿上下游和同层级继续挖证据链，不替代主框架。
 
 [loops/monitoring-loop.md](/Users/byteseek/Documents/Longmind/market-research-agents/loops/monitoring-loop.md:1) 用于对已建立 thesis 的主题做持续更新。
 
+[loops/methodology-research-loop.md](/Users/byteseek/.codex/worktrees/9ee2/market-research-agents/loops/methodology-research-loop.md:1) 用于研究研究方法本身，决定哪些方法进入 `todo / trial / adopted / retired`。
+
+这条 loop 不预设“机构方法更好”或“野路子方法更差”。它允许从研报、帖子、纪要和他人分析中逆向抽方法，再按可信度、可复现性、案例表现和后续跟踪决定是否保留。
+
+它还要求方法论搜索本身具备覆盖度，不允许只搜单一语言、单一圈层或单一立场后就下结论。
+
 ### 5. Memory
 
 `memory/` 使用 wiki-style 分层结构：
 
 - `research/`
   存研究结果链
+- `methodologies/`
+  存方法论队列、试用、采用和退役状态
 - `playbooks/`
   存市场经验类型
 - `skills/`
@@ -191,6 +212,14 @@ overlay 用于沿上下游和同层级继续挖证据链，不替代主框架。
 - `selected_overlays`
 - `overlay_basis`
 
+方法论研究使用单独产物：
+
+- `methodology-card.md`
+- `methodology-queue.csv`
+- `methodology-review-log.csv`
+- `methodology-search-log.csv`
+- `variant-perception-checklist.md`
+
 ## Recommended Usage
 
 1. 先在 `data/` 里确认来源类型、时效规则、获取方式。
@@ -203,6 +232,25 @@ overlay 用于沿上下游和同层级继续挖证据链，不替代主框架。
 8. 参考 `templates/research-package/` 生成研究包。
 9. 查看 `cases/aapl-2026-04/` 作为当前 MVP 样板。
 
+如果研究对象是典型预期差问题，可以额外跑：
+
+1. [templates/variant-perception-checklist.md](/Users/byteseek/.codex/worktrees/9ee2/market-research-agents/templates/variant-perception-checklist.md:1)
+2. 先写 `consensus proxy`
+3. 再写真正被错价的变量
+4. 最后只允许落到 `wide variant / thin variant / no usable variant`
+
+方法论研究使用独立路径：
+
+1. 用 `loops/methodology-research-loop.md` 明确要研究的方法对象。
+2. 允许从研报、纪要、帖子或别人的分析里逆向拆出隐含方法。
+3. 用 `templates/methodology-search-log.csv` 记录搜索词族、语言圈层、支持与反对材料，以及遗漏点。
+4. 用 `templates/methodology-card.md` 拆解方法、假设、适用范围、失效模式、credibility 和 search coverage。
+5. 用 `templates/methodology-queue.csv` 比较方法的解释力、可复用性、可信度、搜索覆盖度和 follow-through 质量。
+6. 把方法放入 `memory/methodologies/todo.md` 或 `trial.md`。
+7. 通过 `case backtest`、`forward watch` 或 live trial 做验证。
+8. 只有经过真实案例验证的方法，才进入 `adopted.md`。
+9. 已失效、重复或噪音过高的方法移到 `retired.md`。
+
 ## V1 Boundaries
 
 - 当前版本不是自动化抓取平台。
@@ -210,11 +258,17 @@ overlay 用于沿上下游和同层级继续挖证据链，不替代主框架。
 - 当前版本只放一个单票深度案例，不做主题篮子或双票对比。
 - 当前版本的 memory 只沉淀慢变量，不记录全部日常噪音。
 - 当前版本先支持一个 overlay，不把专题研究路径无限扩张。
+- 当前版本定义 methodology research loop，但不承诺自动联网归档全部方法论来源。
+- 当前版本的方法论验证仍以 case-level follow-through 为主，不提供完整量化回测引擎。
+- 当前版本的方法论搜索仍以手工查询设计和记录为主，尚未接自动 query expansion engine。
 
 ## What To Extend Next
 
 - 增加更多 framework，例如 `cyclical`、`turnaround`、`compounder`
 - 增加更多 overlay，例如 `channel-check`、`peer-benchmark`
+- 增加方法论评分与案例验证挂钩
+- 增加方法论 review log 和长期 follow-through 记录
+- 增加 methodology query expansion 和搜索自动化
 - 把 `research-orchestrator` 拆成多个 monitors 和专题 agents
 - 给 A 股补更细的本地数据源注册表
 - 增加第二个案例，例如 A 股龙头或周期股

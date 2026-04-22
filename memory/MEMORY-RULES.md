@@ -16,6 +16,18 @@
 - 历史证伪点
 - 刷新记录
 
+### Methodology Memory
+
+记录研究方法本身的拆解、比较和状态。
+
+适合写入：
+
+- 候选方法的 `todo` 队列
+- 已进入试用的 `trial` 方法
+- 已纳入正式系统的 `adopted` 方法
+- 已淘汰或失效的 `retired` 方法
+- 方法的 credibility、reverse-engineering 来源和 follow-through 结果
+
 ### Market Playbook
 
 记录可复用的市场经验类型。
@@ -43,12 +55,17 @@
 - 只有经过案例验证的稳定内容，才进入 `memory/`
 - memory 条目必须带 `last_updated`
 - research memory 必须带 `based_on_cases`
+- methodology memory 必须带 `status`
+- methodology memory 应尽量带 `credibility_score`
 - 推断必须标为 `working view` 或 `hypothesis`
 - 没有日期或来源依据的内容，不得写入正式 memory
+- 未经比较和失效模式说明的方法，不得直接进入 `adopted`
+- 没有 follow-through 的方法，默认只停留在 `todo` 或 `trial`
 
 ## Hygiene
 
 - daily update 先进入 monitoring 记录，不直接进入 memory
 - memory 只保留慢变量和复用价值高的内容
 - 短期情绪不应污染长期 thesis 页面
-
+- 方法论队列可以保留探索性内容，但必须显式区分 `todo / trial / adopted / retired`
+- 不要把“作者名气”写成方法质量本身，方法质量应由结构、证伪和表现决定

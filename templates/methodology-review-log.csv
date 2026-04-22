@@ -1,0 +1,2 @@
+method_name,review_date,validation_mode,case_or_scope,result,what_worked,what_failed,keep_change_or_retire,notes
+example_method,2026-04-22,forward_watch,sample_scope,mixed,Explained part of the setup,Failed to improve conviction consistently,keep_under_trial,Replace with real review records.

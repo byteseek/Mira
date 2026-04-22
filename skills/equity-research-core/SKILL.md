@@ -112,6 +112,18 @@ overlay 选择规则见：
 - `selected_overlays`
 - `overlay_basis`
 
+如果研究问题明显属于“预期差判断”，建议额外使用：
+
+- [../../templates/variant-perception-checklist.md](../../templates/variant-perception-checklist.md)
+
+这个 checklist 不替代 memo，只用于把 thesis 压缩成：
+
+- `consensus proxy`
+- `what is mispriced`
+- `why market may be wrong`
+- `what changes the price`
+- `what falsifies the view`
+
 ## Required Sections In Case Notes
 
 - business and industry
@@ -138,3 +150,4 @@ overlay 选择规则见：
 - 必须解释为什么当前框架适配这只票
 - 必须指出如果框架错配，最可能错在哪里
 - 如果启用 overlay，必须解释它补充验证了什么
+- 如果使用 `variant perception`，必须给出可观察的 `consensus proxy` 和 `falsification condition`

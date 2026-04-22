@@ -48,13 +48,33 @@
 
 从公司、财务、技术面、事件四个统一视角快速建立初判，但要按已选框架调整权重，并用 overlay 补充验证关键传导链。
 
+如果研究对象适合做预期差分析，允许在这里插入 `variant perception checklist`，用于把初判转成：
+
+- `consensus proxy`
+- `what is mispriced`
+- `why market may be wrong`
+- `what changes the price`
+- `what falsifies the view`
+
 ### `gap-check`
 
 识别缺口、冲突、低可信结论，以及框架错配风险。
 
+如果使用了 `variant perception checklist`，这里还要额外检查：
+
+- 共识是不是被清晰刻画
+- 分歧是不是具体到变量层
+- 是否只是“想和市场不同”而不是有可验证 edge
+
 ### `refine`
 
 补足关键来源，修正判断。
+
+如果 `variant perception` 仍停留在概念层，必须继续补：
+
+- 共识代理
+- 证据链
+- 失效条件
 
 ### `package`
 

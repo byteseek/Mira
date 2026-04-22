@@ -1,0 +1,6 @@
+methodology_topic,search_date,query_family,query_text,language_or_circle,source_bucket,target_pattern,result_quality,next_step,notes
+variant_perception,2026-04-22,keyword,"variant perception investing",en,institutional,what_it_is,high,search_people,Found current institutional self-description and definition pages.
+variant_perception,2026-04-22,people,"Michael Steinhardt variant perception quote source",en,practitioner,who_uses_it,medium,search_failures,Found historical quote lineage but not a full practical checklist.
+variant_perception,2026-04-22,artifact,"consensus expectations investing variant perception",en,reverse_engineered,how_it_is_used,medium,search_contradictions,Found multiple articles using the concept as a framing layer rather than a strict method.
+variant_perception,2026-04-22,contradiction,"variant perception criticism investing",en,reverse_engineered,where_it_fails,medium,expand_opposition_terms,Criticism usually appears indirectly as warnings against empty contrarianism.
+variant_perception,2026-04-22,translation,"预期差 投资 方法 预期 共识",zh,practitioner,translation_search,low,expand_zh_queries,Chinese-circle coverage not yet systematically searched in this run.
