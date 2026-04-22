@@ -7,13 +7,13 @@
 这个仓库不是单一报告模板，也不是一次性问题求解脚本。它提供一套可 clone 的研究系统框架，用来组织：
 
 - 多源数据
-- 一个核心分析 skill
+- 一个可路由的核心分析 skill
 - 一个研究 orchestrator
 - 两类 loop
 - 分层 memory
 - 一个可复用的 `research package`
 
-`Mira` 的当前最小方向已经升级为“主题驱动的双循环研究框架”。
+`Mira` 的当前最小方向是“主题驱动的双循环研究框架 + framework routing + optional overlays”。
 
 `Mira` 这个名字用于表达：
 
@@ -76,7 +76,14 @@
 │       └── technical-analysis.md
 ├── skills/
 │   └── equity-research-core/
-│       └── SKILL.md
+│       ├── SKILL.md
+│       └── references/
+│           ├── framework-routing.md
+│           ├── large-mega.md
+│           ├── micro-small.md
+│           ├── mid-cap.md
+│           ├── overlay-routing.md
+│           └── supply-chain-overlay.md
 └── templates/
     └── research-package/
         ├── case-notes.md
@@ -109,6 +116,29 @@
 - 技术面上下文
 - 事件与舆情
 
+但在进入分析前，会先做 `framework selection`。
+
+当前默认提供三个主框架：
+
+- `micro-small`
+- `mid-cap`
+- `large-mega`
+
+这三个框架不改变统一产物格式，只改变：
+
+- 研究问题的优先级
+- 证据权重
+- 章节侧重点
+- 刷新触发条件
+
+在主框架之外，还可以叠加专题 `overlay`。
+
+当前默认先支持：
+
+- `supply-chain`
+
+overlay 用于沿上下游和同层级继续挖证据链，不替代主框架。
+
 ### 3. Orchestrator Agent
 
 `agents/` 当前只保留一个 agent：
@@ -120,7 +150,7 @@
 - 检查 source metadata
 - 按 `research-loop` 建立初始 thesis
 - 按 `monitoring-loop` 做持续更新
-- 组织四个研究视角
+- 路由研究框架、选择 overlay，并组织四个研究视角
 - 输出统一研究包
 - 决定哪些内容进入长期 memory
 
@@ -153,15 +183,25 @@
 - `evidence log`
 - `case notes`
 
+统一研究包之外，当前版本要求每次研究都明确写出：
+
+- `selected_framework`
+- `framework_basis`
+- `framework_mismatch_risk`
+- `selected_overlays`
+- `overlay_basis`
+
 ## Recommended Usage
 
 1. 先在 `data/` 里确认来源类型、时效规则、获取方式。
-2. 先用 `loops/research-loop.md` 建立首版 thesis。
-3. 由 `agents/research-orchestrator.md` 汇总并输出研究包。
-4. 稳定内容写入 `memory/`。
-5. 后续更新走 `loops/monitoring-loop.md`。
-6. 参考 `templates/research-package/` 生成研究包。
-7. 查看 `cases/aapl-2026-04/` 作为完整样板。
+2. 在 `research-loop` 的 `define` 后先完成 `route-framework`。
+3. 如有必要，再完成 `select-overlays`，例如 `supply-chain`。
+4. 按选定框架与 overlay 建立首版 thesis。
+5. 由 `agents/research-orchestrator.md` 汇总并输出统一研究包。
+6. 稳定内容写入 `memory/`。
+7. 后续更新走 `loops/monitoring-loop.md`，同时检查框架和 overlay 是否仍成立。
+8. 参考 `templates/research-package/` 生成研究包。
+9. 查看 `cases/aapl-2026-04/` 作为当前 MVP 样板。
 
 ## V1 Boundaries
 
@@ -169,10 +209,12 @@
 - 当前版本先定义 monitor 职责，不实现完整多 agent 调度系统。
 - 当前版本只放一个单票深度案例，不做主题篮子或双票对比。
 - 当前版本的 memory 只沉淀慢变量，不记录全部日常噪音。
+- 当前版本先支持一个 overlay，不把专题研究路径无限扩张。
 
 ## What To Extend Next
 
-- 拆分 `equity-research-core` 为独立主题 skills
+- 增加更多 framework，例如 `cyclical`、`turnaround`、`compounder`
+- 增加更多 overlay，例如 `channel-check`、`peer-benchmark`
 - 把 `research-orchestrator` 拆成多个 monitors 和专题 agents
 - 给 A 股补更细的本地数据源注册表
 - 增加第二个案例，例如 A 股龙头或周期股
