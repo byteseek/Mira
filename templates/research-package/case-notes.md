@@ -4,6 +4,14 @@
 
 - research-orchestrator
 
+## Framework
+
+- selected_framework: {{ selected_framework }}
+- framework_basis: {{ framework_basis }}
+- framework_mismatch_risk: {{ framework_mismatch_risk }}
+- selected_overlays: {{ selected_overlays }}
+- overlay_basis: {{ overlay_basis }}
+
 ## Intermediate Notes
 
 ### Business And Industry
@@ -21,6 +29,10 @@
 ### Events And Sentiment
 
 {{ event_notes }}
+
+### Overlays
+
+{{ overlay_notes }}
 
 ## Fact Vs Inference
 

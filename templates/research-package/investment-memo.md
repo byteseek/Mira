@@ -3,6 +3,10 @@
 - market: {{ market }}
 - research_question: {{ research_question }}
 - research_cutoff_date: {{ research_cutoff_date }}
+- selected_framework: {{ selected_framework }}
+- framework_basis: {{ framework_basis }}
+- selected_overlays: {{ selected_overlays }}
+- overlay_basis: {{ overlay_basis }}
 - financial_data_through: {{ financial_data_through }}
 - price_date: {{ price_date }}
 - thesis_horizon: {{ thesis_horizon }}
@@ -24,6 +28,14 @@
 
 {{ key_debate }}
 
+## Framework Mismatch Risk
+
+{{ framework_mismatch_risk }}
+
+## Overlay Takeaways
+
+{{ overlay_takeaways }}
+
 ## Major Risks
 
 {{ major_risks }}
@@ -35,4 +47,3 @@
 ## Must Refresh If
 
 {{ must_refresh_if }}
-

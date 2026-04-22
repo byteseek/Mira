@@ -9,6 +9,8 @@
 - 每天或每周扫描新增信号
 - 按主题 monitor 更新内容
 - 判断是否需要升级回 `research-loop`
+- 判断当前 `selected_framework` 是否仍然成立
+- 判断当前 overlay 是否仍然值得保留
 
 ## Loop Input
 
@@ -50,7 +52,7 @@
 
 ### `assess-impact`
 
-判断增量是否改变 thesis、风险、节奏或跟踪指标。
+判断增量是否改变 thesis、风险、节奏、跟踪指标、当前框架或已选 overlay。
 
 ### `escalate-or-close`
 
@@ -63,6 +65,8 @@
 - 原 thesis 的关键证据被削弱
 - 重大事件改变公司、行业或估值叙事
 - 长期跟踪指标连续恶化
+- 标的的主导定价变量发生变化，导致原框架可能失效
+- 原 overlay 的关键传导链被证伪或失去增量价值
 - 用户要求重做完整研究
 
 ## Source Handling Rules
@@ -78,3 +82,5 @@
 - `monitor summary`
 - `impact assessment`
 - `escalation decision`
+- `framework still valid?`
+- `overlay still valid?`
