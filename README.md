@@ -62,6 +62,7 @@
 ├── data/
 │   ├── methodology-source-policy.md
 │   ├── source-policy.md
+│   ├── public-source-targets.md
 │   ├── source-registry.csv
 │   ├── source-schema.md
 │   └── time-policy.md
@@ -125,6 +126,7 @@
 
 - 来源字段 schema
 - 来源优先级与使用规则
+- 公开网页/端点的按需读取目标
 - 获取方式分类
 - 时效窗口与失效条件
 - 常用来源注册表
@@ -309,6 +311,6 @@ overlay 用于沿上下游和同层级继续挖证据链，不替代主框架。
 - 增加 methodology query expansion 和搜索自动化
 - 拆分 `equity-research-core` 为独立主题 skills
 - 把 `research-orchestrator` 拆成多个 monitors 和专题 agents
-- 给 A 股补更细的本地数据源注册表
+- 给 A 股补更细的本地数据源注册表与公开网页 target set
 - 增加第二个案例，例如 A 股龙头或周期股
 - 给 monitoring loop 增加固定日志模板
