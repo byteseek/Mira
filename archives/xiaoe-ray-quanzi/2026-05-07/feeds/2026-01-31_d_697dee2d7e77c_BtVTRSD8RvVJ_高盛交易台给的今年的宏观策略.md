@@ -1,0 +1,20 @@
+# 高盛交易台给的今年的宏观策略
+
+- **形式**: 视频帖
+- **作者**: 一束光线 · 圈主
+- **时间**: 01-31 19:57 · 四川
+- **标签**: #美股
+- **统计**: 👍 0 / 💬 0 / 🔄 0
+- **feed_id**: d_697dee2d7e77c_BtVTRSD8RvVJ
+- **feeds_type**: 1
+- **created_at**: 2026-01-31 19:57:33
+
+## 正文
+
+
+
+
+## 视频 (1)
+
+封面: ![poster1](https://v-vod-k.xiaoeknow.com/eab896082f8c4a5d87625b0c6ca26438/appyuf4rl772054/video/b_u_63c10927ca15c_goBYA0a2/ml299te608qa/main.m3u8?sign=327ecbdfdfa3db5493bd1dc47365500e&t=69fd11db&us=JxlMpdvVLz)
+视频1: <https://v-vod-k.xiaoeknow.com/eab896082f8c4a5d87625b0c6ca26438/appyuf4rl772054/video/b_u_63c10927ca15c_goBYA0a2/ml299te608qa/main.m3u8?sign=327ecbdfdfa3db5493bd1dc47365500e&t=69fd11db&us=JxlMpdvVLz>

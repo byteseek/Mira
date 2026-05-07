@@ -1,0 +1,2060 @@
+{
+  "code": 0,
+  "msg": "success",
+  "data": {
+    "list": [
+      {
+        "id": "d_685c480c86e76_5SjnQNH0pCdA",
+        "app_id": "appyuf4rl772054",
+        "community_id": "c_6544c6eb39716_hWkqHZtW8807",
+        "org_content": "<p><view style='display: block!important;text-align: center;'><video src='https://material-ali.vod.xiaoe-materials.com/90098a9251f671f09f474531948c0102/5834647703919395b3e77fd0a1e0006d-ld.m3u8?sign=435eb3394ec43f0786f50dd3d70e5d4f&t=69fd184f&us=DlHyVoqwcB'> </video></view></p>",
+        "content": {
+          "text": "\n",
+          "mix_records": [
+            {
+              "id": "D5769A16-24FC-CBB3-BBC6-3061FD133612",
+              "type": "VIDEO",
+              "url": "https://material-ali.vod.xiaoe-materials.com/90098a9251f671f09f474531948c0102/5834647703919395b3e77fd0a1e0006d-ld.m3u8?sign=435eb3394ec43f0786f50dd3d70e5d4f&t=69fd184f&us=DlHyVoqwcB",
+              "cover": "https://material-ali.vod.xiaoe-materials.com/90098a9251f671f09f474531948c0102/snapshots/6feb3bb85e3f4cf694770b3e6ba915b6-00001.jpg?sign=a94111ccf28247829da4bcad57677756&t=69fd184f&us=OfMRoZMLVo",
+              "showUrl": "https://material-ali.vod.xiaoe-materials.com/90098a9251f671f09f474531948c0102/5834647703919395b3e77fd0a1e0006d-ld.m3u8?sign=c30979fadac3354439f55a25f259304e&t=69fd1850&us=UmPecqBDbw",
+              "show_cover": "https://material-ali.vod.xiaoe-materials.com/90098a9251f671f09f474531948c0102/snapshots/6feb3bb85e3f4cf694770b3e6ba915b6-00001.jpg?sign=97e8477cb5036a2eaab4f8b3df38dcfb&t=69fd1850&us=ZmqdsHnJkO"
+            }
+          ],
+          "audio_records": []
+        },
+        "tags_content": "[{\"type\":0,\"value\":\"\\n\"}]",
+        "file_url": "",
+        "file_name": "",
+        "file_size": 0,
+        "file_json": [],
+        "feeds_type": 1,
+        "user_id": "u_63b7c53a8d409_5uCkJxO6mz",
+        "title": "石油机会（1）",
+        "is_chosen": 0,
+        "is_notice": 0,
+        "user_type": 1,
+        "send_type": 1,
+        "zan_num": 0,
+        "comment_count": 0,
+        "created_at": "2025-06-26 03:03:40",
+        "universal_union_id": "oTHW5v6xlUIrr-oY2RCVkVwIgv_o",
+        "is_exercise": 0,
+        "is_public": 1,
+        "feeds_state": 0,
+        "share_num": 0,
+        "apply_type": "",
+        "extend_field1": "",
+        "extend_field2": "",
+        "extend_field3": "",
+        "ip": "171.208.83.29",
+        "me_praise": false,
+        "nick_name": "一束光线",
+        "wx_avatar": "http://wechatavator-1252524126.file.myqcloud.com/appyuf4rl772054/image/compress/u_63b7c53a8d409_5uCkJxO6mz_20230109_3811a9.jpeg",
+        "role_name": "圈主",
+        "roles": [
+          "community_host"
+        ],
+        "label_user_type": 1,
+        "is_quit": 0,
+        "user_state": 0,
+        "is_guest": 0,
+        "work_corp_id": "",
+        "work_user_id": "",
+        "show_time": "2025-06-26 03:03",
+        "praise_list": [],
+        "commentList": {
+          "list": [],
+          "total_count": 0
+        },
+        "discuss_title": "",
+        "discuss_resource_id": "",
+        "resource_type": "",
+        "record_num": 34,
+        "is_self": false,
+        "login_user_id": "u_672cc041494f9_1vzXLebwuk",
+        "user_group_id": "g_ungrouped",
+        "user_group_info": {
+          "user_id": "u_63b7c53a8d409_5uCkJxO6mz",
+          "group_id": "g_ungrouped",
+          "group_name": "未分组",
+          "slogan": "",
+          "cover_url": "https://commonresource-1252524126.cdn.xiaoeknow.com/image/lgdkekux0n08.jpg",
+          "avatar_cover_url": "https://commonresource-1252524126.cdn.xiaoeknow.com/image/lgdkekux0n08.jpg",
+          "group_created_at": "",
+          "user_join_group_at": ""
+        },
+        "can_teacher_comment": false,
+        "resource_info": {
+          "community_id": "c_6544c6eb39716_hWkqHZtW8807"
+        },
+        "tags": [
+          {
+            "id": 338795,
+            "tag_name": "贵金属+大宗商品",
+            "feeds_id": "d_685c480c86e76_5SjnQNH0pCdA",
+            "tag_id": 338795,
+            "role": []
+          }
+        ],
+        "config": {
+          "is_forbid_share": 0
+        },
+        "join_day": 917,
+        "ip_place": "四川"
+      },
+      {
+        "id": "d_685c2ff1e6d00_K6ovbJc52oJk",
+        "app_id": "appyuf4rl772054",
+        "community_id": "c_6544c6eb39716_hWkqHZtW8807",
+        "org_content": "<article><p><br/></p><p><span style=\"font-family: Arial;\">刚发的第一季度美国经常账户赤字超出预期，主要因商品贸易逆差。这一数据表明美国经济在国际收支方面面临压力，需大量外部资本流入来维持平衡，若资本供应不足，将对美国国债和美元价值产生负面影响。</span></p><p><span style=\"font-family: Arial;\"></span></p><p><span style=\"font-family: Arial;\">第一季度数据早于特朗普总统诸多关税声明发布时间，显示美国对外国商品的强烈需求并无减弱迹象。鉴于第二季度关税抢运现象增多，预计该季度情况也类似。此外，美国经常账户数据存在结构性变化问题，主要收入（美国海外资产收益与外国持有美国资产所获收益之差）去年首次出现赤字，且至今仍未改善，这是近年来外国大量购买美国资产以及美国收益率上升的结果，对美国减少外部赤字构成结构性阻碍。<img src=\"https://wechatapppro-1252524126.cdn.xiaoeknow.com/appyuf4rl772054/image/b_u_ceqcup61l0co7f71la40/preao1mcc809k9.jpg\" width=\"100%\" height=\"auto\" title=\"SURpls.jpg\" alt=\"SURpls.jpg\"/></span></p></article><p></p>",
+        "content": {
+          "text": "\n刚发的第一季度美国经常账户赤字超出预期，主要因商品贸易逆差。这一数据表明美国经济在国际收支方面面临压力，需大量外部资本流入来维持平衡，若资本供应不足，将对美国国债和美元价值产生负面影响。\n\n第一季度数据早于特朗普总统诸多关税声明发布时间，显示美国对外国商品的强烈需求并无减弱迹象。鉴于第二季度关税抢运现象增多，预计该季度情况也类似。此外，美国经常账户数据存在结构性变化问题，主要收入（美国海外资产收益与外国持有美国资产所获收益之差）去年首次出现赤字，且至今仍未改善，这是近年来外国大量购买美国资产以及美国收益率上升的结果，对美国减少外部赤字构成结构性阻碍。\n\n",
+          "mix_records": [
+            {
+              "url": "https://wechatapppro-1252524126.cdn.xiaoeknow.com/appyuf4rl772054/image/b_u_ceqcup61l0co7f71la40/preao1mcc809k9.jpg",
+              "type": "IMAGE",
+              "showUrl": "https://wechatapppro-1252524126.cdn.xiaoeknow.com/appyuf4rl772054/image/b_u_ceqcup61l0co7f71la40/preao1mcc809k9.jpg"
+            }
+          ],
+          "audio_records": []
+        },
+        "tags_content": "[{\"type\":1,\"value\":\"https:\\/\\/wechatapppro-1252524126.cdn.xiaoeknow.com\\/appyuf4rl772054\\/image\\/b_u_ceqcup61l0co7f71la40\\/preao1mcc809k9.jpg\"},{\"type\":0,\"value\":\"\\n\\u521a\\u53d1\\u7684\\u7b2c\\u4e00\\u5b63\\u5ea6\\u7f8e\\u56fd\\u7ecf\\u5e38\\u8d26\\u6237\\u8d64\\u5b57\\u8d85\\u51fa\\u9884\\u671f\\uff0c\\u4e3b\\u8981\\u56e0\\u5546\\u54c1\\u8d38\\u6613\\u9006\\u5dee\\u3002\\u8fd9\\u4e00\\u6570\\u636e\\u8868\\u660e\\u7f8e\\u56fd\\u7ecf\\u6d4e\\u5728\\u56fd\\u9645\\u6536\\u652f\\u65b9\\u9762\\u9762\\u4e34\\u538b\\u529b\\uff0c\\u9700\\u5927\\u91cf\\u5916\\u90e8\\u8d44\\u672c\\u6d41\\u5165\\u6765\\u7ef4\\u6301\\u5e73\\u8861\\uff0c\\u82e5\\u8d44\\u672c\\u4f9b\\u5e94\\u4e0d\\u8db3\\uff0c\\u5c06\\u5bf9\\u7f8e\\u56fd\\u56fd\\u503a\\u548c\\u7f8e\\u5143\\u4ef7\\u503c\\u4ea7\\u751f\\u8d1f\\u9762\\u5f71\\u54cd\\u3002\\n\\n\\u7b2c\\u4e00\\u5b63\\u5ea6\\u6570\\u636e\\u65e9\\u4e8e\\u7279\\u6717\\u666e\\u603b\\u7edf\\u8bf8\\u591a\\u5173\\u7a0e\\u58f0\\u660e\\u53d1\\u5e03\\u65f6\\u95f4\\uff0c\\u663e\\u793a\\u7f8e\\u56fd\\u5bf9\\u5916\\u56fd\\u5546\\u54c1\\u7684\\u5f3a\\u70c8\\u9700\\u6c42\\u5e76\\u65e0\\u51cf\\u5f31\\u8ff9\\u8c61\\u3002\\u9274\\u4e8e\\u7b2c\\u4e8c\\u5b63\\u5ea6\\u5173\\u7a0e\\u62a2\\u8fd0\\u73b0\\u8c61\\u589e\\u591a\\uff0c\\u9884\\u8ba1\\u8be5\\u5b63\\u5ea6\\u60c5\\u51b5\\u4e5f\\u7c7b\\u4f3c\\u3002\\u6b64\\u5916\\uff0c\\u7f8e\\u56fd\\u7ecf\\u5e38\\u8d26\\u6237\\u6570\\u636e\\u5b58\\u5728\\u7ed3\\u6784\\u6027\\u53d8\\u5316\\u95ee\\u9898\\uff0c\\u4e3b\\u8981\\u6536\\u5165\\uff08\\u7f8e\\u56fd\\u6d77\\u5916\\u8d44\\u4ea7\\u6536\\u76ca\\u4e0e\\u5916\\u56fd\\u6301\\u6709\\u7f8e\\u56fd\\u8d44\\u4ea7\\u6240\\u83b7\\u6536\\u76ca\\u4e4b\\u5dee\\uff09\\u53bb\\u5e74\\u9996\\u6b21\\u51fa\\u73b0\\u8d64\\u5b57\\uff0c\\u4e14\\u81f3\\u4eca\\u4ecd\\u672a\\u6539\\u5584\\uff0c\\u8fd9\\u662f\\u8fd1\\u5e74\\u6765\\u5916\\u56fd\\u5927\\u91cf\\u8d2d\\u4e70\\u7f8e\\u56fd\\u8d44\\u4ea7\\u4ee5\\u53ca\\u7f8e\\u56fd\\u6536\\u76ca\\u7387\\u4e0a\\u5347\\u7684\\u7ed3\\u679c\\uff0c\\u5bf9\\u7f8e\\u56fd\\u51cf\\u5c11\\u5916\\u90e8\\u8d64\\u5b57\\u6784\\u6210\\u7ed3\\u6784\\u6027\\u963b\\u788d\\u3002\"},{\"type\":0,\"value\":\"\\n\\n\"}]",
+        "file_url": "",
+        "file_name": "",
+        "file_size": 0,
+        "file_json": [],
+        "feeds_type": 1,
+        "user_id": "u_63b7c53a8d409_5uCkJxO6mz",
+        "title": "美国Q1 经常账号赤字情况",
+        "is_chosen": 0,
+        "is_notice": 0,
+        "user_type": 1,
+        "send_type": 1,
+        "zan_num": 0,
+        "comment_count": 0,
+        "created_at": "2025-06-26 01:20:49",
+        "universal_union_id": "oTHW5v6xlUIrr-oY2RCVkVwIgv_o",
+        "is_exercise": 0,
+        "is_public": 1,
+        "feeds_state": 0,
+        "share_num": 0,
+        "apply_type": "",
+        "extend_field1": "",
+        "extend_field2": "",
+        "extend_field3": "",
+        "ip": "112.120.125.131",
+        "me_praise": false,
+        "nick_name": "一束光线",
+        "wx_avatar": "http://wechatavator-1252524126.file.myqcloud.com/appyuf4rl772054/image/compress/u_63b7c53a8d409_5uCkJxO6mz_20230109_3811a9.jpeg",
+        "role_name": "圈主",
+        "roles": [
+          "community_host"
+        ],
+        "label_user_type": 1,
+        "is_quit": 0,
+        "user_state": 0,
+        "is_guest": 0,
+        "work_corp_id": "",
+        "work_user_id": "",
+        "show_time": "2025-06-26 01:20",
+        "praise_list": [],
+        "commentList": {
+          "list": [],
+          "total_count": 0
+        },
+        "discuss_title": "",
+        "discuss_resource_id": "",
+        "resource_type": "",
+        "record_num": 33,
+        "is_self": false,
+        "login_user_id": "u_672cc041494f9_1vzXLebwuk",
+        "user_group_id": "g_ungrouped",
+        "user_group_info": {
+          "user_id": "u_63b7c53a8d409_5uCkJxO6mz",
+          "group_id": "g_ungrouped",
+          "group_name": "未分组",
+          "slogan": "",
+          "cover_url": "https://commonresource-1252524126.cdn.xiaoeknow.com/image/lgdkekux0n08.jpg",
+          "avatar_cover_url": "https://commonresource-1252524126.cdn.xiaoeknow.com/image/lgdkekux0n08.jpg",
+          "group_created_at": "",
+          "user_join_group_at": ""
+        },
+        "can_teacher_comment": false,
+        "resource_info": {
+          "community_id": "c_6544c6eb39716_hWkqHZtW8807"
+        },
+        "tags": [
+          {
+            "id": 338218,
+            "tag_name": "国际宏观",
+            "feeds_id": "d_685c2ff1e6d00_K6ovbJc52oJk",
+            "tag_id": 338218,
+            "role": []
+          }
+        ],
+        "config": {
+          "is_forbid_share": 0
+        },
+        "join_day": 917,
+        "ip_place": "中国香港"
+      },
+      {
+        "id": "d_685c2388c7e92_HXO1FZMXMATP",
+        "app_id": "appyuf4rl772054",
+        "community_id": "c_6544c6eb39716_hWkqHZtW8807",
+        "org_content": "<article><p><br/></p><p>也还可以。</p><p><span style=\"font-family: Arial;\">690 亿美元 2 年期国债顺利发售。此次标售的高收益率为 3.786%，低于 5 月的 3.955%，是 2024 年 9 月以来的最低水平，且较发行时收益率 3.787% 低 0.1 个基点，这是该期限国债在过去五次标售中的第四次低于发行时收益率。投标倍数为 2.576，与上月的 2.567 基本持平，略低于 2.61 的六次标售平均水平。内部认购情况稍显疲软，间接投标者获配比例为 60.5%，低于 5 月的 63.3%，且明显低于近期 71.3% 的平均水平。直接投标者获配比例为 26.3%，与上月的 26.2% 持平，交易商获配比例为 13.2%，高于上月的 10.5% 和近期 11.2% 的平均水平。</span></p><p><span style=\"font-family: Arial;\"></span></p><p><span style=\"font-family: Arial;\">总体而言，此次标售表现稳健，这在近期美联储鸽派言论背景下在意料之中，尽管鲍威尔今日试图维持鹰派姿态，但也暗示了降息即将到来，尤其是在油价再次下跌、汽油价格无大幅上涨威胁的情况下。市场对此标售无明显反应，表明此次标售基本符合预期。<img src=\"https://wechatapppro-1252524126.cdn.xiaoeknow.com/appyuf4rl772054/image/b_u_ceqcup61l0co7f71la40/l4u00kmcc647fb.jpg\" width=\"100%\" height=\"auto\" title=\"2Y 2.jpg\" alt=\"2Y 2.jpg\"/><img src=\"https://wechatapppro-1252524126.cdn.xiaoeknow.com/appyuf4rl772054/image/b_u_ceqcup61l0co7f71la40/tgjmajmcc647fd.jpg\" width=\"100%\" height=\"auto\" title=\"2Y.jpg\" alt=\"2Y.jpg\"/></span></p></article><p></p>",
+        "content": {
+          "text": "\n也还可以。\n690 亿美元 2 年期国债顺利发售。此次标售的高收益率为 3.786%，低于 5 月的 3.955%，是 2024 年 9 月以来的最低水平，且较发行时收益率 3.787% 低 0.1 个基点，这是该期限国债在过去五次标售中的第四次低于发行时收益率。投标倍数为 2.576，与上月的 2.567 基本持平，略低于 2.61 的六次标售平均水平。内部认购情况稍显疲软，间接投标者获配比例为 60.5%，低于 5 月的 63.3%，且明显低于近期 71.3% 的平均水平。直接投标者获配比例为 26.3%，与上月的 26.2% 持平，交易商获配比例为 13.2%，高于上月的 10.5% 和近期 11.2% 的平均水平。\n\n总体而言，此次标售表现稳健，这在近期美联储鸽派言论背景下在意料之中，尽管鲍威尔今日试图维持鹰派姿态，但也暗示了降息即将到来，尤其是在油价再次下跌、汽油价格无大幅上涨威胁的情况下。市场对此标售无明显反应，表明此次标售基本符合预期。\n\n",
+          "mix_records": [
+            {
+              "url": "https://wechatapppro-1252524126.cdn.xiaoeknow.com/appyuf4rl772054/image/b_u_ceqcup61l0co7f71la40/l4u00kmcc647fb.jpg",
+              "type": "IMAGE",
+              "showUrl": "https://wechatapppro-1252524126.cdn.xiaoeknow.com/appyuf4rl772054/image/b_u_ceqcup61l0co7f71la40/l4u00kmcc647fb.jpg"
+            },
+            {
+              "url": "https://wechatapppro-1252524126.cdn.xiaoeknow.com/appyuf4rl772054/image/b_u_ceqcup61l0co7f71la40/tgjmajmcc647fd.jpg",
+              "type": "IMAGE",
+              "showUrl": "https://wechatapppro-1252524126.cdn.xiaoeknow.com/appyuf4rl772054/image/b_u_ceqcup61l0co7f71la40/tgjmajmcc647fd.jpg"
+            }
+          ],
+          "audio_records": []
+        },
+        "tags_content": "[{\"type\":1,\"value\":\"https:\\/\\/wechatapppro-1252524126.cdn.xiaoeknow.com\\/appyuf4rl772054\\/image\\/b_u_ceqcup61l0co7f71la40\\/l4u00kmcc647fb.jpg\"},{\"type\":1,\"value\":\"https:\\/\\/wechatapppro-1252524126.cdn.xiaoeknow.com\\/appyuf4rl772054\\/image\\/b_u_ceqcup61l0co7f71la40\\/tgjmajmcc647fd.jpg\"},{\"type\":0,\"value\":\"\\n\\u4e5f\\u8fd8\\u53ef\\u4ee5\\u3002\\n690 \\u4ebf\\u7f8e\\u5143 2 \\u5e74\\u671f\\u56fd\\u503a\\u987a\\u5229\\u53d1\\u552e\\u3002\\u6b64\\u6b21\\u6807\\u552e\\u7684\\u9ad8\\u6536\\u76ca\\u7387\\u4e3a 3.786%\\uff0c\\u4f4e\\u4e8e 5 \\u6708\\u7684 3.955%\\uff0c\\u662f 2024 \\u5e74 9 \\u6708\\u4ee5\\u6765\\u7684\\u6700\\u4f4e\\u6c34\\u5e73\\uff0c\\u4e14\\u8f83\\u53d1\\u884c\\u65f6\\u6536\\u76ca\\u7387 3.787% \\u4f4e 0.1 \\u4e2a\\u57fa\\u70b9\\uff0c\\u8fd9\\u662f\\u8be5\\u671f\\u9650\\u56fd\\u503a\\u5728\\u8fc7\\u53bb\\u4e94\\u6b21\\u6807\\u552e\\u4e2d\\u7684\\u7b2c\\u56db\\u6b21\\u4f4e\\u4e8e\\u53d1\\u884c\\u65f6\\u6536\\u76ca\\u7387\\u3002\\u6295\\u6807\\u500d\\u6570\\u4e3a 2.576\\uff0c\\u4e0e\\u4e0a\\u6708\\u7684 2.567 \\u57fa\\u672c\\u6301\\u5e73\\uff0c\\u7565\\u4f4e\\u4e8e 2.61 \\u7684\\u516d\\u6b21\\u6807\\u552e\\u5e73\\u5747\\u6c34\\u5e73\\u3002\\u5185\\u90e8\\u8ba4\\u8d2d\\u60c5\\u51b5\\u7a0d\\u663e\\u75b2\\u8f6f\\uff0c\\u95f4\\u63a5\\u6295\\u6807\\u8005\\u83b7\\u914d\\u6bd4\\u4f8b\\u4e3a 60.5%\\uff0c\\u4f4e\\u4e8e 5 \\u6708\\u7684 63.3%\\uff0c\\u4e14\\u660e\\u663e\\u4f4e\\u4e8e\\u8fd1\\u671f 71.3% \\u7684\\u5e73\\u5747\\u6c34\\u5e73\\u3002\\u76f4\\u63a5\\u6295\\u6807\\u8005\\u83b7\\u914d\\u6bd4\\u4f8b\\u4e3a 26.3%\\uff0c\\u4e0e\\u4e0a\\u6708\\u7684 26.2% \\u6301\\u5e73\\uff0c\\u4ea4\\u6613\\u5546\\u83b7\\u914d\\u6bd4\\u4f8b\\u4e3a 13.2%\\uff0c\\u9ad8\\u4e8e\\u4e0a\\u6708\\u7684 10.5% \\u548c\\u8fd1\\u671f 11.2% \\u7684\\u5e73\\u5747\\u6c34\\u5e73\\u3002\\n\\n\\u603b\\u4f53\\u800c\\u8a00\\uff0c\\u6b64\\u6b21\\u6807\\u552e\\u8868\\u73b0\\u7a33\\u5065\\uff0c\\u8fd9\\u5728\\u8fd1\\u671f\\u7f8e\\u8054\\u50a8\\u9e3d\\u6d3e\\u8a00\\u8bba\\u80cc\\u666f\\u4e0b\\u5728\\u610f\\u6599\\u4e4b\\u4e2d\\uff0c\\u5c3d\\u7ba1\\u9c8d\\u5a01\\u5c14\\u4eca\\u65e5\\u8bd5\\u56fe\\u7ef4\\u6301\\u9e70\\u6d3e\\u59ff\\u6001\\uff0c\\u4f46\\u4e5f\\u6697\\u793a\\u4e86\\u964d\\u606f\\u5373\\u5c06\\u5230\\u6765\\uff0c\\u5c24\\u5176\\u662f\\u5728\\u6cb9\\u4ef7\\u518d\\u6b21\\u4e0b\\u8dcc\\u3001\\u6c7d\\u6cb9\\u4ef7\\u683c\\u65e0\\u5927\\u5e45\\u4e0a\\u6da8\\u5a01\\u80c1\\u7684\\u60c5\\u51b5\\u4e0b\\u3002\\u5e02\\u573a\\u5bf9\\u6b64\\u6807\\u552e\\u65e0\\u660e\\u663e\\u53cd\\u5e94\\uff0c\\u8868\\u660e\\u6b64\\u6b21\\u6807\\u552e\\u57fa\\u672c\\u7b26\\u5408\\u9884\\u671f\\u3002\"},{\"type\":0,\"value\":\"\\n\\n\"}]",
+        "file_url": "",
+        "file_name": "",
+        "file_size": 0,
+        "file_json": [],
+        "feeds_type": 1,
+        "user_id": "u_63b7c53a8d409_5uCkJxO6mz",
+        "title": "刚才的2Y美债拍卖结果",
+        "is_chosen": 0,
+        "is_notice": 0,
+        "user_type": 1,
+        "send_type": 1,
+        "zan_num": 0,
+        "comment_count": 0,
+        "created_at": "2025-06-26 00:27:52",
+        "universal_union_id": "oTHW5v6xlUIrr-oY2RCVkVwIgv_o",
+        "is_exercise": 0,
+        "is_public": 1,
+        "feeds_state": 0,
+        "share_num": 0,
+        "apply_type": "",
+        "extend_field1": "",
+        "extend_field2": "",
+        "extend_field3": "",
+        "ip": "112.120.125.131",
+        "me_praise": false,
+        "nick_name": "一束光线",
+        "wx_avatar": "http://wechatavator-1252524126.file.myqcloud.com/appyuf4rl772054/image/compress/u_63b7c53a8d409_5uCkJxO6mz_20230109_3811a9.jpeg",
+        "role_name": "圈主",
+        "roles": [
+          "community_host"
+        ],
+        "label_user_type": 1,
+        "is_quit": 0,
+        "user_state": 0,
+        "is_guest": 0,
+        "work_corp_id": "",
+        "work_user_id": "",
+        "show_time": "2025-06-26 00:27",
+        "praise_list": [],
+        "commentList": {
+          "list": [],
+          "total_count": 0
+        },
+        "discuss_title": "",
+        "discuss_resource_id": "",
+        "resource_type": "",
+        "record_num": 33,
+        "is_self": false,
+        "login_user_id": "u_672cc041494f9_1vzXLebwuk",
+        "user_group_id": "g_ungrouped",
+        "user_group_info": {
+          "user_id": "u_63b7c53a8d409_5uCkJxO6mz",
+          "group_id": "g_ungrouped",
+          "group_name": "未分组",
+          "slogan": "",
+          "cover_url": "https://commonresource-1252524126.cdn.xiaoeknow.com/image/lgdkekux0n08.jpg",
+          "avatar_cover_url": "https://commonresource-1252524126.cdn.xiaoeknow.com/image/lgdkekux0n08.jpg",
+          "group_created_at": "",
+          "user_join_group_at": ""
+        },
+        "can_teacher_comment": false,
+        "resource_info": {
+          "community_id": "c_6544c6eb39716_hWkqHZtW8807"
+        },
+        "tags": [
+          {
+            "id": 338871,
+            "tag_name": "债券",
+            "feeds_id": "d_685c2388c7e92_HXO1FZMXMATP",
+            "tag_id": 338871,
+            "role": []
+          }
+        ],
+        "config": {
+          "is_forbid_share": 0
+        },
+        "join_day": 917,
+        "ip_place": "中国香港"
+      },
+      {
+        "id": "d_685c2231d9bc4_kwh7v9B3mjkC",
+        "app_id": "appyuf4rl772054",
+        "community_id": "c_6544c6eb39716_hWkqHZtW8807",
+        "org_content": "<article><p><br/></p><p><span style=\"font-family: Arial;\">4 月新屋销售意外激增后，鉴于房屋建筑商信心下降和现房销售疲软，市场预期今日公布的 5 月新屋销售数据将大幅下滑。实际情况印证了这一预期，但降幅远超预期。5 月新屋销售环比暴跌 13.7%（4 月增长 10.9%），同比下降 6.3%，这一数据与预期偏差达四个标准差，是自 2022 年 6 月以来最大的环比降幅，使得经季节性调整后的年率降至过去三年区间低端。</span></p><p><span style=\"font-family: Arial;\"></span></p><p><span style=\"font-family: Arial;\">上周数据显示，5 月独栋房屋开工速度为 2023 年以来最慢之一。尽管建筑商通过降价和提供补贴来降低客户融资成本，但效果逐渐减弱，促使许多建筑商放慢建设速度。5 月新屋待售数量略有增加，达到 2007 年以来最高水平。同时，上月新屋销售中位价较去年同期上涨 3%，至 426,600 美元，为 2025 年首次同比价格上涨。新屋销售暴跌之际，抵押贷款利率回升。而且，别指望降息能带来帮助，上次降息反而加剧了收益率曲线陡峭程度，导致抵押贷款利率上升<img src=\"https://wechatapppro-1252524126.cdn.xiaoeknow.com/appyuf4rl772054/image/b_u_ceqcup61l0co7f71la40/ye53sgmcc5wsx8.jpg\" width=\"100%\" height=\"auto\" title=\"New Home Sales.jpg\" alt=\"New Home Sales.jpg\"/><img src=\"https://wechatapppro-1252524126.cdn.xiaoeknow.com/appyuf4rl772054/image/b_u_ceqcup61l0co7f71la40/jo81mymcc5wswk.jpg\" width=\"100%\" height=\"auto\" title=\"NewHome.jpg\" alt=\"NewHome.jpg\"/><img src=\"https://wechatapppro-1252524126.cdn.xiaoeknow.com/appyuf4rl772054/image/b_u_ceqcup61l0co7f71la40/px7aipmcc5wsx3.jpg\" width=\"100%\" height=\"auto\" title=\"House.jpg\" alt=\"House.jpg\"/><img src=\"https://wechatapppro-1252524126.cdn.xiaoeknow.com/appyuf4rl772054/image/b_u_ceqcup61l0co7f71la40/4eslfemcc5wsxl.jpg\" width=\"100%\" height=\"auto\" title=\"新房月度.jpg\" alt=\"新房月度.jpg\"/><img src=\"https://wechatapppro-1252524126.cdn.xiaoeknow.com/appyuf4rl772054/image/b_u_ceqcup61l0co7f71la40/m9m3g3mcc5wt22.jpg\" width=\"100%\" height=\"auto\" title=\"新房.jpg\" alt=\"新房.jpg\"/></span></p></article><p></p>",
+        "content": {
+          "text": "\n4 月新屋销售意外激增后，鉴于房屋建筑商信心下降和现房销售疲软，市场预期今日公布的 5 月新屋销售数据将大幅下滑。实际情况印证了这一预期，但降幅远超预期。5 月新屋销售环比暴跌 13.7%（4 月增长 10.9%），同比下降 6.3%，这一数据与预期偏差达四个标准差，是自 2022 年 6 月以来最大的环比降幅，使得经季节性调整后的年率降至过去三年区间低端。\n\n上周数据显示，5 月独栋房屋开工速度为 2023 年以来最慢之一。尽管建筑商通过降价和提供补贴来降低客户融资成本，但效果逐渐减弱，促使许多建筑商放慢建设速度。5 月新屋待售数量略有增加，达到 2007 年以来最高水平。同时，上月新屋销售中位价较去年同期上涨 3%，至 426,600 美元，为 2025 年首次同比价格上涨。新屋销售暴跌之际，抵押贷款利率回升。而且，别指望降息能带来帮助，上次降息反而加剧了收益率曲线陡峭程度，导致抵押贷款利率上升\n\n",
+          "mix_records": [
+            {
+              "url": "https://wechatapppro-1252524126.cdn.xiaoeknow.com/appyuf4rl772054/image/b_u_ceqcup61l0co7f71la40/ye53sgmcc5wsx8.jpg",
+              "type": "IMAGE",
+              "showUrl": "https://wechatapppro-1252524126.cdn.xiaoeknow.com/appyuf4rl772054/image/b_u_ceqcup61l0co7f71la40/ye53sgmcc5wsx8.jpg"
+            },
+            {
+              "url": "https://wechatapppro-1252524126.cdn.xiaoeknow.com/appyuf4rl772054/image/b_u_ceqcup61l0co7f71la40/jo81mymcc5wswk.jpg",
+              "type": "IMAGE",
+              "showUrl": "https://wechatapppro-1252524126.cdn.xiaoeknow.com/appyuf4rl772054/image/b_u_ceqcup61l0co7f71la40/jo81mymcc5wswk.jpg"
+            },
+            {
+              "url": "https://wechatapppro-1252524126.cdn.xiaoeknow.com/appyuf4rl772054/image/b_u_ceqcup61l0co7f71la40/px7aipmcc5wsx3.jpg",
+              "type": "IMAGE",
+              "showUrl": "https://wechatapppro-1252524126.cdn.xiaoeknow.com/appyuf4rl772054/image/b_u_ceqcup61l0co7f71la40/px7aipmcc5wsx3.jpg"
+            },
+            {
+              "url": "https://wechatapppro-1252524126.cdn.xiaoeknow.com/appyuf4rl772054/image/b_u_ceqcup61l0co7f71la40/4eslfemcc5wsxl.jpg",
+              "type": "IMAGE",
+              "showUrl": "https://wechatapppro-1252524126.cdn.xiaoeknow.com/appyuf4rl772054/image/b_u_ceqcup61l0co7f71la40/4eslfemcc5wsxl.jpg"
+            },
+            {
+              "url": "https://wechatapppro-1252524126.cdn.xiaoeknow.com/appyuf4rl772054/image/b_u_ceqcup61l0co7f71la40/m9m3g3mcc5wt22.jpg",
+              "type": "IMAGE",
+              "showUrl": "https://wechatapppro-1252524126.cdn.xiaoeknow.com/appyuf4rl772054/image/b_u_ceqcup61l0co7f71la40/m9m3g3mcc5wt22.jpg"
+            }
+          ],
+          "audio_records": []
+        },
+        "tags_content": "[{\"type\":1,\"value\":\"https:\\/\\/wechatapppro-1252524126.cdn.xiaoeknow.com\\/appyuf4rl772054\\/image\\/b_u_ceqcup61l0co7f71la40\\/ye53sgmcc5wsx8.jpg\"},{\"type\":1,\"value\":\"https:\\/\\/wechatapppro-1252524126.cdn.xiaoeknow.com\\/appyuf4rl772054\\/image\\/b_u_ceqcup61l0co7f71la40\\/jo81mymcc5wswk.jpg\"},{\"type\":1,\"value\":\"https:\\/\\/wechatapppro-1252524126.cdn.xiaoeknow.com\\/appyuf4rl772054\\/image\\/b_u_ceqcup61l0co7f71la40\\/px7aipmcc5wsx3.jpg\"},{\"type\":1,\"value\":\"https:\\/\\/wechatapppro-1252524126.cdn.xiaoeknow.com\\/appyuf4rl772054\\/image\\/b_u_ceqcup61l0co7f71la40\\/4eslfemcc5wsxl.jpg\"},{\"type\":1,\"value\":\"https:\\/\\/wechatapppro-1252524126.cdn.xiaoeknow.com\\/appyuf4rl772054\\/image\\/b_u_ceqcup61l0co7f71la40\\/m9m3g3mcc5wt22.jpg\"},{\"type\":0,\"value\":\"\\n4 \\u6708\\u65b0\\u5c4b\\u9500\\u552e\\u610f\\u5916\\u6fc0\\u589e\\u540e\\uff0c\\u9274\\u4e8e\\u623f\\u5c4b\\u5efa\\u7b51\\u5546\\u4fe1\\u5fc3\\u4e0b\\u964d\\u548c\\u73b0\\u623f\\u9500\\u552e\\u75b2\\u8f6f\\uff0c\\u5e02\\u573a\\u9884\\u671f\\u4eca\\u65e5\\u516c\\u5e03\\u7684 5 \\u6708\\u65b0\\u5c4b\\u9500\\u552e\\u6570\\u636e\\u5c06\\u5927\\u5e45\\u4e0b\\u6ed1\\u3002\\u5b9e\\u9645\\u60c5\\u51b5\\u5370\\u8bc1\\u4e86\\u8fd9\\u4e00\\u9884\\u671f\\uff0c\\u4f46\\u964d\\u5e45\\u8fdc\\u8d85\\u9884\\u671f\\u30025 \\u6708\\u65b0\\u5c4b\\u9500\\u552e\\u73af\\u6bd4\\u66b4\\u8dcc 13.7%\\uff084 \\u6708\\u589e\\u957f 10.9%\\uff09\\uff0c\\u540c\\u6bd4\\u4e0b\\u964d 6.3%\\uff0c\\u8fd9\\u4e00\\u6570\\u636e\\u4e0e\\u9884\\u671f\\u504f\\u5dee\\u8fbe\\u56db\\u4e2a\\u6807\\u51c6\\u5dee\\uff0c\\u662f\\u81ea 2022 \\u5e74 6 \\u6708\\u4ee5\\u6765\\u6700\\u5927\\u7684\\u73af\\u6bd4\\u964d\\u5e45\\uff0c\\u4f7f\\u5f97\\u7ecf\\u5b63\\u8282\\u6027\\u8c03\\u6574\\u540e\\u7684\\u5e74\\u7387\\u964d\\u81f3\\u8fc7\\u53bb\\u4e09\\u5e74\\u533a\\u95f4\\u4f4e\\u7aef\\u3002\\n\\n\\u4e0a\\u5468\\u6570\\u636e\\u663e\\u793a\\uff0c5 \\u6708\\u72ec\\u680b\\u623f\\u5c4b\\u5f00\\u5de5\\u901f\\u5ea6\\u4e3a 2023 \\u5e74\\u4ee5\\u6765\\u6700\\u6162\\u4e4b\\u4e00\\u3002\\u5c3d\\u7ba1\\u5efa\\u7b51\\u5546\\u901a\\u8fc7\\u964d\\u4ef7\\u548c\\u63d0\\u4f9b\\u8865\\u8d34\\u6765\\u964d\\u4f4e\\u5ba2\\u6237\\u878d\\u8d44\\u6210\\u672c\\uff0c\\u4f46\\u6548\\u679c\\u9010\\u6e10\\u51cf\\u5f31\\uff0c\\u4fc3\\u4f7f\\u8bb8\\u591a\\u5efa\\u7b51\\u5546\\u653e\\u6162\\u5efa\\u8bbe\\u901f\\u5ea6\\u30025 \\u6708\\u65b0\\u5c4b\\u5f85\\u552e\\u6570\\u91cf\\u7565\\u6709\\u589e\\u52a0\\uff0c\\u8fbe\\u5230 2007 \\u5e74\\u4ee5\\u6765\\u6700\\u9ad8\\u6c34\\u5e73\\u3002\\u540c\\u65f6\\uff0c\\u4e0a\\u6708\\u65b0\\u5c4b\\u9500\\u552e\\u4e2d\\u4f4d\\u4ef7\\u8f83\\u53bb\\u5e74\\u540c\\u671f\\u4e0a\\u6da8 3%\\uff0c\\u81f3 426,600 \\u7f8e\\u5143\\uff0c\\u4e3a 2025 \\u5e74\\u9996\\u6b21\\u540c\\u6bd4\\u4ef7\\u683c\\u4e0a\\u6da8\\u3002\\u65b0\\u5c4b\\u9500\\u552e\\u66b4\\u8dcc\\u4e4b\\u9645\\uff0c\\u62b5\\u62bc\\u8d37\\u6b3e\\u5229\\u7387\\u56de\\u5347\\u3002\\u800c\\u4e14\\uff0c\\u522b\\u6307\\u671b\\u964d\\u606f\\u80fd\\u5e26\\u6765\\u5e2e\\u52a9\\uff0c\\u4e0a\\u6b21\\u964d\\u606f\\u53cd\\u800c\\u52a0\\u5267\\u4e86\\u6536\\u76ca\\u7387\\u66f2\\u7ebf\\u9661\\u5ced\\u7a0b\\u5ea6\\uff0c\\u5bfc\\u81f4\\u62b5\\u62bc\\u8d37\\u6b3e\\u5229\\u7387\\u4e0a\\u5347\"},{\"type\":0,\"value\":\"\\n\\n\"}]",
+        "file_url": "",
+        "file_name": "",
+        "file_size": 0,
+        "file_json": [],
+        "feeds_type": 1,
+        "user_id": "u_63b7c53a8d409_5uCkJxO6mz",
+        "title": "刚发的美国5月新房销售数据",
+        "is_chosen": 0,
+        "is_notice": 0,
+        "user_type": 1,
+        "send_type": 1,
+        "zan_num": 0,
+        "comment_count": 0,
+        "created_at": "2025-06-26 00:22:09",
+        "universal_union_id": "oTHW5v6xlUIrr-oY2RCVkVwIgv_o",
+        "is_exercise": 0,
+        "is_public": 1,
+        "feeds_state": 0,
+        "share_num": 0,
+        "apply_type": "",
+        "extend_field1": "",
+        "extend_field2": "",
+        "extend_field3": "",
+        "ip": "112.120.125.131",
+        "me_praise": false,
+        "nick_name": "一束光线",
+        "wx_avatar": "http://wechatavator-1252524126.file.myqcloud.com/appyuf4rl772054/image/compress/u_63b7c53a8d409_5uCkJxO6mz_20230109_3811a9.jpeg",
+        "role_name": "圈主",
+        "roles": [
+          "community_host"
+        ],
+        "label_user_type": 1,
+        "is_quit": 0,
+        "user_state": 0,
+        "is_guest": 0,
+        "work_corp_id": "",
+        "work_user_id": "",
+        "show_time": "2025-06-26 00:22",
+        "praise_list": [],
+        "commentList": {
+          "list": [],
+          "total_count": 0
+        },
+        "discuss_title": "",
+        "discuss_resource_id": "",
+        "resource_type": "",
+        "record_num": 32,
+        "is_self": false,
+        "login_user_id": "u_672cc041494f9_1vzXLebwuk",
+        "user_group_id": "g_ungrouped",
+        "user_group_info": {
+          "user_id": "u_63b7c53a8d409_5uCkJxO6mz",
+          "group_id": "g_ungrouped",
+          "group_name": "未分组",
+          "slogan": "",
+          "cover_url": "https://commonresource-1252524126.cdn.xiaoeknow.com/image/lgdkekux0n08.jpg",
+          "avatar_cover_url": "https://commonresource-1252524126.cdn.xiaoeknow.com/image/lgdkekux0n08.jpg",
+          "group_created_at": "",
+          "user_join_group_at": ""
+        },
+        "can_teacher_comment": false,
+        "resource_info": {
+          "community_id": "c_6544c6eb39716_hWkqHZtW8807"
+        },
+        "tags": [
+          {
+            "id": 338218,
+            "tag_name": "国际宏观",
+            "feeds_id": "d_685c2231d9bc4_kwh7v9B3mjkC",
+            "tag_id": 338218,
+            "role": []
+          },
+          {
+            "id": 341974,
+            "tag_name": "房市",
+            "feeds_id": "d_685c2231d9bc4_kwh7v9B3mjkC",
+            "tag_id": 341974,
+            "role": []
+          }
+        ],
+        "config": {
+          "is_forbid_share": 0
+        },
+        "join_day": 917,
+        "ip_place": "中国香港"
+      },
+      {
+        "id": "d_685c1ed55e28a_5Lpp2YgMPAX9",
+        "app_id": "appyuf4rl772054",
+        "community_id": "c_6544c6eb39716_hWkqHZtW8807",
+        "org_content": "<article><p><br/></p><p><span style=\"font-family: Arial;\">贡献一起空原油的朋友。 油价最近是经历自 2022 年以来最大的两日跌幅。 </span></p><p><span style=\"font-family: Arial;\"></span></p><p><span style=\"font-family: Arial;\">不过今天已经开始小幅上涨。 主要是美国石油协会（API）隔夜报告</span></p><p><span style=\"font-family: Arial;\"></span></p><p><span style=\"font-family: Arial;\">报告显示：美国原油库存再度下降。 具体就是： 原油库存减少 428 万桶，库欣地区减少 7.5 万桶，汽油库存增加 76.4 万桶，馏分油库存减少 103 万桶。，上周成品油库存也大幅下降。美国原油总库存降至 1 月以来最低水平，尽管战略石油储备（SPR）增加了 23.7 万桶，但原油库存连续第 5 周下降。上周美国原油产量小幅上升，而钻机数量持续下滑</span></p><p><span style=\"font-family: Arial;\"></span></p><p><span style=\"font-family: Arial;\">另外欧佩克 + 联盟定于 7 月 6 日举行讨论，考虑 8 月进一步增加供应。 可能是个机会<img src=\"https://wechatapppro-1252524126.cdn.xiaoeknow.com/appyuf4rl772054/image/b_u_ceqcup61l0co7f71la40/gj5jwhmcc5ebk5.jpg\" width=\"100%\" height=\"auto\" title=\"oil.jpg\" alt=\"oil.jpg\"/><img src=\"https://wechatapppro-1252524126.cdn.xiaoeknow.com/appyuf4rl772054/image/b_u_ceqcup61l0co7f71la40/ekx0iymcc5ebkn.jpg\" width=\"100%\" height=\"auto\" title=\"oil2.jpg\" alt=\"oil2.jpg\"/><img src=\"https://wechatapppro-1252524126.cdn.xiaoeknow.com/appyuf4rl772054/image/b_u_ceqcup61l0co7f71la40/q1yqo4mcc5ebk7.jpg\" width=\"100%\" height=\"auto\" title=\"oil3.jpg\" alt=\"oil3.jpg\"/></span></p></article><p></p>",
+        "content": {
+          "text": "\n贡献一起空原油的朋友。 油价最近是经历自 2022 年以来最大的两日跌幅。 \n\n不过今天已经开始小幅上涨。 主要是美国石油协会（API）隔夜报告\n\n报告显示：美国原油库存再度下降。 具体就是： 原油库存减少 428 万桶，库欣地区减少 7.5 万桶，汽油库存增加 76.4 万桶，馏分油库存减少 103 万桶。，上周成品油库存也大幅下降。美国原油总库存降至 1 月以来最低水平，尽管战略石油储备（SPR）增加了 23.7 万桶，但原油库存连续第 5 周下降。上周美国原油产量小幅上升，而钻机数量持续下滑\n\n另外欧佩克 + 联盟定于 7 月 6 日举行讨论，考虑 8 月进一步增加供应。 可能是个机会\n\n",
+          "mix_records": [
+            {
+              "url": "https://wechatapppro-1252524126.cdn.xiaoeknow.com/appyuf4rl772054/image/b_u_ceqcup61l0co7f71la40/gj5jwhmcc5ebk5.jpg",
+              "type": "IMAGE",
+              "showUrl": "https://wechatapppro-1252524126.cdn.xiaoeknow.com/appyuf4rl772054/image/b_u_ceqcup61l0co7f71la40/gj5jwhmcc5ebk5.jpg"
+            },
+            {
+              "url": "https://wechatapppro-1252524126.cdn.xiaoeknow.com/appyuf4rl772054/image/b_u_ceqcup61l0co7f71la40/ekx0iymcc5ebkn.jpg",
+              "type": "IMAGE",
+              "showUrl": "https://wechatapppro-1252524126.cdn.xiaoeknow.com/appyuf4rl772054/image/b_u_ceqcup61l0co7f71la40/ekx0iymcc5ebkn.jpg"
+            },
+            {
+              "url": "https://wechatapppro-1252524126.cdn.xiaoeknow.com/appyuf4rl772054/image/b_u_ceqcup61l0co7f71la40/q1yqo4mcc5ebk7.jpg",
+              "type": "IMAGE",
+              "showUrl": "https://wechatapppro-1252524126.cdn.xiaoeknow.com/appyuf4rl772054/image/b_u_ceqcup61l0co7f71la40/q1yqo4mcc5ebk7.jpg"
+            }
+          ],
+          "audio_records": []
+        },
+        "tags_content": "[{\"type\":1,\"value\":\"https:\\/\\/wechatapppro-1252524126.cdn.xiaoeknow.com\\/appyuf4rl772054\\/image\\/b_u_ceqcup61l0co7f71la40\\/gj5jwhmcc5ebk5.jpg\"},{\"type\":1,\"value\":\"https:\\/\\/wechatapppro-1252524126.cdn.xiaoeknow.com\\/appyuf4rl772054\\/image\\/b_u_ceqcup61l0co7f71la40\\/ekx0iymcc5ebkn.jpg\"},{\"type\":1,\"value\":\"https:\\/\\/wechatapppro-1252524126.cdn.xiaoeknow.com\\/appyuf4rl772054\\/image\\/b_u_ceqcup61l0co7f71la40\\/q1yqo4mcc5ebk7.jpg\"},{\"type\":0,\"value\":\"\\n\\u8d21\\u732e\\u4e00\\u8d77\\u7a7a\\u539f\\u6cb9\\u7684\\u670b\\u53cb\\u3002 \\u6cb9\\u4ef7\\u6700\\u8fd1\\u662f\\u7ecf\\u5386\\u81ea 2022 \\u5e74\\u4ee5\\u6765\\u6700\\u5927\\u7684\\u4e24\\u65e5\\u8dcc\\u5e45\\u3002 \\n\\n\\u4e0d\\u8fc7\\u4eca\\u5929\\u5df2\\u7ecf\\u5f00\\u59cb\\u5c0f\\u5e45\\u4e0a\\u6da8\\u3002 \\u4e3b\\u8981\\u662f\\u7f8e\\u56fd\\u77f3\\u6cb9\\u534f\\u4f1a\\uff08API\\uff09\\u9694\\u591c\\u62a5\\u544a\\n\\n\\u62a5\\u544a\\u663e\\u793a\\uff1a\\u7f8e\\u56fd\\u539f\\u6cb9\\u5e93\\u5b58\\u518d\\u5ea6\\u4e0b\\u964d\\u3002 \\u5177\\u4f53\\u5c31\\u662f\\uff1a \\u539f\\u6cb9\\u5e93\\u5b58\\u51cf\\u5c11 428 \\u4e07\\u6876\\uff0c\\u5e93\\u6b23\\u5730\\u533a\\u51cf\\u5c11 7.5 \\u4e07\\u6876\\uff0c\\u6c7d\\u6cb9\\u5e93\\u5b58\\u589e\\u52a0 76.4 \\u4e07\\u6876\\uff0c\\u998f\\u5206\\u6cb9\\u5e93\\u5b58\\u51cf\\u5c11 103 \\u4e07\\u6876\\u3002\\uff0c\\u4e0a\\u5468\\u6210\\u54c1\\u6cb9\\u5e93\\u5b58\\u4e5f\\u5927\\u5e45\\u4e0b\\u964d\\u3002\\u7f8e\\u56fd\\u539f\\u6cb9\\u603b\\u5e93\\u5b58\\u964d\\u81f3 1 \\u6708\\u4ee5\\u6765\\u6700\\u4f4e\\u6c34\\u5e73\\uff0c\\u5c3d\\u7ba1\\u6218\\u7565\\u77f3\\u6cb9\\u50a8\\u5907\\uff08SPR\\uff09\\u589e\\u52a0\\u4e86 23.7 \\u4e07\\u6876\\uff0c\\u4f46\\u539f\\u6cb9\\u5e93\\u5b58\\u8fde\\u7eed\\u7b2c 5 \\u5468\\u4e0b\\u964d\\u3002\\u4e0a\\u5468\\u7f8e\\u56fd\\u539f\\u6cb9\\u4ea7\\u91cf\\u5c0f\\u5e45\\u4e0a\\u5347\\uff0c\\u800c\\u94bb\\u673a\\u6570\\u91cf\\u6301\\u7eed\\u4e0b\\u6ed1\\n\\n\\u53e6\\u5916\\u6b27\\u4f69\\u514b + \\u8054\\u76df\\u5b9a\\u4e8e 7 \\u6708 6 \\u65e5\\u4e3e\\u884c\\u8ba8\\u8bba\\uff0c\\u8003\\u8651 8 \\u6708\\u8fdb\\u4e00\\u6b65\\u589e\\u52a0\\u4f9b\\u5e94\\u3002 \\u53ef\\u80fd\\u662f\\u4e2a\\u673a\\u4f1a\"},{\"type\":0,\"value\":\"\\n\\n\"}]",
+        "file_url": "",
+        "file_name": "",
+        "file_size": 0,
+        "file_json": [],
+        "feeds_type": 1,
+        "user_id": "u_63b7c53a8d409_5uCkJxO6mz",
+        "title": "石油",
+        "is_chosen": 0,
+        "is_notice": 0,
+        "user_type": 1,
+        "send_type": 1,
+        "zan_num": 0,
+        "comment_count": 0,
+        "created_at": "2025-06-26 00:07:49",
+        "universal_union_id": "oTHW5v6xlUIrr-oY2RCVkVwIgv_o",
+        "is_exercise": 0,
+        "is_public": 1,
+        "feeds_state": 0,
+        "share_num": 0,
+        "apply_type": "",
+        "extend_field1": "",
+        "extend_field2": "",
+        "extend_field3": "",
+        "ip": "112.120.125.131",
+        "me_praise": false,
+        "nick_name": "一束光线",
+        "wx_avatar": "http://wechatavator-1252524126.file.myqcloud.com/appyuf4rl772054/image/compress/u_63b7c53a8d409_5uCkJxO6mz_20230109_3811a9.jpeg",
+        "role_name": "圈主",
+        "roles": [
+          "community_host"
+        ],
+        "label_user_type": 1,
+        "is_quit": 0,
+        "user_state": 0,
+        "is_guest": 0,
+        "work_corp_id": "",
+        "work_user_id": "",
+        "show_time": "2025-06-26 00:07",
+        "praise_list": [],
+        "commentList": {
+          "list": [],
+          "total_count": 0
+        },
+        "discuss_title": "",
+        "discuss_resource_id": "",
+        "resource_type": "",
+        "record_num": 30,
+        "is_self": false,
+        "login_user_id": "u_672cc041494f9_1vzXLebwuk",
+        "user_group_id": "g_ungrouped",
+        "user_group_info": {
+          "user_id": "u_63b7c53a8d409_5uCkJxO6mz",
+          "group_id": "g_ungrouped",
+          "group_name": "未分组",
+          "slogan": "",
+          "cover_url": "https://commonresource-1252524126.cdn.xiaoeknow.com/image/lgdkekux0n08.jpg",
+          "avatar_cover_url": "https://commonresource-1252524126.cdn.xiaoeknow.com/image/lgdkekux0n08.jpg",
+          "group_created_at": "",
+          "user_join_group_at": ""
+        },
+        "can_teacher_comment": false,
+        "resource_info": {
+          "community_id": "c_6544c6eb39716_hWkqHZtW8807"
+        },
+        "tags": [
+          {
+            "id": 338795,
+            "tag_name": "贵金属+大宗商品",
+            "feeds_id": "d_685c1ed55e28a_5Lpp2YgMPAX9",
+            "tag_id": 338795,
+            "role": []
+          }
+        ],
+        "config": {
+          "is_forbid_share": 0
+        },
+        "join_day": 917,
+        "ip_place": "中国香港"
+      },
+      {
+        "id": "d_685c03207fdee_oUsXMV1qrRD3",
+        "app_id": "appyuf4rl772054",
+        "community_id": "c_6544c6eb39716_hWkqHZtW8807",
+        "org_content": "<article><p><br/></p><p>有一招可以一下子砍到美国万亿赤字的简单办法。 这不是我说。 而是最近美国共和党参议员<span style=\"color: rgb(19, 19, 19);background-color: rgba(0, 0, 0, 0.05);font-family: Arial;\">泰德·克鲁兹向懂王建议的。 你们听一下可以行不。 他的的想法就是这钱从美联储这边搞。 怎么来呢。 大家知道所有在美国的银行包括国内和国外银行都在美联储这边要放储备金的。或者银行多的流动性以及你我买的货币基金这些都要放到隔夜逆回购的。 而美联储对这些储备金或者逆回购要是给利息的。 利率不就是美联储定的联邦利率嘛。现在年化4.4%左右。 泰德提议这钱以后就不给银行了。 要真有钱给财政部就好了。这样每年利息就可以节省个几千亿。 是不是妙招？ 你还别说。 懂王看到这招那可是开心呢。 一方面。他现在的大而美每年要给政府增加很大赤字。这下赤字问题肯定完全解决了吗。 而且本来他就对美联储不爽。这利息钱不都是因为你美联储加息搞上去的嘛。  这钱从美联储这边出 完美。 另外一方面。这事他想做的是做说不定还真可以办的到哦。 因为原来美联储其实是没有权利向银行准备金支付利息呢。 后来08年经济危机以后。 拿到了国会授权。 本来就是个临时授权。 搞到现在。 特朗普真要搞个行政命令说不是还真可以废掉。 所以大家这事能搞下去吗？ 我就想让大家思考一个问题。 要是取消和准备金和隔夜逆回购利息。 那美联储靠什么来执行他的联邦利率和货币政策呢？ </span></p></article><p></p>",
+        "content": {
+          "text": "\n有一招可以一下子砍到美国万亿赤字的简单办法。 这不是我说。 而是最近美国共和党参议员泰德·克鲁兹向懂王建议的。 你们听一下可以行不。 他的的想法就是这钱从美联储这边搞。 怎么来呢。 大家知道所有在美国的银行包括国内和国外银行都在美联储这边要放储备金的。或者银行多的流动性以及你我买的货币基金这些都要放到隔夜逆回购的。 而美联储对这些储备金或者逆回购要是给利息的。 利率不就是美联储定的联邦利率嘛。现在年化4.4%左右。 泰德提议这钱以后就不给银行了。 要真有钱给财政部就好了。这样每年利息就可以节省个几千亿。 是不是妙招？ 你还别说。 懂王看到这招那可是开心呢。 一方面。他现在的大而美每年要给政府增加很大赤字。这下赤字问题肯定完全解决了吗。 而且本来他就对美联储不爽。这利息钱不都是因为你美联储加息搞上去的嘛。  这钱从美联储这边出 完美。 另外一方面。这事他想做的是做说不定还真可以办的到哦。 因为原来美联储其实是没有权利向银行准备金支付利息呢。 后来08年经济危机以后。 拿到了国会授权。 本来就是个临时授权。 搞到现在。 特朗普真要搞个行政命令说不是还真可以废掉。 所以大家这事能搞下去吗？ 我就想让大家思考一个问题。 要是取消和准备金和隔夜逆回购利息。 那美联储靠什么来执行他的联邦利率和货币政策呢？ \n\n",
+          "mix_records": [],
+          "audio_records": []
+        },
+        "tags_content": "[{\"type\":0,\"value\":\"\\n\\u6709\\u4e00\\u62db\\u53ef\\u4ee5\\u4e00\\u4e0b\\u5b50\\u780d\\u5230\\u7f8e\\u56fd\\u4e07\\u4ebf\\u8d64\\u5b57\\u7684\\u7b80\\u5355\\u529e\\u6cd5\\u3002 \\u8fd9\\u4e0d\\u662f\\u6211\\u8bf4\\u3002 \\u800c\\u662f\\u6700\\u8fd1\\u7f8e\\u56fd\\u5171\\u548c\\u515a\\u53c2\\u8bae\\u5458\\u6cf0\\u5fb7\\u00b7\\u514b\\u9c81\\u5179\\u5411\\u61c2\\u738b\\u5efa\\u8bae\\u7684\\u3002 \\u4f60\\u4eec\\u542c\\u4e00\\u4e0b\\u53ef\\u4ee5\\u884c\\u4e0d\\u3002 \\u4ed6\\u7684\\u7684\\u60f3\\u6cd5\\u5c31\\u662f\\u8fd9\\u94b1\\u4ece\\u7f8e\\u8054\\u50a8\\u8fd9\\u8fb9\\u641e\\u3002 \\u600e\\u4e48\\u6765\\u5462\\u3002 \\u5927\\u5bb6\\u77e5\\u9053\\u6240\\u6709\\u5728\\u7f8e\\u56fd\\u7684\\u94f6\\u884c\\u5305\\u62ec\\u56fd\\u5185\\u548c\\u56fd\\u5916\\u94f6\\u884c\\u90fd\\u5728\\u7f8e\\u8054\\u50a8\\u8fd9\\u8fb9\\u8981\\u653e\\u50a8\\u5907\\u91d1\\u7684\\u3002\\u6216\\u8005\\u94f6\\u884c\\u591a\\u7684\\u6d41\\u52a8\\u6027\\u4ee5\\u53ca\\u4f60\\u6211\\u4e70\\u7684\\u8d27\\u5e01\\u57fa\\u91d1\\u8fd9\\u4e9b\\u90fd\\u8981\\u653e\\u5230\\u9694\\u591c\\u9006\\u56de\\u8d2d\\u7684\\u3002 \\u800c\\u7f8e\\u8054\\u50a8\\u5bf9\\u8fd9\\u4e9b\\u50a8\\u5907\\u91d1\\u6216\\u8005\\u9006\\u56de\\u8d2d\\u8981\\u662f\\u7ed9\\u5229\\u606f\\u7684\\u3002 \\u5229\\u7387\\u4e0d\\u5c31\\u662f\\u7f8e\\u8054\\u50a8\\u5b9a\\u7684\\u8054\\u90a6\\u5229\\u7387\\u561b\\u3002\\u73b0\\u5728\\u5e74\\u53164.4%\\u5de6\\u53f3\\u3002 \\u6cf0\\u5fb7\\u63d0\\u8bae\\u8fd9\\u94b1\\u4ee5\\u540e\\u5c31\\u4e0d\\u7ed9\\u94f6\\u884c\\u4e86\\u3002 \\u8981\\u771f\\u6709\\u94b1\\u7ed9\\u8d22\\u653f\\u90e8\\u5c31\\u597d\\u4e86\\u3002\\u8fd9\\u6837\\u6bcf\\u5e74\\u5229\\u606f\\u5c31\\u53ef\\u4ee5\\u8282\\u7701\\u4e2a\\u51e0\\u5343\\u4ebf\\u3002 \\u662f\\u4e0d\\u662f\\u5999\\u62db\\uff1f \\u4f60\\u8fd8\\u522b\\u8bf4\\u3002 \\u61c2\\u738b\\u770b\\u5230\\u8fd9\\u62db\\u90a3\\u53ef\\u662f\\u5f00\\u5fc3\\u5462\\u3002 \\u4e00\\u65b9\\u9762\\u3002\\u4ed6\\u73b0\\u5728\\u7684\\u5927\\u800c\\u7f8e\\u6bcf\\u5e74\\u8981\\u7ed9\\u653f\\u5e9c\\u589e\\u52a0\\u5f88\\u5927\\u8d64\\u5b57\\u3002\\u8fd9\\u4e0b\\u8d64\\u5b57\\u95ee\\u9898\\u80af\\u5b9a\\u5b8c\\u5168\\u89e3\\u51b3\\u4e86\\u5417\\u3002 \\u800c\\u4e14\\u672c\\u6765\\u4ed6\\u5c31\\u5bf9\\u7f8e\\u8054\\u50a8\\u4e0d\\u723d\\u3002\\u8fd9\\u5229\\u606f\\u94b1\\u4e0d\\u90fd\\u662f\\u56e0\\u4e3a\\u4f60\\u7f8e\\u8054\\u50a8\\u52a0\\u606f\\u641e\\u4e0a\\u53bb\\u7684\\u561b\\u3002  \\u8fd9\\u94b1\\u4ece\\u7f8e\\u8054\\u50a8\\u8fd9\\u8fb9\\u51fa \\u5b8c\\u7f8e\\u3002 \\u53e6\\u5916\\u4e00\\u65b9\\u9762\\u3002\\u8fd9\\u4e8b\\u4ed6\\u60f3\\u505a\\u7684\\u662f\\u505a\\u8bf4\\u4e0d\\u5b9a\\u8fd8\\u771f\\u53ef\\u4ee5\\u529e\\u7684\\u5230\\u54e6\\u3002 \\u56e0\\u4e3a\\u539f\\u6765\\u7f8e\\u8054\\u50a8\\u5176\\u5b9e\\u662f\\u6ca1\\u6709\\u6743\\u5229\\u5411\\u94f6\\u884c\\u51c6\\u5907\\u91d1\\u652f\\u4ed8\\u5229\\u606f\\u5462\\u3002 \\u540e\\u676508\\u5e74\\u7ecf\\u6d4e\\u5371\\u673a\\u4ee5\\u540e\\u3002 \\u62ff\\u5230\\u4e86\\u56fd\\u4f1a\\u6388\\u6743\\u3002 \\u672c\\u6765\\u5c31\\u662f\\u4e2a\\u4e34\\u65f6\\u6388\\u6743\\u3002 \\u641e\\u5230\\u73b0\\u5728\\u3002 \\u7279\\u6717\\u666e\\u771f\\u8981\\u641e\\u4e2a\\u884c\\u653f\\u547d\\u4ee4\\u8bf4\\u4e0d\\u662f\\u8fd8\\u771f\\u53ef\\u4ee5\\u5e9f\\u6389\\u3002 \\u6240\\u4ee5\\u5927\\u5bb6\\u8fd9\\u4e8b\\u80fd\\u641e\\u4e0b\\u53bb\\u5417\\uff1f \\u6211\\u5c31\\u60f3\\u8ba9\\u5927\\u5bb6\\u601d\\u8003\\u4e00\\u4e2a\\u95ee\\u9898\\u3002 \\u8981\\u662f\\u53d6\\u6d88\\u548c\\u51c6\\u5907\\u91d1\\u548c\\u9694\\u591c\\u9006\\u56de\\u8d2d\\u5229\\u606f\\u3002 \\u90a3\\u7f8e\\u8054\\u50a8\\u9760\\u4ec0\\u4e48\\u6765\\u6267\\u884c\\u4ed6\\u7684\\u8054\\u90a6\\u5229\\u7387\\u548c\\u8d27\\u5e01\\u653f\\u7b56\\u5462\\uff1f \\n\\n\"}]",
+        "file_url": "",
+        "file_name": "",
+        "file_size": 0,
+        "file_json": [],
+        "feeds_type": 1,
+        "user_id": "u_63b7c53a8d409_5uCkJxO6mz",
+        "title": "砍掉美国万亿赤字的简单办法",
+        "is_chosen": 0,
+        "is_notice": 0,
+        "user_type": 1,
+        "send_type": 1,
+        "zan_num": 0,
+        "comment_count": 0,
+        "created_at": "2025-06-25 22:09:36",
+        "universal_union_id": "oTHW5v6xlUIrr-oY2RCVkVwIgv_o",
+        "is_exercise": 0,
+        "is_public": 1,
+        "feeds_state": 0,
+        "share_num": 0,
+        "apply_type": "",
+        "extend_field1": "",
+        "extend_field2": "",
+        "extend_field3": "",
+        "ip": "112.120.125.131",
+        "me_praise": false,
+        "nick_name": "一束光线",
+        "wx_avatar": "http://wechatavator-1252524126.file.myqcloud.com/appyuf4rl772054/image/compress/u_63b7c53a8d409_5uCkJxO6mz_20230109_3811a9.jpeg",
+        "role_name": "圈主",
+        "roles": [
+          "community_host"
+        ],
+        "label_user_type": 1,
+        "is_quit": 0,
+        "user_state": 0,
+        "is_guest": 0,
+        "work_corp_id": "",
+        "work_user_id": "",
+        "show_time": "2025-06-25 22:09",
+        "praise_list": [],
+        "commentList": {
+          "list": [],
+          "total_count": 0
+        },
+        "discuss_title": "",
+        "discuss_resource_id": "",
+        "resource_type": "",
+        "record_num": 33,
+        "is_self": false,
+        "login_user_id": "u_672cc041494f9_1vzXLebwuk",
+        "user_group_id": "g_ungrouped",
+        "user_group_info": {
+          "user_id": "u_63b7c53a8d409_5uCkJxO6mz",
+          "group_id": "g_ungrouped",
+          "group_name": "未分组",
+          "slogan": "",
+          "cover_url": "https://commonresource-1252524126.cdn.xiaoeknow.com/image/lgdkekux0n08.jpg",
+          "avatar_cover_url": "https://commonresource-1252524126.cdn.xiaoeknow.com/image/lgdkekux0n08.jpg",
+          "group_created_at": "",
+          "user_join_group_at": ""
+        },
+        "can_teacher_comment": false,
+        "resource_info": {
+          "community_id": "c_6544c6eb39716_hWkqHZtW8807"
+        },
+        "tags": [
+          {
+            "id": 338218,
+            "tag_name": "国际宏观",
+            "feeds_id": "d_685c03207fdee_oUsXMV1qrRD3",
+            "tag_id": 338218,
+            "role": []
+          }
+        ],
+        "config": {
+          "is_forbid_share": 0
+        },
+        "join_day": 917,
+        "ip_place": "中国香港"
+      },
+      {
+        "id": "d_685b059f7e424_oy5yBh5pgzxa",
+        "app_id": "appyuf4rl772054",
+        "community_id": "c_6544c6eb39716_hWkqHZtW8807",
+        "org_content": "<p><view style='display: block!important;text-align: center;'><video src='https://encrypt-k-vod.xet.tech/9764a7a5vodtransgzp1252524126/23890dbe3560136624520176457/v.f100230.m3u8?sign=ec918408f5ea35590b67c718476311c7&t=69fd184f&us=oWvgpYmSGs'> </video></view></p>",
+        "content": {
+          "text": "\n",
+          "mix_records": [
+            {
+              "id": "FCD2B6BF-1732-B2BE-3967-1B408380F504",
+              "type": "VIDEO",
+              "url": "https://encrypt-k-vod.xet.tech/9764a7a5vodtransgzp1252524126/23890dbe3560136624520176457/v.f100230.m3u8?sign=ec918408f5ea35590b67c718476311c7&t=69fd184f&us=oWvgpYmSGs",
+              "cover": "https://encrypt-k-vod.xet.tech/9764a7a5vodtransgzp1252524126/23890dbe3560136624520176457/coverBySnapshot/coverBySnapshot_10_0.jpg?sign=195cef6b4efb5b94f885dd88f015ec9a&t=69fd184f&us=IYrBgOSMPA",
+              "showUrl": "https://encrypt-k-vod.xet.tech/9764a7a5vodtransgzp1252524126/23890dbe3560136624520176457/v.f100230.m3u8?sign=ec918408f5ea35590b67c718476311c7&t=69fd184f&us=oWvgpYmSGs",
+              "show_cover": "https://encrypt-k-vod.xet.tech/9764a7a5vodtransgzp1252524126/23890dbe3560136624520176457/coverBySnapshot/coverBySnapshot_10_0.jpg?sign=195cef6b4efb5b94f885dd88f015ec9a&t=69fd184f&us=IYrBgOSMPA"
+            }
+          ],
+          "audio_records": []
+        },
+        "tags_content": "[{\"type\":0,\"value\":\"\\n\"}]",
+        "file_url": "",
+        "file_name": "",
+        "file_size": 0,
+        "file_json": [],
+        "feeds_type": 1,
+        "user_id": "u_63b7c53a8d409_5uCkJxO6mz",
+        "title": "选哪国长债投资比较好！",
+        "is_chosen": 0,
+        "is_notice": 0,
+        "user_type": 1,
+        "send_type": 1,
+        "zan_num": 0,
+        "comment_count": 0,
+        "created_at": "2025-06-25 04:07:59",
+        "universal_union_id": "oTHW5v6xlUIrr-oY2RCVkVwIgv_o",
+        "is_exercise": 0,
+        "is_public": 1,
+        "feeds_state": 0,
+        "share_num": 0,
+        "apply_type": "",
+        "extend_field1": "",
+        "extend_field2": "",
+        "extend_field3": "",
+        "ip": "125.67.225.123",
+        "me_praise": false,
+        "nick_name": "一束光线",
+        "wx_avatar": "http://wechatavator-1252524126.file.myqcloud.com/appyuf4rl772054/image/compress/u_63b7c53a8d409_5uCkJxO6mz_20230109_3811a9.jpeg",
+        "role_name": "圈主",
+        "roles": [
+          "community_host"
+        ],
+        "label_user_type": 1,
+        "is_quit": 0,
+        "user_state": 0,
+        "is_guest": 0,
+        "work_corp_id": "",
+        "work_user_id": "",
+        "show_time": "2025-06-25 04:07",
+        "praise_list": [],
+        "commentList": {
+          "list": [],
+          "total_count": 0
+        },
+        "discuss_title": "",
+        "discuss_resource_id": "",
+        "resource_type": "",
+        "record_num": 34,
+        "is_self": false,
+        "login_user_id": "u_672cc041494f9_1vzXLebwuk",
+        "user_group_id": "g_ungrouped",
+        "user_group_info": {
+          "user_id": "u_63b7c53a8d409_5uCkJxO6mz",
+          "group_id": "g_ungrouped",
+          "group_name": "未分组",
+          "slogan": "",
+          "cover_url": "https://commonresource-1252524126.cdn.xiaoeknow.com/image/lgdkekux0n08.jpg",
+          "avatar_cover_url": "https://commonresource-1252524126.cdn.xiaoeknow.com/image/lgdkekux0n08.jpg",
+          "group_created_at": "",
+          "user_join_group_at": ""
+        },
+        "can_teacher_comment": false,
+        "resource_info": {
+          "community_id": "c_6544c6eb39716_hWkqHZtW8807"
+        },
+        "tags": [
+          {
+            "id": 338218,
+            "tag_name": "国际宏观",
+            "feeds_id": "d_685b059f7e424_oy5yBh5pgzxa",
+            "tag_id": 338218,
+            "role": []
+          },
+          {
+            "id": 338214,
+            "tag_name": "美股",
+            "feeds_id": "d_685b059f7e424_oy5yBh5pgzxa",
+            "tag_id": 338214,
+            "role": []
+          }
+        ],
+        "config": {
+          "is_forbid_share": 0
+        },
+        "join_day": 917,
+        "ip_place": "四川"
+      },
+      {
+        "id": "d_685adcc0ca528_cpCxy01Q8S5j",
+        "app_id": "appyuf4rl772054",
+        "community_id": "c_6544c6eb39716_hWkqHZtW8807",
+        "org_content": "<article><p><br/></p><p><span style=\"font-family: Arial;\">5 月美国谘商会消费者信心指数出现 14 年来最大涨幅后，分析师原本预期 6 月该指数会继续反弹。然而，实际数据令人失望，6 月整体信心指数从向上修正后的 98.4 降至 93.0，未来预期指数下降，现况指数更是跌至 2024 年 9 月以来最弱水平。</span></p><p><span style=\"font-family: Arial;\"></span></p><p><span style=\"font-family: Arial;\">预期指数的三个分项 —— 商业状况、就业前景和未来收入 —— 均走弱。消费者对未来六个月的商业状况和就业可获得性更为悲观，对未来收入前景的乐观情绪也略有消退。</span></p><p><span style=\"font-family: Arial;\"></span></p><p><span style=\"font-family: Arial;\">此外，谘商会通胀预期指数大幅下跌！<img src=\"https://wechatapppro-1252524126.cdn.xiaoeknow.com/appyuf4rl772054/image/b_u_ceqcup61l0co7f71la40/66f9sqmcasawtm.jpg\" width=\"100%\" height=\"auto\" title=\"通胀预期.jpg\" alt=\"通胀预期.jpg\"/><img src=\"https://wechatapppro-1252524126.cdn.xiaoeknow.com/appyuf4rl772054/image/b_u_ceqcup61l0co7f71la40/2pp621mcasawud.jpg\" width=\"100%\" height=\"auto\" title=\"消费者信心5月.jpg\" alt=\"消费者信心5月.jpg\"/><img src=\"https://wechatapppro-1252524126.cdn.xiaoeknow.com/appyuf4rl772054/image/b_u_ceqcup61l0co7f71la40/93hfnnmcasawte.jpg\" width=\"100%\" height=\"auto\" title=\"信心2.jpg\" alt=\"信心2.jpg\"/></span></p></article><p></p>",
+        "content": {
+          "text": "\n5 月美国谘商会消费者信心指数出现 14 年来最大涨幅后，分析师原本预期 6 月该指数会继续反弹。然而，实际数据令人失望，6 月整体信心指数从向上修正后的 98.4 降至 93.0，未来预期指数下降，现况指数更是跌至 2024 年 9 月以来最弱水平。\n\n预期指数的三个分项 —— 商业状况、就业前景和未来收入 —— 均走弱。消费者对未来六个月的商业状况和就业可获得性更为悲观，对未来收入前景的乐观情绪也略有消退。\n\n此外，谘商会通胀预期指数大幅下跌！\n\n",
+          "mix_records": [
+            {
+              "url": "https://wechatapppro-1252524126.cdn.xiaoeknow.com/appyuf4rl772054/image/b_u_ceqcup61l0co7f71la40/66f9sqmcasawtm.jpg",
+              "type": "IMAGE",
+              "showUrl": "https://wechatapppro-1252524126.cdn.xiaoeknow.com/appyuf4rl772054/image/b_u_ceqcup61l0co7f71la40/66f9sqmcasawtm.jpg"
+            },
+            {
+              "url": "https://wechatapppro-1252524126.cdn.xiaoeknow.com/appyuf4rl772054/image/b_u_ceqcup61l0co7f71la40/2pp621mcasawud.jpg",
+              "type": "IMAGE",
+              "showUrl": "https://wechatapppro-1252524126.cdn.xiaoeknow.com/appyuf4rl772054/image/b_u_ceqcup61l0co7f71la40/2pp621mcasawud.jpg"
+            },
+            {
+              "url": "https://wechatapppro-1252524126.cdn.xiaoeknow.com/appyuf4rl772054/image/b_u_ceqcup61l0co7f71la40/93hfnnmcasawte.jpg",
+              "type": "IMAGE",
+              "showUrl": "https://wechatapppro-1252524126.cdn.xiaoeknow.com/appyuf4rl772054/image/b_u_ceqcup61l0co7f71la40/93hfnnmcasawte.jpg"
+            }
+          ],
+          "audio_records": []
+        },
+        "tags_content": "[{\"type\":1,\"value\":\"https:\\/\\/wechatapppro-1252524126.cdn.xiaoeknow.com\\/appyuf4rl772054\\/image\\/b_u_ceqcup61l0co7f71la40\\/66f9sqmcasawtm.jpg\"},{\"type\":1,\"value\":\"https:\\/\\/wechatapppro-1252524126.cdn.xiaoeknow.com\\/appyuf4rl772054\\/image\\/b_u_ceqcup61l0co7f71la40\\/2pp621mcasawud.jpg\"},{\"type\":1,\"value\":\"https:\\/\\/wechatapppro-1252524126.cdn.xiaoeknow.com\\/appyuf4rl772054\\/image\\/b_u_ceqcup61l0co7f71la40\\/93hfnnmcasawte.jpg\"},{\"type\":0,\"value\":\"\\n5 \\u6708\\u7f8e\\u56fd\\u8c18\\u5546\\u4f1a\\u6d88\\u8d39\\u8005\\u4fe1\\u5fc3\\u6307\\u6570\\u51fa\\u73b0 14 \\u5e74\\u6765\\u6700\\u5927\\u6da8\\u5e45\\u540e\\uff0c\\u5206\\u6790\\u5e08\\u539f\\u672c\\u9884\\u671f 6 \\u6708\\u8be5\\u6307\\u6570\\u4f1a\\u7ee7\\u7eed\\u53cd\\u5f39\\u3002\\u7136\\u800c\\uff0c\\u5b9e\\u9645\\u6570\\u636e\\u4ee4\\u4eba\\u5931\\u671b\\uff0c6 \\u6708\\u6574\\u4f53\\u4fe1\\u5fc3\\u6307\\u6570\\u4ece\\u5411\\u4e0a\\u4fee\\u6b63\\u540e\\u7684 98.4 \\u964d\\u81f3 93.0\\uff0c\\u672a\\u6765\\u9884\\u671f\\u6307\\u6570\\u4e0b\\u964d\\uff0c\\u73b0\\u51b5\\u6307\\u6570\\u66f4\\u662f\\u8dcc\\u81f3 2024 \\u5e74 9 \\u6708\\u4ee5\\u6765\\u6700\\u5f31\\u6c34\\u5e73\\u3002\\n\\n\\u9884\\u671f\\u6307\\u6570\\u7684\\u4e09\\u4e2a\\u5206\\u9879 \\u2014\\u2014 \\u5546\\u4e1a\\u72b6\\u51b5\\u3001\\u5c31\\u4e1a\\u524d\\u666f\\u548c\\u672a\\u6765\\u6536\\u5165 \\u2014\\u2014 \\u5747\\u8d70\\u5f31\\u3002\\u6d88\\u8d39\\u8005\\u5bf9\\u672a\\u6765\\u516d\\u4e2a\\u6708\\u7684\\u5546\\u4e1a\\u72b6\\u51b5\\u548c\\u5c31\\u4e1a\\u53ef\\u83b7\\u5f97\\u6027\\u66f4\\u4e3a\\u60b2\\u89c2\\uff0c\\u5bf9\\u672a\\u6765\\u6536\\u5165\\u524d\\u666f\\u7684\\u4e50\\u89c2\\u60c5\\u7eea\\u4e5f\\u7565\\u6709\\u6d88\\u9000\\u3002\\n\\n\\u6b64\\u5916\\uff0c\\u8c18\\u5546\\u4f1a\\u901a\\u80c0\\u9884\\u671f\\u6307\\u6570\\u5927\\u5e45\\u4e0b\\u8dcc\\uff01\"},{\"type\":0,\"value\":\"\\n\\n\"}]",
+        "file_url": "",
+        "file_name": "",
+        "file_size": 0,
+        "file_json": [],
+        "feeds_type": 1,
+        "user_id": "u_63b7c53a8d409_5uCkJxO6mz",
+        "title": "5月谘商会消费者信心指数",
+        "is_chosen": 0,
+        "is_notice": 0,
+        "user_type": 1,
+        "send_type": 1,
+        "zan_num": 0,
+        "comment_count": 0,
+        "created_at": "2025-06-25 01:13:36",
+        "universal_union_id": "oTHW5v6xlUIrr-oY2RCVkVwIgv_o",
+        "is_exercise": 0,
+        "is_public": 1,
+        "feeds_state": 0,
+        "share_num": 0,
+        "apply_type": "",
+        "extend_field1": "",
+        "extend_field2": "",
+        "extend_field3": "",
+        "ip": "121.35.46.53",
+        "me_praise": false,
+        "nick_name": "一束光线",
+        "wx_avatar": "http://wechatavator-1252524126.file.myqcloud.com/appyuf4rl772054/image/compress/u_63b7c53a8d409_5uCkJxO6mz_20230109_3811a9.jpeg",
+        "role_name": "圈主",
+        "roles": [
+          "community_host"
+        ],
+        "label_user_type": 1,
+        "is_quit": 0,
+        "user_state": 0,
+        "is_guest": 0,
+        "work_corp_id": "",
+        "work_user_id": "",
+        "show_time": "2025-06-25 01:13",
+        "praise_list": [],
+        "commentList": {
+          "list": [],
+          "total_count": 0
+        },
+        "discuss_title": "",
+        "discuss_resource_id": "",
+        "resource_type": "",
+        "record_num": 33,
+        "is_self": false,
+        "login_user_id": "u_672cc041494f9_1vzXLebwuk",
+        "user_group_id": "g_ungrouped",
+        "user_group_info": {
+          "user_id": "u_63b7c53a8d409_5uCkJxO6mz",
+          "group_id": "g_ungrouped",
+          "group_name": "未分组",
+          "slogan": "",
+          "cover_url": "https://commonresource-1252524126.cdn.xiaoeknow.com/image/lgdkekux0n08.jpg",
+          "avatar_cover_url": "https://commonresource-1252524126.cdn.xiaoeknow.com/image/lgdkekux0n08.jpg",
+          "group_created_at": "",
+          "user_join_group_at": ""
+        },
+        "can_teacher_comment": false,
+        "resource_info": {
+          "community_id": "c_6544c6eb39716_hWkqHZtW8807"
+        },
+        "tags": [
+          {
+            "id": 338218,
+            "tag_name": "国际宏观",
+            "feeds_id": "d_685adcc0ca528_cpCxy01Q8S5j",
+            "tag_id": 338218,
+            "role": []
+          }
+        ],
+        "config": {
+          "is_forbid_share": 0
+        },
+        "join_day": 917,
+        "ip_place": "广东"
+      },
+      {
+        "id": "d_685adb063b115_bGlDv53ihzih",
+        "app_id": "appyuf4rl772054",
+        "community_id": "c_6544c6eb39716_hWkqHZtW8807",
+        "org_content": "<p><br/></p><p></p><p>这是要解除伊朗的石油禁运制裁了吗？<img src=\"https://wechatapppro-1252524126.cdn.xiaoeknow.com/appyuf4rl772054/image/b_u_ceqcup61l0co7f71la40/t1g982mcas1klg.jpg\" width=\"100%\" height=\"auto\" title=\"trump oil.jpg\" alt=\"trump oil.jpg\"/></p><p></p>",
+        "content": {
+          "text": "\n这是要解除伊朗的石油禁运制裁了吗？\n\n",
+          "mix_records": [
+            {
+              "url": "https://wechatapppro-1252524126.cdn.xiaoeknow.com/appyuf4rl772054/image/b_u_ceqcup61l0co7f71la40/t1g982mcas1klg.jpg",
+              "type": "IMAGE",
+              "showUrl": "https://wechatapppro-1252524126.cdn.xiaoeknow.com/appyuf4rl772054/image/b_u_ceqcup61l0co7f71la40/t1g982mcas1klg.jpg"
+            }
+          ],
+          "audio_records": []
+        },
+        "tags_content": "[{\"type\":1,\"value\":\"https:\\/\\/wechatapppro-1252524126.cdn.xiaoeknow.com\\/appyuf4rl772054\\/image\\/b_u_ceqcup61l0co7f71la40\\/t1g982mcas1klg.jpg\"},{\"type\":0,\"value\":\"\\n\\u8fd9\\u662f\\u8981\\u89e3\\u9664\\u4f0a\\u6717\\u7684\\u77f3\\u6cb9\\u7981\\u8fd0\\u5236\\u88c1\\u4e86\\u5417\\uff1f\"},{\"type\":0,\"value\":\"\\n\\n\"}]",
+        "file_url": "",
+        "file_name": "",
+        "file_size": 0,
+        "file_json": [],
+        "feeds_type": 1,
+        "user_id": "u_63b7c53a8d409_5uCkJxO6mz",
+        "title": "特朗普说中国可以从伊朗买油",
+        "is_chosen": 0,
+        "is_notice": 0,
+        "user_type": 1,
+        "send_type": 1,
+        "zan_num": 0,
+        "comment_count": 0,
+        "created_at": "2025-06-25 01:06:14",
+        "universal_union_id": "oTHW5v6xlUIrr-oY2RCVkVwIgv_o",
+        "is_exercise": 0,
+        "is_public": 1,
+        "feeds_state": 0,
+        "share_num": 0,
+        "apply_type": "",
+        "extend_field1": "",
+        "extend_field2": "",
+        "extend_field3": "",
+        "ip": "121.35.46.53",
+        "me_praise": false,
+        "nick_name": "一束光线",
+        "wx_avatar": "http://wechatavator-1252524126.file.myqcloud.com/appyuf4rl772054/image/compress/u_63b7c53a8d409_5uCkJxO6mz_20230109_3811a9.jpeg",
+        "role_name": "圈主",
+        "roles": [
+          "community_host"
+        ],
+        "label_user_type": 1,
+        "is_quit": 0,
+        "user_state": 0,
+        "is_guest": 0,
+        "work_corp_id": "",
+        "work_user_id": "",
+        "show_time": "2025-06-25 01:06",
+        "praise_list": [],
+        "commentList": {
+          "list": [],
+          "total_count": 0
+        },
+        "discuss_title": "",
+        "discuss_resource_id": "",
+        "resource_type": "",
+        "record_num": 32,
+        "is_self": false,
+        "login_user_id": "u_672cc041494f9_1vzXLebwuk",
+        "user_group_id": "g_ungrouped",
+        "user_group_info": {
+          "user_id": "u_63b7c53a8d409_5uCkJxO6mz",
+          "group_id": "g_ungrouped",
+          "group_name": "未分组",
+          "slogan": "",
+          "cover_url": "https://commonresource-1252524126.cdn.xiaoeknow.com/image/lgdkekux0n08.jpg",
+          "avatar_cover_url": "https://commonresource-1252524126.cdn.xiaoeknow.com/image/lgdkekux0n08.jpg",
+          "group_created_at": "",
+          "user_join_group_at": ""
+        },
+        "can_teacher_comment": false,
+        "resource_info": {
+          "community_id": "c_6544c6eb39716_hWkqHZtW8807"
+        },
+        "tags": [
+          {
+            "id": 338218,
+            "tag_name": "国际宏观",
+            "feeds_id": "d_685adb063b115_bGlDv53ihzih",
+            "tag_id": 338218,
+            "role": []
+          }
+        ],
+        "config": {
+          "is_forbid_share": 0
+        },
+        "join_day": 917,
+        "ip_place": "广东"
+      },
+      {
+        "id": "d_685ada91d48c7_my9CTL8B5RL4",
+        "app_id": "appyuf4rl772054",
+        "community_id": "c_6544c6eb39716_hWkqHZtW8807",
+        "org_content": "<article><p><br/></p><p><span style=\"font-family: Arial;\">3 月（最新数据）美国房价出现两年多来首次下跌，今早公布的凯斯 - 席勒房价指数数据显示，4 月房价环比下跌 0.31%（预期为 -0.02%），为 2022 年 12 月以来最大环比跌幅。同比房价虽仍上涨 3.4%，但这是自 2023 年 8 月以来最慢的涨幅。tampa房价领跌。</span></p><p><span style=\"font-family: Arial;\">尽管同期（有滞后性的）抵押贷款利率有所下降，对凯斯 - 席勒房价指数这一高度平滑且有滞后性的指标短期内有积极影响，但未来几个月房价形势似乎不容乐观。同时，房价涨幅与美联储银行准备金密切相关（有 6 个月滞后），这意味着未来几个月房价可能继续滞后，之后才会再次加速上涨。</span></p><p><span style=\"font-family: Arial;\"><br/></span></p><p><span style=\"font-family: Arial;\"><img src=\"https://wechatapppro-1252524126.cdn.xiaoeknow.com/appyuf4rl772054/image/b_u_ceqcup61l0co7f71la40/9z7bilmcaryzad.jpg\" width=\"100%\" height=\"auto\" title=\"home  price.jpg\" alt=\"home  price.jpg\"/><img src=\"https://wechatapppro-1252524126.cdn.xiaoeknow.com/appyuf4rl772054/image/b_u_ceqcup61l0co7f71la40/nelcl3mcaryza2.png\" width=\"100%\" height=\"auto\" title=\"房价1年变化.png\" alt=\"房价1年变化.png\"/><img src=\"https://wechatapppro-1252524126.cdn.xiaoeknow.com/appyuf4rl772054/image/b_u_ceqcup61l0co7f71la40/x99nsxmcaryzb6.jpg\" width=\"100%\" height=\"auto\" title=\"房价2.jpg\" alt=\"房价2.jpg\"/><img src=\"https://wechatapppro-1252524126.cdn.xiaoeknow.com/appyuf4rl772054/image/b_u_ceqcup61l0co7f71la40/t2uosjmcaryzac.jpg\" width=\"100%\" height=\"auto\" title=\"房价3.jpg\" alt=\"房价3.jpg\"/></span></p></article><p></p>",
+        "content": {
+          "text": "\n3 月（最新数据）美国房价出现两年多来首次下跌，今早公布的凯斯 - 席勒房价指数数据显示，4 月房价环比下跌 0.31%（预期为 -0.02%），为 2022 年 12 月以来最大环比跌幅。同比房价虽仍上涨 3.4%，但这是自 2023 年 8 月以来最慢的涨幅。tampa房价领跌。\n尽管同期（有滞后性的）抵押贷款利率有所下降，对凯斯 - 席勒房价指数这一高度平滑且有滞后性的指标短期内有积极影响，但未来几个月房价形势似乎不容乐观。同时，房价涨幅与美联储银行准备金密切相关（有 6 个月滞后），这意味着未来几个月房价可能继续滞后，之后才会再次加速上涨。\n\n\n\n\n",
+          "mix_records": [
+            {
+              "url": "https://wechatapppro-1252524126.cdn.xiaoeknow.com/appyuf4rl772054/image/b_u_ceqcup61l0co7f71la40/9z7bilmcaryzad.jpg",
+              "type": "IMAGE",
+              "showUrl": "https://wechatapppro-1252524126.cdn.xiaoeknow.com/appyuf4rl772054/image/b_u_ceqcup61l0co7f71la40/9z7bilmcaryzad.jpg"
+            },
+            {
+              "url": "https://wechatapppro-1252524126.cdn.xiaoeknow.com/appyuf4rl772054/image/b_u_ceqcup61l0co7f71la40/nelcl3mcaryza2.png",
+              "type": "IMAGE",
+              "showUrl": "https://wechatapppro-1252524126.cdn.xiaoeknow.com/appyuf4rl772054/image/b_u_ceqcup61l0co7f71la40/nelcl3mcaryza2.png"
+            },
+            {
+              "url": "https://wechatapppro-1252524126.cdn.xiaoeknow.com/appyuf4rl772054/image/b_u_ceqcup61l0co7f71la40/x99nsxmcaryzb6.jpg",
+              "type": "IMAGE",
+              "showUrl": "https://wechatapppro-1252524126.cdn.xiaoeknow.com/appyuf4rl772054/image/b_u_ceqcup61l0co7f71la40/x99nsxmcaryzb6.jpg"
+            },
+            {
+              "url": "https://wechatapppro-1252524126.cdn.xiaoeknow.com/appyuf4rl772054/image/b_u_ceqcup61l0co7f71la40/t2uosjmcaryzac.jpg",
+              "type": "IMAGE",
+              "showUrl": "https://wechatapppro-1252524126.cdn.xiaoeknow.com/appyuf4rl772054/image/b_u_ceqcup61l0co7f71la40/t2uosjmcaryzac.jpg"
+            }
+          ],
+          "audio_records": []
+        },
+        "tags_content": "[{\"type\":1,\"value\":\"https:\\/\\/wechatapppro-1252524126.cdn.xiaoeknow.com\\/appyuf4rl772054\\/image\\/b_u_ceqcup61l0co7f71la40\\/9z7bilmcaryzad.jpg\"},{\"type\":1,\"value\":\"https:\\/\\/wechatapppro-1252524126.cdn.xiaoeknow.com\\/appyuf4rl772054\\/image\\/b_u_ceqcup61l0co7f71la40\\/nelcl3mcaryza2.png\"},{\"type\":1,\"value\":\"https:\\/\\/wechatapppro-1252524126.cdn.xiaoeknow.com\\/appyuf4rl772054\\/image\\/b_u_ceqcup61l0co7f71la40\\/x99nsxmcaryzb6.jpg\"},{\"type\":1,\"value\":\"https:\\/\\/wechatapppro-1252524126.cdn.xiaoeknow.com\\/appyuf4rl772054\\/image\\/b_u_ceqcup61l0co7f71la40\\/t2uosjmcaryzac.jpg\"},{\"type\":0,\"value\":\"\\n3 \\u6708\\uff08\\u6700\\u65b0\\u6570\\u636e\\uff09\\u7f8e\\u56fd\\u623f\\u4ef7\\u51fa\\u73b0\\u4e24\\u5e74\\u591a\\u6765\\u9996\\u6b21\\u4e0b\\u8dcc\\uff0c\\u4eca\\u65e9\\u516c\\u5e03\\u7684\\u51ef\\u65af - \\u5e2d\\u52d2\\u623f\\u4ef7\\u6307\\u6570\\u6570\\u636e\\u663e\\u793a\\uff0c4 \\u6708\\u623f\\u4ef7\\u73af\\u6bd4\\u4e0b\\u8dcc 0.31%\\uff08\\u9884\\u671f\\u4e3a -0.02%\\uff09\\uff0c\\u4e3a 2022 \\u5e74 12 \\u6708\\u4ee5\\u6765\\u6700\\u5927\\u73af\\u6bd4\\u8dcc\\u5e45\\u3002\\u540c\\u6bd4\\u623f\\u4ef7\\u867d\\u4ecd\\u4e0a\\u6da8 3.4%\\uff0c\\u4f46\\u8fd9\\u662f\\u81ea 2023 \\u5e74 8 \\u6708\\u4ee5\\u6765\\u6700\\u6162\\u7684\\u6da8\\u5e45\\u3002tampa\\u623f\\u4ef7\\u9886\\u8dcc\\u3002\\n\\u5c3d\\u7ba1\\u540c\\u671f\\uff08\\u6709\\u6ede\\u540e\\u6027\\u7684\\uff09\\u62b5\\u62bc\\u8d37\\u6b3e\\u5229\\u7387\\u6709\\u6240\\u4e0b\\u964d\\uff0c\\u5bf9\\u51ef\\u65af - \\u5e2d\\u52d2\\u623f\\u4ef7\\u6307\\u6570\\u8fd9\\u4e00\\u9ad8\\u5ea6\\u5e73\\u6ed1\\u4e14\\u6709\\u6ede\\u540e\\u6027\\u7684\\u6307\\u6807\\u77ed\\u671f\\u5185\\u6709\\u79ef\\u6781\\u5f71\\u54cd\\uff0c\\u4f46\\u672a\\u6765\\u51e0\\u4e2a\\u6708\\u623f\\u4ef7\\u5f62\\u52bf\\u4f3c\\u4e4e\\u4e0d\\u5bb9\\u4e50\\u89c2\\u3002\\u540c\\u65f6\\uff0c\\u623f\\u4ef7\\u6da8\\u5e45\\u4e0e\\u7f8e\\u8054\\u50a8\\u94f6\\u884c\\u51c6\\u5907\\u91d1\\u5bc6\\u5207\\u76f8\\u5173\\uff08\\u6709 6 \\u4e2a\\u6708\\u6ede\\u540e\\uff09\\uff0c\\u8fd9\\u610f\\u5473\\u7740\\u672a\\u6765\\u51e0\\u4e2a\\u6708\\u623f\\u4ef7\\u53ef\\u80fd\\u7ee7\\u7eed\\u6ede\\u540e\\uff0c\\u4e4b\\u540e\\u624d\\u4f1a\\u518d\\u6b21\\u52a0\\u901f\\u4e0a\\u6da8\\u3002\\n\\n\\n\"},{\"type\":0,\"value\":\"\\n\\n\"}]",
+        "file_url": "",
+        "file_name": "",
+        "file_size": 0,
+        "file_json": [],
+        "feeds_type": 1,
+        "user_id": "u_63b7c53a8d409_5uCkJxO6mz",
+        "title": "4月美国房价数据",
+        "is_chosen": 0,
+        "is_notice": 0,
+        "user_type": 1,
+        "send_type": 1,
+        "zan_num": 0,
+        "comment_count": 0,
+        "created_at": "2025-06-25 01:04:17",
+        "universal_union_id": "oTHW5v6xlUIrr-oY2RCVkVwIgv_o",
+        "is_exercise": 0,
+        "is_public": 1,
+        "feeds_state": 0,
+        "share_num": 0,
+        "apply_type": "",
+        "extend_field1": "",
+        "extend_field2": "",
+        "extend_field3": "",
+        "ip": "121.35.46.53",
+        "me_praise": false,
+        "nick_name": "一束光线",
+        "wx_avatar": "http://wechatavator-1252524126.file.myqcloud.com/appyuf4rl772054/image/compress/u_63b7c53a8d409_5uCkJxO6mz_20230109_3811a9.jpeg",
+        "role_name": "圈主",
+        "roles": [
+          "community_host"
+        ],
+        "label_user_type": 1,
+        "is_quit": 0,
+        "user_state": 0,
+        "is_guest": 0,
+        "work_corp_id": "",
+        "work_user_id": "",
+        "show_time": "2025-06-25 01:04",
+        "praise_list": [],
+        "commentList": {
+          "list": [],
+          "total_count": 0
+        },
+        "discuss_title": "",
+        "discuss_resource_id": "",
+        "resource_type": "",
+        "record_num": 24,
+        "is_self": false,
+        "login_user_id": "u_672cc041494f9_1vzXLebwuk",
+        "user_group_id": "g_ungrouped",
+        "user_group_info": {
+          "user_id": "u_63b7c53a8d409_5uCkJxO6mz",
+          "group_id": "g_ungrouped",
+          "group_name": "未分组",
+          "slogan": "",
+          "cover_url": "https://commonresource-1252524126.cdn.xiaoeknow.com/image/lgdkekux0n08.jpg",
+          "avatar_cover_url": "https://commonresource-1252524126.cdn.xiaoeknow.com/image/lgdkekux0n08.jpg",
+          "group_created_at": "",
+          "user_join_group_at": ""
+        },
+        "can_teacher_comment": false,
+        "resource_info": {
+          "community_id": "c_6544c6eb39716_hWkqHZtW8807"
+        },
+        "tags": [
+          {
+            "id": 338218,
+            "tag_name": "国际宏观",
+            "feeds_id": "d_685ada91d48c7_my9CTL8B5RL4",
+            "tag_id": 338218,
+            "role": []
+          },
+          {
+            "id": 341974,
+            "tag_name": "房市",
+            "feeds_id": "d_685ada91d48c7_my9CTL8B5RL4",
+            "tag_id": 341974,
+            "role": []
+          }
+        ],
+        "config": {
+          "is_forbid_share": 0
+        },
+        "join_day": 917,
+        "ip_place": "广东"
+      },
+      {
+        "id": "d_68598ea812971_viyw8gR5B5et",
+        "app_id": "appyuf4rl772054",
+        "community_id": "c_6544c6eb39716_hWkqHZtW8807",
+        "org_content": "<p><br/></p><p></p><p>CEO回应。 见附图<img src=\"https://wechatapppro-1252524126.cdn.xiaoeknow.com/appyuf4rl772054/image/b_u_ceqcup61l0co7f71la40/s81zw6mc9ddsp9.jpg\" width=\"100%\" height=\"auto\" title=\"HIMS CEO.jpg\" alt=\"HIMS CEO.jpg\"/></p><p></p>",
+        "content": {
+          "text": "\nCEO回应。 见附图\n\n",
+          "mix_records": [
+            {
+              "url": "https://wechatapppro-1252524126.cdn.xiaoeknow.com/appyuf4rl772054/image/b_u_ceqcup61l0co7f71la40/s81zw6mc9ddsp9.jpg",
+              "type": "IMAGE",
+              "showUrl": "https://wechatapppro-1252524126.cdn.xiaoeknow.com/appyuf4rl772054/image/b_u_ceqcup61l0co7f71la40/s81zw6mc9ddsp9.jpg"
+            }
+          ],
+          "audio_records": []
+        },
+        "tags_content": "[{\"type\":1,\"value\":\"https:\\/\\/wechatapppro-1252524126.cdn.xiaoeknow.com\\/appyuf4rl772054\\/image\\/b_u_ceqcup61l0co7f71la40\\/s81zw6mc9ddsp9.jpg\"},{\"type\":0,\"value\":\"\\nCEO\\u56de\\u5e94\\u3002 \\u89c1\\u9644\\u56fe\"},{\"type\":0,\"value\":\"\\n\\n\"}]",
+        "file_url": "",
+        "file_name": "",
+        "file_size": 0,
+        "file_json": [],
+        "feeds_type": 1,
+        "user_id": "u_63b7c53a8d409_5uCkJxO6mz",
+        "title": "$hims",
+        "is_chosen": 0,
+        "is_notice": 0,
+        "user_type": 1,
+        "send_type": 1,
+        "zan_num": 0,
+        "comment_count": 0,
+        "created_at": "2025-06-24 01:28:08",
+        "universal_union_id": "oTHW5v6xlUIrr-oY2RCVkVwIgv_o",
+        "is_exercise": 0,
+        "is_public": 1,
+        "feeds_state": 0,
+        "share_num": 0,
+        "apply_type": "",
+        "extend_field1": "",
+        "extend_field2": "",
+        "extend_field3": "",
+        "ip": "61.48.82.38",
+        "me_praise": false,
+        "nick_name": "一束光线",
+        "wx_avatar": "http://wechatavator-1252524126.file.myqcloud.com/appyuf4rl772054/image/compress/u_63b7c53a8d409_5uCkJxO6mz_20230109_3811a9.jpeg",
+        "role_name": "圈主",
+        "roles": [
+          "community_host"
+        ],
+        "label_user_type": 1,
+        "is_quit": 0,
+        "user_state": 0,
+        "is_guest": 0,
+        "work_corp_id": "",
+        "work_user_id": "",
+        "show_time": "2025-06-24 01:28",
+        "praise_list": [],
+        "commentList": {
+          "list": [],
+          "total_count": 0
+        },
+        "discuss_title": "",
+        "discuss_resource_id": "",
+        "resource_type": "",
+        "record_num": 27,
+        "is_self": false,
+        "login_user_id": "u_672cc041494f9_1vzXLebwuk",
+        "user_group_id": "g_ungrouped",
+        "user_group_info": {
+          "user_id": "u_63b7c53a8d409_5uCkJxO6mz",
+          "group_id": "g_ungrouped",
+          "group_name": "未分组",
+          "slogan": "",
+          "cover_url": "https://commonresource-1252524126.cdn.xiaoeknow.com/image/lgdkekux0n08.jpg",
+          "avatar_cover_url": "https://commonresource-1252524126.cdn.xiaoeknow.com/image/lgdkekux0n08.jpg",
+          "group_created_at": "",
+          "user_join_group_at": ""
+        },
+        "can_teacher_comment": false,
+        "resource_info": {
+          "community_id": "c_6544c6eb39716_hWkqHZtW8807"
+        },
+        "tags": [
+          {
+            "id": 338214,
+            "tag_name": "美股",
+            "feeds_id": "d_68598ea812971_viyw8gR5B5et",
+            "tag_id": 338214,
+            "role": []
+          }
+        ],
+        "config": {
+          "is_forbid_share": 0
+        },
+        "join_day": 917,
+        "ip_place": "北京"
+      },
+      {
+        "id": "d_685972f8118c4_9W1PImMUXKHo",
+        "app_id": "appyuf4rl772054",
+        "community_id": "c_6544c6eb39716_hWkqHZtW8807",
+        "org_content": "<article><p><br/></p><p><span style=\"font-family: Arial;\">5 月 “软” 调查数据回升后，市场预期今早公布的 6 月 PMI 初步数据会小幅下降，但实际情况喜忧参半。制造业 PMI 持平且超预期（52.0 高于预期的 51.0），服务业 PMI 微降同样超预期（53.1 高于预期的 52.9），显示 6 月初经济仍在增长，尽管 “硬数据” 在减弱。服务业价格大幅上涨，虽投入成本和销售价格增速较 5 月放缓，一定程度反映竞争加剧，但仍受关税、融资、工资及燃料成本影响。</span></p><p><span style=\"font-family: Arial;\"></span></p><p><span style=\"font-family: Arial;\">二季度末美国经济持续增长，但前景不明，近两月通胀压力急剧上升。6 月商业活动和新订单虽持续增长，但因商品和服务出口下降而增长疲软，国内需求部分因库存增加而增强，这可能在未来数月反转。商品价格再次大幅上涨，服务业也受关税影响价格上升。数据印证了市场对美联储将观望一段时间，以评估经济韧性和通胀持续时长的猜测。整体而言，经济表现虽好于预期，但无持续复苏迹象且物价飞涨。</span></p></article><p></p>",
+        "content": {
+          "text": "\n5 月 “软” 调查数据回升后，市场预期今早公布的 6 月 PMI 初步数据会小幅下降，但实际情况喜忧参半。制造业 PMI 持平且超预期（52.0 高于预期的 51.0），服务业 PMI 微降同样超预期（53.1 高于预期的 52.9），显示 6 月初经济仍在增长，尽管 “硬数据” 在减弱。服务业价格大幅上涨，虽投入成本和销售价格增速较 5 月放缓，一定程度反映竞争加剧，但仍受关税、融资、工资及燃料成本影响。\n\n二季度末美国经济持续增长，但前景不明，近两月通胀压力急剧上升。6 月商业活动和新订单虽持续增长，但因商品和服务出口下降而增长疲软，国内需求部分因库存增加而增强，这可能在未来数月反转。商品价格再次大幅上涨，服务业也受关税影响价格上升。数据印证了市场对美联储将观望一段时间，以评估经济韧性和通胀持续时长的猜测。整体而言，经济表现虽好于预期，但无持续复苏迹象且物价飞涨。\n\n",
+          "mix_records": [],
+          "audio_records": []
+        },
+        "tags_content": "[{\"type\":0,\"value\":\"\\n5 \\u6708 \\u201c\\u8f6f\\u201d \\u8c03\\u67e5\\u6570\\u636e\\u56de\\u5347\\u540e\\uff0c\\u5e02\\u573a\\u9884\\u671f\\u4eca\\u65e9\\u516c\\u5e03\\u7684 6 \\u6708 PMI \\u521d\\u6b65\\u6570\\u636e\\u4f1a\\u5c0f\\u5e45\\u4e0b\\u964d\\uff0c\\u4f46\\u5b9e\\u9645\\u60c5\\u51b5\\u559c\\u5fe7\\u53c2\\u534a\\u3002\\u5236\\u9020\\u4e1a PMI \\u6301\\u5e73\\u4e14\\u8d85\\u9884\\u671f\\uff0852.0 \\u9ad8\\u4e8e\\u9884\\u671f\\u7684 51.0\\uff09\\uff0c\\u670d\\u52a1\\u4e1a PMI \\u5fae\\u964d\\u540c\\u6837\\u8d85\\u9884\\u671f\\uff0853.1 \\u9ad8\\u4e8e\\u9884\\u671f\\u7684 52.9\\uff09\\uff0c\\u663e\\u793a 6 \\u6708\\u521d\\u7ecf\\u6d4e\\u4ecd\\u5728\\u589e\\u957f\\uff0c\\u5c3d\\u7ba1 \\u201c\\u786c\\u6570\\u636e\\u201d \\u5728\\u51cf\\u5f31\\u3002\\u670d\\u52a1\\u4e1a\\u4ef7\\u683c\\u5927\\u5e45\\u4e0a\\u6da8\\uff0c\\u867d\\u6295\\u5165\\u6210\\u672c\\u548c\\u9500\\u552e\\u4ef7\\u683c\\u589e\\u901f\\u8f83 5 \\u6708\\u653e\\u7f13\\uff0c\\u4e00\\u5b9a\\u7a0b\\u5ea6\\u53cd\\u6620\\u7ade\\u4e89\\u52a0\\u5267\\uff0c\\u4f46\\u4ecd\\u53d7\\u5173\\u7a0e\\u3001\\u878d\\u8d44\\u3001\\u5de5\\u8d44\\u53ca\\u71c3\\u6599\\u6210\\u672c\\u5f71\\u54cd\\u3002\\n\\n\\u4e8c\\u5b63\\u5ea6\\u672b\\u7f8e\\u56fd\\u7ecf\\u6d4e\\u6301\\u7eed\\u589e\\u957f\\uff0c\\u4f46\\u524d\\u666f\\u4e0d\\u660e\\uff0c\\u8fd1\\u4e24\\u6708\\u901a\\u80c0\\u538b\\u529b\\u6025\\u5267\\u4e0a\\u5347\\u30026 \\u6708\\u5546\\u4e1a\\u6d3b\\u52a8\\u548c\\u65b0\\u8ba2\\u5355\\u867d\\u6301\\u7eed\\u589e\\u957f\\uff0c\\u4f46\\u56e0\\u5546\\u54c1\\u548c\\u670d\\u52a1\\u51fa\\u53e3\\u4e0b\\u964d\\u800c\\u589e\\u957f\\u75b2\\u8f6f\\uff0c\\u56fd\\u5185\\u9700\\u6c42\\u90e8\\u5206\\u56e0\\u5e93\\u5b58\\u589e\\u52a0\\u800c\\u589e\\u5f3a\\uff0c\\u8fd9\\u53ef\\u80fd\\u5728\\u672a\\u6765\\u6570\\u6708\\u53cd\\u8f6c\\u3002\\u5546\\u54c1\\u4ef7\\u683c\\u518d\\u6b21\\u5927\\u5e45\\u4e0a\\u6da8\\uff0c\\u670d\\u52a1\\u4e1a\\u4e5f\\u53d7\\u5173\\u7a0e\\u5f71\\u54cd\\u4ef7\\u683c\\u4e0a\\u5347\\u3002\\u6570\\u636e\\u5370\\u8bc1\\u4e86\\u5e02\\u573a\\u5bf9\\u7f8e\\u8054\\u50a8\\u5c06\\u89c2\\u671b\\u4e00\\u6bb5\\u65f6\\u95f4\\uff0c\\u4ee5\\u8bc4\\u4f30\\u7ecf\\u6d4e\\u97e7\\u6027\\u548c\\u901a\\u80c0\\u6301\\u7eed\\u65f6\\u957f\\u7684\\u731c\\u6d4b\\u3002\\u6574\\u4f53\\u800c\\u8a00\\uff0c\\u7ecf\\u6d4e\\u8868\\u73b0\\u867d\\u597d\\u4e8e\\u9884\\u671f\\uff0c\\u4f46\\u65e0\\u6301\\u7eed\\u590d\\u82cf\\u8ff9\\u8c61\\u4e14\\u7269\\u4ef7\\u98de\\u6da8\\u3002\\n\\n\"}]",
+        "file_url": "",
+        "file_name": "",
+        "file_size": 0,
+        "file_json": [],
+        "feeds_type": 1,
+        "user_id": "u_63b7c53a8d409_5uCkJxO6mz",
+        "title": "6月S&P PMI",
+        "is_chosen": 0,
+        "is_notice": 0,
+        "user_type": 1,
+        "send_type": 1,
+        "zan_num": 0,
+        "comment_count": 0,
+        "created_at": "2025-06-23 23:30:00",
+        "universal_union_id": "oTHW5v6xlUIrr-oY2RCVkVwIgv_o",
+        "is_exercise": 0,
+        "is_public": 1,
+        "feeds_state": 0,
+        "share_num": 0,
+        "apply_type": "",
+        "extend_field1": "",
+        "extend_field2": "",
+        "extend_field3": "",
+        "ip": "61.48.82.38",
+        "me_praise": false,
+        "nick_name": "一束光线",
+        "wx_avatar": "http://wechatavator-1252524126.file.myqcloud.com/appyuf4rl772054/image/compress/u_63b7c53a8d409_5uCkJxO6mz_20230109_3811a9.jpeg",
+        "role_name": "圈主",
+        "roles": [
+          "community_host"
+        ],
+        "label_user_type": 1,
+        "is_quit": 0,
+        "user_state": 0,
+        "is_guest": 0,
+        "work_corp_id": "",
+        "work_user_id": "",
+        "show_time": "2025-06-23 23:30",
+        "praise_list": [],
+        "commentList": {
+          "list": [],
+          "total_count": 0
+        },
+        "discuss_title": "",
+        "discuss_resource_id": "",
+        "resource_type": "",
+        "record_num": 26,
+        "is_self": false,
+        "login_user_id": "u_672cc041494f9_1vzXLebwuk",
+        "user_group_id": "g_ungrouped",
+        "user_group_info": {
+          "user_id": "u_63b7c53a8d409_5uCkJxO6mz",
+          "group_id": "g_ungrouped",
+          "group_name": "未分组",
+          "slogan": "",
+          "cover_url": "https://commonresource-1252524126.cdn.xiaoeknow.com/image/lgdkekux0n08.jpg",
+          "avatar_cover_url": "https://commonresource-1252524126.cdn.xiaoeknow.com/image/lgdkekux0n08.jpg",
+          "group_created_at": "",
+          "user_join_group_at": ""
+        },
+        "can_teacher_comment": false,
+        "resource_info": {
+          "community_id": "c_6544c6eb39716_hWkqHZtW8807"
+        },
+        "tags": [
+          {
+            "id": 338218,
+            "tag_name": "国际宏观",
+            "feeds_id": "d_685972f8118c4_9W1PImMUXKHo",
+            "tag_id": 338218,
+            "role": []
+          }
+        ],
+        "config": {
+          "is_forbid_share": 0
+        },
+        "join_day": 917,
+        "ip_place": "北京"
+      },
+      {
+        "id": "d_685970b916711_phkZ9m5l9DOM",
+        "app_id": "appyuf4rl772054",
+        "community_id": "c_6544c6eb39716_hWkqHZtW8807",
+        "org_content": "<article><p><br/></p><p><span style=\"font-family: Arial;\">5 月美国成屋销售环比小幅增长 0.75%，好于预期，但同比仍下降 0.75%，这已是连续第四个月同比下滑。销售相对低迷主要归因于持续高企的抵押贷款利率，且未来利率难有改善。整体来看，5 月销售步伐为 2009 年以来最弱，是史上第二糟糕的 5 月。尽管供应有所增加，但未能压低价格，上月成屋销售中位数价格同比上涨 1.3%。高端市场表现不再优于低价房屋销售。首次购房者占 5 月成交的 30%，入市艰难啊。<img src=\"https://wechatapppro-1252524126.cdn.xiaoeknow.com/appyuf4rl772054/image/b_u_ceqcup61l0co7f71la40/u15btpmc98tf84.jpg\" width=\"100%\" height=\"auto\" title=\"Rate.jpg\" alt=\"Rate.jpg\"/><img src=\"https://wechatapppro-1252524126.cdn.xiaoeknow.com/appyuf4rl772054/image/b_u_ceqcup61l0co7f71la40/lb9w1hmc98tf8h.jpg\" width=\"100%\" height=\"auto\" title=\"成屋.jpg\" alt=\"成屋.jpg\"/><img src=\"https://wechatapppro-1252524126.cdn.xiaoeknow.com/appyuf4rl772054/image/b_u_ceqcup61l0co7f71la40/r8pqwgmc98tf9h.jpg\" width=\"100%\" height=\"auto\" title=\"成屋2.jpg\" alt=\"成屋2.jpg\"/></span></p></article><p></p>",
+        "content": {
+          "text": "\n5 月美国成屋销售环比小幅增长 0.75%，好于预期，但同比仍下降 0.75%，这已是连续第四个月同比下滑。销售相对低迷主要归因于持续高企的抵押贷款利率，且未来利率难有改善。整体来看，5 月销售步伐为 2009 年以来最弱，是史上第二糟糕的 5 月。尽管供应有所增加，但未能压低价格，上月成屋销售中位数价格同比上涨 1.3%。高端市场表现不再优于低价房屋销售。首次购房者占 5 月成交的 30%，入市艰难啊。\n\n",
+          "mix_records": [
+            {
+              "url": "https://wechatapppro-1252524126.cdn.xiaoeknow.com/appyuf4rl772054/image/b_u_ceqcup61l0co7f71la40/u15btpmc98tf84.jpg",
+              "type": "IMAGE",
+              "showUrl": "https://wechatapppro-1252524126.cdn.xiaoeknow.com/appyuf4rl772054/image/b_u_ceqcup61l0co7f71la40/u15btpmc98tf84.jpg"
+            },
+            {
+              "url": "https://wechatapppro-1252524126.cdn.xiaoeknow.com/appyuf4rl772054/image/b_u_ceqcup61l0co7f71la40/lb9w1hmc98tf8h.jpg",
+              "type": "IMAGE",
+              "showUrl": "https://wechatapppro-1252524126.cdn.xiaoeknow.com/appyuf4rl772054/image/b_u_ceqcup61l0co7f71la40/lb9w1hmc98tf8h.jpg"
+            },
+            {
+              "url": "https://wechatapppro-1252524126.cdn.xiaoeknow.com/appyuf4rl772054/image/b_u_ceqcup61l0co7f71la40/r8pqwgmc98tf9h.jpg",
+              "type": "IMAGE",
+              "showUrl": "https://wechatapppro-1252524126.cdn.xiaoeknow.com/appyuf4rl772054/image/b_u_ceqcup61l0co7f71la40/r8pqwgmc98tf9h.jpg"
+            }
+          ],
+          "audio_records": []
+        },
+        "tags_content": "[{\"type\":1,\"value\":\"https:\\/\\/wechatapppro-1252524126.cdn.xiaoeknow.com\\/appyuf4rl772054\\/image\\/b_u_ceqcup61l0co7f71la40\\/u15btpmc98tf84.jpg\"},{\"type\":1,\"value\":\"https:\\/\\/wechatapppro-1252524126.cdn.xiaoeknow.com\\/appyuf4rl772054\\/image\\/b_u_ceqcup61l0co7f71la40\\/lb9w1hmc98tf8h.jpg\"},{\"type\":1,\"value\":\"https:\\/\\/wechatapppro-1252524126.cdn.xiaoeknow.com\\/appyuf4rl772054\\/image\\/b_u_ceqcup61l0co7f71la40\\/r8pqwgmc98tf9h.jpg\"},{\"type\":0,\"value\":\"\\n5 \\u6708\\u7f8e\\u56fd\\u6210\\u5c4b\\u9500\\u552e\\u73af\\u6bd4\\u5c0f\\u5e45\\u589e\\u957f 0.75%\\uff0c\\u597d\\u4e8e\\u9884\\u671f\\uff0c\\u4f46\\u540c\\u6bd4\\u4ecd\\u4e0b\\u964d 0.75%\\uff0c\\u8fd9\\u5df2\\u662f\\u8fde\\u7eed\\u7b2c\\u56db\\u4e2a\\u6708\\u540c\\u6bd4\\u4e0b\\u6ed1\\u3002\\u9500\\u552e\\u76f8\\u5bf9\\u4f4e\\u8ff7\\u4e3b\\u8981\\u5f52\\u56e0\\u4e8e\\u6301\\u7eed\\u9ad8\\u4f01\\u7684\\u62b5\\u62bc\\u8d37\\u6b3e\\u5229\\u7387\\uff0c\\u4e14\\u672a\\u6765\\u5229\\u7387\\u96be\\u6709\\u6539\\u5584\\u3002\\u6574\\u4f53\\u6765\\u770b\\uff0c5 \\u6708\\u9500\\u552e\\u6b65\\u4f10\\u4e3a 2009 \\u5e74\\u4ee5\\u6765\\u6700\\u5f31\\uff0c\\u662f\\u53f2\\u4e0a\\u7b2c\\u4e8c\\u7cdf\\u7cd5\\u7684 5 \\u6708\\u3002\\u5c3d\\u7ba1\\u4f9b\\u5e94\\u6709\\u6240\\u589e\\u52a0\\uff0c\\u4f46\\u672a\\u80fd\\u538b\\u4f4e\\u4ef7\\u683c\\uff0c\\u4e0a\\u6708\\u6210\\u5c4b\\u9500\\u552e\\u4e2d\\u4f4d\\u6570\\u4ef7\\u683c\\u540c\\u6bd4\\u4e0a\\u6da8 1.3%\\u3002\\u9ad8\\u7aef\\u5e02\\u573a\\u8868\\u73b0\\u4e0d\\u518d\\u4f18\\u4e8e\\u4f4e\\u4ef7\\u623f\\u5c4b\\u9500\\u552e\\u3002\\u9996\\u6b21\\u8d2d\\u623f\\u8005\\u5360 5 \\u6708\\u6210\\u4ea4\\u7684 30%\\uff0c\\u5165\\u5e02\\u8270\\u96be\\u554a\\u3002\"},{\"type\":0,\"value\":\"\\n\\n\"}]",
+        "file_url": "",
+        "file_name": "",
+        "file_size": 0,
+        "file_json": [],
+        "feeds_type": 1,
+        "user_id": "u_63b7c53a8d409_5uCkJxO6mz",
+        "title": "5月美国2手房销售数据",
+        "is_chosen": 0,
+        "is_notice": 0,
+        "user_type": 1,
+        "send_type": 1,
+        "zan_num": 0,
+        "comment_count": 0,
+        "created_at": "2025-06-23 23:20:25",
+        "universal_union_id": "oTHW5v6xlUIrr-oY2RCVkVwIgv_o",
+        "is_exercise": 0,
+        "is_public": 1,
+        "feeds_state": 0,
+        "share_num": 0,
+        "apply_type": "",
+        "extend_field1": "",
+        "extend_field2": "",
+        "extend_field3": "",
+        "ip": "61.48.82.38",
+        "me_praise": false,
+        "nick_name": "一束光线",
+        "wx_avatar": "http://wechatavator-1252524126.file.myqcloud.com/appyuf4rl772054/image/compress/u_63b7c53a8d409_5uCkJxO6mz_20230109_3811a9.jpeg",
+        "role_name": "圈主",
+        "roles": [
+          "community_host"
+        ],
+        "label_user_type": 1,
+        "is_quit": 0,
+        "user_state": 0,
+        "is_guest": 0,
+        "work_corp_id": "",
+        "work_user_id": "",
+        "show_time": "2025-06-23 23:20",
+        "praise_list": [],
+        "commentList": {
+          "list": [],
+          "total_count": 0
+        },
+        "discuss_title": "",
+        "discuss_resource_id": "",
+        "resource_type": "",
+        "record_num": 26,
+        "is_self": false,
+        "login_user_id": "u_672cc041494f9_1vzXLebwuk",
+        "user_group_id": "g_ungrouped",
+        "user_group_info": {
+          "user_id": "u_63b7c53a8d409_5uCkJxO6mz",
+          "group_id": "g_ungrouped",
+          "group_name": "未分组",
+          "slogan": "",
+          "cover_url": "https://commonresource-1252524126.cdn.xiaoeknow.com/image/lgdkekux0n08.jpg",
+          "avatar_cover_url": "https://commonresource-1252524126.cdn.xiaoeknow.com/image/lgdkekux0n08.jpg",
+          "group_created_at": "",
+          "user_join_group_at": ""
+        },
+        "can_teacher_comment": false,
+        "resource_info": {
+          "community_id": "c_6544c6eb39716_hWkqHZtW8807"
+        },
+        "tags": [
+          {
+            "id": 338217,
+            "tag_name": "国内宏观",
+            "feeds_id": "d_685970b916711_phkZ9m5l9DOM",
+            "tag_id": 338217,
+            "role": []
+          },
+          {
+            "id": 341974,
+            "tag_name": "房市",
+            "feeds_id": "d_685970b916711_phkZ9m5l9DOM",
+            "tag_id": 341974,
+            "role": []
+          }
+        ],
+        "config": {
+          "is_forbid_share": 0
+        },
+        "join_day": 917,
+        "ip_place": "北京"
+      },
+      {
+        "id": "d_685966025cc6b_cRLc4sUsIuzh",
+        "app_id": "appyuf4rl772054",
+        "community_id": "c_6544c6eb39716_hWkqHZtW8807",
+        "org_content": "<p><br/></p><p>NVO 指责HIMS 做了些不合规操作。包括买药的渠道可能不正规等等。 所以HIMS今天暴跌</p><p></p><p>我的看法是：</p><p>1. 短线大概这件事会比较Ugly！ 。 NVO 应该接着会告HIMS</p><p>2，毕竟合作双方都有利。 有小概率近期双方可以谈妥</p><p>3. 长期 HIMS 有 liraglutide。 我没有记错的话专利是今年到期。理论上可以很大程度替代 wegory</p><p></p>",
+        "content": {
+          "text": "\nNVO 指责HIMS 做了些不合规操作。包括买药的渠道可能不正规等等。 所以HIMS今天暴跌\n\n我的看法是：\n1. 短线大概这件事会比较Ugly！ 。 NVO 应该接着会告HIMS\n2，毕竟合作双方都有利。 有小概率近期双方可以谈妥\n3. 长期 HIMS 有 liraglutide。 我没有记错的话专利是今年到期。理论上可以很大程度替代 wegory\n\n",
+          "mix_records": [],
+          "audio_records": []
+        },
+        "tags_content": "[{\"type\":0,\"value\":\"\\nNVO \\u6307\\u8d23HIMS \\u505a\\u4e86\\u4e9b\\u4e0d\\u5408\\u89c4\\u64cd\\u4f5c\\u3002\\u5305\\u62ec\\u4e70\\u836f\\u7684\\u6e20\\u9053\\u53ef\\u80fd\\u4e0d\\u6b63\\u89c4\\u7b49\\u7b49\\u3002 \\u6240\\u4ee5HIMS\\u4eca\\u5929\\u66b4\\u8dcc\\n\\n\\u6211\\u7684\\u770b\\u6cd5\\u662f\\uff1a\\n1. \\u77ed\\u7ebf\\u5927\\u6982\\u8fd9\\u4ef6\\u4e8b\\u4f1a\\u6bd4\\u8f83Ugly\\uff01 \\u3002 NVO \\u5e94\\u8be5\\u63a5\\u7740\\u4f1a\\u544aHIMS\\n2\\uff0c\\u6bd5\\u7adf\\u5408\\u4f5c\\u53cc\\u65b9\\u90fd\\u6709\\u5229\\u3002 \\u6709\\u5c0f\\u6982\\u7387\\u8fd1\\u671f\\u53cc\\u65b9\\u53ef\\u4ee5\\u8c08\\u59a5\\n3. \\u957f\\u671f HIMS \\u6709 liraglutide\\u3002 \\u6211\\u6ca1\\u6709\\u8bb0\\u9519\\u7684\\u8bdd\\u4e13\\u5229\\u662f\\u4eca\\u5e74\\u5230\\u671f\\u3002\\u7406\\u8bba\\u4e0a\\u53ef\\u4ee5\\u5f88\\u5927\\u7a0b\\u5ea6\\u66ff\\u4ee3 wegory\\n\\n\"}]",
+        "file_url": "",
+        "file_name": "",
+        "file_size": 0,
+        "file_json": [],
+        "feeds_type": 1,
+        "user_id": "u_63b7c53a8d409_5uCkJxO6mz",
+        "title": "$hims",
+        "is_chosen": 0,
+        "is_notice": 0,
+        "user_type": 1,
+        "send_type": 1,
+        "zan_num": 0,
+        "comment_count": 0,
+        "created_at": "2025-06-23 22:34:42",
+        "universal_union_id": "oTHW5v6xlUIrr-oY2RCVkVwIgv_o",
+        "is_exercise": 0,
+        "is_public": 1,
+        "feeds_state": 0,
+        "share_num": 0,
+        "apply_type": "",
+        "extend_field1": "",
+        "extend_field2": "",
+        "extend_field3": "",
+        "ip": "61.48.82.38",
+        "me_praise": false,
+        "nick_name": "一束光线",
+        "wx_avatar": "http://wechatavator-1252524126.file.myqcloud.com/appyuf4rl772054/image/compress/u_63b7c53a8d409_5uCkJxO6mz_20230109_3811a9.jpeg",
+        "role_name": "圈主",
+        "roles": [
+          "community_host"
+        ],
+        "label_user_type": 1,
+        "is_quit": 0,
+        "user_state": 0,
+        "is_guest": 0,
+        "work_corp_id": "",
+        "work_user_id": "",
+        "show_time": "2025-06-23 22:34",
+        "praise_list": [],
+        "commentList": {
+          "list": [],
+          "total_count": 0
+        },
+        "discuss_title": "",
+        "discuss_resource_id": "",
+        "resource_type": "",
+        "record_num": 27,
+        "is_self": false,
+        "login_user_id": "u_672cc041494f9_1vzXLebwuk",
+        "user_group_id": "g_ungrouped",
+        "user_group_info": {
+          "user_id": "u_63b7c53a8d409_5uCkJxO6mz",
+          "group_id": "g_ungrouped",
+          "group_name": "未分组",
+          "slogan": "",
+          "cover_url": "https://commonresource-1252524126.cdn.xiaoeknow.com/image/lgdkekux0n08.jpg",
+          "avatar_cover_url": "https://commonresource-1252524126.cdn.xiaoeknow.com/image/lgdkekux0n08.jpg",
+          "group_created_at": "",
+          "user_join_group_at": ""
+        },
+        "can_teacher_comment": false,
+        "resource_info": {
+          "community_id": "c_6544c6eb39716_hWkqHZtW8807"
+        },
+        "tags": [
+          {
+            "id": 338214,
+            "tag_name": "美股",
+            "feeds_id": "d_685966025cc6b_cRLc4sUsIuzh",
+            "tag_id": 338214,
+            "role": []
+          }
+        ],
+        "config": {
+          "is_forbid_share": 0
+        },
+        "join_day": 917,
+        "ip_place": "北京"
+      },
+      {
+        "id": "d_68581d445c2a6_envYfeaONdK5",
+        "app_id": "appyuf4rl772054",
+        "community_id": "c_6544c6eb39716_hWkqHZtW8807",
+        "org_content": "<article><p><br/></p><p>朋友们，高盛又又有上调黄金的目标价了。把明年年中目标价调高到了4000美元每盎司.  原因很简单。 还是因为央行买金，<span style=\"font-family: Arial;\">2022 年前不包括美国在内央行每年平均买金是17 吨， </span> 今年<span style=\"font-family: Arial;\">4 月高盛对央行今年黄金需求即时预测值为 68 吨。但年初至今，央行黄金需求即时预测均值为 88 吨，略超其对 2026 年年中前每月 80 吨的平均预测</span> 。 这完全都是超预期的啊。 这里面最大变量还是我们中国。 高盛认为中国央行还在偷偷的买。 <span style=\"font-family: Arial;\">中国 4 月仍是最大可识别买家，为 27 吨，是官方数据的 9 倍。  所以高盛认为今年88吨的预测可能也太保守的。 。 综上所述。 高盛还是维持今年目标价格3700. 但是提高了明年年中目标价到4000了。 不知道大家认可不<img src=\"https://wechatapppro-1252524126.cdn.xiaoeknow.com/appyuf4rl772054/image/b_u_ceqcup61l0co7f71la40/x1x3tzmc7t31y0.jpg\" width=\"100%\" height=\"auto\" title=\"黄金.jpg\" alt=\"黄金.jpg\"/></span></p></article><p></p>",
+        "content": {
+          "text": "\n朋友们，高盛又又有上调黄金的目标价了。把明年年中目标价调高到了4000美元每盎司.  原因很简单。 还是因为央行买金，2022 年前不包括美国在内央行每年平均买金是17 吨，  今年4 月高盛对央行今年黄金需求即时预测值为 68 吨。但年初至今，央行黄金需求即时预测均值为 88 吨，略超其对 2026 年年中前每月 80 吨的平均预测 。 这完全都是超预期的啊。 这里面最大变量还是我们中国。 高盛认为中国央行还在偷偷的买。 中国 4 月仍是最大可识别买家，为 27 吨，是官方数据的 9 倍。  所以高盛认为今年88吨的预测可能也太保守的。 。 综上所述。 高盛还是维持今年目标价格3700. 但是提高了明年年中目标价到4000了。 不知道大家认可不\n\n",
+          "mix_records": [
+            {
+              "url": "https://wechatapppro-1252524126.cdn.xiaoeknow.com/appyuf4rl772054/image/b_u_ceqcup61l0co7f71la40/x1x3tzmc7t31y0.jpg",
+              "type": "IMAGE",
+              "showUrl": "https://wechatapppro-1252524126.cdn.xiaoeknow.com/appyuf4rl772054/image/b_u_ceqcup61l0co7f71la40/x1x3tzmc7t31y0.jpg"
+            }
+          ],
+          "audio_records": []
+        },
+        "tags_content": "[{\"type\":1,\"value\":\"https:\\/\\/wechatapppro-1252524126.cdn.xiaoeknow.com\\/appyuf4rl772054\\/image\\/b_u_ceqcup61l0co7f71la40\\/x1x3tzmc7t31y0.jpg\"},{\"type\":0,\"value\":\"\\n\\u670b\\u53cb\\u4eec\\uff0c\\u9ad8\\u76db\\u53c8\\u53c8\\u6709\\u4e0a\\u8c03\\u9ec4\\u91d1\\u7684\\u76ee\\u6807\\u4ef7\\u4e86\\u3002\\u628a\\u660e\\u5e74\\u5e74\\u4e2d\\u76ee\\u6807\\u4ef7\\u8c03\\u9ad8\\u5230\\u4e864000\\u7f8e\\u5143\\u6bcf\\u76ce\\u53f8.  \\u539f\\u56e0\\u5f88\\u7b80\\u5355\\u3002 \\u8fd8\\u662f\\u56e0\\u4e3a\\u592e\\u884c\\u4e70\\u91d1\\uff0c2022 \\u5e74\\u524d\\u4e0d\\u5305\\u62ec\\u7f8e\\u56fd\\u5728\\u5185\\u592e\\u884c\\u6bcf\\u5e74\\u5e73\\u5747\\u4e70\\u91d1\\u662f17 \\u5428\\uff0c  \\u4eca\\u5e744 \\u6708\\u9ad8\\u76db\\u5bf9\\u592e\\u884c\\u4eca\\u5e74\\u9ec4\\u91d1\\u9700\\u6c42\\u5373\\u65f6\\u9884\\u6d4b\\u503c\\u4e3a 68 \\u5428\\u3002\\u4f46\\u5e74\\u521d\\u81f3\\u4eca\\uff0c\\u592e\\u884c\\u9ec4\\u91d1\\u9700\\u6c42\\u5373\\u65f6\\u9884\\u6d4b\\u5747\\u503c\\u4e3a 88 \\u5428\\uff0c\\u7565\\u8d85\\u5176\\u5bf9 2026 \\u5e74\\u5e74\\u4e2d\\u524d\\u6bcf\\u6708 80 \\u5428\\u7684\\u5e73\\u5747\\u9884\\u6d4b \\u3002 \\u8fd9\\u5b8c\\u5168\\u90fd\\u662f\\u8d85\\u9884\\u671f\\u7684\\u554a\\u3002 \\u8fd9\\u91cc\\u9762\\u6700\\u5927\\u53d8\\u91cf\\u8fd8\\u662f\\u6211\\u4eec\\u4e2d\\u56fd\\u3002 \\u9ad8\\u76db\\u8ba4\\u4e3a\\u4e2d\\u56fd\\u592e\\u884c\\u8fd8\\u5728\\u5077\\u5077\\u7684\\u4e70\\u3002 \\u4e2d\\u56fd 4 \\u6708\\u4ecd\\u662f\\u6700\\u5927\\u53ef\\u8bc6\\u522b\\u4e70\\u5bb6\\uff0c\\u4e3a 27 \\u5428\\uff0c\\u662f\\u5b98\\u65b9\\u6570\\u636e\\u7684 9 \\u500d\\u3002  \\u6240\\u4ee5\\u9ad8\\u76db\\u8ba4\\u4e3a\\u4eca\\u5e7488\\u5428\\u7684\\u9884\\u6d4b\\u53ef\\u80fd\\u4e5f\\u592a\\u4fdd\\u5b88\\u7684\\u3002 \\u3002 \\u7efc\\u4e0a\\u6240\\u8ff0\\u3002 \\u9ad8\\u76db\\u8fd8\\u662f\\u7ef4\\u6301\\u4eca\\u5e74\\u76ee\\u6807\\u4ef7\\u683c3700. \\u4f46\\u662f\\u63d0\\u9ad8\\u4e86\\u660e\\u5e74\\u5e74\\u4e2d\\u76ee\\u6807\\u4ef7\\u52304000\\u4e86\\u3002 \\u4e0d\\u77e5\\u9053\\u5927\\u5bb6\\u8ba4\\u53ef\\u4e0d\"},{\"type\":0,\"value\":\"\\n\\n\"}]",
+        "file_url": "",
+        "file_name": "",
+        "file_size": 0,
+        "file_json": [],
+        "feeds_type": 1,
+        "user_id": "u_63b7c53a8d409_5uCkJxO6mz",
+        "title": "黄金最新目标价",
+        "is_chosen": 0,
+        "is_notice": 0,
+        "user_type": 1,
+        "send_type": 1,
+        "zan_num": 1,
+        "comment_count": 0,
+        "created_at": "2025-06-22 23:12:04",
+        "universal_union_id": "oTHW5v6xlUIrr-oY2RCVkVwIgv_o",
+        "is_exercise": 0,
+        "is_public": 1,
+        "feeds_state": 0,
+        "share_num": 0,
+        "apply_type": "",
+        "extend_field1": "",
+        "extend_field2": "",
+        "extend_field3": "",
+        "ip": "112.120.125.131",
+        "me_praise": false,
+        "nick_name": "一束光线",
+        "wx_avatar": "http://wechatavator-1252524126.file.myqcloud.com/appyuf4rl772054/image/compress/u_63b7c53a8d409_5uCkJxO6mz_20230109_3811a9.jpeg",
+        "role_name": "圈主",
+        "roles": [
+          "community_host"
+        ],
+        "label_user_type": 1,
+        "is_quit": 0,
+        "user_state": 0,
+        "is_guest": 0,
+        "work_corp_id": "",
+        "work_user_id": "",
+        "show_time": "2025-06-22 23:12",
+        "praise_list": [
+          {
+            "app_id": "appyuf4rl772054",
+            "user_id": "u_641703feb6cac_DkBp7Nt3bi",
+            "updated_at": "2025-06-22 23:16:39",
+            "nick_name": "石泽蕤",
+            "wx_avatar": "http://wechatapppro-1252524126.file.myqcloud.com/appyuf4rl772054/image/compress/aDVwZXJzb25hbGNlbnRlci1hbGl2ZWg1LXVfNjQxNzAzZmViNmNhY19Ea0JwN050M2JpLWxKNkxsa3hp.jpeg",
+            "user_type": 0,
+            "is_guest": 0,
+            "community_id": "c_6544c6eb39716_hWkqHZtW8807",
+            "feed_id": "d_68581d445c2a6_envYfeaONdK5",
+            "label_user_type": 0,
+            "role_name": "",
+            "work_corp_id": "",
+            "work_user_id": ""
+          }
+        ],
+        "commentList": {
+          "list": [],
+          "total_count": 0
+        },
+        "discuss_title": "",
+        "discuss_resource_id": "",
+        "resource_type": "",
+        "record_num": 35,
+        "is_self": false,
+        "login_user_id": "u_672cc041494f9_1vzXLebwuk",
+        "user_group_id": "g_ungrouped",
+        "user_group_info": {
+          "user_id": "u_63b7c53a8d409_5uCkJxO6mz",
+          "group_id": "g_ungrouped",
+          "group_name": "未分组",
+          "slogan": "",
+          "cover_url": "https://commonresource-1252524126.cdn.xiaoeknow.com/image/lgdkekux0n08.jpg",
+          "avatar_cover_url": "https://commonresource-1252524126.cdn.xiaoeknow.com/image/lgdkekux0n08.jpg",
+          "group_created_at": "",
+          "user_join_group_at": ""
+        },
+        "can_teacher_comment": false,
+        "resource_info": {
+          "community_id": "c_6544c6eb39716_hWkqHZtW8807"
+        },
+        "tags": [
+          {
+            "id": 338795,
+            "tag_name": "贵金属+大宗商品",
+            "feeds_id": "d_68581d445c2a6_envYfeaONdK5",
+            "tag_id": 338795,
+            "role": []
+          }
+        ],
+        "config": {
+          "is_forbid_share": 0
+        },
+        "join_day": 917,
+        "ip_place": "中国香港"
+      },
+      {
+        "id": "d_685808de9958b_a0bgRwLLWxX4",
+        "app_id": "appyuf4rl772054",
+        "community_id": "c_6544c6eb39716_hWkqHZtW8807",
+        "org_content": "<p><br/></p><p></p><p>明天美股， A股情况不知道。 不过特拉维夫股市刚才到了历史新高！！</p><p></p><p>所以这个战争对谁有利很明显了吧<img src=\"https://wechatapppro-1252524126.cdn.xiaoeknow.com/appyuf4rl772054/image/b_u_ceqcup61l0co7f71la40/flxxyamc7pz63q.png\" width=\"100%\" height=\"auto\" title=\"特拉维夫股市.png\" alt=\"特拉维夫股市.png\"/></p><p></p>",
+        "content": {
+          "text": "\n明天美股， A股情况不知道。 不过特拉维夫股市刚才到了历史新高！！\n\n所以这个战争对谁有利很明显了吧\n\n",
+          "mix_records": [
+            {
+              "url": "https://wechatapppro-1252524126.cdn.xiaoeknow.com/appyuf4rl772054/image/b_u_ceqcup61l0co7f71la40/flxxyamc7pz63q.png",
+              "type": "IMAGE",
+              "showUrl": "https://wechatapppro-1252524126.cdn.xiaoeknow.com/appyuf4rl772054/image/b_u_ceqcup61l0co7f71la40/flxxyamc7pz63q.png"
+            }
+          ],
+          "audio_records": []
+        },
+        "tags_content": "[{\"type\":1,\"value\":\"https:\\/\\/wechatapppro-1252524126.cdn.xiaoeknow.com\\/appyuf4rl772054\\/image\\/b_u_ceqcup61l0co7f71la40\\/flxxyamc7pz63q.png\"},{\"type\":0,\"value\":\"\\n\\u660e\\u5929\\u7f8e\\u80a1\\uff0c A\\u80a1\\u60c5\\u51b5\\u4e0d\\u77e5\\u9053\\u3002 \\u4e0d\\u8fc7\\u7279\\u62c9\\u7ef4\\u592b\\u80a1\\u5e02\\u521a\\u624d\\u5230\\u4e86\\u5386\\u53f2\\u65b0\\u9ad8\\uff01\\uff01\\n\\n\\u6240\\u4ee5\\u8fd9\\u4e2a\\u6218\\u4e89\\u5bf9\\u8c01\\u6709\\u5229\\u5f88\\u660e\\u663e\\u4e86\\u5427\"},{\"type\":0,\"value\":\"\\n\\n\"}]",
+        "file_url": "",
+        "file_name": "",
+        "file_size": 0,
+        "file_json": [],
+        "feeds_type": 1,
+        "user_id": "u_63b7c53a8d409_5uCkJxO6mz",
+        "title": "特拉维夫股市",
+        "is_chosen": 0,
+        "is_notice": 0,
+        "user_type": 1,
+        "send_type": 1,
+        "zan_num": 0,
+        "comment_count": 0,
+        "created_at": "2025-06-22 21:45:02",
+        "universal_union_id": "oTHW5v6xlUIrr-oY2RCVkVwIgv_o",
+        "is_exercise": 0,
+        "is_public": 1,
+        "feeds_state": 0,
+        "share_num": 0,
+        "apply_type": "",
+        "extend_field1": "",
+        "extend_field2": "",
+        "extend_field3": "",
+        "ip": "112.120.125.131",
+        "me_praise": false,
+        "nick_name": "一束光线",
+        "wx_avatar": "http://wechatavator-1252524126.file.myqcloud.com/appyuf4rl772054/image/compress/u_63b7c53a8d409_5uCkJxO6mz_20230109_3811a9.jpeg",
+        "role_name": "圈主",
+        "roles": [
+          "community_host"
+        ],
+        "label_user_type": 1,
+        "is_quit": 0,
+        "user_state": 0,
+        "is_guest": 0,
+        "work_corp_id": "",
+        "work_user_id": "",
+        "show_time": "2025-06-22 21:45",
+        "praise_list": [],
+        "commentList": {
+          "list": [],
+          "total_count": 0
+        },
+        "discuss_title": "",
+        "discuss_resource_id": "",
+        "resource_type": "",
+        "record_num": 36,
+        "is_self": false,
+        "login_user_id": "u_672cc041494f9_1vzXLebwuk",
+        "user_group_id": "g_ungrouped",
+        "user_group_info": {
+          "user_id": "u_63b7c53a8d409_5uCkJxO6mz",
+          "group_id": "g_ungrouped",
+          "group_name": "未分组",
+          "slogan": "",
+          "cover_url": "https://commonresource-1252524126.cdn.xiaoeknow.com/image/lgdkekux0n08.jpg",
+          "avatar_cover_url": "https://commonresource-1252524126.cdn.xiaoeknow.com/image/lgdkekux0n08.jpg",
+          "group_created_at": "",
+          "user_join_group_at": ""
+        },
+        "can_teacher_comment": false,
+        "resource_info": {
+          "community_id": "c_6544c6eb39716_hWkqHZtW8807"
+        },
+        "tags": [
+          {
+            "id": 338218,
+            "tag_name": "国际宏观",
+            "feeds_id": "d_685808de9958b_a0bgRwLLWxX4",
+            "tag_id": 338218,
+            "role": []
+          }
+        ],
+        "config": {
+          "is_forbid_share": 0
+        },
+        "join_day": 917,
+        "ip_place": "中国香港"
+      },
+      {
+        "id": "d_6857e093d3717_sZmvMTNyCDg5",
+        "app_id": "appyuf4rl772054",
+        "community_id": "c_6544c6eb39716_hWkqHZtW8807",
+        "org_content": "<p><view style='display: block!important;text-align: center;'><video src='https://v-vod-k.xiaoeknow.com/eab896082f8c4a5d87625b0c6ca26438/appyuf4rl772054/video/b_u_63c10927ca15c_goBYA0a2/mc7jplp50g71/main.m3u8?sign=efbaa64df5e62bd63e65504455c929b9&t=69fd1850&us=GVVsiYWTAr'> </video></view></p>",
+        "content": {
+          "text": "\n",
+          "mix_records": [
+            {
+              "id": "135EB5B8-E712-C00E-C2CC-9FC68E71E789",
+              "type": "VIDEO",
+              "url": "https://v-vod-k.xiaoeknow.com/eab896082f8c4a5d87625b0c6ca26438/appyuf4rl772054/video/b_u_63c10927ca15c_goBYA0a2/mc7jplp50g71/main.m3u8?sign=efbaa64df5e62bd63e65504455c929b9&t=69fd1850&us=GVVsiYWTAr",
+              "cover": "https://cover-v-vod.xiaoeknow.com/vod-migrate-tech/o0soNtf6dJFiBpARgEeaV3C4cqiS089sAdBVXI~tplv-vod-obj.jpg",
+              "showUrl": "https://v-vod-k.xiaoeknow.com/eab896082f8c4a5d87625b0c6ca26438/appyuf4rl772054/video/b_u_63c10927ca15c_goBYA0a2/mc7jplp50g71/main.m3u8?sign=efbaa64df5e62bd63e65504455c929b9&t=69fd1850&us=GVVsiYWTAr",
+              "show_cover": "https://cover-v-vod.xiaoeknow.com/vod-migrate-tech/o0soNtf6dJFiBpARgEeaV3C4cqiS089sAdBVXI~tplv-vod-obj.jpg"
+            }
+          ],
+          "audio_records": []
+        },
+        "tags_content": "[{\"type\":0,\"value\":\"\\n\"}]",
+        "file_url": "",
+        "file_name": "",
+        "file_size": 0,
+        "file_json": [],
+        "feeds_type": 1,
+        "user_id": "u_63b7c53a8d409_5uCkJxO6mz",
+        "title": "期权和波动率角度看当前的美股市场",
+        "is_chosen": 0,
+        "is_notice": 0,
+        "user_type": 1,
+        "send_type": 1,
+        "zan_num": 0,
+        "comment_count": 0,
+        "created_at": "2025-06-22 18:53:07",
+        "universal_union_id": "oTHW5v6xlUIrr-oY2RCVkVwIgv_o",
+        "is_exercise": 0,
+        "is_public": 1,
+        "feeds_state": 0,
+        "share_num": 0,
+        "apply_type": "",
+        "extend_field1": "",
+        "extend_field2": "",
+        "extend_field3": "",
+        "ip": "125.67.225.123",
+        "me_praise": false,
+        "nick_name": "一束光线",
+        "wx_avatar": "http://wechatavator-1252524126.file.myqcloud.com/appyuf4rl772054/image/compress/u_63b7c53a8d409_5uCkJxO6mz_20230109_3811a9.jpeg",
+        "role_name": "圈主",
+        "roles": [
+          "community_host"
+        ],
+        "label_user_type": 1,
+        "is_quit": 0,
+        "user_state": 0,
+        "is_guest": 0,
+        "work_corp_id": "",
+        "work_user_id": "",
+        "show_time": "2025-06-22 18:53",
+        "praise_list": [],
+        "commentList": {
+          "list": [],
+          "total_count": 0
+        },
+        "discuss_title": "",
+        "discuss_resource_id": "",
+        "resource_type": "",
+        "record_num": 35,
+        "is_self": false,
+        "login_user_id": "u_672cc041494f9_1vzXLebwuk",
+        "user_group_id": "g_ungrouped",
+        "user_group_info": {
+          "user_id": "u_63b7c53a8d409_5uCkJxO6mz",
+          "group_id": "g_ungrouped",
+          "group_name": "未分组",
+          "slogan": "",
+          "cover_url": "https://commonresource-1252524126.cdn.xiaoeknow.com/image/lgdkekux0n08.jpg",
+          "avatar_cover_url": "https://commonresource-1252524126.cdn.xiaoeknow.com/image/lgdkekux0n08.jpg",
+          "group_created_at": "",
+          "user_join_group_at": ""
+        },
+        "can_teacher_comment": false,
+        "resource_info": {
+          "community_id": "c_6544c6eb39716_hWkqHZtW8807"
+        },
+        "tags": [
+          {
+            "id": 338214,
+            "tag_name": "美股",
+            "feeds_id": "d_6857e093d3717_sZmvMTNyCDg5",
+            "tag_id": 338214,
+            "role": []
+          }
+        ],
+        "config": {
+          "is_forbid_share": 0
+        },
+        "join_day": 917,
+        "ip_place": "四川"
+      },
+      {
+        "id": "d_6856870c50837_AR52iv00xQNi",
+        "app_id": "appyuf4rl772054",
+        "community_id": "c_6544c6eb39716_hWkqHZtW8807",
+        "org_content": "<p><view style='display: block!important;text-align: center;'><video src='https://v-vod-k.xiaoeknow.com/eab896082f8c4a5d87625b0c6ca26438/appyuf4rl772054/video/b_u_63c10927ca15c_goBYA0a2/mc632rn305n4/main.m3u8?sign=6d1b7420e0e40fc8f5ed34c64662b54e&t=69fd1850&us=Vqyyhacbng'> </video></view></p>",
+        "content": {
+          "text": "\n",
+          "mix_records": [
+            {
+              "id": "4C4240A6-4894-7844-0D69-BC3B0CB4FB5D",
+              "type": "VIDEO",
+              "url": "https://v-vod-k.xiaoeknow.com/eab896082f8c4a5d87625b0c6ca26438/appyuf4rl772054/video/b_u_63c10927ca15c_goBYA0a2/mc632rn305n4/main.m3u8?sign=6d1b7420e0e40fc8f5ed34c64662b54e&t=69fd1850&us=Vqyyhacbng",
+              "cover": "https://cover-v-vod.xiaoeknow.com/vod-migrate-tech/osWZmeA0h40hKguMhQYCEAmFEKByPmAsgyIP0B~tplv-vod-obj.jpg",
+              "showUrl": "https://v-vod-k.xiaoeknow.com/eab896082f8c4a5d87625b0c6ca26438/appyuf4rl772054/video/b_u_63c10927ca15c_goBYA0a2/mc632rn305n4/main.m3u8?sign=6d1b7420e0e40fc8f5ed34c64662b54e&t=69fd1850&us=Vqyyhacbng",
+              "show_cover": "https://cover-v-vod.xiaoeknow.com/vod-migrate-tech/osWZmeA0h40hKguMhQYCEAmFEKByPmAsgyIP0B~tplv-vod-obj.jpg"
+            }
+          ],
+          "audio_records": []
+        },
+        "tags_content": "[{\"type\":0,\"value\":\"\\n\"}]",
+        "file_url": "",
+        "file_name": "",
+        "file_size": 0,
+        "file_json": [],
+        "feeds_type": 1,
+        "user_id": "u_63b7c53a8d409_5uCkJxO6mz",
+        "title": "金融市场定位可能出错了！",
+        "is_chosen": 0,
+        "is_notice": 0,
+        "user_type": 1,
+        "send_type": 1,
+        "zan_num": 0,
+        "comment_count": 0,
+        "created_at": "2025-06-21 18:18:52",
+        "universal_union_id": "oTHW5v6xlUIrr-oY2RCVkVwIgv_o",
+        "is_exercise": 0,
+        "is_public": 1,
+        "feeds_state": 0,
+        "share_num": 0,
+        "apply_type": "",
+        "extend_field1": "",
+        "extend_field2": "",
+        "extend_field3": "",
+        "ip": "125.67.225.123",
+        "me_praise": false,
+        "nick_name": "一束光线",
+        "wx_avatar": "http://wechatavator-1252524126.file.myqcloud.com/appyuf4rl772054/image/compress/u_63b7c53a8d409_5uCkJxO6mz_20230109_3811a9.jpeg",
+        "role_name": "圈主",
+        "roles": [
+          "community_host"
+        ],
+        "label_user_type": 1,
+        "is_quit": 0,
+        "user_state": 0,
+        "is_guest": 0,
+        "work_corp_id": "",
+        "work_user_id": "",
+        "show_time": "2025-06-21 18:18",
+        "praise_list": [],
+        "commentList": {
+          "list": [],
+          "total_count": 0
+        },
+        "discuss_title": "",
+        "discuss_resource_id": "",
+        "resource_type": "",
+        "record_num": 38,
+        "is_self": false,
+        "login_user_id": "u_672cc041494f9_1vzXLebwuk",
+        "user_group_id": "g_ungrouped",
+        "user_group_info": {
+          "user_id": "u_63b7c53a8d409_5uCkJxO6mz",
+          "group_id": "g_ungrouped",
+          "group_name": "未分组",
+          "slogan": "",
+          "cover_url": "https://commonresource-1252524126.cdn.xiaoeknow.com/image/lgdkekux0n08.jpg",
+          "avatar_cover_url": "https://commonresource-1252524126.cdn.xiaoeknow.com/image/lgdkekux0n08.jpg",
+          "group_created_at": "",
+          "user_join_group_at": ""
+        },
+        "can_teacher_comment": false,
+        "resource_info": {
+          "community_id": "c_6544c6eb39716_hWkqHZtW8807"
+        },
+        "tags": [
+          {
+            "id": 338218,
+            "tag_name": "国际宏观",
+            "feeds_id": "d_6856870c50837_AR52iv00xQNi",
+            "tag_id": 338218,
+            "role": []
+          },
+          {
+            "id": 338214,
+            "tag_name": "美股",
+            "feeds_id": "d_6856870c50837_AR52iv00xQNi",
+            "tag_id": 338214,
+            "role": []
+          }
+        ],
+        "config": {
+          "is_forbid_share": 0
+        },
+        "join_day": 917,
+        "ip_place": "四川"
+      },
+      {
+        "id": "d_685682055510d_K9pjBO6Rk8jq",
+        "app_id": "appyuf4rl772054",
+        "community_id": "c_6544c6eb39716_hWkqHZtW8807",
+        "org_content": "<article><p><br/></p><p><span style=\"font-family: Arial;\">特朗普期望推动美国工业繁荣，我刚看彭博报告。 5 月有个数据非常支持他的想法。 上月美国汽车工厂的卡车组装速度达到自 1967 年美联储有数据记录以来的最快水平。在 3 月和 4 月汽车总销量连续两个月表现稳健之后，卡车组装年率攀升至 984 万辆，轻型皮卡的增长尤为显著。另外的数据表明，截至 4 月，汽车经销商库存已连续六个月下降，这或许能解释车辆产量增加的原因<img src=\"https://wechatapppro-1252524126.cdn.xiaoeknow.com/appyuf4rl772054/image/b_u_ceqcup61l0co7f71la40/is3xjhmc62ek1w.jpg\" width=\"100%\" height=\"auto\" title=\"货车生产线.jpg\" alt=\"货车生产线.jpg\"/></span></p></article><p></p>",
+        "content": {
+          "text": "\n特朗普期望推动美国工业繁荣，我刚看彭博报告。 5 月有个数据非常支持他的想法。 上月美国汽车工厂的卡车组装速度达到自 1967 年美联储有数据记录以来的最快水平。在 3 月和 4 月汽车总销量连续两个月表现稳健之后，卡车组装年率攀升至 984 万辆，轻型皮卡的增长尤为显著。另外的数据表明，截至 4 月，汽车经销商库存已连续六个月下降，这或许能解释车辆产量增加的原因\n\n",
+          "mix_records": [
+            {
+              "url": "https://wechatapppro-1252524126.cdn.xiaoeknow.com/appyuf4rl772054/image/b_u_ceqcup61l0co7f71la40/is3xjhmc62ek1w.jpg",
+              "type": "IMAGE",
+              "showUrl": "https://wechatapppro-1252524126.cdn.xiaoeknow.com/appyuf4rl772054/image/b_u_ceqcup61l0co7f71la40/is3xjhmc62ek1w.jpg"
+            }
+          ],
+          "audio_records": []
+        },
+        "tags_content": "[{\"type\":1,\"value\":\"https:\\/\\/wechatapppro-1252524126.cdn.xiaoeknow.com\\/appyuf4rl772054\\/image\\/b_u_ceqcup61l0co7f71la40\\/is3xjhmc62ek1w.jpg\"},{\"type\":0,\"value\":\"\\n\\u7279\\u6717\\u666e\\u671f\\u671b\\u63a8\\u52a8\\u7f8e\\u56fd\\u5de5\\u4e1a\\u7e41\\u8363\\uff0c\\u6211\\u521a\\u770b\\u5f6d\\u535a\\u62a5\\u544a\\u3002 5 \\u6708\\u6709\\u4e2a\\u6570\\u636e\\u975e\\u5e38\\u652f\\u6301\\u4ed6\\u7684\\u60f3\\u6cd5\\u3002 \\u4e0a\\u6708\\u7f8e\\u56fd\\u6c7d\\u8f66\\u5de5\\u5382\\u7684\\u5361\\u8f66\\u7ec4\\u88c5\\u901f\\u5ea6\\u8fbe\\u5230\\u81ea 1967 \\u5e74\\u7f8e\\u8054\\u50a8\\u6709\\u6570\\u636e\\u8bb0\\u5f55\\u4ee5\\u6765\\u7684\\u6700\\u5feb\\u6c34\\u5e73\\u3002\\u5728 3 \\u6708\\u548c 4 \\u6708\\u6c7d\\u8f66\\u603b\\u9500\\u91cf\\u8fde\\u7eed\\u4e24\\u4e2a\\u6708\\u8868\\u73b0\\u7a33\\u5065\\u4e4b\\u540e\\uff0c\\u5361\\u8f66\\u7ec4\\u88c5\\u5e74\\u7387\\u6500\\u5347\\u81f3 984 \\u4e07\\u8f86\\uff0c\\u8f7b\\u578b\\u76ae\\u5361\\u7684\\u589e\\u957f\\u5c24\\u4e3a\\u663e\\u8457\\u3002\\u53e6\\u5916\\u7684\\u6570\\u636e\\u8868\\u660e\\uff0c\\u622a\\u81f3 4 \\u6708\\uff0c\\u6c7d\\u8f66\\u7ecf\\u9500\\u5546\\u5e93\\u5b58\\u5df2\\u8fde\\u7eed\\u516d\\u4e2a\\u6708\\u4e0b\\u964d\\uff0c\\u8fd9\\u6216\\u8bb8\\u80fd\\u89e3\\u91ca\\u8f66\\u8f86\\u4ea7\\u91cf\\u589e\\u52a0\\u7684\\u539f\\u56e0\"},{\"type\":0,\"value\":\"\\n\\n\"}]",
+        "file_url": "",
+        "file_name": "",
+        "file_size": 0,
+        "file_json": [],
+        "feeds_type": 1,
+        "user_id": "u_63b7c53a8d409_5uCkJxO6mz",
+        "title": "美国卡车组装历史新高",
+        "is_chosen": 0,
+        "is_notice": 0,
+        "user_type": 1,
+        "send_type": 1,
+        "zan_num": 0,
+        "comment_count": 0,
+        "created_at": "2025-06-21 17:57:25",
+        "universal_union_id": "oTHW5v6xlUIrr-oY2RCVkVwIgv_o",
+        "is_exercise": 0,
+        "is_public": 1,
+        "feeds_state": 0,
+        "share_num": 0,
+        "apply_type": "",
+        "extend_field1": "",
+        "extend_field2": "",
+        "extend_field3": "",
+        "ip": "45.150.166.2",
+        "me_praise": false,
+        "nick_name": "一束光线",
+        "wx_avatar": "http://wechatavator-1252524126.file.myqcloud.com/appyuf4rl772054/image/compress/u_63b7c53a8d409_5uCkJxO6mz_20230109_3811a9.jpeg",
+        "role_name": "圈主",
+        "roles": [
+          "community_host"
+        ],
+        "label_user_type": 1,
+        "is_quit": 0,
+        "user_state": 0,
+        "is_guest": 0,
+        "work_corp_id": "",
+        "work_user_id": "",
+        "show_time": "2025-06-21 17:57",
+        "praise_list": [],
+        "commentList": {
+          "list": [],
+          "total_count": 0
+        },
+        "discuss_title": "",
+        "discuss_resource_id": "",
+        "resource_type": "",
+        "record_num": 37,
+        "is_self": false,
+        "login_user_id": "u_672cc041494f9_1vzXLebwuk",
+        "user_group_id": "g_ungrouped",
+        "user_group_info": {
+          "user_id": "u_63b7c53a8d409_5uCkJxO6mz",
+          "group_id": "g_ungrouped",
+          "group_name": "未分组",
+          "slogan": "",
+          "cover_url": "https://commonresource-1252524126.cdn.xiaoeknow.com/image/lgdkekux0n08.jpg",
+          "avatar_cover_url": "https://commonresource-1252524126.cdn.xiaoeknow.com/image/lgdkekux0n08.jpg",
+          "group_created_at": "",
+          "user_join_group_at": ""
+        },
+        "can_teacher_comment": false,
+        "resource_info": {
+          "community_id": "c_6544c6eb39716_hWkqHZtW8807"
+        },
+        "tags": [
+          {
+            "id": 338218,
+            "tag_name": "国际宏观",
+            "feeds_id": "d_685682055510d_K9pjBO6Rk8jq",
+            "tag_id": 338218,
+            "role": []
+          }
+        ],
+        "config": {
+          "is_forbid_share": 0
+        },
+        "join_day": 917,
+        "ip_place": "美国"
+      },
+      {
+        "id": "d_685585c558830_gBr8e3fmw67T",
+        "app_id": "appyuf4rl772054",
+        "community_id": "c_6544c6eb39716_hWkqHZtW8807",
+        "org_content": "<article><p><br/></p><p>不是以伊战争，而是WSJ的一篇文章说：</p><p><span style=\"font-family: Arial;\">一位美国官员告知全球顶级半导体制造商，欲撤销其在中国使用美国技术的豁免权，。目前，韩国三星电子、SK 海力士以及台积电享有全面豁免权，可无需每次单独申请许可证，就能将美国芯片制造设备运往其中国工厂。美国商务部负责出口管制部门的负责人杰弗里・凯斯勒本周向这三家公司表示，希望取消这些豁免权，称此举是特朗普政府打击关键美国技术流向中国的一部分</span></p><p><span style=\"font-family: Arial;\">中美贸易战还要打呢。。。</span></p></article><p></p>",
+        "content": {
+          "text": "\n不是以伊战争，而是WSJ的一篇文章说：\n一位美国官员告知全球顶级半导体制造商，欲撤销其在中国使用美国技术的豁免权，。目前，韩国三星电子、SK 海力士以及台积电享有全面豁免权，可无需每次单独申请许可证，就能将美国芯片制造设备运往其中国工厂。美国商务部负责出口管制部门的负责人杰弗里・凯斯勒本周向这三家公司表示，希望取消这些豁免权，称此举是特朗普政府打击关键美国技术流向中国的一部分\n中美贸易战还要打呢。。。\n\n",
+          "mix_records": [],
+          "audio_records": []
+        },
+        "tags_content": "[{\"type\":0,\"value\":\"\\n\\u4e0d\\u662f\\u4ee5\\u4f0a\\u6218\\u4e89\\uff0c\\u800c\\u662fWSJ\\u7684\\u4e00\\u7bc7\\u6587\\u7ae0\\u8bf4\\uff1a\\n\\u4e00\\u4f4d\\u7f8e\\u56fd\\u5b98\\u5458\\u544a\\u77e5\\u5168\\u7403\\u9876\\u7ea7\\u534a\\u5bfc\\u4f53\\u5236\\u9020\\u5546\\uff0c\\u6b32\\u64a4\\u9500\\u5176\\u5728\\u4e2d\\u56fd\\u4f7f\\u7528\\u7f8e\\u56fd\\u6280\\u672f\\u7684\\u8c41\\u514d\\u6743\\uff0c\\u3002\\u76ee\\u524d\\uff0c\\u97e9\\u56fd\\u4e09\\u661f\\u7535\\u5b50\\u3001SK \\u6d77\\u529b\\u58eb\\u4ee5\\u53ca\\u53f0\\u79ef\\u7535\\u4eab\\u6709\\u5168\\u9762\\u8c41\\u514d\\u6743\\uff0c\\u53ef\\u65e0\\u9700\\u6bcf\\u6b21\\u5355\\u72ec\\u7533\\u8bf7\\u8bb8\\u53ef\\u8bc1\\uff0c\\u5c31\\u80fd\\u5c06\\u7f8e\\u56fd\\u82af\\u7247\\u5236\\u9020\\u8bbe\\u5907\\u8fd0\\u5f80\\u5176\\u4e2d\\u56fd\\u5de5\\u5382\\u3002\\u7f8e\\u56fd\\u5546\\u52a1\\u90e8\\u8d1f\\u8d23\\u51fa\\u53e3\\u7ba1\\u5236\\u90e8\\u95e8\\u7684\\u8d1f\\u8d23\\u4eba\\u6770\\u5f17\\u91cc\\u30fb\\u51ef\\u65af\\u52d2\\u672c\\u5468\\u5411\\u8fd9\\u4e09\\u5bb6\\u516c\\u53f8\\u8868\\u793a\\uff0c\\u5e0c\\u671b\\u53d6\\u6d88\\u8fd9\\u4e9b\\u8c41\\u514d\\u6743\\uff0c\\u79f0\\u6b64\\u4e3e\\u662f\\u7279\\u6717\\u666e\\u653f\\u5e9c\\u6253\\u51fb\\u5173\\u952e\\u7f8e\\u56fd\\u6280\\u672f\\u6d41\\u5411\\u4e2d\\u56fd\\u7684\\u4e00\\u90e8\\u5206\\n\\u4e2d\\u7f8e\\u8d38\\u6613\\u6218\\u8fd8\\u8981\\u6253\\u5462\\u3002\\u3002\\u3002\\n\\n\"}]",
+        "file_url": "",
+        "file_name": "",
+        "file_size": 0,
+        "file_json": [],
+        "feeds_type": 1,
+        "user_id": "u_63b7c53a8d409_5uCkJxO6mz",
+        "title": "刚才美股为什么跌下来了",
+        "is_chosen": 0,
+        "is_notice": 0,
+        "user_type": 1,
+        "send_type": 1,
+        "zan_num": 0,
+        "comment_count": 0,
+        "created_at": "2025-06-21 00:01:09",
+        "universal_union_id": "oTHW5v6xlUIrr-oY2RCVkVwIgv_o",
+        "is_exercise": 0,
+        "is_public": 1,
+        "feeds_state": 0,
+        "share_num": 0,
+        "apply_type": "",
+        "extend_field1": "",
+        "extend_field2": "",
+        "extend_field3": "",
+        "ip": "112.120.125.131",
+        "me_praise": false,
+        "nick_name": "一束光线",
+        "wx_avatar": "http://wechatavator-1252524126.file.myqcloud.com/appyuf4rl772054/image/compress/u_63b7c53a8d409_5uCkJxO6mz_20230109_3811a9.jpeg",
+        "role_name": "圈主",
+        "roles": [
+          "community_host"
+        ],
+        "label_user_type": 1,
+        "is_quit": 0,
+        "user_state": 0,
+        "is_guest": 0,
+        "work_corp_id": "",
+        "work_user_id": "",
+        "show_time": "2025-06-21 00:01",
+        "praise_list": [],
+        "commentList": {
+          "list": [],
+          "total_count": 0
+        },
+        "discuss_title": "",
+        "discuss_resource_id": "",
+        "resource_type": "",
+        "record_num": 41,
+        "is_self": false,
+        "login_user_id": "u_672cc041494f9_1vzXLebwuk",
+        "user_group_id": "g_ungrouped",
+        "user_group_info": {
+          "user_id": "u_63b7c53a8d409_5uCkJxO6mz",
+          "group_id": "g_ungrouped",
+          "group_name": "未分组",
+          "slogan": "",
+          "cover_url": "https://commonresource-1252524126.cdn.xiaoeknow.com/image/lgdkekux0n08.jpg",
+          "avatar_cover_url": "https://commonresource-1252524126.cdn.xiaoeknow.com/image/lgdkekux0n08.jpg",
+          "group_created_at": "",
+          "user_join_group_at": ""
+        },
+        "can_teacher_comment": false,
+        "resource_info": {
+          "community_id": "c_6544c6eb39716_hWkqHZtW8807"
+        },
+        "tags": [
+          {
+            "id": 338214,
+            "tag_name": "美股",
+            "feeds_id": "d_685585c558830_gBr8e3fmw67T",
+            "tag_id": 338214,
+            "role": []
+          }
+        ],
+        "config": {
+          "is_forbid_share": 0
+        },
+        "join_day": 917,
+        "ip_place": "中国香港"
+      }
+    ],
+    "total": 20,
+    "user_expire_info": {
+      "app_id": "appyuf4rl772054",
+      "community_id": "c_6544c6eb39716_hWkqHZtW8807",
+      "user_id": "u_672cc041494f9_1vzXLebwuk",
+      "auth_state": 0,
+      "available": true,
+      "expire_end_time": "2026-09-29T17:25:30+08:00",
+      "is_join": true,
+      "join_type": 3,
+      "payment_type": 2,
+      "piece_price": 0,
+      "e_course_state": false,
+      "e_course_url": "",
+      "update_quit": 0,
+      "course_id": "",
+      "is_forbid": false,
+      "join_invalid_at": "0001-01-01T00:00:00Z",
+      "is_expire": false
+    },
+    "return_feeds_num": 20,
+    "cursor": "d_685585c558830_gBr8e3fmw67T"
+  },
+  "forward_url": ""
+}

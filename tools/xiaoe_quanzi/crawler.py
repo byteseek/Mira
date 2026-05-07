@@ -33,7 +33,12 @@ API_PATH = "/xe.community.community_service/small_community/xe.community/get_fee
 
 
 def load_cookies(domain: str = "xiaoe-tech.com", browser: str = "chrome") -> requests.cookies.RequestsCookieJar:
-    """Load cookies for the given domain from a running browser."""
+    """Load cookies for the given domain from a running browser.
+
+    To avoid SQLite lock contention with a live Chrome (which keeps the cookie
+    DB locked), copy the cookie file to a temp location first and point
+    browser_cookie3 at the copy.
+    """
     try:
         import browser_cookie3
     except ImportError:
@@ -42,7 +47,17 @@ def load_cookies(domain: str = "xiaoe-tech.com", browser: str = "chrome") -> req
     loader = getattr(browser_cookie3, browser, None)
     if loader is None:
         sys.exit(f"Unknown browser {browser!r}. Try chrome/safari/firefox/edge.")
-    cj = loader(domain_name=domain)
+
+    cookie_file = None
+    if browser == "chrome" and sys.platform == "darwin":
+        import shutil, tempfile
+        src = Path.home() / "Library/Application Support/Google/Chrome/Default/Cookies"
+        if src.exists():
+            tmp = Path(tempfile.gettempdir()) / "xiaoe_chrome_cookies_copy"
+            shutil.copy2(src, tmp)
+            cookie_file = str(tmp)
+
+    cj = loader(cookie_file=cookie_file, domain_name=domain) if cookie_file else loader(domain_name=domain)
     jar = requests.cookies.RequestsCookieJar()
     for c in cj:
         jar.set(c.name, c.value, domain=c.domain, path=c.path)
@@ -77,6 +92,7 @@ def fetch_page(
     feeds_list_type: str,
     page: int,
     page_size: int = 20,
+    retries: int = 5,
 ) -> dict[str, Any]:
     params = {
         "app_id": app_id,
@@ -90,12 +106,22 @@ def fetch_page(
         "created_end_at": "",
     }
     url = f"https://{API_HOST}{API_PATH}"
-    r = session.get(url, params=params, timeout=30)
-    r.raise_for_status()
-    j = r.json()
-    if j.get("code") != 0:
-        raise RuntimeError(f"API error code={j.get('code')} msg={j.get('msg')}")
-    return j
+    last_exc: Exception | None = None
+    for attempt in range(retries):
+        try:
+            r = session.get(url, params=params, timeout=30)
+            r.raise_for_status()
+            j = r.json()
+            if j.get("code") != 0:
+                raise RuntimeError(f"API error code={j.get('code')} msg={j.get('msg')}")
+            return j
+        except (requests.ConnectionError, requests.Timeout, requests.exceptions.ProxyError) as e:
+            last_exc = e
+            wait = 2 ** attempt  # 1,2,4,8,16
+            print(f"  ! transient error attempt {attempt + 1}/{retries}: {type(e).__name__} — waiting {wait}s", file=sys.stderr)
+            time.sleep(wait)
+    assert last_exc is not None
+    raise last_exc
 
 
 # ---------- formatting ----------
@@ -336,29 +362,38 @@ def crawl(cfg: CrawlConfig) -> None:
         if cfg.max_pages is not None and page > cfg.max_pages:
             print(f"reached --max-pages={cfg.max_pages}")
             break
-        print(f"page {page} ...", flush=True)
-        try:
-            j = fetch_page(
-                session,
-                app_id=cfg.app_id,
-                community_id=cfg.community_id,
-                feeds_list_type=cfg.feeds_list_type,
-                page=page,
-                page_size=cfg.page_size,
-            )
-        except requests.HTTPError as e:
-            print(f"  ! HTTP error: {e}", file=sys.stderr)
-            break
+        raw_path = raw_dir / f"page_{page:03d}.json"
+        if raw_path.exists() and raw_path.stat().st_size > 100:
+            # resume: reuse cached page, skip the API call
+            try:
+                j = json.loads(raw_path.read_text())
+                print(f"page {page} ... (cached)", flush=True)
+            except json.JSONDecodeError:
+                j = None
+        else:
+            j = None
+
+        if j is None:
+            print(f"page {page} ...", flush=True)
+            try:
+                j = fetch_page(
+                    session,
+                    app_id=cfg.app_id,
+                    community_id=cfg.community_id,
+                    feeds_list_type=cfg.feeds_list_type,
+                    page=page,
+                    page_size=cfg.page_size,
+                )
+            except (requests.HTTPError, requests.ConnectionError, requests.Timeout, requests.exceptions.ProxyError) as e:
+                print(f"  ! fatal HTTP/proxy error after retries: {e}", file=sys.stderr)
+                break
+            raw_path.write_text(json.dumps(j, ensure_ascii=False, indent=2))
 
         data = j.get("data") or {}
         items: list[dict[str, Any]] = data.get("list") or []
         if not items:
             print("  (empty page, stop)")
             break
-
-        # save raw
-        raw_path = raw_dir / f"page_{page:03d}.json"
-        raw_path.write_text(json.dumps(j, ensure_ascii=False, indent=2))
 
         # archive each feed (filter / dedup / save md)
         for it in items:

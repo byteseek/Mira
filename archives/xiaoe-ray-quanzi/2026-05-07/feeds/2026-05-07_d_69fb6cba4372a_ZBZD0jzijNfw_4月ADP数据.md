@@ -1,0 +1,26 @@
+# 4月ADP数据
+
+- **形式**: 长文+图
+- **作者**: 一束光线 · 圈主
+- **时间**: 18小时前 · 上海
+- **标签**: #国际宏观
+- **统计**: 👍 0 / 💬 0 / 🔄 0
+- **feed_id**: d_69fb6cba4372a_ZBZD0jzijNfw
+- **feeds_type**: 1
+- **created_at**: 2026-05-07 00:30:50
+
+## 正文
+
+
+4月ADP数据显示当月美国经济新增就业 10.9 万人，低于市场预期的 12 万人，为连续第十个月实现就业增长，也是 2025 年 1 月以来最强单月增幅。
+就业结构上，商品生产部门新增 1.5 万人，服务业新增 9.4 万人，医疗保健行业保持强势，贸易、运输及公用事业板块反弹成为招聘增长主要动力。
+企业规模层面呈现分化特征，大型企业拥有资源优势、小型企业具备灵活优势，招聘表现稳健，中型企业则显现疲软态势。薪资方面，留守员工薪资同比增速小幅放缓至 4.4%，跳槽员工薪资同比增速稳定在 6.6%。整体反映美国劳动力市场正从 “不雇不裁” 向 “招聘增加、仍不裁员” 的状态转变。
+
+
+
+## 图片 (4)
+
+![img1](https://wechatapppro-1252524126.cdn.xiaoeknow.com/appyuf4rl772054/image/b_u_ceqcup61l0co7f71la40/69ea45mou9wzow.jpg)
+![img2](https://wechatapppro-1252524126.cdn.xiaoeknow.com/appyuf4rl772054/image/b_u_ceqcup61l0co7f71la40/lw9bfwmou9wzog.jpg)
+![img3](https://wechatapppro-1252524126.cdn.xiaoeknow.com/appyuf4rl772054/image/b_u_ceqcup61l0co7f71la40/9m35owmou9wzpg.jpg)
+![img4](https://wechatapppro-1252524126.cdn.xiaoeknow.com/appyuf4rl772054/image/b_u_ceqcup61l0co7f71la40/rmuwvqmou9wzov.jpg)
