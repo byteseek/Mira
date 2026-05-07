@@ -48,11 +48,17 @@
 ├── agents/
 │   └── research-orchestrator.md
 ├── cases/
-│   └── aapl-2026-04/
+│   ├── aapl-2026-04/
+│   │   ├── README.md
+│   │   ├── case-notes.md
+│   │   ├── evidence-log.csv
+│   │   └── investment-memo.md
+│   └── cohr-2026-05/
 │       ├── README.md
-│       ├── case-notes.md
+│       ├── earnings-analysis.md
 │       ├── evidence-log.csv
-│       └── investment-memo.md
+│       ├── financial-snapshot.csv
+│       └── peer-comparison.csv
 ├── data/
 │   ├── methodology-source-policy.md
 │   ├── source-policy.md
@@ -79,9 +85,12 @@
 │   │       ├── thesis.md
 │   │       └── timeline.md
 │   └── skills/
+│       ├── earnings-report-analysis.md
 │       ├── financial-quality.md
 │       └── technical-analysis.md
 ├── skills/
+│   ├── earnings-report-analysis/
+│   │   └── SKILL.md
 │   └── equity-research-core/
 │       ├── SKILL.md
 │       └── references/
@@ -92,6 +101,11 @@
 │           ├── overlay-routing.md
 │           └── supply-chain-overlay.md
 └── templates/
+    ├── earnings-analysis-package/
+    │   ├── earnings-analysis.md
+    │   ├── evidence-log.csv
+    │   ├── financial-snapshot.csv
+    │   └── peer-comparison.csv
     ├── methodology-card.md
     ├── methodology-queue.csv
     ├── methodology-review-log.csv
@@ -118,11 +132,12 @@
 
 ### 2. Core Skill
 
-`skills/` 当前只保留一个主 skill：
+`skills/` 当前保留一个主 skill 和一个财报专项 skill：
 
 - `equity-research-core`
+- `earnings-report-analysis`
 
-它在一份研究里统一组织四个视角：
+`equity-research-core` 在一份研究里统一组织四个视角：
 
 - 公司与行业
 - 财务质量
@@ -151,6 +166,18 @@
 - `supply-chain`
 
 overlay 用于沿上下游和同层级继续挖证据链，不替代主框架。
+
+`earnings-report-analysis` 用于对单份季报、半年报或年报做结构化拆解，重点覆盖：
+
+- 披露核验
+- 核心业务、核心增长、核心拖累
+- 定价权和放量能力
+- 三表联动
+- 经营驱动桥接
+- 同业同期财报对比
+- 管理层口径
+- 市场预期差
+- thesis impact
 
 ### 3. Orchestrator Agent
 
@@ -212,6 +239,15 @@ overlay 用于沿上下游和同层级继续挖证据链，不替代主框架。
 - `selected_overlays`
 - `overlay_basis`
 
+财报事件可先输出一个轻量 `earnings analysis package`：
+
+- `earnings-analysis`
+- `financial-snapshot`
+- `peer-comparison`
+- `evidence-log`
+
+当财报足以改变 thesis 时，再把结论并入标准 `research package`。
+
 方法论研究使用单独产物：
 
 - `methodology-card.md`
@@ -229,8 +265,9 @@ overlay 用于沿上下游和同层级继续挖证据链，不替代主框架。
 5. 由 `agents/research-orchestrator.md` 汇总并输出统一研究包。
 6. 稳定内容写入 `memory/`。
 7. 后续更新走 `loops/monitoring-loop.md`，同时检查框架和 overlay 是否仍成立。
-8. 参考 `templates/research-package/` 生成研究包。
-9. 查看 `cases/aapl-2026-04/` 作为当前 MVP 样板。
+8. 财报事件先用 `skills/earnings-report-analysis/` 和 `templates/earnings-analysis-package/` 做专项拆解。
+9. 参考 `templates/research-package/` 生成研究包。
+10. 查看 `cases/aapl-2026-04/` 和 `cases/cohr-2026-05/` 作为当前样板。
 
 如果研究对象是典型预期差问题，可以额外跑：
 
@@ -255,7 +292,7 @@ overlay 用于沿上下游和同层级继续挖证据链，不替代主框架。
 
 - 当前版本不是自动化抓取平台。
 - 当前版本先定义 monitor 职责，不实现完整多 agent 调度系统。
-- 当前版本只放一个单票深度案例，不做主题篮子或双票对比。
+- 当前版本包含一个单票深度案例和一个财报事件案例，暂不做主题篮子。
 - 当前版本的 memory 只沉淀慢变量，不记录全部日常噪音。
 - 当前版本先支持一个 overlay，不把专题研究路径无限扩张。
 - 当前版本定义 methodology research loop，但不承诺自动联网归档全部方法论来源。
@@ -264,11 +301,13 @@ overlay 用于沿上下游和同层级继续挖证据链，不替代主框架。
 
 ## What To Extend Next
 
+- 继续补强 `earnings-report-analysis` 的行业特定指标
 - 增加更多 framework，例如 `cyclical`、`turnaround`、`compounder`
 - 增加更多 overlay，例如 `channel-check`、`peer-benchmark`
 - 增加方法论评分与案例验证挂钩
 - 增加方法论 review log 和长期 follow-through 记录
 - 增加 methodology query expansion 和搜索自动化
+- 拆分 `equity-research-core` 为独立主题 skills
 - 把 `research-orchestrator` 拆成多个 monitors 和专题 agents
 - 给 A 股补更细的本地数据源注册表
 - 增加第二个案例，例如 A 股龙头或周期股
