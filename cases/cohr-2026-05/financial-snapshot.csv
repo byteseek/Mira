@@ -1,0 +1,15 @@
+metric,period,value,unit,yoy_change,qoq_change,source_id,notes
+revenue,FY2026 Q3,1805.6,USD millions,20.5%,7.1%,cohr_q3_fy2026_results,合并收入。
+gaap_gross_margin,FY2026 Q3,37.7,pct,243 bps,71 bps,cohr_q3_fy2026_results,GAAP 毛利率。
+non_gaap_gross_margin,FY2026 Q3,39.6,pct,105 bps,57 bps,cohr_q3_fy2026_results,Non-GAAP 毛利率。
+gaap_eps,FY2026 Q3,0.97,USD per diluted share,+1.08,+0.21,cohr_q3_fy2026_results,GAAP 摊薄 EPS。
+non_gaap_eps,FY2026 Q3,1.41,USD per diluted share,+0.50,+0.12,cohr_q3_fy2026_results,Non-GAAP 摊薄 EPS。
+non_gaap_operating_margin,FY2026 Q3,20.3,pct,163 bps,34 bps,cohr_q3_fy2026_results,Non-GAAP operating margin。
+datacenter_and_communications_revenue,FY2026 Q3,1361.6,USD millions,40.6%,12.7%,cohr_q3_fy2026_results,核心增长分部。
+industrial_revenue,FY2026 Q3,444.0,USD millions,-16.1%,-7.0%,cohr_q3_fy2026_results,核心拖累。
+operating_cash_flow,FY2026 YTD,10.1,USD millions,-98.0%,,cohr_q3_fy2026_results,前九个月经营现金流。
+capex,FY2026 YTD,547.2,USD millions,76.8%,,cohr_q3_fy2026_results,前九个月 property plant and equipment 增加额。
+inventory,FY2026 Q3,2126.8,USD millions,,,cohr_q3_fy2026_results,FY2025 年末为 1437.6。
+accounts_receivable,FY2026 Q3,1187.9,USD millions,,,cohr_q3_fy2026_results,FY2025 年末为 964.1。
+q4_revenue_outlook,FY2026 Q4,1910-2050,USD millions,,,cohr_q3_fy2026_results,公司收入指引区间。
+q4_non_gaap_eps_outlook,FY2026 Q4,1.52-1.72,USD per diluted share,,,cohr_q3_fy2026_results,公司 Non-GAAP EPS 指引区间。

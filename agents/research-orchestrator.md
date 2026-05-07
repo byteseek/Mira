@@ -9,6 +9,7 @@
 - 按 `research-loop` 组织研究过程
 - 按 `monitoring-loop` 组织持续更新
 - 使用 `equity-research-core` 组织四个分析视角
+- 在财报事件中使用 `earnings-report-analysis` 组织核心业务、定价/放量、三表联动、同业对比和 thesis impact
 - 对弱证据结论进行降级
 - 输出最终 `investment memo`
 - 写明 `stale_after` 与 `must_refresh_if`
@@ -54,6 +55,7 @@
 
 - business and industry
 - financial quality
+- earnings report analysis
 - technical context
 - events and sentiment
 
@@ -75,3 +77,15 @@
 - 短期更新先进入 monitoring 结论
 - 稳定知识再写入 `memory/`
 - 噪音、传闻和无日期内容不得进入长期 memory
+
+## Earnings Event Rule
+
+当研究触发点是季报、半年报、年报、业绩预告或业绩会时，先运行 `earnings-report-analysis`：
+
+1. 登记财报、业绩会、市场预期、价格反应和至少 1 家可比同行财报来源
+2. 输出 `earnings-analysis-package`
+3. 先描述核心业务、核心增长和核心拖累
+4. 用定价权和放量能力判断增长质量
+5. 用同行财报验证公司口径是行业 beta 还是公司 alpha
+6. 判断 `thesis_impact`
+7. 仅当 `thesis_impact` 不为 `0` 或出现新风险时，更新标准 `research package`

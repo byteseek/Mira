@@ -48,11 +48,17 @@
 ├── agents/
 │   └── research-orchestrator.md
 ├── cases/
-│   └── aapl-2026-04/
+│   ├── aapl-2026-04/
+│   │   ├── README.md
+│   │   ├── case-notes.md
+│   │   ├── evidence-log.csv
+│   │   └── investment-memo.md
+│   └── cohr-2026-05/
 │       ├── README.md
-│       ├── case-notes.md
+│       ├── earnings-analysis.md
 │       ├── evidence-log.csv
-│       └── investment-memo.md
+│       ├── financial-snapshot.csv
+│       └── peer-comparison.csv
 ├── data/
 │   ├── source-policy.md
 │   ├── source-registry.csv
@@ -72,12 +78,20 @@
 │   │       ├── thesis.md
 │   │       └── timeline.md
 │   └── skills/
+│       ├── earnings-report-analysis.md
 │       ├── financial-quality.md
 │       └── technical-analysis.md
 ├── skills/
+│   ├── earnings-report-analysis/
+│   │   └── SKILL.md
 │   └── equity-research-core/
 │       └── SKILL.md
 └── templates/
+    ├── earnings-analysis-package/
+    │   ├── earnings-analysis.md
+    │   ├── evidence-log.csv
+    │   ├── financial-snapshot.csv
+    │   └── peer-comparison.csv
     └── research-package/
         ├── case-notes.md
         ├── evidence-log.csv
@@ -98,16 +112,29 @@
 
 ### 2. Core Skill
 
-`skills/` 当前只保留一个主 skill：
+`skills/` 当前保留一个主 skill 和一个财报专项 skill：
 
 - `equity-research-core`
+- `earnings-report-analysis`
 
-它在一份研究里统一组织四个视角：
+`equity-research-core` 在一份研究里统一组织四个视角：
 
 - 公司与行业
 - 财务质量
 - 技术面上下文
 - 事件与舆情
+
+`earnings-report-analysis` 用于对单份季报、半年报或年报做结构化拆解，重点覆盖：
+
+- 披露核验
+- 核心业务、核心增长、核心拖累
+- 定价权和放量能力
+- 三表联动
+- 经营驱动桥接
+- 同业同期财报对比
+- 管理层口径
+- 市场预期差
+- thesis impact
 
 ### 3. Orchestrator Agent
 
@@ -153,6 +180,15 @@
 - `evidence log`
 - `case notes`
 
+财报事件可先输出一个轻量 `earnings analysis package`：
+
+- `earnings-analysis`
+- `financial-snapshot`
+- `peer-comparison`
+- `evidence-log`
+
+当财报足以改变 thesis 时，再把结论并入标准 `research package`。
+
 ## Recommended Usage
 
 1. 先在 `data/` 里确认来源类型、时效规则、获取方式。
@@ -160,18 +196,20 @@
 3. 由 `agents/research-orchestrator.md` 汇总并输出研究包。
 4. 稳定内容写入 `memory/`。
 5. 后续更新走 `loops/monitoring-loop.md`。
-6. 参考 `templates/research-package/` 生成研究包。
-7. 查看 `cases/aapl-2026-04/` 作为完整样板。
+6. 财报事件先用 `skills/earnings-report-analysis/` 和 `templates/earnings-analysis-package/` 做专项拆解。
+7. 参考 `templates/research-package/` 生成研究包。
+8. 查看 `cases/aapl-2026-04/` 作为完整样板。
 
 ## V1 Boundaries
 
 - 当前版本不是自动化抓取平台。
 - 当前版本先定义 monitor 职责，不实现完整多 agent 调度系统。
-- 当前版本只放一个单票深度案例，不做主题篮子或双票对比。
+- 当前版本包含一个单票深度案例和一个财报事件案例，暂不做主题篮子。
 - 当前版本的 memory 只沉淀慢变量，不记录全部日常噪音。
 
 ## What To Extend Next
 
+- 继续补强 `earnings-report-analysis` 的行业特定指标
 - 拆分 `equity-research-core` 为独立主题 skills
 - 把 `research-orchestrator` 拆成多个 monitors 和专题 agents
 - 给 A 股补更细的本地数据源注册表

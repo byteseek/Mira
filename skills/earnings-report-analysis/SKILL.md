@@ -1,0 +1,223 @@
+# Earnings Report Analysis Skill
+
+这个 skill 用于对单家公司的一份季报、半年报或年报做结构化分析。它服务于 `research package`，但输出重点从完整投资 memo 收窄到财报质量、经营变化和预期差。
+
+## Use When
+
+- 需要快速拆解一份新发布的财报
+- 需要复核一个已有 thesis 是否被本期财报强化或削弱
+- 需要比较本期披露与上一期、去年同期、市场预期或管理层指引
+- 需要把财报、业绩会和市场反应整理成可追溯结论
+
+## Required Inputs
+
+- company_name
+- ticker
+- market
+- report_period
+- report_type
+- fiscal_period_end
+- release_date
+- analysis_cutoff_date
+- thesis_horizon
+- prior_thesis_optional
+- peer_company_name
+- peer_ticker
+- peer_report_period
+- peer_selection_reason
+
+## Required Source Types
+
+- `L1` 财报、公告、业绩新闻稿或监管文件
+- `L1` 或 `L4` 业绩会 transcript / prepared remarks / Q&A 摘要
+- `L5` 价格、估值、市场预期或分析师一致预期
+- `L1` 至少一家核心竞争对手的同期财报、公告或业绩新闻稿
+- `L6` 派生计算表可选，但必须指向上游 `L1` 到 `L5`
+
+## Output Package
+
+默认输出到 `templates/earnings-analysis-package/` 结构：
+
+- `earnings-analysis.md`
+- `evidence-log.csv`
+- `financial-snapshot.csv`
+- `peer-comparison.csv`
+
+如果该财报足以改变投资结论，再同步更新标准 `research package`：
+
+- `investment-memo.md`
+- `case-notes.md`
+- `evidence-log.csv`
+
+## Analysis Flow
+
+### 1. Disclosure Check
+
+- 明确财报口径：GAAP / non-GAAP / IFRS / adjusted
+- 标记报告期、财年口径、发布日期和分析截止日期
+- 区分已披露事实、公司解释、市场预期和 agent 推断
+- 检查是否存在会计重述、分类调整或一次性项目
+
+### 2. Core Business Map
+
+先用经营语言描述本期财报，而不是直接进入会计数字：
+
+- 核心业务：公司真正产生价值和支撑 thesis 的业务是什么
+- 核心增长：本期增长主要来自哪条业务线、客户类型、产品代际或地区
+- 核心拖累：本期拖累来自需求、价格、产能、成本、产品结构还是一次性事项
+- thesis driver：哪些变化会改变中期判断，哪些只是非核心噪音
+
+核心业务图谱必须回答：这家公司本期到底是“卖得更贵了”、“卖得更多了”，还是只是会计口径或组合变化。
+
+### 3. Price / Volume Bridge
+
+把增长拆成两个优先维度：
+
+- `pricing`：是否具备定价权、提价权、议价权或供需主动权
+- `volume`：供需上是否可以扩大业务量，且扩量是短期还是持久
+
+`pricing` 判断要覆盖：
+
+- 价格是否上升，或折扣是否收窄
+- 产品 mix 是否向高 ASP / 高毛利产品迁移
+- 供需是否紧张，公司是否能主动选择订单或客户
+- 毛利率改善是否来自提价、成本下降、良率提升，还是产品结构
+
+`volume` 判断要覆盖：
+
+- 出货、产能、订单、backlog、客户扩张是否支持放量
+- 放量是一次性补库存、短期订单拉动，还是多年需求周期
+- 产能扩张、供应链、营运资本和 CapEx 是否支持继续放量
+- 放量是否以牺牲价格、毛利率或现金流为代价
+
+每个增长驱动必须标记为 `price-driven`、`volume-driven`、`mix-driven`、`cost-driven`、`accounting-driven` 或 `one-off`。
+
+### 4. Three-Statement Read
+
+- income statement：收入、毛利、费用、营业利润、净利润、EPS
+- balance sheet：现金、应收、存货、债务、递延收入、营运资本
+- cash flow：经营现金流、自由现金流、资本开支、回购、分红
+- 三表之间必须互相校验，不能只看利润表。
+
+### 5. Driver Bridge
+
+把同比和环比变化拆成经营驱动：
+
+- volume / price / mix
+- segment / geography / product line
+- margin bridge
+- operating leverage
+- working capital
+- capital allocation
+
+每个驱动必须标记为 `confirmed`、`inferred` 或 `unknown`。
+
+### 6. Durability Test
+
+定价和放量必须继续做可持续性测试：
+
+- 定价权是结构性壁垒、技术代际、客户锁定、认证周期，还是短期供需紧缺
+- 放量是由新平台、新客户、新产能或行业周期驱动，还是一次性订单
+- 毛利率改善是否可以在放量后维持
+- 现金流、库存、应收、CapEx 是否支持当前增长叙事
+- 管理层指引是否与实际订单、backlog、产能和同行口径一致
+
+### 7. Peer Earnings Cross-Check
+
+必须选择至少 1 家竞争对手或最相关同行的同期财报做交叉验证：
+
+- 同行是否也看到相同需求方向
+- 同行的定价权、放量能力和毛利率变化是否更强或更弱
+- 本公司增长是行业 beta，还是公司 alpha
+- 本公司管理层口径是否被同行验证、削弱或反驳
+- 如果没有完全同期财报，必须标记 `timing_mismatch` 并降低结论强度
+
+同行选择优先级：
+
+1. 同产品/同客户/同技术路线直接竞争者
+2. 同一产业链位置的替代供应商
+3. 上下游最能验证需求真实性的公司
+
+### 8. Quality Assessment
+
+对本期质量做分层判断：
+
+- high quality：收入、利润、现金流同向改善，且不是一次性因素驱动
+- mixed quality：核心经营改善但有现金流、库存、费用或指引瑕疵
+- low quality：利润依赖一次性收益、会计调整、费用延后或资本化
+- unclear：披露不足，必须等待后续 filing、transcript 或分部数据
+
+## Required Sections
+
+`earnings-analysis.md` 必须包含：
+
+- setup
+- headline result
+- source map
+- core business map
+- price volume bridge
+- financial snapshot
+- three-statement analysis
+- driver bridge
+- durability test
+- peer earnings cross-check
+- management commentary
+- market expectation and reaction
+- thesis impact
+- risks and watch items
+- fact vs inference
+- refresh triggers
+
+## Scoring
+
+评分只用于强制结构化，不可替代文字判断。
+
+| dimension | score range | meaning |
+| --- | --- | --- |
+| growth_quality | 1-5 | 增长是否来自可持续经营驱动 |
+| pricing_power | 1-5 | 是否具备定价权、提价权或供需主动权 |
+| volume_durability | 1-5 | 放量是否有供需、产能和客户基础支撑 |
+| margin_quality | 1-5 | 利润率变化是否可解释且可持续 |
+| cash_conversion | 1-5 | 利润与现金流是否匹配 |
+| balance_sheet_risk | 1-5 | 资产负债表是否支持继续投入 |
+| guidance_credibility | 1-5 | 指引与历史兑现、订单、需求信号是否一致 |
+| peer_relative_quality | 1-5 | 相对同行的增长、定价、放量和现金流质量 |
+| thesis_impact | -2 to +2 | 对原 thesis 的影响方向和强度 |
+
+## Thesis Impact Rules
+
+- `+2`：核心争议被明显证实，且财务和管理层口径一致
+- `+1`：方向改善，但仍需要后续季度确认
+- `0`：与原 thesis 基本一致，信息增量有限
+- `-1`：出现可解释但需要跟踪的瑕疵
+- `-2`：核心 thesis 被削弱，或财务质量显著恶化
+
+## Evidence Rules
+
+- 核心财务数字必须来自 `L1`。
+- 市场预期和股价反应可以来自 `L5`，但必须写明时间戳。
+- 管理层解释必须与原文或 transcript 对应，不得转述成已验证事实。
+- 非 GAAP 指标必须同时检查调整项，不能只引用调整后 EPS。
+- 如果使用 agent 计算的同比、环比、margin bridge，必须登记为 `L6` 并写上游来源。
+- 定价权、放量和竞争优劣必须有财务指标、订单/产能信号、管理层原话或同行财报支撑。
+- 同行对比必须登记同行来源，并写明为何该同行可比。
+
+## Red Flags
+
+- 收入增长但应收账款或存货异常上升
+- EPS beat 主要来自回购、税率、利息收入或一次性项目
+- 毛利率改善但公司没有给出可验证驱动
+- 收入增长主要来自放量，但价格、毛利率和现金流同步恶化
+- 公司宣称定价权增强，但同行财报显示价格压力或供给过剩
+- 公司宣称需求持久，但放量只来自短期补库存或一次性订单
+- 经营现金流连续弱于净利润
+- 资本开支下降支撑短期 FCF，但削弱中长期产能或产品力
+- 指引上调但订单、backlog 或需求信号没有同步支持
+- 管理层把一次性因素包装成结构性改善
+
+## Boundaries
+
+- 这个 skill 不自动下载财报或 transcript。
+- 它不直接给交易建议，只输出 thesis impact 和 watch items。
+- 它可以触发更新 investment memo，但不能跳过 evidence log。
+- 它不把单季波动自动外推成长期趋势。

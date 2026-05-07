@@ -1,0 +1,3 @@
+company,ticker,report_period,source_id,core_business_overlap,pricing_signal,volume_signal,gross_margin_change,revenue_growth,cash_flow_quality,relative_readthrough,notes
+Coherent Corp.,COHR,FY2026 Q3,cohr_q3_fy2026_results,primary_company,pricing optimization 叠加供需紧张和产品结构改善,Datacenter & Communications 同比 +40.6% 环比 +12.7%,non-GAAP GM 同比 +105 bps,+20.5% consolidated YoY / +27% pro forma YoY,YTD 经营现金流偏弱,AI optical 需求被确认但现金转换弱,规模更大且产品和制造覆盖更宽的平台。
+Lumentum Holdings Inc.,LITE,FY2026 Q3,lumentum_q3_fy2026_results,direct optical and photonics AI datacenter peer,pricing discipline 和 product mix,components 同比 +77.3% systems 同比 +121.1%,non-GAAP GM 同比 +1270 bps,+90.1% YoY,本案例未完整评估,更强的同行增长和 margin 基准,验证行业需求同时抬高 COHR 的相对质量门槛。
