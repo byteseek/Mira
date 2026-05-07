@@ -1,0 +1,7 @@
+source_id,claim_area,claim_type,used_by_agent,used_by_skill,as_of_date,confidence,notes
+cohr_q3_fy2026_results,headline_financials,fact,research-orchestrator,earnings-report-analysis,2026-05-06,high,主要来源；用于收入、毛利率、EPS、指引、资产负债表、现金流和分部收入。
+cohr_q3_fy2026_results,segment_mix,fact,research-orchestrator,earnings-report-analysis,2026-05-06,high,支持 Datacenter & Communications 为核心业务、Industrial 为核心拖累的判断。
+cohr_q3_fy2026_transcript,pricing_volume_evidence,evidence,research-orchestrator,earnings-report-analysis,2026-05-06,medium,用于管理层关于数据中心需求、800G、1.6T、OCS、CPO、backlog 和磷化铟产能的口径。
+cohr_q3_fy2026_presentation_sec,segment_mix_and_pro_forma,evidence,research-orchestrator,earnings-report-analysis,2026-05-06,medium,用于收入结构和 pro forma 数据中心口径。
+lumentum_q3_fy2026_results,peer_cross_check,fact,research-orchestrator,earnings-report-analysis,2026-05-05,high,同行来源；用于验证 AI optical 需求，并对比更强的增长和 margin 扩张。
+derived_cohr_may2026_earnings_analysis,integrated_earnings_analysis,inference,research-orchestrator,earnings-report-analysis,2026-05-07,medium,基于 COHR 官方财报、电话会转写、投资者展示材料和 LITE 同行财报生成的派生分析。

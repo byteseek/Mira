@@ -1,0 +1,11 @@
+metric,period,value,unit,yoy_change,qoq_change,source_id,notes
+revenue,{{ report_period }},{{ revenue }},{{ revenue_unit }},{{ revenue_yoy }},{{ revenue_qoq }},{{ revenue_source_id }},{{ revenue_notes }}
+gross_margin,{{ report_period }},{{ gross_margin }},pct,{{ gross_margin_yoy }},{{ gross_margin_qoq }},{{ gross_margin_source_id }},{{ gross_margin_notes }}
+operating_margin,{{ report_period }},{{ operating_margin }},pct,{{ operating_margin_yoy }},{{ operating_margin_qoq }},{{ operating_margin_source_id }},{{ operating_margin_notes }}
+net_income,{{ report_period }},{{ net_income }},{{ net_income_unit }},{{ net_income_yoy }},{{ net_income_qoq }},{{ net_income_source_id }},{{ net_income_notes }}
+diluted_eps,{{ report_period }},{{ diluted_eps }},{{ eps_unit }},{{ diluted_eps_yoy }},{{ diluted_eps_qoq }},{{ diluted_eps_source_id }},{{ diluted_eps_notes }}
+operating_cash_flow,{{ report_period }},{{ operating_cash_flow }},{{ cash_flow_unit }},{{ operating_cash_flow_yoy }},{{ operating_cash_flow_qoq }},{{ operating_cash_flow_source_id }},{{ operating_cash_flow_notes }}
+free_cash_flow,{{ report_period }},{{ free_cash_flow }},{{ cash_flow_unit }},{{ free_cash_flow_yoy }},{{ free_cash_flow_qoq }},{{ free_cash_flow_source_id }},{{ free_cash_flow_notes }}
+cash_and_equivalents,{{ report_period }},{{ cash_and_equivalents }},{{ balance_sheet_unit }},{{ cash_and_equivalents_yoy }},{{ cash_and_equivalents_qoq }},{{ cash_and_equivalents_source_id }},{{ cash_and_equivalents_notes }}
+total_debt,{{ report_period }},{{ total_debt }},{{ balance_sheet_unit }},{{ total_debt_yoy }},{{ total_debt_qoq }},{{ total_debt_source_id }},{{ total_debt_notes }}
+shareholder_return,{{ report_period }},{{ shareholder_return }},{{ shareholder_return_unit }},{{ shareholder_return_yoy }},{{ shareholder_return_qoq }},{{ shareholder_return_source_id }},{{ shareholder_return_notes }}

@@ -1,0 +1,3 @@
+company,ticker,report_period,source_id,core_business_overlap,pricing_signal,volume_signal,gross_margin_change,revenue_growth,cash_flow_quality,relative_readthrough,notes
+{{ company_name }},{{ ticker }},{{ report_period }},{{ company_source_id }},primary_company,{{ company_pricing_signal }},{{ company_volume_signal }},{{ company_gross_margin_change }},{{ company_revenue_growth }},{{ company_cash_flow_quality }},{{ company_relative_readthrough }},{{ company_notes }}
+{{ peer_company_name }},{{ peer_ticker }},{{ peer_report_period }},{{ peer_source_id }},{{ peer_core_business_overlap }},{{ peer_pricing_signal }},{{ peer_volume_signal }},{{ peer_gross_margin_change }},{{ peer_revenue_growth }},{{ peer_cash_flow_quality }},{{ peer_relative_readthrough }},{{ peer_notes }}
