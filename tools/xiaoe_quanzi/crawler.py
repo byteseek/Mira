@@ -250,9 +250,18 @@ def feed_filename(it: dict[str, Any]) -> str:
     return f"{created}_{fid}{('_' + title) if title else ''}.md"
 
 
+EDITOR_PLACEHOLDER_HINTS = ("/spacer.gif", "/basic-editor/", "/themes/images/")
+
+
 def download_to(session: requests.Session, url: str, dest: Path) -> bool:
     if dest.exists() and dest.stat().st_size > 0:
         return True
+    if not url:
+        return False
+    if any(h in url for h in EDITOR_PLACEHOLDER_HINTS):
+        return False  # editor SDK placeholders, not real content
+    if url.startswith("//"):
+        url = "https:" + url
     try:
         r = session.get(url, timeout=60, stream=True)
         r.raise_for_status()
