@@ -121,7 +121,8 @@ def feed_to_markdown(it: dict[str, Any]) -> str:
             files = json.loads(files)
         except json.JSONDecodeError:
             files = []
-    tags = re.findall(r"#[^#\s\"]+", it.get("tags_content") or "")
+    tags_arr = it.get("tags") or []
+    tags = [f"#{t.get('tag_name')}" for t in tags_arr if t.get("tag_name")]
 
     form = classify_form(it)
     lines = [
@@ -129,7 +130,7 @@ def feed_to_markdown(it: dict[str, Any]) -> str:
         "",
         f"- **形式**: {form}",
         f"- **作者**: {it.get('nick_name')} · {it.get('role_name') or ''}".rstrip(" ·"),
-        f"- **时间**: {it.get('show_time')} · {it.get('ip') or ''}".rstrip(" ·"),
+        f"- **时间**: {it.get('show_time')} · {it.get('ip_place') or it.get('ip') or ''}".rstrip(" ·"),
         f"- **标签**: {' '.join(tags) or '-'}",
         f"- **统计**: 👍 {it.get('zan_num', 0)} / 💬 {it.get('comment_count', 0)} / 🔄 {it.get('share_num', 0)}",
         f"- **feed_id**: {it.get('id')}",
