@@ -2,11 +2,11 @@
 
 `monitoring-loop` 用于对一个已建立 thesis 的研究主题做持续更新。
 
-它不是重新研究全案，而是增量扫描、增量记录、增量判断。
+它不是后台采集任务，也不是重新研究全案；它只在用户触发或研究需要时按需读取、增量记录、增量判断。
 
 ## Objective
 
-- 每天或每周扫描新增信号
+- 在用户触发、研究刷新或明确监控窗口内检查新增信号
 - 按主题 monitor 更新内容
 - 判断是否需要升级回 `research-loop`
 - 判断当前 `selected_framework` 是否仍然成立
@@ -24,7 +24,7 @@
 - `technical-monitor`
   关注趋势、关键位、量价、相对强弱
 - `market-data-monitor`
-  扫描 Yahoo 等市场数据源，更新价格、估值、量价和技术面快照
+  按需读取 Yahoo Finance、StockAnalysis、MacroTrends、Stooq 等市场数据页面，更新价格、估值、量价和技术面快照
 - `sellside-research-monitor`
   扫描研报来源，筛选值得进一步获取的研报，并生成购买建议或已读摘要
 - `official-and-industry-monitor`
@@ -33,6 +33,8 @@
   扫描 X、论坛、访谈、花边、短视频与市场叙事变化
 - `filing-and-news-monitor`
   扫描公告、财报、新闻、管理层表态
+- `macro-data-monitor`
+  按需读取 FRED、BLS、BEA 等公开宏观页面或端点，更新利率、通胀、就业、GDP 和行业周期背景
 - `research-orchestrator`
   汇总更新并判断是否触发升级
 
@@ -73,6 +75,7 @@
 
 - `official_and_industry` 优先进入核心更新检查。
 - `market_data` 用于价格、估值、技术面和市场背景更新。
+- `web_read`、`web_search` 与 `public_api` 都是按需读取；必须记录 ticker、series id、CIK、参数、读取日期和 as-of date。
 - `sellside_research` 先做 `scan -> recommend -> approve -> ingest`，不默认自动购买。
 - `social_and_community` 默认作为 `signal`，除非其内容具备明确证据链和可验证逻辑。
 - `rumor` 与 `blocked` 内容不进入正式 monitoring 结论。

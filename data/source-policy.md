@@ -68,6 +68,17 @@
 - 通过网页取得的材料，也必须补齐 `source_id`、日期、适用场景和权重说明。
 - 引用网页材料时，应优先选择原始页面，其次是高质量转载或聚合页。
 
+### Public On-Demand Sources
+
+- `web_read` 用于已知 URL 的按需读取和解析；`web_search` 用于先搜索发现来源再读取。
+- `web_search`、`web_read` 和 `public_api` 都是按需读取入口，不代表后台订阅、定时采集、批量抓取或本地落库。
+- `public_api` 用于 SEC、FRED、BLS、BEA 等公开 JSON/API 页面入口；只在具体研究需要时请求。
+- `free_with_key` 表示免费但需要申请 API key、注册账号或遵守明确限流。
+- Yahoo Finance、StockAnalysis、MacroTrends、Stooq 等市场数据源默认是 `L5`，用于价格、估值、量价、快照和交叉核验。
+- Yahoo Finance 的新闻、分析师预期和 profile 不是原始披露：新闻必须追到原始媒体或公告；分析师预期只用于共识、修正和情绪；profile 只用于快速定位业务描述。
+- SEC EDGAR、公司 IR、监管和官方统计仍优先于聚合站。若 Yahoo/StockAnalysis 与 SEC 或公司披露冲突，以原始披露为准。
+- 可复用 target 模板可进入 `source-registry.csv`，但正式案例必须写明具体 ticker、CIK、series id、读取日期和数据时点。
+
 ### Paid Research
 
 - `sellside_research` 中的 `paid` 来源不自动购买。
