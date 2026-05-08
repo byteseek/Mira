@@ -1,0 +1,3 @@
+# local crawl artifacts that are large or ephemeral
+*/*/logs/
+*/*/media/

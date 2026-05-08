@@ -1,0 +1,20 @@
+# 关于明天要发的美国10月CPI预期
+
+- **形式**: 视频帖
+- **作者**: 一束光线 · 圈主
+- **时间**: 2024-11-12 21:42 · 四川
+- **标签**: #美股
+- **统计**: 👍 2 / 💬 0 / 🔄 0
+- **feed_id**: d_67335b5acff04_lhgRBBNTRfUk
+- **feeds_type**: 1
+- **created_at**: 2024-11-12 21:42:50
+
+## 正文
+
+
+
+
+## 视频 (1)
+
+封面: ![poster1](https://v-vod-k.xiaoeknow.com/eab896082f8c4a5d87625b0c6ca26438/appyuf4rl772054/video/b_u_63c10927ca15c_goBYA0a2/m3ehuoyv05px/main.m3u8?sign=da2673495153f8716411866e7fd86f28&t=69fd1b7a&us=XCwRoJlSif)
+视频1: <https://v-vod-k.xiaoeknow.com/eab896082f8c4a5d87625b0c6ca26438/appyuf4rl772054/video/b_u_63c10927ca15c_goBYA0a2/m3ehuoyv05px/main.m3u8?sign=da2673495153f8716411866e7fd86f28&t=69fd1b7a&us=XCwRoJlSif>
