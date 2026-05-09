@@ -4,10 +4,11 @@
 
 - 基本面
 - 财务质量
+- 宏观经济与金融条件
 - 技术面节奏
 - 事件与舆情
 
-它不是四个独立 skill 的简单拼接，而是一个面向 `research package` 的主 skill。
+它不是多个独立 skill 的简单拼接，而是一个面向 `research package` 的主 skill。
 
 这个 skill 现在采用：
 
@@ -24,7 +25,7 @@
 
 - 需要对单一股票做首次覆盖或阶段性复核
 - 需要把多源数据整理成一个可追溯的研究包
-- 需要在同一份输出里同时包含公司、财务、价格、事件四个视角
+- 需要在同一份输出里同时包含公司、财务、宏观、价格、事件等视角
 - 需要根据标的特征切换研究框架，而不是默认用同一套分析权重
 
 ## Required Inputs
@@ -78,6 +79,7 @@ overlay 不改变主框架，只补充一条高价值研究路径。
 当前默认支持：
 
 - [supply-chain-overlay](references/supply-chain-overlay.md)
+- [macro-overlay](references/macro-overlay.md)
 
 overlay 选择规则见：
 
@@ -90,11 +92,19 @@ overlay 选择规则见：
 - 哪一层供应链更受益或更受损
 - 同层级可比公司对照能否帮助验证叙事
 
+`macro` overlay 适用于以下问题：
+
+- 增长、通胀、政策、利率、美元、信用、流动性或风险偏好是否主导当前定价
+- 市场已经 price in 的宏观路径是什么
+- 宏观变量通过哪条链影响收入、利润率、估值、融资、仓位或催化剂
+- 新数据或政策口径是否会改变 thesis
+
 ## Required Source Types
 
 - `L1` 公司披露或官方材料
 - `L5` 市场数据
 - `L4` 事件/新闻材料可选但建议使用
+- 如果启用 `macro` overlay，至少补充官方宏观数据、政策材料或市场定价数据中的两类
 
 ## Output Package
 
@@ -128,6 +138,7 @@ overlay 选择规则见：
 
 - business and industry
 - financial quality
+- macro and financial conditions
 - technical context
 - events and sentiment
 - overlays
@@ -146,8 +157,9 @@ overlay 选择规则见：
 - 核心结论必须可回溯到来源
 - 事实与推断必须显式区分
 - 每份 memo 必须有时效边界
-- 至少覆盖公司、财务、价格、事件四个视角中的三个
+- 至少覆盖公司、财务、宏观、价格、事件五类视角中的三个
 - 必须解释为什么当前框架适配这只票
 - 必须指出如果框架错配，最可能错在哪里
 - 如果启用 overlay，必须解释它补充验证了什么
 - 如果使用 `variant perception`，必须给出可观察的 `consensus proxy` 和 `falsification condition`
+- 如果启用 `macro` overlay，必须写明 `macro_weight`、`dominant_macro_chain`、`market_pricing` 和 `macro_refresh_triggers`
