@@ -1,0 +1,2 @@
+source_id,claim_area,claim_type,used_by_agent,used_by_skill,as_of_date,confidence,notes
+example_source,concept_boundary,fact,research-orchestrator,industry-concept-analysis,2026-01-01,high,Replace with case-specific records.

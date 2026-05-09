@@ -11,6 +11,7 @@
 - 在分析前执行 `framework selection`
 - 在主框架确定后执行 `overlay selection`
 - 使用 `equity-research-core` 组织统一输出和可路由研究框架
+- 当输入是产业、技术、材料、零部件、设备、工艺或供应链概念时，使用 `industry-concept-analysis` 先建立产业地图和候选标的池
 - 在财报事件中使用 `earnings-report-analysis` 组织核心业务、定价/放量、三表联动、同业对比和 thesis impact
 - 对弱证据结论进行降级
 - 输出最终 `investment memo`
@@ -22,16 +23,34 @@
 这个 agent 默认按以下阶段工作：
 
 1. `define`
-2. `route-framework`
-3. `select-overlays`
-4. `collect`
-5. `scan`
-6. `gap-check`
-7. `refine`
-8. `package`
-9. `refresh`
+2. `industry-concept`，如果输入是产业概念而不是单一股票
+3. `route-framework`
+4. `select-overlays`
+5. `collect`
+6. `scan`
+7. `gap-check`
+8. `refine`
+9. `package`
+10. `refresh`
 
 完整定义见 [loops/research-loop.md](/Users/byteseek/Documents/Longmind/market-research-agents/loops/research-loop.md:1)。
+
+## Industry Concept Rule
+
+当研究对象不是单一股票，而是类似 `存储`、`CPU`、`GPU`、`ABF`、`HBM`、`CPO`、`液冷`、`先进封装` 这类概念时，先运行 `industry-concept-analysis`，不要直接套单票框架。
+
+产业概念研究必须先输出：
+
+1. 一页版产业地图：一句话定义、当前判断、紧缺环节、利润池、股票代理、核心公式、关键争论、跟踪指标、证伪条件。
+2. 概念边界：它是什么、解决什么问题、和相邻概念有什么区别。
+3. 产业链地图：上游输入、核心工艺/技术、制造/集成、下游客户、终端需求。
+4. 公司地图：全球龙头、区域龙头、纯暴露公司、多元化公司、私有关键公司、上市代理。
+5. 定价机制：谁能提价、价格由什么决定、合同/spot/代际升级如何影响 ASP。
+6. 放量机制：谁能放量、放量受客户认证、产能、良率、设备交期、库存还是终端需求约束。
+7. 瓶颈和利润池：哪些环节处于紧供需平衡，哪些环节有高溢价或高收益，哪些环节只是传导。
+8. 单票研究交接：哪些公司进入 `equity-research-core`，是否需要叠加 `supply-chain` overlay。
+
+产业概念研究的产物使用 `templates/industry-analysis-package/`。
 
 ## Monitoring Loop
 
@@ -61,6 +80,7 @@
 这个 agent 内部始终保留以下统一分析视角：
 
 - business and industry
+- industry concept analysis
 - financial quality
 - earnings report analysis
 - technical context
@@ -120,3 +140,22 @@ overlay 说明见 [skills/equity-research-core/references/overlay-routing.md](/U
 5. 用同行财报验证公司口径是行业 beta 还是公司 alpha
 6. 判断 `thesis_impact`
 7. 仅当 `thesis_impact` 不为 `0` 或出现新风险时，更新标准 `research package`
+
+## Industry Concept Packaging Rule
+
+当运行 `industry-concept-analysis` 时，最终研究包必须包含：
+
+- `industry-map.md`
+- `company-map.csv`
+- `evidence-log.csv`
+
+并且必须给出：
+
+- `concept_boundary`
+- `one_page_industry_map`
+- `value_chain_map`
+- `pricing_mechanics`
+- `volume_mechanics`
+- `tightness_and_profit_pool_ranking`
+- `company_shortlist`
+- `stock_research_handoff`

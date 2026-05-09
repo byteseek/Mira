@@ -8,12 +8,13 @@
 
 - 多源数据
 - 一个可路由的核心分析 skill
+- 一个产业概念分析 skill
 - 一个研究 orchestrator
 - 三类 loop
 - 分层 memory
 - 一个可复用的 `research package`
 
-`Mira` 的当前最小方向是“主题驱动的双循环研究框架 + framework routing + optional overlays + empirical methodology research”。
+`Mira` 的当前最小方向是“主题驱动的双循环研究框架 + framework routing + industry concept analysis + optional overlays + empirical methodology research”。
 
 `Mira` 这个名字用于表达：
 
@@ -92,6 +93,8 @@
 ├── skills/
 │   ├── earnings-report-analysis/
 │   │   └── SKILL.md
+│   ├── industry-concept-analysis/
+│   │   └── SKILL.md
 │   └── equity-research-core/
 │       ├── SKILL.md
 │       └── references/
@@ -112,6 +115,10 @@
     ├── methodology-review-log.csv
     ├── methodology-search-log.csv
     ├── variant-perception-checklist.md
+    ├── industry-analysis-package/
+    │   ├── company-map.csv
+    │   ├── evidence-log.csv
+    │   └── industry-map.md
     └── research-package/
         ├── case-notes.md
         ├── evidence-log.csv
@@ -134,9 +141,10 @@
 
 ### 2. Core Skill
 
-`skills/` 当前保留一个主 skill 和一个财报专项 skill：
+`skills/` 当前保留一个主 skill、一个产业概念 skill 和一个财报专项 skill：
 
 - `equity-research-core`
+- `industry-concept-analysis`
 - `earnings-report-analysis`
 
 `equity-research-core` 在一份研究里统一组织四个视角：
@@ -169,6 +177,22 @@
 
 overlay 用于沿上下游和同层级继续挖证据链，不替代主框架。
 
+`industry-concept-analysis` 用于在单票研究前，把类似 `存储`、`CPU`、`GPU`、`ABF`、`HBM`、`CPO`、`液冷`、`先进封装` 这样的概念拆成：
+
+- 一页版产业地图
+- 概念边界
+- 产业链地图
+- 上下游供给和需求公司
+- 定价机制
+- 放量机制
+- 紧供需平衡和高溢价环节
+- 利润池排序
+- 候选标的和单票研究交接
+
+它的输出是 `industry-analysis-package`，用于先建立产业认知和公司池，再把重点标的交给 `equity-research-core`。
+
+阅读顺序上，产业概念报告必须先给 `One-Page Industry Map`，把一句话定义、当前判断、紧缺环节、利润池、股票代理、核心公式、关键争论、跟踪指标和证伪条件放在最前面。完整产业链和证据日志放在后面作为底稿。
+
 `earnings-report-analysis` 用于对单份季报、半年报或年报做结构化拆解，重点覆盖：
 
 - 披露核验
@@ -193,6 +217,7 @@ overlay 用于沿上下游和同层级继续挖证据链，不替代主框架。
 - 按 `research-loop` 建立初始 thesis
 - 按 `monitoring-loop` 做持续更新
 - 路由研究框架、选择 overlay，并组织四个研究视角
+- 对产业概念先运行 `industry-concept-analysis`，输出产业地图、公司地图和单票研究交接
 - 输出统一研究包
 - 决定哪些内容进入长期 memory
 
@@ -250,6 +275,14 @@ overlay 用于沿上下游和同层级继续挖证据链，不替代主框架。
 
 当财报足以改变 thesis 时，再把结论并入标准 `research package`。
 
+产业概念研究先输出 `industry-analysis-package`：
+
+- `industry-map`
+- `company-map`
+- `evidence-log`
+
+它用于把概念先压缩成一页版产业地图，再拆成产业链、供需/定价/放量机制、利润池和候选标的，最后把重点公司交给标准 `research package`。
+
 方法论研究使用单独产物：
 
 - `methodology-card.md`
@@ -261,15 +294,16 @@ overlay 用于沿上下游和同层级继续挖证据链，不替代主框架。
 ## Recommended Usage
 
 1. 先在 `data/` 里确认来源类型、时效规则、获取方式。
-2. 在 `research-loop` 的 `define` 后先完成 `route-framework`。
-3. 如有必要，再完成 `select-overlays`，例如 `supply-chain`。
-4. 按选定框架与 overlay 建立首版 thesis。
-5. 由 `agents/research-orchestrator.md` 汇总并输出统一研究包。
-6. 稳定内容写入 `memory/`。
-7. 后续更新走 `loops/monitoring-loop.md`，同时检查框架和 overlay 是否仍成立。
-8. 财报事件先用 `skills/earnings-report-analysis/` 和 `templates/earnings-analysis-package/` 做专项拆解。
-9. 参考 `templates/research-package/` 生成研究包。
-10. 查看 `cases/aapl-2026-04/` 和 `cases/cohr-2026-05/` 作为当前样板。
+2. 如果主题是产业概念，先用 `skills/industry-concept-analysis/` 和 `templates/industry-analysis-package/` 建产业地图。
+3. 如果主题是单票，在 `research-loop` 的 `define` 后先完成 `route-framework`。
+4. 如有必要，再完成 `select-overlays`，例如 `supply-chain`。
+5. 按选定框架与 overlay 建立首版 thesis。
+6. 由 `agents/research-orchestrator.md` 汇总并输出研究包。
+7. 稳定内容写入 `memory/`。
+8. 后续更新走 `loops/monitoring-loop.md`，同时检查框架和 overlay 是否仍成立。
+9. 财报事件先用 `skills/earnings-report-analysis/` 和 `templates/earnings-analysis-package/` 做专项拆解。
+10. 参考 `templates/research-package/` 或 `templates/industry-analysis-package/` 生成研究包。
+11. 查看 `cases/aapl-2026-04/` 和 `cases/cohr-2026-05/` 作为当前样板。
 
 如果研究对象是典型预期差问题，可以额外跑：
 
