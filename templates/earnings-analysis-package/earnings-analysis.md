@@ -64,6 +64,21 @@
 
 {{ cash_flow_analysis }}
 
+## Forward Outlook / Guidance Bridge
+
+| item | analysis |
+| --- | --- |
+| reported_vs_consensus | {{ reported_vs_consensus }} |
+| next_quarter_guidance | {{ next_quarter_guidance }} |
+| full_year_guidance | {{ full_year_guidance }} |
+| implied_bridge | {{ implied_bridge }} |
+| guide_vs_consensus | {{ guide_vs_consensus }} |
+| guidance_drivers | {{ guidance_drivers }} |
+| guidance_quality | {{ guidance_quality }} |
+| estimate_revision_impact | {{ estimate_revision_impact }} |
+| guidance_risks | {{ guidance_risks }} |
+| transcript_QA_delta | {{ transcript_QA_delta }} |
+
 ## Driver Bridge
 
 {{ driver_bridge }}
@@ -100,6 +115,7 @@
 | cash_conversion | {{ cash_conversion_score }} | {{ cash_conversion_rationale }} |
 | balance_sheet_risk | {{ balance_sheet_risk_score }} | {{ balance_sheet_risk_rationale }} |
 | guidance_credibility | {{ guidance_credibility_score }} | {{ guidance_credibility_rationale }} |
+| guidance_market_delta | {{ guidance_market_delta_score }} | {{ guidance_market_delta_rationale }} |
 | peer_relative_quality | {{ peer_relative_quality_score }} | {{ peer_relative_quality_rationale }} |
 | thesis_impact | {{ thesis_impact_score }} | {{ thesis_impact_rationale }} |
 
