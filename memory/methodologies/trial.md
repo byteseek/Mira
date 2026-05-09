@@ -34,3 +34,13 @@
   target_case: `AI high-duration / AI capex`, `banks / real estate`, `cyclical / commodity`, `gold / Treasury-sensitive assets`, and `export chain`
   expected_increment: 把增长、通胀、政策、利率、美元、信用、流动性和风险偏好转成 market pricing 与 macro-to-asset transmission chain，避免宏观分析停留在背景介绍。
   falsification_condition: 如果它不能稳定提升 thesis 的解释力、refresh trigger 和 falsification condition，或经常把公司/行业主导问题误判成宏观主导，就不升级到 `adopted`。
+
+- `etf-listing-analysis`
+  target_case: `new thematic ETF`, `crypto/commodity ETF`, `covered-call/buffer ETF`, and `single-stock/leveraged ETF`
+  expected_increment: 把 ETF 新上市拆成发行意图、结构与可达性、持仓暴露地图、管理/权重机制和上市后跟踪，用于识别真实配置趋势、交易工具需求、资产可达性变化和主题尾声包装。
+  falsification_condition: 如果它不能稳定区分真实新增需求与同类产品迁移，或经常把发行人营销噪音误判成投资信号，就不升级到 `adopted`。
+
+- `etf-listing-discovery`
+  target_case: `monthly US new ETF discovery run`
+  expected_increment: 把交易所、发行人、监管文件、ETF 行业媒体和市场数据统一成结构化新 ETF watchlist，给 ETF 上市分析提供候选池。
+  falsification_condition: 如果经常漏掉交易所已确认的新 ETF，或把 filed/announced/dual listing 误判成 listed，就不升级到 `adopted`。

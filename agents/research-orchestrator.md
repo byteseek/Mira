@@ -14,6 +14,8 @@
 - 当输入是产业、技术、材料、零部件、设备、工艺或供应链概念时，使用 `industry-concept-analysis` 先建立产业地图和候选标的池
 - 当宏观变量可能主导定价时，使用 `macro-economic-analysis` 和 `macro` overlay 判断传导链
 - 在财报事件中使用 `earnings-report-analysis` 组织核心业务、定价/放量、三表联动、同业对比和 thesis impact
+- 在需要查找新 ETF 时使用 `etf-listing-discovery` 输出候选 watchlist
+- 在 ETF 上市事件中使用 `etf-listing-analysis` 组织 T0 产品信号、T1 资金验证、同类 ETF 对比和成分股传导
 - 对弱证据结论进行降级
 - 输出最终 `investment memo`
 - 写明 `stale_after` 与 `must_refresh_if`
@@ -85,6 +87,8 @@
 - financial quality
 - macro and financial conditions
 - earnings report analysis
+- ETF listing discovery
+- ETF listing analysis
 - technical context
 - events and sentiment
 
@@ -162,3 +166,27 @@ overlay 说明见 [skills/equity-research-core/references/overlay-routing.md](/U
 - `tightness_and_profit_pool_ranking`
 - `company_shortlist`
 - `stock_research_handoff`
+
+## ETF Listing Event Rule
+
+当研究触发点是新 ETF 上市、ETF 申请、ETF 产品线扩张或 ETF 资金流异动时，先运行 `etf-listing-analysis`：
+
+1. 登记招募说明书、issuer product page、持仓、指数方法论、上市公告、AUM/flow/volume/spread 和同类 ETF 数据
+2. 输出 `etf-listing-analysis-package`
+3. 先拆 `T0 listing signal`，判断产品为什么现在被发行、面向哪类资金、暴露是否纯粹
+4. 再拆 `T1 follow-through validation`，判断上市后净流入、AUM、成交、价差和同类产品迁移是否验证需求
+5. 判断 ETF 对底层成分股、行业、主题或相邻资产的 read-through
+6. 最终落到 `actionable-theme / flow-watch / liquidity-tool / ignore-noise`
+7. 仅当 ETF 分析指向具体股票或行业链条机会时，才进入标准 `research package` 或单票 `equity-research-core`
+
+## ETF Listing Discovery Rule
+
+当用户要求“查找新上市 ETF”“监控 ETF 新发”“发现某主题 ETF 申请/上市”或没有给定具体 ticker 时，先运行 `etf-listing-discovery`：
+
+1. 明确 `market_scope`、`discovery_window`、`discovery_mode` 和可选 `theme_filter`
+2. 至少覆盖交易所/监管、发行人、ETF 行业媒体三类来源
+3. 输出 `etf-listing-discovery-package/new-etf-watchlist.csv`
+4. 对候选产品区分 `filed / approved / announced / listed / trading`
+5. 标记 duplicate、dual listing、share class conversion 和 mutual fund conversion
+6. 给出 `priority_score` 与 `next_action`
+7. 仅将 `priority_score >= 4`、同主题多发行人集中推出、或 T1 数据快速放量的候选交给 `etf-listing-analysis`
