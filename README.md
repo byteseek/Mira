@@ -35,6 +35,7 @@ Mira 当前支持这些研究动作：
 - 在核心前提变化后重建 thesis，而不是只修补旧结论。
 - 对财报、业绩会、指引和同业财报做专项拆解，判断 `thesis impact`。
 - 判断宏观经济、利率、美元、信用、流动性和风险偏好是否改变资产定价链。
+- 把 `存储`、`CPU`、`GPU`、`ABF`、`HBM`、`CPO`、`液冷`、`先进封装` 这类产业概念拆成产业链、供需瓶颈、利润池和候选标的。
 - 按需监控已有 thesis 的新增信息，区分小更新、风险变化和完整重研触发。
 - 在分析前执行 `framework routing`，识别当前主要定价变量。
 - 在主框架外叠加 `overlay`，例如供应链、宏观、同业验证或后续扩展的渠道检查。
@@ -132,6 +133,24 @@ Mira 当前的主分析能力由 [skills/equity-research-core/](skills/equity-re
 
 overlay 规则见 [skills/equity-research-core/references/overlay-routing.md](skills/equity-research-core/references/overlay-routing.md)，宏观 overlay 说明见 [skills/equity-research-core/references/macro-overlay.md](skills/equity-research-core/references/macro-overlay.md)。
 
+## 产业概念分析
+
+[skills/industry-concept-analysis/](skills/industry-concept-analysis/) 用于在单票研究前，把类似 `存储`、`CPU`、`GPU`、`ABF`、`HBM`、`CPO`、`液冷`、`先进封装` 这样的概念拆成：
+
+- 一页版产业地图
+- 概念边界
+- 产业链地图
+- 上下游供给和需求公司
+- 定价机制
+- 放量机制
+- 紧供需平衡和高溢价环节
+- 利润池排序
+- 候选标的和单票研究交接
+
+阅读顺序上，产业概念报告必须先给 `One-Page Industry Map`，把一句话定义、当前判断、紧缺环节、利润池、股票代理、核心公式、关键争论、跟踪指标和证伪条件放在最前面。完整产业链和证据日志放在后面作为底稿。
+
+它的输出是 `industry-analysis-package`，用于先建立产业认知和公司池，再把重点标的交给 `equity-research-core`。
+
 ## 研究产物
 
 ### Research Package
@@ -175,6 +194,16 @@ overlay 规则见 [skills/equity-research-core/references/overlay-routing.md](sk
 宏观经济专项分析由 [skills/macro-economic-analysis/](skills/macro-economic-analysis/) 承载。它用于拆解增长、通胀、政策、利率、美元、信用、流动性和风险偏好，并判断这些变量是否改变某个资产或主题的投资 thesis。
 
 方法论沉淀见 [memory/methodologies/macro-regime-analysis.md](memory/methodologies/macro-regime-analysis.md)。
+
+### Industry Analysis Package
+
+产业概念研究先输出 `industry-analysis-package`：
+
+- `industry-map`：一页版产业地图 + 完整 diligence 底稿。
+- `company-map`：产业链位置、暴露度、定价权、放量可见度、股票代理质量。
+- `evidence-log`：概念边界、供需、定价、放量和公司映射的来源记录。
+
+模板见 [templates/industry-analysis-package/](templates/industry-analysis-package/)。
 
 ### Methodology Artifacts
 
@@ -222,6 +251,7 @@ ETF 新发发现可先输出一个轻量 `etf-listing-discovery package`：
 当前包括：
 
 - `equity-research-core`：主投资分析 skill，负责统一视角、框架路由和 overlay 选择。
+- `industry-concept-analysis`：产业概念分析 skill，负责概念边界、产业链、供需/定价/放量机制、利润池和候选标的。
 - `earnings-report-analysis`：财报专项 skill，负责财报质量、同业对比和 thesis impact。
 - `macro-economic-analysis`：宏观专项 skill，负责宏观变量、金融条件和资产定价链分析。
 - `etf-listing-discovery`：ETF 新发发现 skill，负责结构化搜索新上市、即将上市、申请中或刚宣布的 ETF。
@@ -251,6 +281,7 @@ ETF 新发发现可先输出一个轻量 `etf-listing-discovery package`：
 [cases/](cases/) 存当前样板案例：
 
 - [cases/aapl-2026-04/](cases/aapl-2026-04/)：标准 research package 示例。
+- [cases/abf-2026-05/](cases/abf-2026-05/)：产业概念分析包示例。
 - [cases/cohr-2026-05/](cases/cohr-2026-05/)：财报事件分析包示例。
 - [cases/etf-discovery-2026-05-09/](cases/etf-discovery-2026-05-09/)：ETF 新发发现示例。
 - [cases/etf-listing-analysis-2026-05-09/](cases/etf-listing-analysis-2026-05-09/)：BUYB / EUV / JOUL ETF 上市分析示例。
@@ -274,6 +305,13 @@ ETF 新发发现可先输出一个轻量 `etf-listing-discovery package`：
 2. 输出 [templates/earnings-analysis-package/](templates/earnings-analysis-package/) 对应的轻量分析包。
 3. 判断 `thesis_impact`。
 4. 仅当财报改变 thesis 或引入新风险时，再更新标准 `research package`。
+
+### 分析产业概念
+
+1. 用 [skills/industry-concept-analysis/](skills/industry-concept-analysis/) 明确概念、市场范围、时间边界和研究重点。
+2. 先输出 `One-Page Industry Map`，快速回答哪里紧、谁受益、买什么代理、什么会错。
+3. 再输出完整产业链、供需、定价、放量、利润池、公司映射和证据日志。
+4. 把候选标的交给 [skills/equity-research-core/](skills/equity-research-core/) 做单票研究，必要时启用 `supply-chain` overlay。
 
 ### 分析宏观驱动
 
@@ -310,6 +348,7 @@ ETF 新发发现可先输出一个轻量 `etf-listing-discovery package`：
 │   └── research-orchestrator.md
 ├── cases/
 │   ├── aapl-2026-04/
+│   ├── abf-2026-05/
 │   ├── cohr-2026-05/
 │   ├── etf-discovery-2026-05-09/
 │   └── etf-listing-analysis-2026-05-09/
@@ -333,12 +372,14 @@ ETF 新发发现可先输出一个轻量 `etf-listing-discovery package`：
 │   ├── earnings-report-analysis/
 │   ├── etf-listing-analysis/
 │   ├── etf-listing-discovery/
+│   ├── industry-concept-analysis/
 │   ├── macro-economic-analysis/
 │   └── equity-research-core/
 └── templates/
     ├── earnings-analysis-package/
     ├── etf-listing-analysis-package/
     ├── etf-listing-discovery-package/
+    ├── industry-analysis-package/
     ├── research-package/
     ├── methodology-card.md
     ├── methodology-queue.csv
@@ -352,9 +393,9 @@ ETF 新发发现可先输出一个轻量 `etf-listing-discovery package`：
 - 当前版本不是自动化抓取平台。
 - 当前版本不是交易执行系统。
 - 当前版本先定义 monitor 职责，不实现完整多 agent 调度系统。
-- 当前版本包含一个单票深度案例和一个财报事件案例，暂不做完整主题篮子。
+- 当前版本包含一个单票深度案例、一个财报事件案例和一个产业概念案例，暂不做完整主题篮子。
 - 当前版本的 memory 只沉淀慢变量，不记录全部日常噪音。
-- 当前版本先支持 `supply-chain` 和 `macro` overlay，不把专题研究路径无限扩张。
+- 当前版本先支持 `supply-chain` 和 `macro` overlay，并支持独立的 `industry-concept-analysis`，不把专题研究路径无限扩张。
 - 当前版本定义 methodology research loop，但不承诺自动联网归档全部方法论来源。
 - 当前版本的方法论验证仍以 case-level follow-through 为主，不提供完整量化回测引擎。
 - 当前版本的方法论搜索仍以手工查询设计和记录为主，尚未接自动 query expansion engine。
@@ -376,6 +417,7 @@ ETF 新发发现可先输出一个轻量 `etf-listing-discovery package`：
 - 增加更多 framework，例如 `cyclical`、`turnaround`、`compounder`。
 - 增加更多 overlay，例如 `channel-check`、`peer-benchmark`。
 - 用真实案例验证 `macro-regime-analysis`，通过后再从 `trial` 升级到 `adopted`。
+- 用更多真实案例验证 `industry-concept-analysis`，例如 GPU、HBM、存储、CPO。
 - 增加方法论评分与案例验证挂钩。
 - 增加方法论 review log 和长期 follow-through 记录。
 - 增加 methodology query expansion 和搜索自动化。
