@@ -17,6 +17,8 @@
 - 叙事是否足以压过静态估值
 - 宏观贴现和行业周期是否主导定价
 
+如果 `macro_sensitivity` 很强，不要直接把它当成主框架。先选 `micro-small`、`mid-cap` 或 `large-mega`，再判断是否启用 `macro` overlay。
+
 ## Required Routing Inputs
 
 至少要对以下维度做定性判断：
@@ -115,3 +117,5 @@
 如果这个框架选错，最可能导致哪类误判。
 
 如果还需要专题研究路径，再继续参考 [overlay-routing.md](overlay-routing.md)。
+
+如果宏观变量可能主导当前定价，优先参考 [macro-overlay.md](macro-overlay.md)，并写明 `macro_weight`。
