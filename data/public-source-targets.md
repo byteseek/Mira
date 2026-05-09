@@ -15,6 +15,7 @@
 | 财务交叉核验 | Yahoo Finance financials、StockAnalysis、MacroTrends | 快速 screening 和趋势核验 |
 | 宏观背景 | FRED、BLS、BEA | 利率、通胀、就业、GDP、行业周期 |
 | 新闻与叙事 | Yahoo Finance news、主流媒体原文、X/YouTube watchlist | 事件发现、情绪和叙事变化 |
+| ETF 新发发现 | 交易所 new listings、issuer launch pages、SEC fund filings、ETF.com launch news | 新上市 ETF 候选、申请状态、产品语境 |
 
 ## Yahoo Finance Targets
 
@@ -41,6 +42,16 @@ Yahoo Finance 适合做公开市场数据入口，但不作为公司原始事实
 - `fred_release_calendar_api`: 给 monitoring loop 生成宏观数据刷新触发。
 - `bls_public_data_api`: 查 CPI、PPI、就业、工资和行业劳动数据。
 - `bea_data_api`: 查 GDP、收入、消费、行业增加值等周期背景。
+
+## ETF Listing Discovery Targets
+
+ETF 新发发现是按需搜索，不是后台批量采集。默认先覆盖：
+
+- 交易所新上市/新发行通知：确认 ticker、exchange、first trade date。
+- 发行人 launch page 和产品页：确认 strategy、fee、holdings、index 或 active mandate。
+- SEC / 本地监管 fund filings：确认 filed、effective、amended、withdrawn 等状态。
+- ETF 行业媒体：用于发现线索和主题语境，必须回到 primary source 确认。
+- 市场数据页：用于上市后 AUM、成交、价差和 T1 watch，不替代上市确认。
 
 ## Usage Rules
 
