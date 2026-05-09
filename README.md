@@ -40,6 +40,28 @@
   - `mira-research`
   - `mira-exec`
 
+## Mira Mode
+
+当用户在这个项目语境里说 `Mira`，默认表示进入项目思考模式，而不是只把它当作普通名称。
+
+`Mira Mode` 的含义：
+
+- 先把问题理解为一个投研任务、方法论任务或监控任务。
+- 先确认时间边界、研究对象、市场范围和已有来源。
+- 默认使用 `research-loop`、`monitoring-loop` 或 `methodology-research-loop` 中最匹配的一条路径。
+- 在正式分析前先做 `framework selection`，必要时再做 `overlay selection`。
+- 输出时分离事实、推断和判断，并写明证据来源、时效边界、刷新条件和失效条件。
+- 不把无来源观点写成结论；证据不足时明确降级。
+
+简写触发约定：
+
+- `Mira, 看一下 X`：按当前上下文判断是首次研究、增量监控还是方法论研究。
+- `Mira, 更新 X`：优先进入 `monitoring-loop`，只处理新增信息和 thesis impact。
+- `Mira, 研究 X`：优先进入 `research-loop`，建立或重建首版研究包。
+- `Mira, 这个方法靠谱吗`：优先进入 `methodology-research-loop`。
+
+如果用户没有给出足够上下文，先补齐最少必要字段，再开始研究；不要把 `Mira` 理解成自动化抓取或后台常驻监控承诺。
+
 ## Repository Layout
 
 ```text
@@ -92,11 +114,14 @@
 ├── skills/
 │   ├── earnings-report-analysis/
 │   │   └── SKILL.md
+│   ├── macro-economic-analysis/
+│   │   └── SKILL.md
 │   └── equity-research-core/
 │       ├── SKILL.md
 │       └── references/
 │           ├── framework-routing.md
 │           ├── large-mega.md
+│           ├── macro-overlay.md
 │           ├── micro-small.md
 │           ├── mid-cap.md
 │           ├── overlay-routing.md
@@ -139,10 +164,11 @@
 - `equity-research-core`
 - `earnings-report-analysis`
 
-`equity-research-core` 在一份研究里统一组织四个视角：
+`equity-research-core` 在一份研究里统一组织五类视角：
 
 - 公司与行业
 - 财务质量
+- 宏观经济与金融条件
 - 技术面上下文
 - 事件与舆情
 
@@ -166,8 +192,11 @@
 当前默认先支持：
 
 - `supply-chain`
+- `macro`
 
 overlay 用于沿上下游和同层级继续挖证据链，不替代主框架。
+
+`macro` overlay 用于判断增长、通胀、政策、利率、美元、信用、流动性和风险偏好是否正在改变目标资产的定价链。它不是固定宏观背景段落；只有当宏观能改变收入、利润率、贴现率、风险溢价、融资条件、仓位或催化剂时，才进入核心结论。
 
 `earnings-report-analysis` 用于对单份季报、半年报或年报做结构化拆解，重点覆盖：
 
@@ -192,7 +221,7 @@ overlay 用于沿上下游和同层级继续挖证据链，不替代主框架。
 - 检查 source metadata
 - 按 `research-loop` 建立初始 thesis
 - 按 `monitoring-loop` 做持续更新
-- 路由研究框架、选择 overlay，并组织四个研究视角
+- 路由研究框架、选择 overlay，并组织五类研究视角
 - 输出统一研究包
 - 决定哪些内容进入长期 memory
 
@@ -262,7 +291,7 @@ overlay 用于沿上下游和同层级继续挖证据链，不替代主框架。
 
 1. 先在 `data/` 里确认来源类型、时效规则、获取方式。
 2. 在 `research-loop` 的 `define` 后先完成 `route-framework`。
-3. 如有必要，再完成 `select-overlays`，例如 `supply-chain`。
+3. 如有必要，再完成 `select-overlays`，例如 `supply-chain` 或 `macro`。
 4. 按选定框架与 overlay 建立首版 thesis。
 5. 由 `agents/research-orchestrator.md` 汇总并输出统一研究包。
 6. 稳定内容写入 `memory/`。
@@ -306,6 +335,7 @@ overlay 用于沿上下游和同层级继续挖证据链，不替代主框架。
 - 继续补强 `earnings-report-analysis` 的行业特定指标
 - 增加更多 framework，例如 `cyclical`、`turnaround`、`compounder`
 - 增加更多 overlay，例如 `channel-check`、`peer-benchmark`
+- 用真实案例验证 `macro-regime-analysis`，通过后再从 `trial` 升级到 `adopted`
 - 增加方法论评分与案例验证挂钩
 - 增加方法论 review log 和长期 follow-through 记录
 - 增加 methodology query expansion 和搜索自动化
