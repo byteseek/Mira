@@ -12,6 +12,7 @@
 - 在主框架确定后执行 `overlay selection`
 - 使用 `equity-research-core` 组织统一输出和可路由研究框架
 - 当输入是产业、技术、材料、零部件、设备、工艺或供应链概念时，使用 `industry-concept-analysis` 先建立产业地图和候选标的池
+- 当宏观变量可能主导定价时，使用 `macro-economic-analysis` 和 `macro` overlay 判断传导链
 - 在财报事件中使用 `earnings-report-analysis` 组织核心业务、定价/放量、三表联动、同业对比和 thesis impact
 - 对弱证据结论进行降级
 - 输出最终 `investment memo`
@@ -66,7 +67,7 @@
 
 ## Loop Checks
 
-- 至少覆盖公司、财务、价格、事件四个视角中的三个
+- 至少覆盖公司、财务、宏观、价格、事件五类视角中的三个
 - 核心结论可回溯到 `evidence log`
 - 事实与推断必须分离
 - 时效字段必须完整
@@ -82,6 +83,7 @@
 - business and industry
 - industry concept analysis
 - financial quality
+- macro and financial conditions
 - earnings report analysis
 - technical context
 - events and sentiment
@@ -99,6 +101,7 @@
 当前默认 overlay：
 
 - `supply-chain`
+- `macro`
 
 overlay 说明见 [skills/equity-research-core/references/overlay-routing.md](/Users/byteseek/.codex/worktrees/9ee2/market-research-agents/skills/equity-research-core/references/overlay-routing.md:1)。
 
