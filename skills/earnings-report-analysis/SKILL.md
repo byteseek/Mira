@@ -99,7 +99,26 @@
 - cash flow：经营现金流、自由现金流、资本开支、回购、分红
 - 三表之间必须互相校验，不能只看利润表。
 
-### 5. Driver Bridge
+### 5. Forward Outlook / Guidance Bridge
+
+财报分析必须把本季度事实和未来 4-8 个季度的预期变化连接起来。不能只写本季度 beat / miss，也不能把管理层指引当作已经验证的事实。
+
+必须覆盖：
+
+- `reported_vs_consensus`：本季度实际收入、利润率、EPS、FCF 或核心 KPI 相对市场预期如何
+- `next_quarter_guidance`：下一季度收入、利润率、EPS、FCF、CapEx 或关键经营指标指引
+- `full_year_guidance`：全年指引是否上调、下调、维持或首次给出
+- `implied_bridge`：按指引倒推，后续季度需要什么增长、利润率、出货、利用率或现金流路径
+- `guide_vs_consensus`：指引相对 consensus 是 beat、miss、inline，还是 consensus 不可得
+- `guidance_drivers`：管理层称指引由价格、量、mix、产能、成本、客户预算、供应链、FX、利率或一次性项目驱动
+- `guidance_quality`：指引是否被订单、backlog、RPO、库存、客户预算、产能、同行财报或历史兑现率支持
+- `estimate_revision_impact`：对 FY1 / FY2 revenue、margin、EPS、FCF、CapEx、net debt 的方向性影响
+- `guidance_risks`：指引最容易失效的假设
+- `transcript_QA_delta`：业绩会 Q&A 是否改变新闻稿表面结论，若 transcript 不可得必须标记 `source_gap`
+
+如果公司不提供正式指引，必须用 prepared remarks、Q&A、订单/产能数据、同行指引和市场预期构建 `soft guidance bridge`，并降低证据强度。
+
+### 6. Driver Bridge
 
 把同比和环比变化拆成经营驱动：
 
@@ -112,7 +131,7 @@
 
 每个驱动必须标记为 `confirmed`、`inferred` 或 `unknown`。
 
-### 6. Durability Test
+### 7. Durability Test
 
 定价和放量必须继续做可持续性测试：
 
@@ -122,7 +141,7 @@
 - 现金流、库存、应收、CapEx 是否支持当前增长叙事
 - 管理层指引是否与实际订单、backlog、产能和同行口径一致
 
-### 7. Peer Earnings Cross-Check
+### 8. Peer Earnings Cross-Check
 
 必须选择至少 1 家竞争对手或最相关同行的同期财报做交叉验证：
 
@@ -138,7 +157,7 @@
 2. 同一产业链位置的替代供应商
 3. 上下游最能验证需求真实性的公司
 
-### 8. Quality Assessment
+### 9. Quality Assessment
 
 对本期质量做分层判断：
 
@@ -158,6 +177,7 @@
 - price volume bridge
 - financial snapshot
 - three-statement analysis
+- forward outlook / guidance bridge
 - driver bridge
 - durability test
 - peer earnings cross-check
@@ -181,6 +201,7 @@
 | cash_conversion | 1-5 | 利润与现金流是否匹配 |
 | balance_sheet_risk | 1-5 | 资产负债表是否支持继续投入 |
 | guidance_credibility | 1-5 | 指引与历史兑现、订单、需求信号是否一致 |
+| guidance_market_delta | -2 to +2 | 指引相对市场预期和估值隐含预期的方向与幅度 |
 | peer_relative_quality | 1-5 | 相对同行的增长、定价、放量和现金流质量 |
 | thesis_impact | -2 to +2 | 对原 thesis 的影响方向和强度 |
 
@@ -199,6 +220,8 @@
 - 管理层解释必须与原文或 transcript 对应，不得转述成已验证事实。
 - 非 GAAP 指标必须同时检查调整项，不能只引用调整后 EPS。
 - 如果使用 agent 计算的同比、环比、margin bridge，必须登记为 `L6` 并写上游来源。
+- 指引、consensus 和 implied bridge 必须区分公司口径、市场预期和 agent 倒推计算。
+- 如果 transcript / Q&A 尚不可得，必须把未来预期分析标记为 `source_gap`，并把 transcript 发布列为刷新触发。
 - 定价权、放量和竞争优劣必须有财务指标、订单/产能信号、管理层原话或同行财报支撑。
 - 同行对比必须登记同行来源，并写明为何该同行可比。
 
@@ -213,6 +236,9 @@
 - 经营现金流连续弱于净利润
 - 资本开支下降支撑短期 FCF，但削弱中长期产能或产品力
 - 指引上调但订单、backlog 或需求信号没有同步支持
+- 维持全年指引但下一季度指引偏弱，导致后半年度隐含爬坡过高
+- 收入或 EPS 指引 beat，但 CapEx、利息、库存、应收或 FCF 明显恶化
+- 业绩会 Q&A 软化了新闻稿中的强指引，但市场只交易 headline
 - 管理层把一次性因素包装成结构性改善
 
 ## Boundaries
