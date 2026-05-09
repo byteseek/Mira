@@ -178,6 +178,21 @@ overlay 规则见 [skills/equity-research-core/references/overlay-routing.md](sk
 
 ### Methodology Artifacts
 
+ETF 上市事件可先输出一个轻量 `etf-listing-analysis package`：
+
+- `etf-listing-analysis`
+- `evidence-log`
+
+当 ETF 分析指向具体股票、行业链条或资产类别机会时，再进入标准 `research package` 或对应单票研究。
+
+ETF 新发发现可先输出一个轻量 `etf-listing-discovery package`：
+
+- `new-etf-watchlist`
+- `discovery-log`
+- `evidence-log`
+
+高优先级候选再进入 `etf-listing-analysis package`。
+
 方法论研究使用单独产物：
 
 - [templates/methodology-card.md](templates/methodology-card.md)
@@ -209,6 +224,8 @@ overlay 规则见 [skills/equity-research-core/references/overlay-routing.md](sk
 - `equity-research-core`：主投资分析 skill，负责统一视角、框架路由和 overlay 选择。
 - `earnings-report-analysis`：财报专项 skill，负责财报质量、同业对比和 thesis impact。
 - `macro-economic-analysis`：宏观专项 skill，负责宏观变量、金融条件和资产定价链分析。
+- `etf-listing-discovery`：ETF 新发发现 skill，负责结构化搜索新上市、即将上市、申请中或刚宣布的 ETF。
+- `etf-listing-analysis`：ETF 上市分析 skill，负责拆解发行意图、暴露地图、管理/权重机制和上市后跟踪。
 
 ### Agent
 
@@ -235,6 +252,8 @@ overlay 规则见 [skills/equity-research-core/references/overlay-routing.md](sk
 
 - [cases/aapl-2026-04/](cases/aapl-2026-04/)：标准 research package 示例。
 - [cases/cohr-2026-05/](cases/cohr-2026-05/)：财报事件分析包示例。
+- [cases/etf-discovery-2026-05-09/](cases/etf-discovery-2026-05-09/)：ETF 新发发现示例。
+- [cases/etf-listing-analysis-2026-05-09/](cases/etf-listing-analysis-2026-05-09/)：BUYB / EUV / JOUL ETF 上市分析示例。
 
 ## 推荐使用路径
 
@@ -263,6 +282,14 @@ overlay 规则见 [skills/equity-research-core/references/overlay-routing.md](sk
 3. 如果宏观变量会改变定价链，在投资分析 loop 中启用 `macro` overlay。
 4. 将稳定方法沉淀到 `memory/methodologies/`，并通过真实案例继续验证。
 
+### 发现和分析新 ETF
+
+1. 用 [skills/etf-listing-discovery/](skills/etf-listing-discovery/) 从交易所、发行人、监管文件、ETF 行业媒体和市场数据中生成候选 watchlist。
+2. 输出 [templates/etf-listing-discovery-package/](templates/etf-listing-discovery-package/) 对应的发现包。
+3. 对高优先级候选，用 [skills/etf-listing-analysis/](skills/etf-listing-analysis/) 拆解发行意图、结构与可达性、持仓暴露地图、管理/权重机制和同类产品语境。
+4. 输出 [templates/etf-listing-analysis-package/](templates/etf-listing-analysis-package/) 对应的上市分析包。
+5. 若 ETF 分析指向具体股票、行业链条或资产类别机会，再进入标准投资分析 loop。
+
 ### 研究方法论
 
 1. 用 [loops/methodology-research-loop.md](loops/methodology-research-loop.md) 明确方法论研究对象。
@@ -283,7 +310,9 @@ overlay 规则见 [skills/equity-research-core/references/overlay-routing.md](sk
 │   └── research-orchestrator.md
 ├── cases/
 │   ├── aapl-2026-04/
-│   └── cohr-2026-05/
+│   ├── cohr-2026-05/
+│   ├── etf-discovery-2026-05-09/
+│   └── etf-listing-analysis-2026-05-09/
 ├── data/
 │   ├── methodology-source-policy.md
 │   ├── public-source-targets.md
@@ -302,10 +331,14 @@ overlay 规则见 [skills/equity-research-core/references/overlay-routing.md](sk
 │   └── skills/
 ├── skills/
 │   ├── earnings-report-analysis/
+│   ├── etf-listing-analysis/
+│   ├── etf-listing-discovery/
 │   ├── macro-economic-analysis/
 │   └── equity-research-core/
 └── templates/
     ├── earnings-analysis-package/
+    ├── etf-listing-analysis-package/
+    ├── etf-listing-discovery-package/
     ├── research-package/
     ├── methodology-card.md
     ├── methodology-queue.csv
