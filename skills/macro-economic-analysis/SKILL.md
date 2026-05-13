@@ -134,6 +134,34 @@
 
 If no credible transmission chain exists, macro should stay as context and not enter the core thesis.
 
+## Data Release Triage
+
+当用户问单次宏观数据发布，例如 CPI、PPI、PCE、NFP、ISM、retail sales 或 GDP 时，先运行 `macro-data-release-triage`，再决定是否升级为完整 `macro-regime-analysis`。
+
+最低流程：
+
+1. 确认官方发布时间、数据期和修正项。
+2. 比较 headline 与 consensus / market pricing，判断 surprise 是确认还是反转。
+3. 从 headline 拆到核心子项，定位问题来自 level、change、revision、breadth 还是 composition。
+4. 区分一次性噪音与可持续传导，例如能源、食品、工资、租金、运费、库存、信贷或利润率。
+5. 做历史类比，但必须写出相似点、不同点和政策环境差异。
+6. 推演数据继续恶化或转好的上游条件。
+7. 映射到资产传导链、市场已计价路径、`stale_after` 和 `must_refresh_if`。
+
+输出字段：
+
+- `release_context`
+- `headline_surprise`
+- `component_problem`
+- `historical_analogue`
+- `upstream_conditions`
+- `market_pricing`
+- `asset_transmission`
+- `what_is_already_priced`
+- `must_refresh_if`
+
+相关方法卡：`memory/methodologies/macro-data-release-triage.md`。
+
 ## Output Requirements
 
 For a standalone macro note, output:
