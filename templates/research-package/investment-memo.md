@@ -28,6 +28,10 @@
 
 {{ key_debate }}
 
+## Evidence Quality
+
+{{ evidence_quality }}
+
 ## Framework Mismatch Risk
 
 {{ framework_mismatch_risk }}

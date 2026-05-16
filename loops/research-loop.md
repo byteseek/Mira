@@ -67,6 +67,26 @@
 
 如果处于 `industry-concept` 分支，来源至少覆盖公司披露/IR、行业或官方材料、专业研究和市场数据，不能只依赖主题文章或二手产业图。
 
+### `classify-claims`
+
+把已收集来源中会被用于研究结论的具体信息拆成 claim，并按 [../data/claim-taxonomy.md](../data/claim-taxonomy.md) 标注：
+
+- `claim_type`
+- `claim_text`
+- `source_speaker`
+- `verification_status`
+- `as_of_date`
+- `confidence`
+
+必须特别区分：
+
+- 事实 vs 观点
+- 承诺 vs 预测
+- 指引 vs 长期目标
+- 假设 vs 结论
+- 弱信号 vs 可用证据
+- 价格反应 vs 基本面验证
+
 ### `scan`
 
 从公司、财务、技术面、事件四个统一视角快速建立初判，但要按已选框架调整权重，并用 overlay 补充验证关键传导链。
@@ -138,7 +158,7 @@
 
 - 核心结论已有足够来源支撑
 - `research package` 已生成
-- 事实与推断已分离
+- 事实、公司口径、承诺、指引、预测、假设、观点和市场定价已分离
 - 已写出后续刷新条件
 - 已完成框架选择并说明适配原因
 - 如启用 overlay，已写明其增量价值

@@ -153,6 +153,7 @@ overlay 选择规则见：
 - events and sentiment
 - overlays
 - fact vs inference
+- claim classification notes
 
 ## Boundaries
 
@@ -166,7 +167,8 @@ overlay 选择规则见：
 ## Quality Bar
 
 - 核心结论必须可回溯到来源
-- 事实与推断必须显式区分
+- 事实、公司口径、承诺、指引、目标、预测、假设、观点和市场定价必须显式区分
+- evidence log 必须记录 `claim_type`、`claim_text`、`source_speaker` 和 `verification_status`
 - 每份 memo 必须有时效边界
 - 至少覆盖公司、财务、宏观、价格、事件五类视角中的三个
 - 必须解释为什么当前框架适配这只票

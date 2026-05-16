@@ -20,6 +20,7 @@ Mira 是一个面向 AI agent 和研究使用者的投资研究工作台。
 Mira 用一套明确的系统边界解决这些问题：
 
 - 用 `source metadata` 和 `evidence log` 记录来源、时间、可信度和使用位置。
+- 用 `claim classification` 区分事实、公司口径、承诺、指引、目标、预测、假设、观点、市场定价和弱信号。
 - 用 `research package` 固化投资 memo、证据表和案例 notes。
 - 用 `framework routing` 先判断定价机制，再决定分析权重。
 - 用 `overlay` 在主框架外叠加高价值专题研究路径。
@@ -40,6 +41,7 @@ Mira 当前支持这些研究动作：
 - 在分析前执行 `framework routing`，识别当前主要定价变量。
 - 在主框架外叠加 `overlay`，例如供应链、宏观、同业验证或后续扩展的渠道检查。
 - 对预期差问题使用 `variant perception checklist`，明确市场共识、错价变量和证伪条件。
+- 对进入正式结论的信息做 `claim classification`，避免把观点、承诺、预测、假设或价格反应误写成事实。
 - 研究投资研究方法本身，把方法放入 `todo / trial / adopted / retired`。
 - 把稳定结论写入 wiki-style `memory`，避免每轮研究从零开始。
 
@@ -47,6 +49,7 @@ Mira 当前支持这些研究动作：
 
 - 研究过程必须可追溯到来源，不接受无来源结论。
 - 事实、推断、判断必须分层书写。
+- 每条核心信息必须说明它是事实、公司口径、承诺、指引、目标、预测、假设、观点、市场定价还是弱信号。
 - 本地材料、网页材料、市场数据、宏观数据和派生分析使用同一套来源协议。
 - 每份研究包必须明确时效边界、刷新条件和证伪条件。
 - `skills` 负责分析能力，`agents` 负责研究组织，不混用概念。
@@ -170,6 +173,29 @@ overlay 规则见 [skills/equity-research-core/references/overlay-routing.md](sk
 - `overlay_basis`
 
 模板见 [templates/research-package/](templates/research-package/)。
+
+### Claim Classification
+
+Mira 的 evidence log 不只记录来源，还记录每条被使用信息的性质。
+
+`claim_type` 规则见 [data/claim-taxonomy.md](data/claim-taxonomy.md)。核心分类包括：
+
+- `fact`
+- `reported_metric`
+- `company_claim`
+- `guidance`
+- `target`
+- `commitment`
+- `forecast`
+- `assumption`
+- `interpretation`
+- `opinion`
+- `market_pricing`
+- `sentiment`
+- `rumor_signal`
+- `derived_calculation`
+
+这是一层 LLM-native research workflow：LLM 负责把长文本拆成 claim、分类、标注 speaker 和 verification status；研究者负责复核关键 claim 是否足以支撑 memo 结论。
 
 ### Earnings Analysis Package
 
@@ -419,6 +445,7 @@ ETF 新发发现可先输出一个轻量 `etf-listing-discovery package`：
 - 用真实案例验证 `macro-regime-analysis`，通过后再从 `trial` 升级到 `adopted`。
 - 用更多真实案例验证 `industry-concept-analysis`，例如 GPU、HBM、存储、CPO。
 - 增加方法论评分与案例验证挂钩。
+- 用真实案例验证 `llm-claim-classification`，通过后再从 `trial` 升级到 `adopted`。
 - 增加方法论 review log 和长期 follow-through 记录。
 - 增加 methodology query expansion 和搜索自动化。
 - 拆分 `equity-research-core` 为独立主题 skills。

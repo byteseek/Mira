@@ -15,6 +15,11 @@
 
 ## Current Items
 
+- `llm-claim-classification`
+  target_case: `earnings package`, `standard equity research package`, and `monitoring update`
+  expected_increment: 把来源中的具体信息拆成事实、公司口径、承诺、指引、目标、预测、假设、观点、市场定价和弱信号，减少把不同性质信息混写成结论。
+  falsification_condition: 如果 claim 分类不能改善 evidence quality、refresh trigger 和 fact-vs-inference 边界，或显著拖慢研究流程，就不升级到 `adopted`。
+
 - `channel-check-scuttlebutt`
   target_case: `AAPL-like large-mega with supply-chain overlay` and `customer-concentrated micro-small`
   expected_increment: 用一线渠道、客户、供应商和竞品反馈去验证需求、库存、切换成本和竞争位置，而不是只看公司口径。

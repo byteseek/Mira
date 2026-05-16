@@ -1,2 +1,2 @@
-source_id,claim_or_metric,source_level,source_date,as_of_date,url_or_path,used_for,confidence,notes
-{{ source_id }},{{ claim_or_metric }},{{ source_level }},{{ source_date }},{{ as_of_date }},{{ url_or_path }},{{ used_for }},{{ confidence }},{{ notes }}
+source_id,claim_area,claim_type,claim_text,source_speaker,verification_status,source_level,source_date,as_of_date,url_or_path,used_for,confidence,notes
+{{ source_id }},{{ claim_area }},{{ claim_type }},{{ claim_text }},{{ source_speaker }},{{ verification_status }},{{ source_level }},{{ source_date }},{{ as_of_date }},{{ url_or_path }},{{ used_for }},{{ confidence }},{{ notes }}

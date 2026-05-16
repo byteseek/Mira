@@ -42,6 +42,10 @@
 
 {{ fact_vs_inference }}
 
+## Claim Classification Notes
+
+{{ claim_classification_notes }}
+
 ## Open Questions
 
 {{ open_questions }}

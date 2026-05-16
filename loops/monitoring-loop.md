@@ -48,6 +48,17 @@
 
 对低价值、重复、无日期、无来源的信息降噪，并按 `credibility_level`、`content_type`、`research_role` 做分层。
 
+### `classify-incremental-claims`
+
+把有效增量拆成 claim，并按 [../data/claim-taxonomy.md](../data/claim-taxonomy.md) 标注 `claim_type`、`source_speaker` 和 `verification_status`。
+
+监控时必须回答：
+
+- 新信息是事实、公司口径、承诺、指引、预测、假设、观点、弱信号，还是市场定价？
+- 它是验证旧 thesis、削弱旧 thesis、替代旧假设，还是只是噪音？
+- 它是否改变了旧 evidence log 中某条 claim 的 `verification_status`？
+- 它是否触发 `stale_after`、`must_refresh_if` 或完整重研？
+
 ### `write-monitor-log`
 
 把有效增量写入当期监控记录。
@@ -65,6 +76,8 @@
 
 - 财报、指引、重大公告改变核心判断
 - 原 thesis 的关键证据被削弱
+- 原 thesis 的关键承诺没有兑现，或公司口径与已验证事实出现冲突
+- 原本只是 `assumption`、`forecast` 或 `company_claim` 的关键输入被新证据证实或证伪
 - 重大事件改变公司、行业或估值叙事
 - 长期跟踪指标连续恶化
 - 标的的主导定价变量发生变化，导致原框架可能失效
@@ -79,6 +92,7 @@
 - `sellside_research` 先做 `scan -> recommend -> approve -> ingest`，不默认自动购买。
 - `social_and_community` 默认作为 `signal`，除非其内容具备明确证据链和可验证逻辑。
 - `rumor` 与 `blocked` 内容不进入正式 monitoring 结论。
+- `market_pricing` 可用于判断市场反应和预期变化，但不能替代基本面 claim。
 
 ## Output
 
