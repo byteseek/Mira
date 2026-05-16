@@ -2,6 +2,8 @@
 
 所有进入正式研究包的来源，都必须登记为一个 source record。
 
+`source record` 只回答“信息从哪里来”。进入具体研究包时，还必须在 `evidence-log.csv` 里把被使用的具体信息登记为 `claim record`，回答“这条信息本质上是什么”。claim 分类规则见 [claim-taxonomy.md](claim-taxonomy.md)。
+
 ## Required Fields
 
 | field | required | description |
@@ -33,6 +35,24 @@
 | `notes` | 对数据质量、滞后性、使用限制的说明 |
 | `coverage` | 该来源覆盖的公司、市场、时间范围 |
 | `upstream_sources` | 如果该来源是解读或派生内容，记录其上游来源 |
+
+## Claim Record Fields
+
+每条进入案例 `evidence-log.csv` 的具体信息，至少应包含以下字段：
+
+| field | required | description |
+| --- | --- | --- |
+| `source_id` | yes | 指向 source record |
+| `claim_area` | yes | 该信息支撑的研究区域，例如 `business_model` / `guidance` / `pricing` |
+| `claim_type` | yes | 见 [claim-taxonomy.md](claim-taxonomy.md) |
+| `claim_text` | yes | 被使用的信息，尽量压缩成一句可核验 claim |
+| `source_speaker` | yes | `company` / `management` / `regulator` / `sellside` / `market` / `mira` 等 |
+| `verification_status` | yes | `verified` / `disclosed` / `claimed` / `estimated` / `modeled` / `unverified` / `contradicted` |
+| `as_of_date` | yes | claim 的数据或信息时点 |
+| `confidence` | yes | `high` / `medium` / `low` |
+| `used_by_agent` | yes | 使用该 claim 的 agent |
+| `used_by_skill` | yes | 使用该 claim 的 skill |
+| `notes` | yes | 口径、限制、上游来源或刷新条件 |
 
 ## Authority Levels
 
@@ -70,6 +90,8 @@
 
 ## Content Types
 
+`content_type` 是 source-level 粗分类，不替代 case-level `claim_type`。
+
 - `fact`：直接事实。
 - `evidence`：可支撑判断的证据。
 - `logic`：可复核的推理链。
@@ -87,6 +109,7 @@
 ## Validation Rules
 
 - 没有 `source_id` 的材料不能进入 `evidence log`。
+- 没有 `claim_type`、`claim_text`、`source_speaker` 和 `verification_status` 的材料不能支撑 durable conclusion。
 - `L6` 必须指向至少一个上游 `L1` 到 `L5` 来源。
 - `web_search`、`web_read`、`public_api` 来源与 `repo_local` 来源字段完全一致，不另开口径。
 - `web_read` 表示已知 URL 的按需读取和解析；`web_search` 表示先通过搜索发现网页再读取。
@@ -95,4 +118,5 @@
 - 没有 `last_checked_date` 的来源不能支撑正式结论。
 - `social_and_community` 默认不能是 `primary`。
 - `rumor` 默认必须标记为 `blocked`。
+- `rumor_signal`、`sentiment`、`opinion`、`assumption` 和未核验 `company_claim` 默认只能作为线索、假设或解释，不能单独支撑核心结论。
 - `paid` 来源不能自动获取，应先经过购买建议或人工确认。

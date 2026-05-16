@@ -218,6 +218,8 @@
 - 核心财务数字必须来自 `L1`。
 - 市场预期和股价反应可以来自 `L5`，但必须写明时间戳。
 - 管理层解释必须与原文或 transcript 对应，不得转述成已验证事实。
+- 每条进入 evidence log 的信息都必须保留 `claim_type`、`claim_text`、`source_speaker` 和 `verification_status`。
+- 财务事实、管理层口径、正式指引、长期目标、外部 consensus、市场反应和 Mira 倒推计算必须分开标注。
 - 非 GAAP 指标必须同时检查调整项，不能只引用调整后 EPS。
 - 如果使用 agent 计算的同比、环比、margin bridge，必须登记为 `L6` 并写上游来源。
 - 指引、consensus 和 implied bridge 必须区分公司口径、市场预期和 agent 倒推计算。

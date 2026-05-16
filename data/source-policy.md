@@ -45,6 +45,20 @@
 - `sentiment` 适合观察叙事变化，不直接支撑核心 thesis。
 - `rumor` 只可用于线索发现和 alpha 暴露监控。若写入正式 memo，必须放在单独的 `Alpha Signals / Rumor Watch` 区域，并标记为未确认，不能混入事实、核心结论或已验证催化剂。
 
+## Claim-Type Rules
+
+来源可信度不等于 claim 可信度。每条进入 `evidence-log.csv` 的具体信息，都必须按 [claim-taxonomy.md](claim-taxonomy.md) 标注 `claim_type`、`claim_text`、`source_speaker` 和 `verification_status`。
+
+- `fact`、`reported_metric` 和经核验的 `commitment` 可以支撑事实层结论。
+- `guidance` 可以支撑预期分析，但必须与历史兑现、订单、产能、现金流或同行数据交叉验证。
+- `company_claim` 必须保留为公司口径，不能改写成已验证事实。
+- `target` 是长期目标或战略意图，不能直接当作短期指引。
+- `forecast` 是外部或内部预测，不是事实。
+- `assumption` 必须在 memo 中保留假设身份，不能被写成结论。
+- `interpretation` 必须写出证据链和至少一个可替代解释。
+- `market_pricing` 只说明市场如何定价，不说明基本面已经兑现。
+- `sentiment` 和 `rumor_signal` 只能触发研究或监控，默认不得支撑核心结论。
+
 ## Usage Rules
 
 ### Facts
@@ -107,6 +121,7 @@
 - 至少一个 `L5` 来源支撑价格或市场背景
 - 如果写事件催化剂，至少一个 `L4` 或 `L1` 来源支撑
 - 如果出现推断或情景分析，必须写明其上游来源
+- 如果使用公司说法、管理层承诺、正式指引、长期目标、外部预测或 Mira 假设，必须在 evidence log 中保留对应 `claim_type`
 - 如果使用 `sellside_research` 或 `social_and_community`，应明确其 `research_role`
 - 如果使用 `social_signal` 或 `unverified_rumor`，必须放入 evidence log，并在 memo 中降级展示为 alpha signal，不能写成事实。
 
@@ -119,4 +134,6 @@
 - 把 X、短视频、匿名论坛帖子直接写成核心事实
 - 把 `social_signal` 或 `unverified_rumor` 写入 `Core Conclusion`、`Bull Case` 或 `Bear Case` 时不做显式降级标记
 - 把观点型来源当作原始证据引用
+- 把公司目标、管理层承诺、sell-side 预测或 Mira 假设写成已验证事实
+- 用价格反应替代基本面验证
 - 在未确认购买前假设付费研报已可用
