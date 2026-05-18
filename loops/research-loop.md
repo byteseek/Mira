@@ -26,6 +26,21 @@
 
 明确主题、问题、时间边界和首版输出目标。
 
+### `route-analysis`
+
+先运行 `analysis-routing`，明确：
+
+- `task_mode`
+- `research_object`
+- `market_scope`
+- `time_boundary`
+- `primary_skill_or_loop`
+- `routing_basis`
+- `routing_mismatch_risk`
+- `expected_output_package`
+
+如果总路由显示任务应进入 `earnings_event`、`monitoring_update`、`methodology_review`、`macro_asset_or_regime` 或 `etf_or_product_listing`，不要继续强行走普通单票 research loop。
+
 如果主题是 `存储`、`CPU`、`GPU`、`ABF`、`HBM`、`CPO`、`液冷`、`先进封装` 这类产业概念，先进入 `industry-concept` 分支。
 
 ### `industry-concept`
@@ -47,10 +62,17 @@
 
 ### `route-framework`
 
-判断该标的当前的 `pricing regime`，选择研究框架，并记录：
+仅当 `research_object = single_equity` 时进入本步骤。
+
+先判断研究结论的 `thesis_horizon`，再判断该标的当前的 `pricing regime`，选择研究框架，并记录：
+
+- `horizon_bucket`
+- `horizon_basis`
+- `horizon_mismatch_risk`
 
 - `selected_framework`
 - `framework_basis`
+- `secondary_regime`
 - `why_not_other_framework`
 
 ### `select-overlays`
@@ -60,6 +82,12 @@
 - `selected_overlays`
 - `overlay_basis`
 - `expected_incremental_insight`
+
+如果研究问题本质是预期差，还要判断是否启用 `variant-perception` lens，并记录：
+
+- `selected_lenses`
+- `lens_basis`
+- `what_it_forces_us_to_check`
 
 ### `collect`
 
@@ -118,11 +146,20 @@
 
 并显式写入：
 
+- `task_mode`
+- `research_object`
+- `routing_basis`
+- `routing_mismatch_risk`
+- `horizon_bucket`
+- `horizon_basis`
+- `horizon_mismatch_risk`
 - `selected_framework`
 - `framework_basis`
 - `framework_mismatch_risk`
 - `selected_overlays`
 - `overlay_basis`
+- `selected_lenses`
+- `lens_basis`
 
 如果处于 `industry-concept` 分支，则输出 `industry-analysis-package`：
 
@@ -140,6 +177,7 @@
 - `research package` 已生成
 - 事实与推断已分离
 - 已写出后续刷新条件
+- 已完成总分析路由并说明为什么进入当前 loop / skill
 - 已完成框架选择并说明适配原因
 - 如启用 overlay，已写明其增量价值
 - 如果是产业概念研究，已完成概念边界、产业链地图、供需/定价/放量机制、利润池排序和单票研究交接

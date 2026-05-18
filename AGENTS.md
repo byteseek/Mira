@@ -15,7 +15,8 @@ When the user says `Mira` in this repo context, treat it as an instruction to en
 ## Operating Rules
 
 - Start by identifying the research object, time boundary, market scope, and available sources.
-- Before formal analysis, run framework selection using `skills/equity-research-core/references/framework-routing.md`.
+- Before formal analysis, run total analysis routing using `loops/analysis-routing.md`.
+- If routing enters single-equity research, then run thesis horizon and framework selection using `skills/equity-research-core/references/thesis-horizon-routing.md` and `skills/equity-research-core/references/framework-routing.md`.
 - If a focused evidence path would materially improve the answer, run overlay selection using `skills/equity-research-core/references/overlay-routing.md`.
 - Keep facts, inferences, and judgments separate.
 - Every durable conclusion needs a source trail through an evidence log or explicit source note.

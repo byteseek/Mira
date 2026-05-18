@@ -2,6 +2,8 @@
 
 这个 skill 用于对单家公司的一份季报、半年报或年报做结构化分析。它服务于 `research package`，但输出重点从完整投资 memo 收窄到财报质量、经营变化和预期差。
 
+默认时间跨度是 `near_term_execution` 到 `medium_term_revision`。只有当本期财报证据触及长期驱动变量，并且被订单、客户、产能、现金流、同行或产业链证据支持时，才允许把结论升级为 `long_term_thesis` 或 `regime_transition`。
+
 ## Use When
 
 - 需要快速拆解一份新发布的财报
@@ -212,6 +214,29 @@
 - `0`：与原 thesis 基本一致，信息增量有限
 - `-1`：出现可解释但需要跟踪的瑕疵
 - `-2`：核心 thesis 被削弱，或财务质量显著恶化
+
+## Earnings-To-Thesis Bridge
+
+财报分析必须明确本期证据能影响哪一层 thesis：
+
+- `near_term_execution`
+  本期实际、下一季指引、短期催化剂和价格反应。
+- `medium_term_revision`
+  FY1 / FY2 收入、利润率、EPS、FCF、CapEx、net debt 或估值锚修正。
+- `long_term_thesis`
+  一年以上的产业趋势、竞争位置、技术路径、利润池、商业模式或资本配置。
+- `regime_transition`
+  短期财报信号正在改变长期 thesis，或长期 thesis 正在被短期证据证伪。
+
+如果把财报影响升级到 `long_term_thesis` 或 `regime_transition`，必须写明：
+
+- 触及的长期变量是什么
+- 哪些财报数字和管理层口径支持它
+- 哪些外部证据链支持它
+- 为什么它不是 one-off
+- 后续哪些披露会证伪这个外推
+
+如果证据不足，必须把长期影响降级为 watch item。
 
 ## Evidence Rules
 

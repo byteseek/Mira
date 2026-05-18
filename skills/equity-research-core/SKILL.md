@@ -13,13 +13,25 @@
 这个 skill 现在采用：
 
 - 一个统一输出骨架
+- 一个 upstream analysis router
+- 一个 thesis horizon router
 - 一个 framework router
 - 一个 overlay selector
 - 多个可切换研究框架
 
-也就是说，输出仍然统一，但研究顺序、证据权重和结论重心会随标的的定价主导变量变化。
+也就是说，输出仍然统一，但研究顺序、证据权重和结论重心会随时间跨度和标的的定价主导变量变化。
 
 在主框架之外，还允许叠加专题 `overlay`，用于补充特定研究路径。
+
+## Upstream Analysis Routing
+
+进入本 skill 前，应先通过总路由确认任务确实是 `single_equity`。
+
+总路由见：
+
+- [../../loops/analysis-routing.md](../../loops/analysis-routing.md)
+
+如果任务本质是财报事件、产业概念、宏观 regime、ETF 产品或方法论研究，应优先进入对应 loop / skill，再决定是否 handoff 到单票研究。
 
 ## Use When
 
@@ -27,6 +39,7 @@
 - 需要把多源数据整理成一个可追溯的研究包
 - 需要在同一份输出里同时包含公司、财务、宏观、价格、事件等视角
 - 需要根据标的特征切换研究框架，而不是默认用同一套分析权重
+- 需要区分财报/短中期执行判断和一年以上的长期公司或产业 thesis
 - 已通过 `industry-concept-analysis` 识别出某个产业概念中的候选标的，需要进入单票研究
 
 ## Required Inputs
@@ -42,9 +55,31 @@
 - `overlay_hint`
   可选，用户已有明确研究视角时使用
 
+## Thesis Horizon Routing
+
+在正式分析前，必须先完成 `thesis horizon selection`。
+
+默认不要把最新财报、未来几个季度盈利修正和长期产业趋势写成同一种结论。先判断：
+
+- `thesis_horizon`
+- `horizon_bucket`
+- `horizon_basis`
+- `horizon_mismatch_risk`
+
+时间跨度选择规则见：
+
+- [references/thesis-horizon-routing.md](references/thesis-horizon-routing.md)
+
+当前默认支持四种 horizon bucket：
+
+- `near_term_execution`
+- `medium_term_revision`
+- `long_term_thesis`
+- `regime_transition`
+
 ## Framework Routing
 
-在正式分析前，必须先完成 `framework selection`。
+完成 `thesis horizon selection` 后，必须继续完成 `framework selection`。
 
 默认不要只按市值机械分类，而要优先判断：
 
@@ -117,11 +152,20 @@ overlay 选择规则见：
 
 研究包里必须显式写明：
 
+- `task_mode`
+- `research_object`
+- `routing_basis`
+- `routing_mismatch_risk`
+- `horizon_bucket`
+- `horizon_basis`
+- `horizon_mismatch_risk`
 - `selected_framework`
 - `framework_basis`
 - `framework_mismatch_risk`
 - `selected_overlays`
 - `overlay_basis`
+- `selected_lenses`
+- `lens_basis`
 
 如果研究问题明显属于“预期差判断”，建议额外使用：
 
@@ -149,6 +193,7 @@ overlay 选择规则见：
 
 - 它只定义研究组织方式，不承诺自动抓取。
 - 它不把每个框架拆成完全独立的报告系统。
+- 它不是 Mira 的总入口路由；总入口由 `loops/analysis-routing.md` 处理。
 - 它不负责从零解释产业概念；如果输入是 `GPU`、`ABF`、`HBM`、`存储` 这类概念，先使用 `industry-concept-analysis`。
 - 它允许写技术面和事件面，但它们服务于 thesis，不单独形成交易系统。
 - 它不允许跳过 framework selection 直接套模板。
@@ -159,6 +204,7 @@ overlay 选择规则见：
 - 核心结论必须可回溯到来源
 - 事实与推断必须显式区分
 - 每份 memo 必须有时效边界
+- 必须说明结论对应的时间跨度，且不能把短期财报信号自动外推成长期 thesis
 - 至少覆盖公司、财务、宏观、价格、事件五类视角中的三个
 - 必须解释为什么当前框架适配这只票
 - 必须指出如果框架错配，最可能错在哪里

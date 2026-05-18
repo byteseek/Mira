@@ -1,6 +1,6 @@
 # Methodology Queue: Trial
 
-- last_updated: 2026-05-09
+- last_updated: 2026-05-18
 
 ## Purpose
 
@@ -44,3 +44,13 @@
   target_case: `monthly US new ETF discovery run`
   expected_increment: 把交易所、发行人、监管文件、ETF 行业媒体和市场数据统一成结构化新 ETF watchlist，给 ETF 上市分析提供候选池。
   falsification_condition: 如果经常漏掉交易所已确认的新 ETF，或把 filed/announced/dual listing 误判成 listed，就不升级到 `adopted`。
+
+- `thesis-horizon-routing`
+  target_case: `3-5 earnings cases` and `2 first-coverage company cases`
+  expected_increment: 强制区分短期财报影响、FY1/FY2 盈利修正、一年以上长期 thesis 和短期证据触发的 regime transition，避免把单季财报自动外推成长逻辑。
+  falsification_condition: 如果它只增加模板字段，不能改善证据权重、thesis impact、refresh trigger 和 falsification condition，就不升级到 `adopted`。
+
+- `analysis-routing`
+  target_case: `single-equity`, `earnings-event`, `industry-concept`, `macro-regime`, `ETF`, and `methodology` requests
+  expected_increment: 先判断任务入口、研究对象、时间边界、应使用的 loop / skill 和输出包，避免把所有请求都误塞进单票 framework routing。
+  falsification_condition: 如果它没有减少入口错配，或让简单任务明显变慢，就不升级到 `adopted`。
