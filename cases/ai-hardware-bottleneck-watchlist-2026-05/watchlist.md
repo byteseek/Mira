@@ -12,6 +12,29 @@ This document is a watchlist and classification note, not an investment recommen
 - Semi/edge silicon: optical modules, optical components, compound semiconductor materials, power semiconductor modules, or AI connectivity components where the bottleneck is related to semiconductor or high-speed electronics but the company is not a pure silicon-chip business.
 - Non-silicon bottleneck: PCB, ABF, CCL, glass fiber, copper foil, power equipment, liquid cooling, data-center electrical infrastructure, server assembly, or resources.
 - "Price increase" means product pricing, contract pricing, utilization/mix uplift, or resource-cycle pricing could improve. "Volume ramp" means shipment or backlog growth could be the main driver.
+- `order_linkage` should be assessed separately from `narrative_beta`: a stock can have high theme sensitivity but weak visible order linkage.
+- `theme_beta` names require extra caution. Do not upgrade them to bottleneck names unless customer qualification, backlog, ASP, utilization, or shipment evidence improves.
+
+## Event Overlay: Huawei Tau Scaling / LogicFolding
+
+Date added: 2026-05-25
+
+Event: Huawei announced the Tau (tau) Scaling Law at IEEE ISCAS 2026 and said it expects high-end chips based on this path to reach transistor density equivalent to 14 angstrom / 1.4 nm processes by 2031. Huawei also said its Fall 2026 Kirin chips will be the first to adopt LogicFolding.
+
+Evidence status: official company announcement and conference keynote listing; third-party product teardown, benchmark, density verification, foundry/packaging order evidence, and independent performance validation are still pending.
+
+Investment interpretation:
+
+- Direct read-through: domestic AI chips, foundry, EDA/IP, semiconductor testing, probe cards, advanced packaging, semiconductor equipment, and semiconductor materials.
+- Medium read-through: PCB/ABF/CCL, optical interconnect, power/HVDC, liquid cooling, and AI server integration if the architecture accelerates domestic AI hardware volume.
+- Not yet proven: this is not proof that Huawei has already mass-produced 1.4 nm chips, nor proof that EUV constraints have been commercially bypassed.
+- Validation points: Fall 2026 Kirin launch, third-party teardown and benchmarks, density/performance claims, foundry or OSAT capacity signals, semiconductor equipment/materials orders, and whether LogicFolding migrates from mobile chips to Ascend or other AI compute products.
+
+Watchlist impact:
+
+- Upgrade evidence weight for A-share semiconductor equipment/materials, EDA/IP, testing/probe cards, and advanced packaging names from "generic domestic substitution" to "domestic scaling-path validation" if order evidence appears.
+- Keep most AI chip design names as `high narrative_beta / variable order_linkage` until customer deployments and gross-margin evidence improve.
+- Keep PCB/ABF, optical, power, and liquid cooling in the broader AI hardware bottleneck framework rather than treating them as pure Tau Scaling beneficiaries.
 
 ## US Stocks
 
@@ -37,7 +60,11 @@ This document is a watchlist and classification note, not an investment recommen
 | 标的 | 环节 | 涨价预期/周期 | 放量预期/周期 | 瓶颈属性 | 备注 |
 |---|---|---|---|---|---|
 | 中芯国际、海光信息、寒武纪 | 晶圆代工/国产 AI 芯片 | 弱-中，2026 | 中-强，2026-2027 | 国产算力、晶圆产能、客户验证 | 硅基核心，但涨价弹性不如存储直接 |
-| 江波龙 | 存储模组 | 强，2026H1-H2 | 中-强，2026 | DRAM/NAND 涨价、库存重估、模组需求 | A股存储涨价弹性 |
+| 北方华创、中微公司、拓荆科技、芯源微、华海清科、盛美上海、中科飞测 | 半导体设备/检测量测 | 中，2026-2027 | 中-强，2026-2028 | 刻蚀、薄膜沉积、清洗、CMP、涂胶显影、检测量测 | 韬定律事件强化国产设备叙事；订单、国产线导入和先进封装扩产是关键验证 |
+| 南大光电、安集科技、雅克科技、沪硅产业、华特气体、金宏气体 | 半导体材料 | 中，2026-2027 | 中，2026-2028 | 光刻胶/前驱体、CMP材料、电子特气、硅片、封装材料 | 材料弹性取决于国产制程扩产和客户认证，不宜只按概念交易 |
+| 华大九天、概伦电子、广立微、芯原股份 | EDA/IP/设计基础设施 | 弱-中，持续 | 中，2026-2028 | EDA、验证、良率分析、IP授权、设计服务 | 与软件/架构/芯片协同更相关；不是典型涨价票，偏长期国产替代 |
+| 长电科技、通富微电、华天科技、甬矽电子、颀中科技、利扬芯片 | 封测/先进封装/测试服务 | 中，2026 | 中-强，2026-2027 | Chiplet、SiP、先进封装、封测产能、测试服务 | 后摩尔和AI芯片复杂度提升的直接链条；需跟踪高端封装占比和客户结构 |
+| 江波龙、兆易创新、北京君正、东芯股份、普冉股份、聚辰股份、佰维存储、德明利、香农芯创 | 存储/模组/利基存储/分销 | 强，2026H1-H2 | 中-强，2026 | DRAM/NAND 涨价、库存重估、模组需求、利基存储周期 | A股存储涨价弹性；多数不是纯HBM，不应等同于三星/SK海力士主线 |
 | 长川科技、华峰测控、矽电股份、燕麦科技 | 测试设备/探针卡 | 中，2026 | 强，2026-2027 | 测试平台、探针卡、国产替代 | HBM/AI 芯片后道瓶颈 |
 | 中际旭创、新易盛、天孚通信、源杰科技、光迅科技、剑桥科技、华工科技 | 光模块/光器件/激光芯片 | 中-强，2026 | 强，2026-2027 | 800G/1.6T、激光器、光器件 | 光互联主线；源杰科技偏 InP |
 | 长飞光纤、亨通光电、中天科技 | 光纤/线缆/连接 | 中，2026 | 中，2026-2027 | 光纤、线缆、数据中心连接 | 偏材料和网络基础设施 |
@@ -76,16 +103,31 @@ This document is a watchlist and classification note, not an investment recommen
 | 存储涨价 | MU, SNDK, 三星电子, SK 海力士, 江波龙, STX, WDC |
 | 光互联 | AVGO, MRVL, CRDO, ALAB, COHR, LITE, 中际旭创, 新易盛, 天孚通信, 源杰科技 |
 | PCB/ABF/材料 | 生益科技, 沪电股份, 胜宏科技, 兴森科技, 欣兴电子, 味之素, 揖斐电, 宏和科技 |
+| 国产半导体设备/材料 | 北方华创, 中微公司, 拓荆科技, 芯源微, 华海清科, 盛美上海, 中科飞测, 南大光电, 安集科技, 雅克科技 |
+| 先进封装/封测 | 长电科技, 通富微电, 华天科技, 甬矽电子, 颀中科技, 利扬芯片, ASE 日月光, BESI |
+| EDA/IP/设计基础设施 | CDNS, SNPS, 华大九天, 概伦电子, 广立微, 芯原股份 |
 | 800V/HVDC/电源 | NVTS, TXN, MPWR, VICR, VRT, 台达电, 麦格米特, 欧陆通 |
 | 电力瓶颈 | GEV, ETN, POWL, Schneider Electric, ABB, Siemens Energy, Hitachi |
 | 测试/设备 | TER, FORM, Advantest, Disco, AMAT, LRCX, KLAC, 长川科技, 华峰测控, 矽电股份 |
+
+## A-Share Evidence Ranking Heuristic
+
+Use this overlay when reviewing domestic names after major policy, Huawei, or domestic semiconductor news.
+
+| Rank | Evidence profile | Typical names / segments | Action |
+|---|---|---|---|
+| A | Visible bottleneck plus price or backlog evidence | PCB/ABF/CCL, optical modules, testing/probe cards, selected equipment | Keep in priority basket; refresh ASP, utilization, backlog, and customer certification |
+| B | Strong volume path but margin/pass-through uncertain | AI servers, network equipment, liquid cooling, power supplies | Track orders and gross margin; avoid assuming revenue growth equals EPS leverage |
+| C | Strategic substitution with long validation cycle | EDA/IP, semiconductor materials, advanced equipment | Track customer adoption, tender wins, process-node penetration, and revenue mix |
+| D | High narrative beta but weak order evidence | Broad Huawei concept, generic chip design, loosely related suppliers | Keep as theme-beta watch only; require evidence before upgrading |
 
 ## Current Working Conclusions
 
 1. The strongest "price increase + volume ramp + bottleneck" overlap is in memory/HBM, HDD enterprise storage, ABF/PCB/T-glass, optical interconnect, 800V/HVDC power, power equipment, and AI/HBM testing.
 2. The purest silicon/semiconductor exposure is in foundry, memory, semiconductor equipment, testing/probe cards, EDA/IP, ASIC/connectivity chips, and AI processors.
-3. Liquid cooling and electrical infrastructure have a longer cycle than memory or optical modules. Their thesis should be refreshed with backlog, customer certification, and data-center power-availability evidence rather than only product announcements.
-4. Resource names can work as price-upcycle trades, but they should be tracked separately from AI hardware bottleneck trades.
+3. Huawei Tau Scaling / LogicFolding raises the narrative value of domestic semiconductor equipment, materials, EDA/IP, testing, and advanced packaging, but it remains an event overlay until product-level validation and order evidence appear.
+4. Liquid cooling and electrical infrastructure have a longer cycle than memory or optical modules. Their thesis should be refreshed with backlog, customer certification, and data-center power-availability evidence rather than only product announcements.
+5. Resource names can work as price-upcycle trades, but they should be tracked separately from AI hardware bottleneck trades.
 
 ## Source Notes
 
@@ -96,6 +138,7 @@ The watchlist classification is based on public company disclosures and public m
 - TrendForce commentary on DRAM/NAND pricing, AI server demand, optical modules, PCB materials, and liquid cooling.
 - Goldman Sachs public research commentary on optical networking as an AI infrastructure trend.
 - Publicly available institutional commentary from Barclays, Morningstar, JPMorgan/BofA-related summaries, and company investor materials where available.
+- Huawei's 2026-05-25 Tau Scaling / LogicFolding announcement and IEEE ISCAS 2026 keynote listing. Treat this as event evidence, not independent product validation.
 
 ## Refresh Policy
 
@@ -109,5 +152,6 @@ must_refresh_if:
 - 800G/1.6T optical module customer orders are cut or ASP pressure accelerates.
 - PCB/ABF/T-glass supply expands faster than expected.
 - Data-center electrical equipment backlog, lead time, or pricing weakens.
+- Huawei Fall 2026 Kirin LogicFolding product claims are confirmed, delayed, or contradicted by third-party teardown/benchmark evidence.
+- Domestic semiconductor equipment, EDA/IP, materials, or advanced packaging names disclose order acceleration, customer qualification, or revenue mix changes tied to domestic AI chips.
 - Company-specific customer certification, qualification, or exclusive-supply claims are confirmed or disproven.
-
