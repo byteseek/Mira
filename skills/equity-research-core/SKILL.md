@@ -188,6 +188,21 @@ overlay 选择规则见：
 - `what changes the price`
 - `what falsifies the view`
 
+如果研究问题明显属于“长期 10x / 100x / multibagger 候选”，建议额外使用：
+
+- [../../templates/long-term-multibagger-checklist.md](../../templates/long-term-multibagger-checklist.md)
+
+这个 checklist 不替代 memo，只用于把长期 thesis 压缩成：
+
+- `target_return_path`
+- `return_path_math`
+- `market_expansion`
+- `right_to_win`
+- `reinvestment_runway`
+- `dilution_risk`
+- `evidence_ladder`
+- `kill_criteria`
+
 ## Required Sections In Case Notes
 
 - business and industry
@@ -221,5 +236,6 @@ overlay 选择规则见：
 - 必须指出如果框架错配，最可能错在哪里
 - 如果启用 overlay，必须解释它补充验证了什么
 - 如果使用 `variant perception`，必须给出可观察的 `consensus proxy` 和 `falsification condition`
+- 如果使用 `long-term-multibagger`，必须给出 `target_return_path`、`implied_cagr`、`evidence_ladder`、`dilution_risk` 和 `kill_criteria`
 - 如果启用 `macro` overlay，必须写明 `macro_weight`、`dominant_macro_chain`、`market_pricing` 和 `macro_refresh_triggers`
 - 如果启用 `strategic-catalyst` overlay，必须写明 `catalyst_status`、`verification_path`、`what_would_confirm` 和 `what_would_disconfirm`

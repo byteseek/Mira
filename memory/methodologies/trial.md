@@ -64,3 +64,8 @@
   target_case: `single-equity`, `earnings-event`, `industry-concept`, `macro-regime`, `ETF`, and `methodology` requests
   expected_increment: 先判断任务入口、研究对象、时间边界、应使用的 loop / skill 和输出包，避免把所有请求都误塞进单票 framework routing。
   falsification_condition: 如果它没有减少入口错配，或让简单任务明显变慢，就不升级到 `adopted`。
+
+- `long-term-multibagger-research`
+  target_case: `2-3 historical 10x/100x or failed-growth cases` and `2 live long-term candidate equities`
+  expected_increment: 把长期倍数股研究从“好公司/大故事”改成目标收益路径、right to win、再投资 runway、稀释/生存性、证据阶梯和 kill criteria 的组合判断。
+  falsification_condition: 如果它不能比普通 `long_term_thesis` 更早暴露失败样本风险，或无法形成明确的 return-path math 与退出条件，就不升级到 `adopted`。

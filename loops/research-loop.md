@@ -136,6 +136,17 @@
 - `what changes the price`
 - `what falsifies the view`
 
+如果研究对象适合做长期 10x / 100x / multibagger 分析，允许在这里插入 `long-term-multibagger checklist`，用于把初判转成：
+
+- `target_return_path`
+- `return_path_math`
+- `market_expansion`
+- `right_to_win`
+- `reinvestment_runway`
+- `dilution_risk`
+- `evidence_ladder`
+- `kill_criteria`
+
 ### `gap-check`
 
 识别缺口、冲突、低可信结论，以及框架错配风险。
@@ -155,6 +166,14 @@
 - 共识代理
 - 证据链
 - 失效条件
+
+如果 `long-term-multibagger` 仍停留在故事层，必须继续补：
+
+- 目标倍数、年限和隐含 CAGR
+- 收入、利润、现金流和估值结果要求
+- 生存性和稀释风险
+- 证据阶梯
+- kill criteria
 
 ### `package`
 
