@@ -18,6 +18,11 @@ When the user says `Mira` in this repo context, treat it as an instruction to en
 
 ## Operating Rules
 
+- At the start of a user session or before a substantive Mira task, check
+  whether the repository has remote updates when network access is available.
+  Use `scripts/check_updates.sh` if present. Do not update automatically; tell
+  the user if the branch is behind and ask whether they want to run
+  `git pull --ff-only`.
 - Start by identifying the research object, time boundary, market scope, and available sources.
 - Before formal analysis, run total analysis routing using `loops/analysis-routing.md`.
 - If routing enters single-equity research, then run thesis horizon and framework selection using `skills/equity-research-core/references/thesis-horizon-routing.md` and `skills/equity-research-core/references/framework-routing.md`.

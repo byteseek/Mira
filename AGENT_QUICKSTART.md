@@ -8,6 +8,27 @@ Mira 也是本项目的唤醒词。完整定义见 [MIRA.md](MIRA.md)：Mira 是
 
 ## 1. Agent 入口
 
+### 使用前检查更新
+
+为了避免使用过期的 loop、skill 或模板，建议每次开始正式任务前先检查本地仓库是否落后于 remote：
+
+```sh
+scripts/check_updates.sh
+```
+
+如果希望在发现 remote 有更新时由脚本直接询问是否更新，可以使用：
+
+```sh
+scripts/check_updates.sh --prompt
+```
+
+原则：
+
+- 检查 remote 可以自动做；更新仓库必须由用户确认。
+- 默认更新命令使用 `git pull --ff-only`，避免自动产生 merge commit。
+- 如果工作区有本地修改，先提交、暂存或确认不需要保留后再更新。
+- 如果暂时离线，可以用 `scripts/check_updates.sh --no-fetch` 只对比本地已有的 remote-tracking refs。
+
 ### Codex
 
 在 Codex 中打开本仓库后，根目录的 [AGENTS.md](AGENTS.md) 会提供默认项目规则，[MIRA.md](MIRA.md) 会定义唤醒词和 memory 边界。

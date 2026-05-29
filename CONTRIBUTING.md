@@ -65,11 +65,14 @@ When adding or changing a skill or loop:
 Run the lightweight repository checks before opening a pull request:
 
 ```sh
+scripts/check_updates.sh --no-fetch
 python3 scripts/validate_repo.py
 ```
 
-The validator checks for open-source governance files, basic case metadata,
-evidence logs, and refresh/disclaimer coverage.
+The update check reports whether the current branch is behind its configured
+upstream, without applying changes. The validator checks for open-source
+governance files, basic case metadata, evidence logs, and refresh/disclaimer
+coverage.
 
 ## Pull Request Checklist
 
@@ -79,4 +82,6 @@ evidence logs, and refresh/disclaimer coverage.
 - [ ] Real-market examples are marked as historical and not investment advice.
 - [ ] No secrets, paid content, private account data, or personal data are
       included.
+- [ ] Remote update status was checked; any update was applied only after user
+      confirmation.
 - [ ] `python3 scripts/validate_repo.py` passes.

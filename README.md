@@ -61,18 +61,27 @@ Mira 当前支持这些研究动作：
 
 最短使用路径：
 
-1. 读 [AGENTS.md](AGENTS.md)，确认 `Mira Mode` 的触发规则和输出要求。
-2. 选择任务类型：
+1. 检查本地仓库是否有 remote 更新：
+   ```sh
+   scripts/check_updates.sh
+   ```
+   如需脚本在发现更新时询问是否执行更新：
+   ```sh
+   scripts/check_updates.sh --prompt
+   ```
+   Mira 不应自动更新仓库；是否执行 `git pull --ff-only` 由用户决定。
+2. 读 [AGENTS.md](AGENTS.md)，确认 `Mira Mode` 的触发规则和输出要求。
+3. 选择任务类型：
    - 首次研究或 thesis 重建：走 [loops/research-loop.md](loops/research-loop.md)。
    - 已有 thesis 更新：走 [loops/monitoring-loop.md](loops/monitoring-loop.md)。
    - 方法论评估：走 [loops/methodology-research-loop.md](loops/methodology-research-loop.md)。
-3. 先运行总路由：[loops/analysis-routing.md](loops/analysis-routing.md)。
-4. 如果进入单票研究，再使用：
+4. 先运行总路由：[loops/analysis-routing.md](loops/analysis-routing.md)。
+5. 如果进入单票研究，再使用：
    - [skills/equity-research-core/references/thesis-horizon-routing.md](skills/equity-research-core/references/thesis-horizon-routing.md)
    - [skills/equity-research-core/references/framework-routing.md](skills/equity-research-core/references/framework-routing.md)
    - [skills/equity-research-core/references/overlay-routing.md](skills/equity-research-core/references/overlay-routing.md)
-5. 从 [templates/](templates/) 复制对应研究包结构，输出 memo、evidence log 和 notes。
-6. 对照 [examples/README.md](examples/README.md) 选择一个历史案例，检查最终产物长什么样。
+6. 从 [templates/](templates/) 复制对应研究包结构，输出 memo、evidence log 和 notes。
+7. 对照 [examples/README.md](examples/README.md) 选择一个历史案例，检查最终产物长什么样。
 
 典型 prompt：
 
@@ -86,6 +95,12 @@ Mira, 研究 AAPL。市场范围 US，时间边界截至 2026-04-14。
 
 ```sh
 python3 scripts/validate_repo.py
+```
+
+remote 更新检查：
+
+```sh
+scripts/check_updates.sh
 ```
 
 ## 核心原则

@@ -11,6 +11,11 @@ When working in Claude Code, follow the same project protocol as Codex:
 
 Core requirements:
 
+- At the start of a user session or before a substantive Mira task, check
+  whether the repository has remote updates when network access is available.
+  Use `scripts/check_updates.sh` if present. Do not update automatically; tell
+  the user if the branch is behind and ask whether they want to run
+  `git pull --ff-only`.
 - Identify the research object, time boundary, market scope, and available sources before analysis.
 - Run total analysis routing with [loops/analysis-routing.md](loops/analysis-routing.md) before formal analysis.
 - For single-equity work, run thesis horizon, framework, and overlay routing before writing conclusions.
