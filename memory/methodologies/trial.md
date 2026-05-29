@@ -1,6 +1,6 @@
 # Methodology Queue: Trial
 
-- last_updated: 2026-05-18
+- last_updated: 2026-05-29
 
 ## Purpose
 
@@ -14,6 +14,16 @@
 - `falsification_condition`
 
 ## Current Items
+
+- `framework-routing`
+  target_case: `3-5 single-equity cases across micro-small, mid-cap, and large-mega`
+  expected_increment: 根据主导定价变量选择研究框架，避免所有股票套同一模板。
+  falsification_condition: 如果它不能减少框架错配，或只是增加路由字段而不改善结论质量，就不升级到 `adopted`。
+
+- `supply-chain`
+  target_case: `AI hardware`, `customer-concentrated small caps`, and `industrial component cases`
+  expected_increment: 用上下游和同层级证据验证需求、客户集中度、收入确定性和竞争替代，而不是只听公司口径。
+  falsification_condition: 如果它不能比普通公司披露带来增量验证，或无法稳定区分行业 beta 与公司 alpha，就不升级到 `adopted`。
 
 - `llm-claim-classification`
   target_case: `earnings package`, `standard equity research package`, and `monitoring update`
@@ -69,3 +79,8 @@
   target_case: `2-3 historical 10x/100x or failed-growth cases` and `2 live long-term candidate equities`
   expected_increment: 把长期倍数股研究从“好公司/大故事”改成目标收益路径、right to win、再投资 runway、稀释/生存性、证据阶梯和 kill criteria 的组合判断。
   falsification_condition: 如果它不能比普通 `long_term_thesis` 更早暴露失败样本风险，或无法形成明确的 return-path math 与退出条件，就不升级到 `adopted`。
+
+- `institutional-thesis-system`
+  target_case: `AAPL thesis ledger`, `CRWV event delta`, `WOLF expectation map`, and next live earnings event
+  expected_increment: 把一次性 research package 升级为可维护的 thesis ledger、expectation map、event delta、decision log 和 postmortem，让新增信息能明确映射到预期变量和 thesis state。
+  falsification_condition: 如果它不能比普通 memo 更清楚地区分预期差、证据强度、状态变化和复盘结论，或维护成本明显拖慢研究，就不升级到 `adopted`。

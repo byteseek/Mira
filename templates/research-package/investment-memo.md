@@ -36,6 +36,18 @@
 
 {{ key_debate }}
 
+## Valuation And Expectation Quant
+
+{{ valuation_and_expectation_quant }}
+
+At minimum, include current valuation anchor, what is priced in, base/bull/bear scenario assumptions, downside path, and whether the valuation anchor quality is `high`, `medium`, `low`, or `source_gap`.
+
+## Actionability Bridge
+
+{{ actionability_bridge }}
+
+Use this as a research-action bridge only. Do not write autonomous trade instructions. If evidence is insufficient, set `research_action: watch_only` or `no_action`.
+
 ## Evidence Quality
 
 {{ evidence_quality }}

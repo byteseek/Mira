@@ -38,6 +38,8 @@
 
 ## Claim Record Fields
 
+Canonical case-level evidence schema 见 [evidence-log-schema.md](evidence-log-schema.md)。本节只保留概念说明；新模板和新案例必须使用 `evidence-log-schema.md` 的固定表头。
+
 每条进入案例 `evidence-log.csv` 的具体信息，至少应包含以下字段：
 
 | field | required | description |
@@ -48,10 +50,14 @@
 | `claim_text` | yes | 被使用的信息，尽量压缩成一句可核验 claim |
 | `source_speaker` | yes | `company` / `management` / `regulator` / `sellside` / `market` / `mira` 等 |
 | `verification_status` | yes | `verified` / `disclosed` / `claimed` / `estimated` / `modeled` / `unverified` / `contradicted` |
+| `authority_level` | yes | `L1` 到 `L6` |
+| `source_date` | yes | 来源发布或数据生成日期 |
 | `as_of_date` | yes | claim 的数据或信息时点 |
+| `url_or_path` | yes | 原始 URL、repo path 或 explicit source note |
 | `confidence` | yes | `high` / `medium` / `low` |
 | `used_by_agent` | yes | 使用该 claim 的 agent |
 | `used_by_skill` | yes | 使用该 claim 的 skill |
+| `upstream_sources` | yes | L6 或派生 claim 的上游 source id；非派生可写 `not_applicable` |
 | `notes` | yes | 口径、限制、上游来源或刷新条件 |
 
 ## Authority Levels

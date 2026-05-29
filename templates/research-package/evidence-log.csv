@@ -1,2 +1,2 @@
-source_id,source_group,claim_area,claim_type,claim_text,source_speaker,verification_status,signal_status,used_by_agent,used_by_skill,as_of_date,confidence,verification_path,notes
-example_source,official_and_industry,business_model,fact,"Replace with one specific claim used in the memo.",company,verified,confirmed,research-orchestrator,equity-research-core,2026-01-01,high,Replace with case-specific records.,Replace with case-specific records.
+source_id,claim_area,claim_type,claim_text,source_speaker,verification_status,authority_level,source_date,as_of_date,url_or_path,used_by_agent,used_by_skill,confidence,upstream_sources,notes
+example_source,business_model,fact,"Replace with one specific claim used in the memo.",company,verified,L1,2026-01-01,2026-01-01,https://example.com,research-orchestrator,equity-research-core,high,not_applicable,Replace with case-specific records.

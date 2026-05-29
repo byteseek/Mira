@@ -1,6 +1,6 @@
 # Methodology Queue: Adopted
 
-- last_updated: 2026-04-22
+- last_updated: 2026-05-29
 
 ## Purpose
 
@@ -16,14 +16,14 @@
 
 ## Current Items
 
-- `framework-routing`
-  role: `framework-router`
-  adoption_reason: 不同股票的主导定价变量不同，统一框架会系统性错配。
-  based_on_cases: `AAPL sample and routed design iteration`
-  notes: 已进入 `research-loop` 的正式步骤。
+No methodology is currently marked `adopted`.
 
-- `supply-chain`
-  role: `overlay`
-  adoption_reason: 能沿上下游和同层级补证据链，但不替代主框架。
-  based_on_cases: `design iteration`
-  notes: 当前已作为首个 overlay 进入正式结构，仍需要更多 case 验证写法细节。
+## Adoption Bar
+
+`adopted` requires all of:
+
+- at least two completed real cases, not only design iteration
+- at least one follow-through or postmortem record
+- documented failure mode
+- clear comparison against the prior method
+- no unresolved P0 validation issue in the evidence supporting adoption

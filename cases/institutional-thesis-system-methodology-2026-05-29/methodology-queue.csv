@@ -1,0 +1,4 @@
+method_name,status,priority,next_trial,owner,notes
+institutional-thesis-system,trial,high,"Apply to next earnings event with pre-event setup and post-event delta",research-orchestrator,"Keep as protocol layer until at least three live cases validate state changes."
+event-delta-loop,trial,high,"Use on next earnings or FOMC-sensitive equity case",research-orchestrator,"Needs explicit pre-event consensus proxy."
+thesis-update-loop,trial,high,"Use when user asks to update an existing thesis",research-orchestrator,"Must avoid full research rewrite unless escalation rules trigger."

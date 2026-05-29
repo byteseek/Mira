@@ -46,6 +46,15 @@ overlay 不是新的主框架，而是额外的验证视角。
 - 单一战略关系足以改变收入确定性、融资能力、生存风险或估值锚
 - 需要把已确认事实、媒体报道、社交信号和未确认传闻分层输出
 
+### `valuation-expectation`
+
+适用于以下情形：
+
+- key debate 是估值是否已经反映质量、成长、风险或主题热度
+- 用户问“是不是已经 price in”“有没有风险收益比”“能不能做”
+- 需要把 thesis 写入 `thesis-ledger` 或 `actionability_bridge`
+- 标的已有可用估值锚，或者必须明确估值锚不可用
+
 ## Selection Questions
 
 判断是否启用 `supply-chain` overlay 时，至少回答：
@@ -73,6 +82,14 @@ overlay 不是新的主框架，而是额外的验证视角。
 - 如果线索成真，它改变的是收入、融资、生存性、估值锚、市场叙事还是控制权预期？
 - 当前市场是否已经 price in，还是仍处于早期扩散？
 - 下一步最直接的确认或证伪来源是什么？
+
+判断是否启用 `valuation-expectation` overlay 时，至少回答：
+
+- 当前 valuation anchor 是什么，质量是 `high`、`medium`、`low` 还是 `source_gap`？
+- 市场价格已经隐含什么增长、利润率、现金流、风险溢价或催化剂预期？
+- Mira 的 base/bull/bear 和市场预期差在哪里？
+- 收益或风险来自 revenue revision、margin revision、cash flow revision、multiple rerating、risk premium change 还是 positioning unwind？
+- 下行场景和证伪条件是什么？
 
 ## Usage Rule
 
@@ -103,6 +120,15 @@ overlay 不是新的主框架，而是额外的验证视角。
 - `what_would_confirm`
 - `what_would_disconfirm`
 - `next_refresh_trigger`
+
+如果启用 `valuation-expectation` overlay，还必须记录：
+
+- `current_valuation`
+- `historical_or_peer_range`
+- `what_is_priced_in`
+- `base_bull_bear`
+- `revision_path`
+- `valuation_anchor_quality`
 
 如果不启用，也允许明确写：
 
@@ -135,6 +161,14 @@ overlay 不是新的主框架，而是额外的验证视角。
 - market-pricing status
 - confirmation path
 - falsification conditions
+
+`valuation-expectation` overlay 通常应补充以下内容：
+
+- valuation snapshot
+- base/bull/bear scenario table
+- revision path
+- downside path
+- actionability bridge input
 
 ## Regime-Specific Notes
 

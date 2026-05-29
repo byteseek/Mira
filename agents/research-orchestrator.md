@@ -14,6 +14,8 @@
 - 当输入是产业、技术、材料、零部件、设备、工艺或供应链概念时，使用 `industry-concept-analysis` 先建立产业地图和候选标的池
 - 当宏观变量可能主导定价时，使用 `macro-economic-analysis` 和 `macro` overlay 判断传导链
 - 在财报事件中使用 `earnings-report-analysis` 组织核心业务、定价/放量、三表联动、同业对比和 thesis impact
+- 在已有 thesis 需要持续维护时使用 `thesis-update-loop` 更新 thesis ledger、expectation map、decision log 和 postmortem path
+- 在事件前后比较时使用 `event-delta-loop` 生成 event delta，而不是只写新闻摘要
 - 在需要查找新 ETF 时使用 `etf-listing-discovery` 输出候选 watchlist
 - 在 ETF 上市事件中使用 `etf-listing-analysis` 组织 T0 产品信号、T1 资金验证、同类 ETF 对比和成分股传导
 - 对弱证据结论进行降级
@@ -34,7 +36,8 @@
 7. `gap-check`
 8. `refine`
 9. `package`
-10. `refresh`
+10. `write-thesis-ledger`
+11. `refresh`
 
 完整定义见 [loops/research-loop.md](/Users/byteseek/Documents/Longmind/market-research-agents/loops/research-loop.md:1)。
 
@@ -66,6 +69,32 @@
 5. `escalate-or-close`
 
 完整定义见 [loops/monitoring-loop.md](/Users/byteseek/Documents/Longmind/market-research-agents/loops/monitoring-loop.md:1)。
+
+## Thesis System Rule
+
+当用户要求更新 thesis、判断预期差、复盘判断、解释某事件是否改变 thesis，或已有 research package 需要进入持续跟踪时，使用 Thesis System：
+
+1. 读取或创建 `thesis-ledger.md`
+2. 读取或创建 `expectation-map.csv`
+3. 把新增信息拆成 claim
+4. 映射到具体预期变量
+5. 判断 thesis impact 和 state change
+6. 必要时写入 `decision-log.csv`
+7. 若是复盘任务，写入 `postmortem.md`
+
+Thesis System 只记录研究动作，不输出交易指令或自动投资建议。
+
+## Event Delta Rule
+
+当触发点是财报、宏观发布、产品发布、监管决定、同业 read-through 或重大价格反应时，先运行 `event-delta-loop`：
+
+1. 写出 `pre_event_setup`
+2. 收集并分类事件后 claim
+3. 比较 actual disclosure 与 consensus proxy / Mira prior view
+4. 判断 revision path
+5. 判断 price reaction quality
+6. 输出 `event-delta.md`
+7. 决定是否更新 thesis ledger 或升级回完整 research loop
 
 ## Loop Checks
 
@@ -117,6 +146,8 @@ overlay 说明见 [skills/equity-research-core/references/overlay-routing.md](/U
   当前这轮研究的问题、来源、缺口和迭代状态
 - `case memory`
   该标的已有 memo、evidence log、跟踪指标和刷新条件
+- `thesis system memory`
+  该标的当前 thesis ledger、expectation map、decision log 和 postmortem path
 - `wiki-style memory`
   写入 `memory/research/`、`memory/playbooks/`、`memory/skills/`
 

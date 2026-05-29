@@ -147,6 +147,15 @@
 - `evidence_ladder`
 - `kill_criteria`
 
+如果研究对象需要进入持续跟踪、用户关心可执行性，或 key debate 涉及估值是否已 price in，必须插入 `valuation-expectation overlay`，用于把初判转成：
+
+- `current_valuation`
+- `what_is_priced_in`
+- `base_bull_bear`
+- `revision_path`
+- `downside_path`
+- `valuation_anchor_quality`
+
 ### `gap-check`
 
 识别缺口、冲突、低可信结论，以及框架错配风险。
@@ -174,6 +183,8 @@
 - 生存性和稀释风险
 - 证据阶梯
 - kill criteria
+
+如果 `valuation-expectation` 无法给出 valuation anchor 或 base/bull/bear，必须标记 `source_gap`，并把 `actionability_bridge` 降级为 `watch_only` 或 `no_action`。
 
 ### `package`
 
@@ -206,6 +217,22 @@
 - `company-map.csv`
 - `evidence-log.csv`
 
+### `write-thesis-ledger`
+
+如果研究结论已经足够稳定，写入或更新 Thesis System 对象：
+
+- `thesis-ledger.md`
+- `expectation-map.csv`
+- `decision-log.csv`，如需要记录研究动作
+
+写入前必须检查：
+
+- 核心 thesis 是否能回溯到 evidence log 或 explicit source note
+- supporting claims 是否区分事实、指引、预测、假设、公司口径、市场定价和情绪
+- expectation map 是否有真实 consensus proxy；没有则标记 `source_gap`
+- thesis state 是否为 `draft`、`active`、`watch`、`upgrade_watch`、`downgrade_watch`、`stale` 或 `retired`
+- `stale_after` 和 `must_refresh_if` 是否完整
+
 ### `write-memory`
 
 把首版研究中相对稳定的内容沉淀到 `memory/`。
@@ -214,6 +241,8 @@
 
 - 核心结论已有足够来源支撑
 - `research package` 已生成
+- 若结论进入持续跟踪，`thesis-ledger` 与 `expectation-map` 已生成或明确 waived
+- 若结论进入行动跟踪，`valuation_and_expectation_quant` 与 `actionability_bridge` 已生成或明确 waived
 - 事实、公司口径、承诺、指引、预测、假设、观点和市场定价已分离
 - 已写出后续刷新条件
 - 已完成总分析路由并说明为什么进入当前 loop / skill

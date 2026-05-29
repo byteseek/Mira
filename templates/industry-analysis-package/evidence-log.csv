@@ -1,2 +1,2 @@
-source_id,claim_area,claim_type,claim_text,source_speaker,verification_status,used_by_agent,used_by_skill,as_of_date,confidence,notes
-example_source,concept_boundary,fact,"Replace with one specific claim used in the industry map.",company,verified,research-orchestrator,industry-concept-analysis,2026-01-01,high,Replace with case-specific records.
+source_id,claim_area,claim_type,claim_text,source_speaker,verification_status,authority_level,source_date,as_of_date,url_or_path,used_by_agent,used_by_skill,confidence,upstream_sources,notes
+example_source,concept_boundary,fact,"Replace with one specific claim used in the industry map.",company,verified,L1,2026-01-01,2026-01-01,https://example.com,research-orchestrator,industry-concept-analysis,high,not_applicable,Replace with case-specific records.

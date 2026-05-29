@@ -1,0 +1,2 @@
+review_date,research_object,source_thesis_ref,original_date,original_confidence,original_state,expected_path,outcome_window,realized_outcome,return_vs_benchmark,thesis_status,error_type,calibration_lesson,methodology_update
+{{ review_date }},{{ research_object }},{{ source_thesis_ref }},{{ original_date }},{{ original_confidence }},{{ original_state }},{{ expected_path }},{{ outcome_window }},{{ realized_outcome }},{{ return_vs_benchmark }},{{ thesis_status }},{{ error_type }},{{ calibration_lesson }},{{ methodology_update }}

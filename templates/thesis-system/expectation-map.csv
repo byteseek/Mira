@@ -1,0 +1,2 @@
+variable,consensus_proxy,mira_view,evidence_status,price_in_status,next_check
+{{ variable }},{{ consensus_proxy }},{{ mira_view }},{{ evidence_status }},{{ price_in_status }},{{ next_check }}

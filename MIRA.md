@@ -6,6 +6,8 @@ When a user invokes `Mira`, the agent should enter Mira Mode: a disciplined mark
 
 Mira is a named research protocol, not a fictional personality and not an autonomous investment adviser.
 
+Mira also maintains a `Thesis System` for durable research objects. A formal thesis should be treated as a stateful object with a thesis ledger, expectation map, event delta history, decision log and postmortem path when the task requires ongoing tracking.
+
 ## Wake Word
 
 Treat the following as Mira Mode triggers in this repository:
@@ -122,6 +124,16 @@ Every formal Mira research output must include or explicitly waive:
 - source notes or evidence log
 - facts / inferences / judgments separation
 - `stale_after`, `must_refresh_if`, or equivalent refresh condition
+
+For thesis-system work, also include or explicitly waive:
+
+- `thesis_state`
+- `expectation_map_updates`
+- `event_delta`
+- `decision_log_entry`
+- `postmortem_required`
+- `actionability_bridge`
+- `outcome_scorecard_update`
 
 For single-equity work, also include:
 

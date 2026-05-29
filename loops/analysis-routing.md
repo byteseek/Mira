@@ -78,6 +78,22 @@
 
 - `loops/methodology-research-loop.md`
 
+### `thesis_system_update`
+
+用于已有研究对象的 thesis 更新、预期差判断、事件 delta、状态变更或复盘。
+
+默认进入：
+
+- `loops/thesis-update-loop.md`
+
+如果触发点是明确事件，例如财报、FOMC、产品发布、监管决定或同业 read-through，先进入：
+
+- `loops/event-delta-loop.md`
+
+如果事件 delta 改变核心前提，再升级回：
+
+- `loops/research-loop.md`
+
 ### `discovery_or_screening`
 
 用于找候选、发现新 ETF、发现产业链标的或建立 watchlist。
@@ -132,6 +148,18 @@
 默认进入：
 
 - `loops/methodology-research-loop.md`
+
+### `thesis_object`
+
+对象是已有 thesis、预期差地图、事件影响、研究动作或复盘记录。
+
+默认进入：
+
+- `loops/thesis-update-loop.md`
+
+如果问题明确围绕事件前后变化，进入：
+
+- `loops/event-delta-loop.md`
 
 ## Step 3: Time Boundary
 
@@ -241,6 +269,16 @@ lens 是对 thesis 的约束视角，不是额外研究对象。
 - `escalation decision`
 - `framework still valid?`
 - `overlay still valid?`
+
+### Thesis System Package
+
+用于 thesis 更新、预期差、事件 delta 或复盘：
+
+- `thesis-ledger.md`
+- `expectation-map.csv`
+- `event-delta.md`，如有事件
+- `decision-log.csv`，如有研究动作
+- `postmortem.md`，如为复盘任务
 
 ## Mismatch Risks
 

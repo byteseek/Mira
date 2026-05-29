@@ -1,0 +1,4 @@
+method_name,review_date,validation_mode,case_or_scope,result,what_worked,what_failed,keep_change_or_retire,notes
+institutional-thesis-system,2026-05-29,methodology_design,AAPL thesis memory,positive,Existing memory can be upgraded into a thesis ledger without changing old research package,No automated field validation yet,keep_under_trial,Use AAPL as migration example.
+institutional-thesis-system,2026-05-29,methodology_design,CRWV earnings event,positive,Earnings package already contains thesis impact and can map naturally into event-delta,Pre-event consensus proxy is incomplete in current case,keep_under_trial,Requires explicit setup before future events.
+institutional-thesis-system,2026-05-29,methodology_design,WOLF narrative case,positive,Claim taxonomy can downgrade sentiment and market_pricing before they enter thesis state,Need better positioning and options data for crowding claims,keep_under_trial,Useful stress test for high narrative small-cap cases.

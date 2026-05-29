@@ -67,6 +67,36 @@
 
 判断增量是否改变 thesis、风险、节奏、跟踪指标、当前框架或已选 overlay。
 
+### `update-expectation-map`
+
+把有效增量映射到具体预期变量：
+
+- revenue
+- margin
+- cash flow
+- capex
+- balance sheet risk
+- valuation multiple
+- risk premium
+- positioning
+- catalyst timing
+
+如果无法定位到变量，只能作为 watch item，不能升级 thesis。
+
+### `thesis-state-change`
+
+判断是否更新 `thesis-ledger` 状态：
+
+- `active -> upgrade_watch`
+- `active -> downgrade_watch`
+- `active -> stale`
+- `watch -> active`
+- `watch -> retired`
+- `downgrade_watch -> retired`
+- `stale -> active`
+
+所有状态变化必须指向 evidence log 或 explicit source note。
+
 ### `escalate-or-close`
 
 - 小更新：结束本轮 monitoring
@@ -98,6 +128,8 @@
 
 - `monitor summary`
 - `impact assessment`
+- `expectation map update`
+- `thesis state change decision`
 - `escalation decision`
 - `framework still valid?`
 - `overlay still valid?`

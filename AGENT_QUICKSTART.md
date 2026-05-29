@@ -60,6 +60,8 @@ Mira, 研究 CRWV
 | --- | --- | --- |
 | 首次研究或重建 thesis | [loops/research-loop.md](loops/research-loop.md) | `investment-memo.md`, `case-notes.md`, `evidence-log.csv` |
 | 更新已有 thesis | [loops/monitoring-loop.md](loops/monitoring-loop.md) | monitor summary, impact assessment, escalation decision |
+| 更新 thesis object / 看预期差 / 复盘判断 | [loops/thesis-update-loop.md](loops/thesis-update-loop.md) | thesis-ledger, expectation-map, decision-log, postmortem |
+| 事件前后 delta | [loops/event-delta-loop.md](loops/event-delta-loop.md) | event-delta, expectation map update, thesis impact |
 | 财报、业绩会、指引 | [skills/earnings-report-analysis/SKILL.md](skills/earnings-report-analysis/SKILL.md) | earnings package |
 | 单一股票 | [skills/equity-research-core/SKILL.md](skills/equity-research-core/SKILL.md) | research package |
 | 产业、技术、供应链概念 | [skills/industry-concept-analysis/SKILL.md](skills/industry-concept-analysis/SKILL.md) | industry package |
@@ -91,6 +93,21 @@ Mira, 研究 <ticker/company>
 Mira, 更新 <ticker/company> 的 thesis
 只看 <日期> 之后的新信息，判断是否改变原 thesis、风险、节奏、框架或 overlay。
 如果核心前提变化，升级为完整 research loop。
+```
+
+### Thesis System 更新
+
+```text
+Mira, 更新 <ticker/company> 的 thesis ledger
+请检查 current thesis、expectation map、supporting claims、disconfirming evidence 和 thesis state。
+如果只是弱信号或价格反应，只能写 watch item，不要升级 thesis。
+```
+
+### 事件 Delta
+
+```text
+Mira, 看 <ticker/company> 这次 <财报/FOMC/产品发布/监管事件> 是否改变 thesis
+请先写 pre-event setup，再比较 actual disclosure vs expectation，输出 event-delta、revision path、thesis impact 和 required follow-up。
 ```
 
 ### 财报事件
@@ -148,9 +165,20 @@ cases/<ticker>-<YYYY-MM>/
 cases/<ticker>-<YYYY-MM>/
 ├── README.md
 ├── earnings-analysis.md
+├── event-delta.md
 ├── financial-snapshot.csv
 ├── peer-comparison.csv
 └── evidence-log.csv
+```
+
+Thesis System 对象：
+
+```text
+memory/research/<OBJECT>/
+├── thesis-ledger.md
+├── expectation-map.csv
+├── decision-log.csv
+└── postmortem.md
 ```
 
 产业概念：
@@ -208,7 +236,25 @@ Mira 输出里必须分开写：
 - 是否完成总路由，而不是直接套模板。
 - 是否遵守 [MIRA.md](MIRA.md) 的唤醒词、人格边界和 memory 规则。
 - 单票研究是否写明 `horizon_bucket`, `selected_framework`, `selected_overlays`。
+- 若维护已有 thesis，是否更新或明确 waived `thesis-ledger`、`expectation-map` 和 state change。
+- 若处理事件，是否写出 `event-delta`，而不是只做新闻摘要。
 - 事实、推断和判断是否分层。
 - 核心结论是否能追到 evidence log 或明确 source note。
 - 是否说明 `stale_after`、`must_refresh_if` 或等价刷新条件。
 - 弱证据是否被降级，没有被写成确定结论。
+
+## 9. Repo Validation
+
+新增或更新正式 case 后，运行：
+
+```text
+python3 scripts/validate_repo.py cases/<case-id>
+```
+
+迁移历史 case 时可以先用 report-only 模式查看问题：
+
+```text
+python3 scripts/validate_repo.py --report-only
+```
+
+当前 canonical evidence schema 见 [data/evidence-log-schema.md](data/evidence-log-schema.md)。新的 `evidence-log.csv` 必须是 claim-level 表，不再允许把 source registry 表头直接放入 evidence log。

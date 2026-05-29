@@ -45,6 +45,10 @@
 - `financial-snapshot.csv`
 - `peer-comparison.csv`
 
+如果财报事件用于维护已有 thesis，还必须输出或更新 Thesis System 事件对象：
+
+- `event-delta.md`
+
 如果该财报足以改变投资结论，再同步更新标准 `research package`：
 
 - `investment-memo.md`
@@ -185,10 +189,22 @@
 - peer earnings cross-check
 - management commentary
 - market expectation and reaction
+- event delta
 - thesis impact
 - risks and watch items
 - fact vs inference
 - refresh triggers
+
+`event-delta.md` 必须包含：
+
+- `pre_event_setup`
+- `actual_disclosure`
+- `delta_vs_expectation`
+- `revision_path`
+- `price_reaction_quality`
+- `thesis_impact`
+- `expectation_map_updates`
+- `required_followup`
 
 ## Scoring
 
@@ -237,6 +253,24 @@
 - 后续哪些披露会证伪这个外推
 
 如果证据不足，必须把长期影响降级为 watch item。
+
+## Event Delta Rules
+
+财报事件不能只总结 beat / miss。必须说明本期披露改变了哪个预期变量：
+
+- revenue expectation
+- margin expectation
+- cash flow expectation
+- capex expectation
+- balance sheet risk
+- valuation multiple
+- risk premium
+- positioning
+- catalyst timing
+
+如果没有可用的 pre-event consensus proxy，必须在 `event-delta.md` 写 `source_gap`，并降低 thesis impact 置信度。
+
+价格反应只能作为 `market_pricing`，不能替代经营证据。管理层口径只能作为 `company_claim` 或 `guidance`，除非被财务、订单、客户、同行或外部数据验证。
 
 ## Evidence Rules
 
