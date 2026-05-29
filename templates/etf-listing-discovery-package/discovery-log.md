@@ -6,6 +6,7 @@
 - theme_filter: {{ theme_filter }}
 - research_cutoff_date: {{ research_cutoff_date }}
 - output_limit: {{ output_limit }}
+- not_investment_advice: true
 
 ## Search Paths Used
 
@@ -38,4 +39,3 @@
 ## Search Gaps
 
 {{ search_gaps }}
-

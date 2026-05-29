@@ -8,6 +8,7 @@
 - analysis_cutoff_date: {{ analysis_cutoff_date }}
 - thesis_horizon: {{ thesis_horizon }}
 - stale_after: {{ stale_after }}
+- not_investment_advice: true
 
 ## Setup
 

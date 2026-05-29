@@ -2,6 +2,13 @@
 
 本目录记录 2026-05-09 对美国市场近期新上市 ETF 的一轮 discovery。
 
+## Open Source Notice
+
+- case_status: historical_example
+- not_investment_advice: true
+- stale_after: 2026-05-16 for listed-product status; earlier if issuer, exchange, or fund data changes
+- refresh_policy: refresh before any live trading or portfolio decision
+
 ## Files
 
 - `new-etf-watchlist.csv`
@@ -27,4 +34,3 @@
 - discovery_status: `completed_initial`
 - next_step: `run etf-listing-analysis on BUYB; confirm Corgi product primary sources`
 - research_cutoff_date: `2026-05-09`
-

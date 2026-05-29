@@ -1,6 +1,16 @@
 # ETF Listing Analysis: BUYB / EUV / JOUL
 
-This package analyzes three recent U.S. ETF launches as of 2026-05-09:
+This package analyzes three recent U.S. ETF launches as of 2026-05-09.
+
+## Open Source Notice
+
+- case_status: historical_example
+- not_investment_advice: true
+- research_cutoff_date: 2026-05-09
+- stale_after: first 5 / 20 / 60 trading-day follow-up windows after listing
+- refresh_policy: refresh before any live trading or portfolio decision
+
+## Products
 
 - `BUYB`: ProShares S&P 500 Buyback Aristocrats ETF
 - `EUV`: Corgi Lithography & Semiconductor Photonics ETF

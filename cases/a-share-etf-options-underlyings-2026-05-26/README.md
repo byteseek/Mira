@@ -2,6 +2,12 @@
 
 This case maps the ETF underlyings available in the user's ETF option menu to their actual index exposures and dominant trading factors.
 
+## Open Source Notice
+
+- case_status: historical_example
+- not_investment_advice: true
+- refresh_policy: refresh before any live trading or portfolio decision
+
 - market: `CN A-share`
 - research_question: 可交易期权的 ETF 标的，内部成分分别对应什么市场属性？
 - research_cutoff_date: `2026-05-26`

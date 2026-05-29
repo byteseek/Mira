@@ -8,6 +8,7 @@
 - depth: {{ depth }}
 - focus: {{ focus }}
 - stale_after: {{ stale_after }}
+- not_investment_advice: true
 
 ## One-Page Industry Map
 

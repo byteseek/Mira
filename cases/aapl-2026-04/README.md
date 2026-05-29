@@ -2,6 +2,13 @@
 
 这是首个单票深度案例，用于展示 MVP 如何在真实公司上跑通。
 
+## Open Source Notice
+
+- case_status: historical_example
+- not_investment_advice: true
+- stale_after: next quarterly results release or 2026-07-13, whichever comes first
+- refresh_policy: refresh before any live trading or portfolio decision
+
 ## Case Metadata
 
 - company: Apple Inc.

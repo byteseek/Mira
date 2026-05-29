@@ -2,6 +2,13 @@
 
 这是一个财报事件案例，用于展示 `earnings-report-analysis` 如何按新版框架分析单季财报。
 
+## Open Source Notice
+
+- case_status: historical_example
+- not_investment_advice: true
+- stale_after: next quarterly results, guidance update, or 2026-08-07, whichever comes first
+- refresh_policy: refresh before any live trading or portfolio decision
+
 ## 案例元数据
 
 - company: Coherent Corp.

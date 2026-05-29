@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Validate Mira repository research discipline.
+"""Validate Mira repository readiness and research discipline.
 
 Default mode is strict and exits non-zero on errors. Use --report-only to
 surface current legacy drift without failing the run.
@@ -14,6 +14,37 @@ import sys
 from dataclasses import dataclass
 from pathlib import Path
 
+
+REQUIRED_ROOT_FILES = [
+    "README.md",
+    "LICENSE",
+    "CONTRIBUTING.md",
+    "SECURITY.md",
+    "DATA_POLICY.md",
+    ".gitignore",
+]
+
+DATE_MARKERS = (
+    "research_cutoff_date",
+    "analysis_cutoff_date",
+    "case_date",
+    "release_date",
+    "as_of",
+)
+REFRESH_MARKERS = (
+    "stale_after",
+    "must_refresh_if",
+    "next refresh",
+    "refresh after",
+    "refresh policy",
+    "refresh triggers",
+)
+DISCLAIMER_MARKERS = (
+    "not_investment_advice",
+    "not investment advice",
+    "does not constitute investment advice",
+    "不构成投资建议",
+)
 
 CANONICAL_EVIDENCE_COLUMNS = [
     "source_id",
@@ -95,6 +126,15 @@ class Issue:
         return f"{self.severity}: {loc}: {self.message}"
 
 
+def read_text(path: Path) -> str:
+    return path.read_text(encoding="utf-8")
+
+
+def has_any(text: str, markers: tuple[str, ...]) -> bool:
+    lowered = text.lower()
+    return any(marker.lower() in lowered for marker in markers)
+
+
 def is_template(path: Path) -> bool:
     return "templates" in path.parts
 
@@ -102,11 +142,11 @@ def is_template(path: Path) -> bool:
 def read_csv(path: Path) -> tuple[list[str], list[dict[str, str]], list[Issue]]:
     issues: list[Issue] = []
     try:
-        with path.open(newline="") as f:
+        with path.open(newline="", encoding="utf-8") as f:
             reader = csv.DictReader(f)
             header = reader.fieldnames or []
             rows = [dict(row) for row in reader]
-    except Exception as exc:  # pragma: no cover - defensive for repo checks
+    except Exception as exc:  # pragma: no cover - diagnostic path
         issues.append(Issue("ERROR", path, 0, f"could not read CSV: {exc}"))
         return [], [], issues
 
@@ -209,6 +249,22 @@ def validate_evidence_log(path: Path) -> list[Issue]:
     return issues
 
 
+def validate_case_readme(case_dir: Path) -> list[Issue]:
+    readme = case_dir / "README.md"
+    if not readme.exists():
+        return [Issue("ERROR", case_dir, 0, "missing README.md")]
+
+    issues: list[Issue] = []
+    text = read_text(readme)
+    if not has_any(text, DATE_MARKERS):
+        issues.append(Issue("ERROR", readme, 0, "missing cutoff/as-of metadata"))
+    if not has_any(text, REFRESH_MARKERS):
+        issues.append(Issue("ERROR", readme, 0, "missing refresh/staleness policy"))
+    if not has_any(text, DISCLAIMER_MARKERS):
+        issues.append(Issue("ERROR", readme, 0, "missing not-investment-advice disclaimer"))
+    return issues
+
+
 def validate_methodology_adoption(root: Path) -> list[Issue]:
     path = root / "memory" / "methodologies" / "adopted.md"
     if not path.exists():
@@ -236,12 +292,32 @@ def validate_methodology_adoption(root: Path) -> list[Issue]:
     return issues
 
 
-def validate_repo(root: Path) -> list[Issue]:
+def validate_root_readiness(root: Path) -> list[Issue]:
     issues: list[Issue] = []
+    for rel_path in REQUIRED_ROOT_FILES:
+        if not (root / rel_path).exists():
+            issues.append(Issue("ERROR", root / rel_path, 0, "missing required root file"))
+
+    readme = root / "README.md"
+    if readme.exists():
+        readme_text = read_text(readme)
+        if not has_any(readme_text, DISCLAIMER_MARKERS):
+            issues.append(Issue("ERROR", readme, 0, "missing investment disclaimer"))
+        if "Quickstart" not in readme_text:
+            issues.append(Issue("ERROR", readme, 0, "missing Quickstart section"))
+    return issues
+
+
+def validate_repo(root: Path) -> list[Issue]:
+    issues = validate_root_readiness(root)
     for path in sorted(root.glob("**/evidence-log.csv")):
         if ".git" in path.parts:
             continue
         issues.extend(validate_evidence_log(path))
+    cases_dir = root / "cases"
+    if cases_dir.exists():
+        for case_dir in sorted(path for path in cases_dir.iterdir() if path.is_dir()):
+            issues.extend(validate_case_readme(case_dir))
     issues.extend(validate_methodology_adoption(root))
     return issues
 
@@ -255,6 +331,9 @@ def validate_paths(paths: list[Path]) -> list[Issue]:
                 issues.extend(validate_evidence_log(evidence))
             else:
                 issues.append(Issue("ERROR", path, 0, "directory has no evidence-log.csv"))
+            readme = path / "README.md"
+            if readme.exists():
+                issues.extend(validate_case_readme(path))
         elif path.name == "evidence-log.csv":
             issues.extend(validate_evidence_log(path))
         else:

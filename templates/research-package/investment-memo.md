@@ -18,6 +18,7 @@
 - horizon_bucket: {{ horizon_bucket }}
 - horizon_basis: {{ horizon_basis }}
 - stale_after: {{ stale_after }}
+- not_investment_advice: true
 
 ## Core Conclusion
 

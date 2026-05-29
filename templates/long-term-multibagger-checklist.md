@@ -8,6 +8,7 @@
 - selected_framework: {{ selected_framework }}
 - selected_lenses: long-term-multibagger
 - stale_after: {{ stale_after }}
+- not_investment_advice: true
 
 ## Target Return Path
 

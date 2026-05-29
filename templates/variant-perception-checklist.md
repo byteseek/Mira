@@ -5,6 +5,7 @@
 - research_cutoff_date: {{ research_cutoff_date }}
 - selected_framework: {{ selected_framework }}
 - status: {{ status }}
+- not_investment_advice: true
 
 ## 1. Consensus Proxy
 

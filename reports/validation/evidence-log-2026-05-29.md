@@ -9,7 +9,7 @@
 
 Current repository state after introducing canonical evidence schema:
 
-- errors: 10
+- errors: 12
 - warnings: 0
 - new templates: canonical
 - migrated canonical cases:
@@ -28,6 +28,7 @@ This report intentionally does not hide legacy drift. Existing case outputs rema
 These remaining files use source-registry style columns inside `evidence-log.csv`:
 
 - `cases/a-share-etf-options-underlyings-2026-05-26/evidence-log.csv`
+- `cases/ai-hardware-bottleneck-watchlist-2026-05/evidence-log.csv`
 - `cases/etf-discovery-2026-05-09/evidence-log.csv`
 - `cases/etf-listing-analysis-2026-05-09/evidence-log.csv`
 
@@ -70,9 +71,9 @@ These cases have been migrated to the canonical claim-level schema:
 ## Migration Priority
 
 1. ETF discovery/listing cases, with `source-log.csv` split from claim evidence
-2. Remaining earnings cases: COHR, EOSE, FIGR
-3. ABF industry package
-4. A-share ETF/options underlyings discovery package
+2. AI hardware bottleneck watchlist and A-share ETF/options underlyings discovery packages
+3. Remaining earnings cases: COHR, EOSE, FIGR
+4. ABF industry package
 
 ## Acceptance Bar
 

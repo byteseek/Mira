@@ -1,5 +1,7 @@
 # Mira
 
+Agent-native investment research workspace for evidence-tracked, refreshable investment theses.
+
 Mira 是一个面向 AI agent 和研究使用者的投资研究工作台。
 
 如果你想用 Codex、Claude Code 或其他代码型 agent 直接引用本项目做股票、产业、ETF、财报或宏观经济分析，先读 [AGENT_QUICKSTART.md](AGENT_QUICKSTART.md)。Mira 的唤醒词、身份边界和 memory contract 在 [MIRA.md](MIRA.md)，Codex 的项目规则在 [AGENTS.md](AGENTS.md)，Claude Code 的入口在 [CLAUDE.md](CLAUDE.md)。
@@ -7,6 +9,12 @@ Mira 是一个面向 AI agent 和研究使用者的投资研究工作台。
 它的目标不是生成一份孤立的股票报告，也不是把一次问答包装成研究结论，而是把多源材料组织成可追溯、可复核、可持续更新的投资判断。Mira 关注的是投资 thesis：这个判断基于什么证据、在什么时间点成立、哪些变量会证伪它、后续应该如何监控。
 
 当前仓库是 `Mira` 的 research workspace，用来定义数据协议、分析能力、研究 loop、agent 职责、memory 规则和可复用的研究包模板。
+
+## Disclaimer
+
+This repository is for research workflow design, documentation, and historical examples only. It does not provide investment, legal, tax, accounting, or financial advice. Public case packages are stale after their stated cutoff or refresh boundary and should not be treated as live recommendations.
+
+本仓库仅用于研究流程设计、文档化和历史案例展示，不构成投资、法律、税务、会计或财务建议。公开案例均有时间边界，超过其 `research_cutoff_date`、`analysis_cutoff_date`、`stale_after` 或刷新条件后应视为可能过期。
 
 ## 为什么设计 Mira
 
@@ -48,6 +56,37 @@ Mira 当前支持这些研究动作：
 - 对进入正式结论的信息做 `claim classification`，避免把观点、承诺、预测、假设或价格反应误写成事实。
 - 研究投资研究方法本身，把方法放入 `todo / trial / adopted / retired`。
 - 把稳定结论写入 wiki-style `memory`，避免每轮研究从零开始。
+
+## Quickstart
+
+最短使用路径：
+
+1. 读 [AGENTS.md](AGENTS.md)，确认 `Mira Mode` 的触发规则和输出要求。
+2. 选择任务类型：
+   - 首次研究或 thesis 重建：走 [loops/research-loop.md](loops/research-loop.md)。
+   - 已有 thesis 更新：走 [loops/monitoring-loop.md](loops/monitoring-loop.md)。
+   - 方法论评估：走 [loops/methodology-research-loop.md](loops/methodology-research-loop.md)。
+3. 先运行总路由：[loops/analysis-routing.md](loops/analysis-routing.md)。
+4. 如果进入单票研究，再使用：
+   - [skills/equity-research-core/references/thesis-horizon-routing.md](skills/equity-research-core/references/thesis-horizon-routing.md)
+   - [skills/equity-research-core/references/framework-routing.md](skills/equity-research-core/references/framework-routing.md)
+   - [skills/equity-research-core/references/overlay-routing.md](skills/equity-research-core/references/overlay-routing.md)
+5. 从 [templates/](templates/) 复制对应研究包结构，输出 memo、evidence log 和 notes。
+6. 对照 [examples/README.md](examples/README.md) 选择一个历史案例，检查最终产物长什么样。
+
+典型 prompt：
+
+```text
+Mira, 研究 AAPL。市场范围 US，时间边界截至 2026-04-14。
+请先做 analysis routing、thesis horizon routing、framework selection 和 overlay selection，
+再输出 research package，并明确 stale_after 与 must_refresh_if。
+```
+
+本地开源检查：
+
+```sh
+python3 scripts/validate_repo.py
+```
 
 ## 核心原则
 
@@ -379,6 +418,23 @@ ETF 新发发现可先输出一个轻量 `etf-listing-discovery package`：
 - [cases/cohr-2026-05/](cases/cohr-2026-05/)：财报事件分析包示例。
 - [cases/etf-discovery-2026-05-09/](cases/etf-discovery-2026-05-09/)：ETF 新发发现示例。
 - [cases/etf-listing-analysis-2026-05-09/](cases/etf-listing-analysis-2026-05-09/)：BUYB / EUV / JOUL ETF 上市分析示例。
+
+案例阅读顺序和使用边界见 [examples/README.md](examples/README.md)。所有公开案例都是 historical examples，不构成投资建议。
+
+## Open Source Notes
+
+- License: [Apache-2.0](LICENSE)
+- Contribution guide: [CONTRIBUTING.md](CONTRIBUTING.md)
+- Security policy: [SECURITY.md](SECURITY.md)
+- Data/source policy: [DATA_POLICY.md](DATA_POLICY.md)
+
+开源贡献的最低要求：
+
+- 真实案例必须有 `evidence-log.csv`。
+- 真实案例必须写明时间边界和刷新条件。
+- 真实标的分析必须标注 `not_investment_advice: true` 或等价免责声明。
+- 不提交 API key、cookie、券商账户数据、付费研报全文、私有纪要或不可再分发数据。
+- 结论证据不足时必须降级，不把观点写成事实。
 
 ## 推荐使用路径
 
