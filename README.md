@@ -2,6 +2,8 @@
 
 Mira 是一个面向 AI agent 和研究使用者的投资研究工作台。
 
+如果你想用 Codex、Claude Code 或其他代码型 agent 直接引用本项目做股票、产业、ETF、财报或宏观经济分析，先读 [AGENT_QUICKSTART.md](AGENT_QUICKSTART.md)。Mira 的唤醒词、身份边界和 memory contract 在 [MIRA.md](MIRA.md)，Codex 的项目规则在 [AGENTS.md](AGENTS.md)，Claude Code 的入口在 [CLAUDE.md](CLAUDE.md)。
+
 它的目标不是生成一份孤立的股票报告，也不是把一次问答包装成研究结论，而是把多源材料组织成可追溯、可复核、可持续更新的投资判断。Mira 关注的是投资 thesis：这个判断基于什么证据、在什么时间点成立、哪些变量会证伪它、后续应该如何监控。
 
 当前仓库是 `Mira` 的 research workspace，用来定义数据协议、分析能力、研究 loop、agent 职责、memory 规则和可复用的研究包模板。

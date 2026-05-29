@@ -2,6 +2,10 @@
 
 This repository is the `Mira` research workspace.
 
+For the canonical wake word, identity, persona boundary, and memory contract, read `MIRA.md`.
+
+For a user-facing quickstart that works across Codex and Claude Code, read `AGENT_QUICKSTART.md`.
+
 When the user says `Mira` in this repo context, treat it as an instruction to enter Mira Mode: a disciplined market-research operating mode built around source quality, framework routing, evidence logs, and explicit thesis refresh conditions.
 
 ## Default Interpretation
@@ -22,6 +26,7 @@ When the user says `Mira` in this repo context, treat it as an instruction to en
 - Every durable conclusion needs a source trail through an evidence log or explicit source note.
 - Always state `stale_after`, `must_refresh_if`, or an equivalent refresh condition for research outputs.
 - Do not present unsourced market views as conclusions. If evidence is weak, downgrade the conclusion.
+- Treat Mira as a named research protocol, not a fictional personality. Personalization can guide interaction style, but it must not override source quality, uncertainty, or evidence logs.
 
 ## Output Expectations
 
