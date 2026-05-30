@@ -4,11 +4,14 @@
 - research_object: long-term analysis methodology
 - market_scope: public equity research across US, HK and A-share contexts unless a case narrows scope
 - time_boundary: gt_1y, usually 3-5 year thesis formation and refresh
+- research_cutoff_date: 2026-05-30
+- as_of: 2026-05-30
 - primary_skill_or_loop: loops/methodology-research-loop.md
 - routing_basis: user asked to optimize Mira's long-term analysis method and explicitly approved external deep research before workflow design
 - routing_mismatch_risk: source scan may overrepresent public institutional frameworks and underrepresent private buyside execution details
 - expected_output_package: methodology-card.md, methodology-search-log.csv, methodology-review-log.csv, methodology-queue.csv
 - created: 2026-05-30
+- not_investment_advice: true
 
 ## Provisional Conclusion
 

@@ -4,9 +4,12 @@
 - research_object: `long-term-integrated-thesis` workflow
 - market_scope: public equity themes and public-company read-throughs, primarily US-listed names with room for HK/A-share follow-up
 - time_boundary: 2026-05-30 snapshot; thesis horizon is 3-5 years
+- research_cutoff_date: 2026-05-30
+- as_of: 2026-05-30
 - primary_skill_or_loop: `loops/methodology-research-loop.md`
 - linked_methodology_case: `cases/long-term-methodology-2026-05-30/`
 - validation_status: iteration_01_in_progress
+- not_investment_advice: true
 
 ## Objective
 
