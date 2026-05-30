@@ -1,0 +1,6 @@
+scenario,usdc_circulation_b,annual_revenue_yield,annual_revenue_b,distribution_cost_ratio,adjusted_ebitda_margin,adjusted_ebitda_b,market_cap_b,price_to_revenue,price_to_adjusted_ebitda,interpretation
+bear,50,3.0%,1.50,70%,12%,0.18,28.56,19.0,158.7,"Rate compression, weaker circulation and higher partner economics make the current market cap hard to justify on near-term earnings."
+base,75,4.0%,3.00,62%,22%,0.66,28.56,9.5,43.3,"Requires circulation growth and Q1-like economics to persist; still implies rich profitability expectations."
+bull,120,4.5%,5.40,55%,30%,1.62,28.56,5.3,17.6,"Needs major circulation growth, supportive rates and improved cost leverage; this is the first case where valuation begins to look less stretched."
+q1_run_rate,61.3,4.5%,2.78,62%,22%,0.60,28.56,10.3,47.3,"Mechanical annualization of Q1 2026; useful baseline, not a forecast."
+
