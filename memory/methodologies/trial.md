@@ -1,6 +1,6 @@
 # Methodology Queue: Trial
 
-- last_updated: 2026-05-29
+- last_updated: 2026-05-30
 
 ## Purpose
 
@@ -84,3 +84,8 @@
   target_case: `AAPL thesis ledger`, `CRWV event delta`, `WOLF expectation map`, and next live earnings event
   expected_increment: 把一次性 research package 升级为可维护的 thesis ledger、expectation map、event delta、decision log 和 postmortem，让新增信息能明确映射到预期变量和 thesis state。
   falsification_condition: 如果它不能比普通 memo 更清楚地区分预期差、证据强度、状态变化和复盘结论，或维护成本明显拖慢研究，就不升级到 `adopted`。
+
+- `institutional-research-quality-gate`
+  target_case: `next 3-5 formal Mira outputs with thesis-level judgments`
+  expected_increment: 用四问压缩质量控制：现实依据、一阶变量、决策增量、可被打脸。目标是减少低质量结论和背景堆砌，而不是增加新流程。
+  falsification_condition: 如果它只是重复 delivery checklist、让简单任务变慢，或不能在至少两个真实 case 中改善结论降级/刷新条件/一阶变量清晰度，就不升级到 `adopted`。
