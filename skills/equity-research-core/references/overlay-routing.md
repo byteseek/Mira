@@ -36,6 +36,16 @@ overlay 不是新的主框架，而是额外的验证视角。
 - 单看公司本体不足以解释估值倍数、行业轮动、资金流或风险溢价变化
 - 需要判断新宏观数据或政策口径是否改变 thesis
 
+### `commodity`
+
+适用于以下情形：
+
+- 商品价格、库存、期货曲线、成本曲线、政策/地缘或贸易流明显影响收入、成本、利润率、FCF、资本开支、资产价值或风险溢价
+- 目标资产是资源股、能源股、材料股、化工、航运、商品 ETF、商品期货或其他商品 beta 明显的资产
+- 需要区分 `commodity beta` 与 `company alpha`
+- 单看公司本体或泛宏观不足以解释盈利 revision、估值倍数、行业轮动或资金流
+- 需要判断商品变化来自实物供需、库存、曲线、成本、政策/地缘、金融条件还是仓位 squeeze
+
 ### `strategic-catalyst`
 
 适用于以下情形：
@@ -74,6 +84,16 @@ overlay 不是新的主框架，而是额外的验证视角。
 - 新数据或政策口径相对预期是 surprise 还是 confirmation？
 - 如果宏观判断错了，最可能导致哪类投资误判？
 
+判断是否启用 `commodity` overlay 时，至少回答：
+
+- 当前价格主要交易公司变量、商品变量、宏观变量，还是仓位/流动性变量？
+- 商品价格通过哪条链影响收入、成本、利润率、FCF、资本开支、估值、融资或催化剂？
+- 目标资产的 `commodity_beta` 是 `low`、`medium` 还是 `high`？
+- 商品变化来自供需、库存、期货曲线、成本、政策/地缘、金融条件还是仓位 squeeze？
+- 公司有多少暴露被 hedges、合同价、区域基差、成本通胀或项目执行抵消？
+- 市场已经 price in 的商品路径是什么？
+- 如果商品判断错了，最可能导致哪类投资误判？
+
 判断是否启用 `strategic-catalyst` overlay 时，至少回答：
 
 - 这条线索指向什么具体催化剂：合作、订单、认证、投资、并购、授权、平台接入还是供应链导入？
@@ -108,6 +128,18 @@ overlay 不是新的主框架，而是额外的验证视角。
 - `market_pricing`
 - `what_is_already_priced`
 - `macro_refresh_triggers`
+
+如果启用 `commodity` overlay，还必须记录：
+
+- `commodity_weight`
+  one of `none`, `context`, `secondary`, `primary`
+- `dominant_commodity_driver`
+  one of `physical_balance`, `inventory_cycle`, `curve_structure`, `cost_curve`, `policy_geopolitics`, `financial_conditions`, `positioning`, `mixed`
+- `commodity_transmission_chain`
+- `market_pricing`
+- `what_is_already_priced`
+- `company_alpha_separation`
+- `commodity_refresh_triggers`
 
 如果启用 `strategic-catalyst` overlay，还必须记录：
 
@@ -153,6 +185,17 @@ overlay 不是新的主框架，而是额外的验证视角。
 - refresh triggers
 - falsification conditions
 
+`commodity` overlay 通常应补充以下内容：
+
+- commodity exposure map
+- commodity transmission chain
+- inventory and curve snapshot
+- cost-curve / margin-sensitivity note
+- hedging and contract adjustment
+- market-pricing map
+- refresh triggers
+- falsification conditions
+
 `strategic-catalyst` overlay 通常应补充以下内容：
 
 - catalyst map
@@ -180,6 +223,7 @@ overlay 不是新的主框架，而是额外的验证视角。
 - 从核心供应链看哪些公司受益或受损
 - 判断单一产品或周期变化对更大产业链的影响
 - 用 `macro` overlay 判断实际利率、美元、流动性、财政、AI capex、机构配置和风险偏好是否主导估值倍数
+- 用 `commodity` overlay 判断资源、能源、材料或化工大票的商品 beta 是否主导盈利 revision
 
 这里更像在看：
 
@@ -197,6 +241,7 @@ overlay 不是新的主框架，而是额外的验证视角。
 - 从竞品和同层级公司看公司叙事是不是伪稀缺
 - 用 `strategic-catalyst` 捕捉巨头合作、投资、并购、客户认证和供应链导入的早期 alpha 线索
 - `macro` 通常只作为背景，除非融资环境、流动性或风险偏好直接影响融资生存性
+- `commodity` 通常只作为 secondary 或 context，除非单一资源项目、矿权、offtake 或商品价格直接决定生存性
 
 这里更像在看：
 
@@ -212,3 +257,4 @@ overlay 不是新的主框架，而是额外的验证视角。
 - 用 `supply-chain` 判断景气和业绩兑现是否真实
 - 用 `macro` 判断板块轮动来自行业 alpha，还是来自利率、信用、政策和风险偏好扩张
 - 检查宏观变量是否改变估值修复空间、盈利 revision 或催化剂窗口
+- 用 `commodity` 判断商品 beta、成本曲线位置、项目弹性、hedges 和区域基差是否改变盈利 revision

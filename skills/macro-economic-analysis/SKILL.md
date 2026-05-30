@@ -13,6 +13,8 @@
 - 财报或公司事件本身不足以解释价格，必须判断市场在交易 `growth scare`、`reflation`、`policy pivot`、`liquidity easing/tightening` 或 `risk-off/risk-on`。
 - 用户明确要求宏观、利率、经济周期、央行、财政、流动性或市场风险偏好分析。
 
+如果研究对象是具体商品、商品期货曲线、库存、供需平衡或成本曲线，先使用 `skills/commodity-cycle-analysis/SKILL.md`。只有当商品冲击传导到通胀、利率、财政、外部账户、美元、信用或风险偏好时，才升级为本 macro skill 或叠加 `macro` overlay。
+
 ## Required Inputs
 
 - `asset_or_ticker`
@@ -134,6 +136,8 @@
 
 If no credible transmission chain exists, macro should stay as context and not enter the core thesis.
 
+如果传导链的第一变量是具体商品供需、库存、期货曲线或成本曲线，先运行 `commodity-cycle-analysis`，再把结论压缩成 macro transmission input。
+
 ## Data Release Triage
 
 当用户问单次宏观数据发布，例如 CPI、PPI、PCE、NFP、ISM、retail sales 或 GDP 时，先运行 `macro-data-release-triage`，再决定是否升级为完整 `macro-regime-analysis`。
@@ -196,6 +200,7 @@ For an equity research package, add these fields to `case notes` or memo:
 ## Failure Modes
 
 - Turning every memo into a generic macro chapter.
+- Treating commodity-specific inventory, curve or trade-flow signals as generic macro.
 - Treating lagging macro data as if it were a forward signal.
 - Ignoring what the market already priced.
 - Confusing level with change, and change with surprise.

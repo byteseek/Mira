@@ -1,0 +1,2 @@
+method_name,review_date,validation_mode,case_or_scope,result,what_worked,what_failed,keep_change_or_retire,notes
+commodity-cycle-analysis,2026-05-30,design_review,methodology_scaffold,not_yet_validated,"Defines separate physical balance inventory curve cost curve policy positioning and asset-transmission layers.","No live Mira commodity case yet; no postmortem; source coverage is designed but not stress-tested.",keep_under_trial,"Trial should use crude oil/copper/gold or lithium cases before adoption."

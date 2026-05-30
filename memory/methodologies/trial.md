@@ -50,6 +50,11 @@
   expected_increment: 把增长、通胀、政策、利率、美元、信用、流动性和风险偏好转成 market pricing 与 macro-to-asset transmission chain，避免宏观分析停留在背景介绍。
   falsification_condition: 如果它不能稳定提升 thesis 的解释力、refresh trigger 和 falsification condition，或经常把公司/行业主导问题误判成宏观主导，就不升级到 `adopted`。
 
+- `commodity-cycle-analysis`
+  target_case: `crude oil / oil equities`, `copper / miners`, `gold / gold miners`, and optional `lithium / battery materials`
+  expected_increment: 把商品研究从泛宏观或单纯价格图，拆成供需平衡、库存、期货曲线、成本曲线、政策/地缘、仓位和资产传导，区分 commodity beta 与 company alpha。
+  falsification_condition: 如果它只是重复 `macro-regime-analysis`，不能稳定区分库存/曲线紧张与长期供需变化，或无法改善资源股、商品 ETF 和商品本身的刷新条件，就不升级到 `adopted`。
+
 - `macro-data-release-triage`
   target_case: `PPI/CPI/PCE`, `NFP`, `ISM/PMI`, `retail sales`, and `FOMC-adjacent data`
   expected_increment: 把单次宏观数据发布拆成 headline surprise、子项目定位、历史类比、上游条件、市场定价和后续刷新触发，避免只用 headline 解释行情。

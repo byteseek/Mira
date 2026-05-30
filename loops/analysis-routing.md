@@ -132,6 +132,16 @@
 
 如果最终落到具体公司，再作为 `macro` overlay 交给单票研究。
 
+### `commodity_or_resource_cycle`
+
+对象是具体大宗商品、商品期货曲线、库存、供需平衡、成本曲线、资源周期、资源股商品 beta 或商品 ETF。
+
+默认进入：
+
+- `skills/commodity-cycle-analysis/SKILL.md`
+
+如果最终落到具体公司，再作为 `commodity` overlay 交给单票研究；如果商品冲击改变通胀、利率、财政、外部账户或风险偏好，再同步启用 `macro` overlay。
+
 ### `etf_or_product_listing`
 
 对象是 ETF、新产品、上市结构、持仓暴露或 ETF 发行趋势。
@@ -202,6 +212,7 @@ overlay 是额外证据路径，不替代主框架。
 
 - `supply-chain`
 - `macro`
+- `commodity`
 
 选择规则见：
 
@@ -249,6 +260,13 @@ lens 是对 thesis 的约束视角，不是额外研究对象。
 
 - `industry-map.md`
 - `company-map.csv`
+- `evidence-log.csv`
+
+### Commodity Package
+
+用于大宗商品、商品期货曲线、库存、供需平衡、成本曲线或商品 beta 分析：
+
+- `commodity-cycle-note.md`
 - `evidence-log.csv`
 
 ### Methodology Package
