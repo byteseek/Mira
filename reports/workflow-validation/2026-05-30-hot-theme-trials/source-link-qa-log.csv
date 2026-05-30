@@ -1,0 +1,9 @@
+source_group,qa_status,evidence,remaining_risk,next_refresh
+core_package_files,pass,"All local package links resolve by file presence check in repository.","none","Before next commit or publication refresh."
+csv_structure,pass,"All CSV files parse with Python csv.DictReader.","none","After any CSV edit."
+placeholder_scan,pass,"rg scan finds no real TODO/TBD/{{ }} placeholders; only checklist text mentions the scan.","none","Before distribution."
+primary_regulatory_sources,pass_with_notes,"Congress, White House, FDA, SEC, CFTC/OCC/Fed-source pages are cited in evidence-log.csv.","Some regulator or FDA/SEC pages may block automated curl or redirect to protection pages.","Manual browser/source refresh before live use."
+company_sources,pass_with_notes,"CRCL 10-Q, Coinbase quarterly results, Lilly/Novo pages, Robinhood materials and utility filings are cited as source trail.","Some company pages return 403/DNS issues to curl; web/source discovery found the intended official sources.","Manual check before relying on any single case."
+market_data_sources,pass_with_limits,"StockAnalysis and public forecast/financial pages provide market-pricing proxies for workflow validation.","Secondary market-data pages are not a primary institutional consensus feed.","Replace with primary consensus/market data before investment use."
+publication_boundary,pass,"PUBLIC_README.md and package docs state not_investment_advice and stale_after.","none","Keep boundary in future updates."
+final_distribution_scope,pass,"Package is ready for colleague workflow review, not investment recommendation distribution.","not a final investment memo or live portfolio tool","Refresh if audience or use case changes."
