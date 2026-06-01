@@ -31,6 +31,7 @@ stockanalysis_company_pages,aggregated_financial_data,L5 company data aggregatio
 macrotrends_company_pages,aggregated_financial_data,L5 company history aggregation,reviewed,"Long-range financial and price context."
 finviz_snapshot_page,market_price_and_trading,L5 screening snapshot,reviewed,"Signal only; cross-check important values."
 x_aapl_sentiment_stream,social_and_community_signal,L4 social search stream,reviewed,"Sentiment and idea generation only."
+x_aleabitoreddit_serenity_watch,social_and_community_signal,L4 creator/trader account for bottleneck and catalyst discovery,reviewed,"Priority watch source for idea generation and variant perception; not a standalone evidence source for durable conclusions."
 youtube_aapl_creator_watch,social_and_community_signal,L4 creator watchlist,reviewed,"Opinion source; trace claims to evidence before reuse."
 sellside_research_purchase_queue,mira_derived_analysis,L6 workflow note,reviewed,"Purchase workflow artifact, not source content."
 derived_aapl_apr2026_thesis,mira_derived_analysis,L6 derived case artifact,reviewed,"Must retain upstream source trail."
