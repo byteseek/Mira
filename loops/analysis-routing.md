@@ -407,13 +407,36 @@ This loop is currently `candidate_internal_release`, not final external-grade.
 
 如果 `research_object = single_equity`，按以下顺序继续：
 
-1. 运行 `thesis-horizon-routing`
-2. 运行 `framework-routing`
-3. 运行 `overlay-routing`
-4. 判断是否使用 `variant-perception` 或 `long-term-multibagger` lens
-5. 选择输出包和刷新条件
+1. 运行 `market_scope_gate`
+2. 运行 `thesis-horizon-routing`
+3. 运行 `framework-routing`
+4. 运行 `overlay-routing`
+5. 判断是否使用 `variant-perception` 或 `long-term-multibagger` lens
+6. 选择输出包和刷新条件
 
 单票主框架只回答“当前主要由什么变量定价”，不回答任务是不是财报、产业、宏观或方法论。
+
+### Market Scope Gate
+
+`market_scope_gate` 用于防止把美股式公司 / 估值 / revision 框架无差别套到其他市场。
+
+至少记录：
+
+- `listing_market`
+- `primary_trading_venue`
+- `price_discovery_venue`
+- `market_access`
+- `dominant_investor_base`
+- `policy_regulatory_sensitivity`
+- `governance_or_controller_risk`
+- `market_structure_overlay_default`
+
+默认规则：
+
+- A 股：必须先跑 `market-structure-policy` gate。若无明显触发，记录 `market_structure_weight: context`。
+- 港股：必须先跑 `market-structure-policy` gate。若存在“便宜但不重估”、外资 / 南向 / 离岸风险溢价或治理折价问题，至少记录 `market_structure_weight: secondary`。
+- A/H/ADR 多地上市：必须判断 `price_discovery_venue` 和多地估值差异是否改变结论。
+- 美股、日股、韩股、台股、欧股：不默认升为 `secondary`，但若本地政策、交易制度、治理结构、指数 / 被动资金、货币流动性或外资可达性主导价格，应启用 `market-structure-policy`。
 
 ## Step 5: Overlays And Lenses
 
@@ -425,6 +448,7 @@ overlay 是额外证据路径，不替代主框架。
 
 - `supply-chain`
 - `macro`
+- `market-structure-policy`
 - `commodity`
 
 选择规则见：

@@ -226,6 +226,7 @@
 
 - 是否启用 `supply-chain` overlay
 - 是否启用 `macro` overlay
+- 是否启用 `market-structure-policy` overlay
 - 是否启用 `variant-perception` lens
 
 规则：
@@ -233,6 +234,7 @@
 - overlay 负责补证据链，不替代主框架
 - lens 负责约束 thesis 写法，不替代主框架
 - 如果宏观变量可能主导当前定价，优先参考 [macro-overlay.md](macro-overlay.md)，并写明 `macro_weight`
+- 如果上市地、交易地、资金通道、政策监管、治理折价或 A/H/ADR 多地上市可能主导当前定价，优先参考 [overlay-routing.md](overlay-routing.md) 的 `market-structure-policy`，并写明 `market_structure_weight`
 - 如果研究问题本质是“市场预期错在哪里”，使用 `variant-perception` checklist
 
 ## Output Requirements
