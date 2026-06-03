@@ -182,67 +182,19 @@ scripts/check_updates.sh
 
 ## 九类 Loop
 
-Mira 当前有九类核心 loop。文件名保持工程稳定，文档展示名采用更清楚的中文定位。
+Mira 当前有九类核心 loop。README 只保留入口索引，具体执行规则以对应文件为准。
 
-### 投资分析 loop
-
-工程文件：[loops/research-loop.md](loops/research-loop.md)
-
-`投资分析 loop` 用于首次覆盖或 thesis 重建。它围绕投资问题建立初始认知，经过定义问题、框架路由、选择 overlay、收集来源、扫描、缺口检查、修正和打包，最后输出 `research package`。
-
-这条 loop 的核心对象是投资判断，可以覆盖单一股票、行业主题、宏观变量驱动的资产线索，以及后续扩展的商品、加密或跨资产主题。只要目标是形成或重建投资 thesis，就应该走这条 loop。
-
-### 监控 loop
-
-工程文件：[loops/monitoring-loop.md](loops/monitoring-loop.md)
-
-`监控 loop` 用于已有 thesis 的持续更新。它不是后台采集任务，也不是重新研究全案，而是在用户触发、研究刷新或明确监控窗口内按需读取新增信号。
-
-它负责过滤噪音、写入监控记录、判断增量信息是否改变 thesis、风险、节奏、框架或 overlay，并决定是否升级回完整的投资分析 loop。
-
-### 方法论研究 loop
-
-工程文件：[loops/methodology-research-loop.md](loops/methodology-research-loop.md)
-
-`方法论研究 loop` 研究的是研究方法本身，而不是某一只股票。它回答哪些方法在哪些场景有效、核心假设是什么、失效模式是什么、是否值得进入正式 framework 或 overlay。
-
-这条 loop 允许从研报、访谈、帖子、纪要、投资笔记或他人分析结果中逆向拆方法，再按可信度、可复现性、解释力、验证方式和后续跟踪质量决定进入 `todo / trial / adopted / retired`。
-
-### Thesis 更新 loop
-
-工程文件：[loops/thesis-update-loop.md](loops/thesis-update-loop.md)
-
-`Thesis 更新 loop` 用于已有 thesis 的状态变化、预期差更新、研究动作记录和复盘入口。它不是完整重研；只有当新增 evidence 改变核心前提时，才升级回投资分析 loop。
-
-### Event Delta loop
-
-工程文件：[loops/event-delta-loop.md](loops/event-delta-loop.md)
-
-`Event Delta loop` 用于财报、宏观、产品、监管、同业 read-through 等事件前后对比。它要求先写 pre-event setup，再判断实际披露相对预期改变了哪个变量，以及是否影响 thesis state。
-
-### PM 研究 book review loop
-
-工程文件：[loops/portfolio-review-loop.md](loops/portfolio-review-loop.md)
-
-`PM 研究 book review loop` 用于多 thesis 的研究维护视角。它识别哪些 thesis active、stale、crowded、correlated、过度依赖同一主题或缺少 follow-up。没有真实持仓数据时，它不能输出仓位大小判断。
-
-### Position review loop
-
-工程文件：[loops/position-review-loop.md](loops/position-review-loop.md)
-
-`Position review loop` 用于用户提供真实头寸时复盘单一仓位。它检查原 thesis、当前证据、价格语境、下行路径、刷新条件和仓位语义是否匹配，并输出 `position_review_action`，但不生成订单或精确交易数量。
-
-### Portfolio construction review loop
-
-工程文件：[loops/portfolio-construction-review-loop.md](loops/portfolio-construction-review-loop.md)
-
-`Portfolio construction review loop` 用于用户提供持仓、权重、mandate 或风险约束时复盘组合结构。它识别主题/因子/宏观/催化剂集中、重复 bet、流动性风险、stale high-impact position 和 position-review queue。
-
-### Decision quality review loop
-
-工程文件：[loops/decision-quality-review-loop.md](loops/decision-quality-review-loop.md)
-
-`Decision quality review loop` 用于复盘历史研究判断或头寸动作质量。它区分原始可知信息、事后结果、thesis 变量、market beta、估值变化、timing、执行约束和运气，并把流程错误转成 postmortem 或 methodology update candidate。
+| Loop | 使用场景 | 文件 |
+| --- | --- | --- |
+| 投资分析 | 首次覆盖、主题研究或 thesis 重建 | [loops/research-loop.md](loops/research-loop.md) |
+| 监控 | 已有 thesis 的增量更新和 thesis impact 判断 | [loops/monitoring-loop.md](loops/monitoring-loop.md) |
+| 方法论研究 | 研究投资研究方法本身，决定 trial/adopted/retired | [loops/methodology-research-loop.md](loops/methodology-research-loop.md) |
+| Thesis 更新 | 更新 thesis state、expectation map、decision log | [loops/thesis-update-loop.md](loops/thesis-update-loop.md) |
+| Event Delta | 财报、宏观、产品、监管或同业事件前后对比 | [loops/event-delta-loop.md](loops/event-delta-loop.md) |
+| PM 研究 book review | 多 thesis 研究维护视角，不输出无依据仓位判断 | [loops/portfolio-review-loop.md](loops/portfolio-review-loop.md) |
+| Position review | 用户提供真实头寸后的单仓复盘，不生成订单 | [loops/position-review-loop.md](loops/position-review-loop.md) |
+| Portfolio construction review | 用户提供持仓、权重或约束后的组合结构复盘 | [loops/portfolio-construction-review-loop.md](loops/portfolio-construction-review-loop.md) |
+| Decision quality review | 复盘历史研究判断、结果路径和流程错误 | [loops/decision-quality-review-loop.md](loops/decision-quality-review-loop.md) |
 
 ## 投资分析框架
 
@@ -361,7 +313,7 @@ python3 scripts/validate_repo.py --report-only
 
 ### Long-Term Workflow Release QA
 
-长期方法论外发前必须通过 release gate，而不是只依赖文档判断。当前候选包见 [cases/long-term-workflow-validation-2026-05-30/](cases/long-term-workflow-validation-2026-05-30/)。
+长期方法论外发前必须通过 release gate，而不是只依赖文档判断。README 只保留执行入口；详细 QA 证据和控制项见 [cases/long-term-workflow-validation-2026-05-30/release-qa-report-2026-05-30.md](cases/long-term-workflow-validation-2026-05-30/release-qa-report-2026-05-30.md)，候选包见 [cases/long-term-workflow-validation-2026-05-30/](cases/long-term-workflow-validation-2026-05-30/)。
 
 运行：
 
@@ -369,31 +321,7 @@ python3 scripts/validate_repo.py --report-only
 python3 scripts/run_long_term_release_checks.py
 ```
 
-当前总 QA 包括 10 个 case 校验、28 个 release-control CSV shape check、G01 external method-source scan 校验、G06 reviewer packet/assignment tracker 校验、G06 reviewer candidate screen 校验、G06 reviewer selection rubric 校验、G06 reviewer independence screen 校验、G06 dispatch packet audit、G06 dispatch readiness checklist、external release action queue 校验、G04 trigger/event-watch/later-event candidate/execution tracker 校验、G04 default packet dry run、G04 four-case packet matrix、G06 packet dry run、institutional bundle 校验、public release freshness 校验、release verification command manifest 校验、go/no-go evidence coverage 校验、final release cutover 校验、objective readiness 校验、goal completion audit 和最终外发负向门禁。
-
-关键 release 控制项：
-
-- `g01-external-method-source-audit.csv` + `scripts/validate_g01_external_method_scan.py`：确认公开亚洲/中文 practitioner 来源已经补强，但仍只是 `partial_pass_improved`，需要 G06 reviewer 接受。
-- `g04-follow-through-execution-tracker.csv` + `scripts/validate_follow_through_execution_tracker.py`：确认 follow-through 已准备执行但仍等待后续事件，并交叉检查 trigger tracker/event calendar，不能被误判为完成。
-- `g04-follow-through-event-watch-calendar.csv` + `scripts/validate_g04_event_watch_calendar.py`：确认后续事件观察日历存在，且 scheduled/monitored event 不会被误判为已完成 G04。
-- `g04-later-event-candidate-screen.csv` + `scripts/validate_g04_later_event_candidate_screen.py`：确认后续事件必须先通过 post-cutoff 日期、官方来源、materiality 和 execution-state 检查，才能进入 refresh。
-- `scripts/validate_follow_through_refresh.py`：确认未来 G04 refresh 必须所有 qualification rows 为 yes，original_memo_date 匹配 cutoff，new event source 日期晚于 cutoff，stale_after 晚于 refresh_date，恰好选择一个 approved result label，refresh source_id 出现在 updated evidence log 的 later-event 行里，且 G04 intake requirements 完整。
-- `scripts/validate_follow_through_packet_matrix.py`：确认 ETN、VRT、CRM、LLY 四个 live case 都能 dry-run 导出 G04 execution packet。
-- `trial-theme-matrix.csv` + `scripts/validate_trial_theme_matrix.py`：确认近期热门方向选择覆盖 7 个主题，且每个主题都有 linked case、evidence log 和 source_id 可追踪。
-- `public-workflow-pack/` + `scripts/validate_public_workflow_pack.py`：确认 public pack 的 README、workflow、fill guide、checklist、template inventory 和 source appendix 对 11 个 overlay、10 个案例/主题 source trail 与 release boundary 保持一致。
-- `scripts/validate_public_release_freshness.py --as-of 2026-05-30`：确认 15 个公开/外审材料有未过期的 `stale_after` 和可观察 `must_refresh_if`，并确认 4 个模板保留刷新字段，防止过期材料被继续外发。
-- `scripts/validate_validation_case_set.py`：非递归执行 10 个 case 的 repo validation，供 objective/goal audit 作为可执行证据使用。
-- `g06-reviewer-assignment-tracker.csv` + `scripts/validate_external_review_assignment_tracker.py`：确认外部 reviewer 已准备分配但尚未完成，并交叉检查 independence screen 的 pending reviewer rows，不能被内部模拟替代。
-- `g06-reviewer-candidate-screen.csv` + `scripts/validate_g06_reviewer_candidate_screen.py`：确认候选 reviewer 筛选是候选人级别、可审计的，且在未命名 reviewer 前不会伪装成 G06 完成。
-- `g06-reviewer-independence-screen.csv` + `scripts/validate_g06_reviewer_independence_screen.py`：确认 reviewer 独立性、利益冲突、能力和 source-boundary 筛选标准已准备，但仍不命名 reviewer、不清 G06。
-- `scripts/validate_external_review_return.py`：确认未来 reviewer return 必须绑定 assignment tracker 和 independence screen，且在 scorecard 和 results memo 两处明确通过 G04 readiness / false-completion control，severity/impact 必须合法，P1 修复必须有 `owner:`/`fix:`，results memo Findings 表的 P0/P1 行数必须匹配 summary/scorecard，reviewer/date 必须一致，intake 必须完整，且 memo summary 必须匹配 scorecard，不能用备忘录改写评审事实。
-- `scripts/validate_external_review_dispatch_packet.py`：临时真实导出 G06 reviewer packet，确认 28 个 send items 可派发、internal rows 未外发且仍不清 G06。
-- `g06-dispatch-readiness-checklist.csv` + `scripts/validate_g06_dispatch_readiness.py`：确认派发前 9 项控制已通过，实际 reviewer assignment/return 仍是外部 pending blocker。
-- `goal-completion-audit.csv` + `scripts/validate_goal_completion_audit.py`：把原始目标映射到 10 个完成证据，逐行执行非递归 `verification_command`，额外检查 institutional packet dry-run 的 38 个 required export paths，并强制 G04/G06/final release 未完成时 `goal_complete: false`。
-- `release-verification-command-manifest.csv` + `scripts/validate_release_verification_command_manifest.py`：把最终包的复验命令、当前期望退出码和外发阻断命令做成机器可读清单，防止复验逻辑只存在于 runbook 文本里。
-- `scripts/validate_go_no_go_evidence_coverage.py`：确认 11 个外发必需 release gate 都映射到 final go/no-go 的 15 个证据行，并且 cutover validator 有对应拒绝逻辑，防止新增 gate 后最后签发模板漏检。
-- `scripts/validate_final_release_cutover.py`：确认 final cutover 仍未 ready，且 go/no-go template 或带 placeholder/pending evidence 的 dated memo 不会被误当成已签署 go memo。
-- `scripts/build_institutional_release_packet.py`：在 `python3 scripts/validate_long_term_release.py --require-external-ready` 失败时拒绝导出最终机构同事 release packet，同时 dry-run 检查 38 个 required export paths。
+外发 readiness 的当前状态属于 release snapshot，不是稳定产品说明；不要从 README 推断 final cutover 已完成。
 
 ### Claim Classification
 
@@ -554,57 +482,16 @@ ETF 新发发现可先输出一个轻量 `etf-listing-discovery package`：
 
 ## 推荐使用路径
 
-### 建立或重建投资 thesis
+Quickstart 负责完整启动顺序；这里仅列常见任务的入口。
 
-1. 在 [data/](data/) 中确认来源类型、时效规则和获取方式。
-2. 用 [loops/research-loop.md](loops/research-loop.md) 进入投资分析 loop。
-3. 在 `define` 后先完成 `route-framework`。
-4. 如有必要，再完成 `select-overlays`，例如 `supply-chain` 或 `macro`。
-5. 按选定框架与 overlay 建立首版 thesis。
-6. 由 [agents/research-orchestrator.md](agents/research-orchestrator.md) 汇总并输出统一研究包。
-7. 稳定内容写入 [memory/](memory/)。
-8. 后续更新走 [loops/monitoring-loop.md](loops/monitoring-loop.md)。
-
-### 分析财报事件
-
-1. 用 [skills/earnings-report-analysis/](skills/earnings-report-analysis/) 登记财报、业绩会、市场预期、价格反应和至少一家可比同行财报来源。
-2. 输出 [templates/earnings-analysis-package/](templates/earnings-analysis-package/) 对应的轻量分析包。
-3. 判断 `thesis_impact`。
-4. 仅当财报改变 thesis 或引入新风险时，再更新标准 `research package`。
-
-### 分析产业概念
-
-1. 用 [skills/industry-concept-analysis/](skills/industry-concept-analysis/) 明确概念、市场范围、时间边界和研究重点。
-2. 先输出 `One-Page Industry Map`，快速回答哪里紧、谁受益、买什么代理、什么会错。
-3. 再输出完整产业链、供需、定价、放量、利润池、公司映射和证据日志。
-4. 把候选标的交给 [skills/equity-research-core/](skills/equity-research-core/) 做单票研究，必要时启用 `supply-chain` overlay。
-
-### 分析宏观驱动
-
-1. 用 [skills/macro-economic-analysis/](skills/macro-economic-analysis/) 明确宏观问题、资产范围、时间窗口和目标变量。
-2. 判断宏观变量是否只是背景，还是会改变收入、利润率、贴现率、风险溢价、融资条件、仓位或催化剂。
-3. 如果宏观变量会改变定价链，在投资分析 loop 中启用 `macro` overlay。
-4. 将稳定方法沉淀到 `memory/methodologies/`，并通过真实案例继续验证。
-
-### 发现和分析新 ETF
-
-1. 用 [skills/etf-listing-discovery/](skills/etf-listing-discovery/) 从交易所、发行人、监管文件、ETF 行业媒体和市场数据中生成候选 watchlist。
-2. 输出 [templates/etf-listing-discovery-package/](templates/etf-listing-discovery-package/) 对应的发现包。
-3. 对高优先级候选，用 [skills/etf-listing-analysis/](skills/etf-listing-analysis/) 拆解发行意图、结构与可达性、持仓暴露地图、管理/权重机制和同类产品语境。
-4. 输出 [templates/etf-listing-analysis-package/](templates/etf-listing-analysis-package/) 对应的上市分析包。
-5. 若 ETF 分析指向具体股票、行业链条或资产类别机会，再进入标准投资分析 loop。
-
-### 研究方法论
-
-1. 用 [loops/methodology-research-loop.md](loops/methodology-research-loop.md) 明确方法论研究对象。
-2. 从研报、纪要、帖子、访谈、课程或别人分析中抽取候选方法。
-3. 用 [templates/methodology-search-log.csv](templates/methodology-search-log.csv) 记录搜索路径、语言圈层、支持与反对材料，以及遗漏点。
-4. 用 [templates/methodology-card.md](templates/methodology-card.md) 拆解方法、假设、适用范围、失效模式、credibility 和 search coverage。
-5. 用 [templates/methodology-queue.csv](templates/methodology-queue.csv) 比较方法的解释力、可复用性、可信度和 follow-through 质量。
-6. 把方法放入 `memory/methodologies/todo.md` 或 `trial.md`。
-7. 通过 case backtest、forward watch 或 live trial 做验证。
-8. 只有经过真实案例验证的方法，才进入 `adopted.md`。
-9. 已失效、重复或噪音过高的方法移到 `retired.md`。
+| 任务 | 主要入口 | 输出 |
+| --- | --- | --- |
+| 建立或重建投资 thesis | [loops/research-loop.md](loops/research-loop.md), [skills/equity-research-core/](skills/equity-research-core/) | 标准 `research package`，后续更新走 monitoring loop |
+| 分析财报事件 | [skills/earnings-report-analysis/](skills/earnings-report-analysis/) | 轻量 earnings package，必要时更新标准 research package |
+| 分析产业概念 | [skills/industry-concept-analysis/](skills/industry-concept-analysis/) | `One-Page Industry Map`、产业链底稿、候选标的交接 |
+| 分析宏观驱动 | [skills/macro-economic-analysis/](skills/macro-economic-analysis/) | 宏观变量到资产定价链的 thesis impact 判断 |
+| 发现和分析新 ETF | [skills/etf-listing-discovery/](skills/etf-listing-discovery/), [skills/etf-listing-analysis/](skills/etf-listing-analysis/) | ETF watchlist 或 listing analysis package |
+| 研究方法论 | [loops/methodology-research-loop.md](loops/methodology-research-loop.md) | methodology card、search/review log、queue 状态 |
 
 ## 仓库结构
 
