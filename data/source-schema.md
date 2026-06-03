@@ -17,7 +17,7 @@
 | `credibility_level` | yes | `A` / `B` / `C` / `D` |
 | `content_type` | yes | `fact` / `evidence` / `logic` / `opinion` / `sentiment` / `rumor` |
 | `research_role` | yes | `primary` / `secondary` / `signal` / `blocked` |
-| `market_scope` | yes | `US` / `CN` / `global` / `multi` |
+| `market_scope` | yes | `US` / `CN` / `HK` / `JP` / `TW` / `KR` / `EU` / `global` / `multi` |
 | `access_method` | yes | `repo_local` / `web_search` / `web_read` / `public_api` / `manual_attach` / `derived` |
 | `acquisition_mode` | yes | `free` / `free_with_key` / `paid` / `manual` |
 | `update_frequency` | yes | `real_time` / `daily` / `quarterly` / `semiannual` / `annual` / `event_driven` / `irregular` |

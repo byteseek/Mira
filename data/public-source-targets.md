@@ -16,6 +16,36 @@
 | 宏观背景 | FRED、BLS、BEA | 利率、通胀、就业、GDP、行业周期 |
 | 新闻与叙事 | Yahoo Finance news、主流媒体原文、X/YouTube watchlist | 事件发现、情绪和叙事变化 |
 | ETF 新发发现 | 交易所 new listings、issuer launch pages、SEC fund filings、ETF.com launch news | 新上市 ETF 候选、申请状态、产品语境 |
+| 非美本地市场披露 | CNINFO / SSE / SZSE、HKEXnews、JPX / EDINET、MOPS / TWSE、DART / KRX、ESMA / OAM / Euronext | 本地公告、监管披露、上市状态、行情和市场结构 |
+
+## Non-US Equity Targets
+
+非美单股研究不能默认把 SEC / Yahoo Finance 当成完整 source stack。默认顺序是：
+
+1. 本地监管、交易所或官方披露平台。
+2. 公司 IR 的公告、年报、季报、presentation 和 webcast。
+3. 交易所或官方行情 / 统计入口。
+4. Yahoo Finance、Stooq 或其他聚合页，只做延迟行情、估值或三表 screening 交叉核验。
+5. 专业媒体、卖方、社交源只用于事件发现、叙事和解释，不能替代本地披露。
+
+分市场默认 target：
+
+| market | primary disclosure targets | market / structure targets | notes |
+| --- | --- | --- | --- |
+| A 股 | `cninfo_a_share_disclosure_search`; `sse_listed_company_announcements`; `szse_listed_company_announcements` | `csrc_listed_company_disclosure_rules`; Yahoo / Stooq as delayed cross-check | CNINFO、上交所、深交所优先。若涉及政策、再融资、减持、停复牌、指数/北向资金或治理折价，必须跑 market-structure-policy gate。 |
+| 港股 | `hkexnews_listed_company_publications`; company IR | `hkex_new_listing_information`; `hkex_ccass_shareholding_search`; Yahoo / Stooq as delayed cross-check | HKEXnews 是公告和报告主入口。CCASS 只能说明中央结算系统参与者持仓/托管状态，不等于最终实益拥有人。 |
+| 日股 | `jpx_company_announcements_service`; `edinet_disclosure_system`; company IR | `jpx_listed_company_search`; Yahoo / Stooq as delayed cross-check | JPX 英文公告可能是摘要或英文材料，关键事实应回到日文 TDnet / EDINET / issuer IR。 |
+| 台股 | `mops_twse_disclosure_search`; company IR | `twse_market_statistics`; Yahoo / Stooq as delayed cross-check | MOPS 优先用于公告、财报、重大讯息；TWSE 统计用于价格、成交和上市状态。 |
+| 韩股 | `opendart_fss_api`; `english_dart_fss`; company IR | `krx_kind_disclosure_system`; Yahoo / Stooq as delayed cross-check | English DART 有翻译/法律效力限制；关键结论优先用 Korean DART / OpenDART 的原始记录。 |
+| 欧股 | issuer IR; national OAM routed through `ec_transparency_oam_directory` | `esma_issuer_disclosure_hub`; `euronext_live_markets`; venue pages | 欧洲没有单一“欧股 EDGAR”。先确定上市地、issuer home member state、OAM、交易场所和 ISIN，再登记具体 OAM 或公司 IR source。 |
+
+记录要求：
+
+- 每条本地披露必须记录本地代码、交易所/市场板块、文件标题、发布日期、报告期、读取日期和实际 URL。
+- 多地上市、A/H、ADR/H、存托凭证或 secondary listing 必须记录价格发现地、主要披露地和 share-class 差异。
+- 使用英文翻译页面时，必须标注 translation_or_summary，并说明是否回查原文。
+- 欧股必须记录 home member state、OAM 或公司 IR route；不能只写 “Europe filing”。
+- 如果只找到聚合行情而缺本地披露，输出应标为 `source_gap` 或 `watch_only`，不得升级为 durable thesis。
 
 ## Yahoo Finance Targets
 
