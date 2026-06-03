@@ -1,0 +1,19 @@
+field,value,source_ref,confidence,notes
+as_of_date,,,,Date of the market-structure check.
+listing_market,,,,Primary listing market such as A-share, HK, US ADR, Japan, Korea, Taiwan or Europe.
+primary_trading_venue,,,,Where most trading liquidity appears to occur.
+price_discovery_venue,,,,Where price leadership appears to occur if different from listing market.
+market_access,,,,Relevant access path such as local-only, Stock Connect, ADR, H-share, ETF, institutional-only or unrestricted.
+dominant_price_setter,,,,Local retail, local funds, foreign institutions, Southbound, Northbound, ETF/passive, quant, strategic holders, policy capital or mixed.
+dominant_structure_variable,,,,policy_regulation, capital_flow, investor_base, index_passive_flow, liquidity_float, share_supply, governance_discount, listing_arbitrage, disclosure_quality or mixed.
+policy_regulatory_chain,,,,How policy or regulation affects revenue, margin, valuation, capital access, share supply or risk premium.
+capital_flow_channel,,,,Southbound/Northbound, foreign flow, local funds, ETF/passive, buyback, strategic holders or other.
+share_supply_check,,,,Float, lock-up, reduction, refinancing, dilution, pledge, buyback and dividend facts.
+governance_controller_check,,,,Controller behavior, SOE/private status, related-party risk, payout, disclosure and shareholder-return credibility.
+valuation_anchor_impairment,,,,Whether normal valuation anchors are high, medium, low or source_gap in this market context.
+what_is_already_priced,,,,Market-implied view on policy, flows, governance, discount/premium or rerating.
+rerating_path,,,,Who needs to buy or stop selling, and what would make that happen.
+what_would_confirm,,,,Evidence that the market-structure thesis is working.
+what_would_disconfirm,,,,Evidence that company fundamentals or another overlay dominates instead.
+market_structure_weight,,,,none, context, secondary or primary.
+market_structure_refresh_triggers,,,,Regulatory change, exchange rule, flow shift, index action, buyback/dividend, major-holder action, policy confirmation or market access change.

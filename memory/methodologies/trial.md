@@ -96,6 +96,12 @@
   falsification_condition: 如果它不能比普通 `long_term_thesis` 更早暴露 demand/product/industry/company/valuation 冲突，或只是增加模板字段而不改变结论质量，就不升级到 `adopted`。
   notes: 初始方法论包见 `cases/long-term-methodology-2026-05-30/`。当前已完成 ETN、VRT、CRM、LLY 四个 live/contrast/dry-run trials，以及 TDOC、PTON 两个 historical failure backtests；candidate public workflow pack 已存在并在 LLY 做过 fresh-case dry run。仍需 true follow-through refresh、独立 reviewer dry run、完整 public-grade expectation map 和历史案例 source cleanup 后才能考虑升级。
 
+- `market-structure-policy`
+  target_case: `2 Hong Kong cheap-but-no-rerating cases`, `2 A-share policy/flow/share-supply cases`, `1 A/H or ADR dual-listing case`, and `1 Japan/Korea/Taiwan/Europe control case`
+  expected_increment: 把上市地、价格发现地、投资者结构、资金通道、政策监管、治理折价、share supply 和估值锚有效性显式纳入 overlay，避免把美股式公司 / valuation / revision 框架无差别套到 A 股和港股。
+  falsification_condition: 如果它不能改变 dominant price setter、估值锚质量、证据优先级、刷新条件或结论降级，或经常把政策 / 流量叙事事后包装成解释，就不升级到 `adopted`。
+  notes: 方法论卡见 `memory/methodologies/market-structure-policy.md`，填写模板见 `templates/market-structure-policy-check.csv`。A 股和港股先作为 mandatory gate，其他国际市场按触发条件启用。
+
 - `institutional-research-quality-gate`
   target_case: `next 3-5 formal Mira outputs with thesis-level judgments`
   expected_increment: 用四问压缩质量控制：现实依据、一阶变量、决策增量、可被打脸。目标是减少低质量结论和背景堆砌，而不是增加新流程。

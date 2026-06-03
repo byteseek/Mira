@@ -36,6 +36,16 @@ overlay 不是新的主框架，而是额外的验证视角。
 - 单看公司本体不足以解释估值倍数、行业轮动、资金流或风险溢价变化
 - 需要判断新宏观数据或政策口径是否改变 thesis
 
+### `market-structure-policy`
+
+适用于以下情形：
+
+- 研究对象上市地、主要交易地、资金通道、投资者结构或监管政策明显影响当前定价
+- A 股、港股、中概 / ADR / H 股 / A+H 两地上市公司，或其他本地市场结构可能削弱通用估值锚的股票
+- 政策、监管、减持 / 再融资、回购 / 分红、指数纳入、互联互通、外资风险偏好、南向 / 北向资金、ETF / 被动资金或本地散户主题交易可能主导价格
+- 公司基本面结论与价格表现长期背离，需要解释“谁会买、为什么现在买、什么条件下重估”
+- 治理、控股股东、国企 / 民企属性、关联交易、披露质量或会计可信度会改变 shareholder return、风险溢价或估值折价
+
 ### `commodity`
 
 适用于以下情形：
@@ -84,6 +94,16 @@ overlay 不是新的主框架，而是额外的验证视角。
 - 新数据或政策口径相对预期是 surprise 还是 confirmation？
 - 如果宏观判断错了，最可能导致哪类投资误判？
 
+判断是否启用 `market-structure-policy` overlay 时，至少回答：
+
+- 这只股票的主要上市地、交易地和价格发现地在哪里？
+- 当前价格设定者更像本地散户、公募 / 私募、外资、南向 / 北向、ETF / 被动资金、量化、产业资本、政策资金，还是混合？
+- 市场正在交易公司基本面、行业景气、政策主题、资金流、风险溢价、治理折价，还是估值锚修复？
+- 本地制度变量是否会改变供给、流动性、估值锚或 shareholder return，例如减持、再融资、限售、回购、分红、退市、指数纳入、互联互通资格或交易限制？
+- 公司是否存在 A/H/ADR 多地上市、同股不同价、外资可达性或本地投资者偏好差异？
+- 如果基本面判断正确但股票不重估，最可能卡在哪个市场结构变量？
+- 下一步最直接的确认或证伪来源是什么：交易所数据、监管公告、持仓 / 资金流、公司治理动作、指数公告、回购 / 分红记录还是政策文件？
+
 判断是否启用 `commodity` overlay 时，至少回答：
 
 - 当前价格主要交易公司变量、商品变量、宏观变量，还是仓位/流动性变量？
@@ -128,6 +148,21 @@ overlay 不是新的主框架，而是额外的验证视角。
 - `market_pricing`
 - `what_is_already_priced`
 - `macro_refresh_triggers`
+
+如果启用 `market-structure-policy` overlay，还必须记录：
+
+- `market_structure_weight`
+  one of `none`, `context`, `secondary`, `primary`
+- `primary_listing_and_price_discovery`
+- `dominant_price_setter`
+- `dominant_structure_variable`
+  one of `policy_regulation`, `capital_flow`, `investor_base`, `index_passive_flow`, `liquidity_float`, `share_supply`, `governance_discount`, `listing_arbitrage`, `disclosure_quality`, `mixed`
+- `market_access_and_flow_channels`
+- `policy_or_regulatory_chain`
+- `governance_and_shareholder_return_check`
+- `valuation_anchor_impairment`
+- `what_is_already_priced`
+- `market_structure_refresh_triggers`
 
 如果启用 `commodity` overlay，还必须记录：
 
@@ -185,6 +220,18 @@ overlay 不是新的主框架，而是额外的验证视角。
 - refresh triggers
 - falsification conditions
 
+`market-structure-policy` overlay 通常应补充以下内容：
+
+- listing / trading venue map
+- price discovery and investor-base map
+- capital-flow channel check
+- policy / regulatory transmission chain
+- share supply, float, dilution, buyback and dividend check
+- governance / controller / shareholder-return note
+- valuation discount or premium explanation
+- refresh triggers
+- falsification conditions
+
 `commodity` overlay 通常应补充以下内容：
 
 - commodity exposure map
@@ -223,6 +270,7 @@ overlay 不是新的主框架，而是额外的验证视角。
 - 从核心供应链看哪些公司受益或受损
 - 判断单一产品或周期变化对更大产业链的影响
 - 用 `macro` overlay 判断实际利率、美元、流动性、财政、AI capex、机构配置和风险偏好是否主导估值倍数
+- 用 `market-structure-policy` 判断指数权重、外资配置、本地政策、回购分红、国企 / 民企属性和治理折价是否主导估值倍数
 - 用 `commodity` overlay 判断资源、能源、材料或化工大票的商品 beta 是否主导盈利 revision
 
 这里更像在看：
@@ -241,6 +289,7 @@ overlay 不是新的主框架，而是额外的验证视角。
 - 从竞品和同层级公司看公司叙事是不是伪稀缺
 - 用 `strategic-catalyst` 捕捉巨头合作、投资、并购、客户认证和供应链导入的早期 alpha 线索
 - `macro` 通常只作为背景，除非融资环境、流动性或风险偏好直接影响融资生存性
+- `market-structure-policy` 用于检查流通盘、限售 / 减持、再融资、壳价值、交易制度、政策题材和监管风险是否比公司经营更能解释价格
 - `commodity` 通常只作为 secondary 或 context，除非单一资源项目、矿权、offtake 或商品价格直接决定生存性
 
 这里更像在看：
@@ -256,5 +305,38 @@ overlay 不是新的主框架，而是额外的验证视角。
 
 - 用 `supply-chain` 判断景气和业绩兑现是否真实
 - 用 `macro` 判断板块轮动来自行业 alpha，还是来自利率、信用、政策和风险偏好扩张
+- 用 `market-structure-policy` 判断板块轮动来自真实盈利 revision，还是来自政策主题、资金流、互联互通、指数 / ETF、再融资 / 减持或治理折价修复
 - 检查宏观变量是否改变估值修复空间、盈利 revision 或催化剂窗口
 - 用 `commodity` 判断商品 beta、成本曲线位置、项目弹性、hedges 和区域基差是否改变盈利 revision
+
+## Market-Specific Defaults
+
+### A 股
+
+默认先运行 `market-structure-policy` gate。若无明显触发，可记录为 `market_structure_weight: context`；若政策、主题、资金流、限售 / 减持、再融资、国企改革、指数 / ETF 或交易制度正在主导价格，升为 `secondary` 或 `primary`。
+
+常见检查重点：
+
+- 政策主题与监管窗口
+- 本地散户、公募、量化、ETF、北向和产业资本的价格设定权
+- 限售、减持、再融资、股权质押、回购和分红
+- 国企 / 民企属性、控股股东和关联交易
+- 披露质量、会计质量和产业数据可验证性
+- 估值锚是否被主题拥挤、风险偏好或政策溢价削弱
+
+### 港股
+
+默认先运行 `market-structure-policy` gate。若基本面便宜但缺少重估买家，至少记录为 `market_structure_weight: secondary`；若中国政策、外资配置、美元 / HKD 流动性、南向资金、地缘风险、治理折价或回购分红主导定价，升为 `primary`。
+
+常见检查重点：
+
+- 中国基本面与离岸风险溢价的分离
+- 外资、南向、ETF / 被动资金和本地资金的边际买盘
+- A/H/ADR 多地上市、同股不同价和价格发现地
+- 回购、分红、控股股东、治理和关联交易
+- 美元 / HKD 流动性、港股市场成交和风险偏好
+- “便宜但不重估”的触发条件与证伪条件
+
+### 其他国际市场
+
+美股、日股、韩股、台股和欧股不默认升为 `secondary`，但如果交易制度、外资可达性、财阀 / 控股结构、治理改革、指数纳入、货币流动性或政策补贴显著主导价格，应启用 `market-structure-policy`。
