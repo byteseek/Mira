@@ -6,7 +6,6 @@ This case package covers Figure Technology Solutions, Inc. (Nasdaq: FIGR) Q1 202
 
 - case_status: historical_example
 - not_investment_advice: true
-- legacy_evidence_schema: true
 - analysis_cutoff_date: 2026-05-14
 - stale_after: 2026-08-15
 - refresh_policy: refresh before any live trading or portfolio decision

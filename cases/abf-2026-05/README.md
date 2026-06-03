@@ -4,7 +4,6 @@
 
 - case_status: historical_example
 - not_investment_advice: true
-- legacy_evidence_schema: true
 - stale_after: 2026-08-09, or earlier if major substrate suppliers update capacity, capex, LTAs, utilization, or AI server demand outlook
 - refresh_policy: refresh before any live trading or portfolio decision
 

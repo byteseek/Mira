@@ -8,6 +8,8 @@ import csv
 from dataclasses import dataclass
 from pathlib import Path
 
+from validate_repo import validate_evidence_log as validate_canonical_evidence_log
+
 
 SUPPLEMENT_COLUMNS = [
     "case_id",
@@ -294,6 +296,9 @@ def validate_package(path: Path) -> list[Issue]:
         if not file_path.exists():
             issues.append(Issue("ERROR", file_path, 0, "missing required SEC filing package file"))
             continue
+        if file_name == "evidence-log.csv":
+            issues.extend(validate_canonical_evidence_log(file_path))
+            continue
         if columns is None:
             continue
         if file_name == "filing-metric-table.csv":
@@ -324,8 +329,17 @@ def main() -> int:
             issues.extend(validate_risk_delta(path))
         elif path.name == "accounting-quality-check.csv":
             issues.extend(validate_accounting_check(path))
+        elif path.name == "evidence-log.csv":
+            issues.extend(validate_canonical_evidence_log(path))
         else:
-            issues.append(Issue("ERROR", path, 0, "expected SEC supplement CSV, SEC package dir, or SEC package CSV"))
+            issues.append(
+                Issue(
+                    "ERROR",
+                    path,
+                    0,
+                    "expected SEC supplement CSV, SEC package dir, SEC package CSV, or evidence-log.csv",
+                )
+            )
 
     errors = [issue for issue in issues if issue.severity == "ERROR"]
     warnings = [issue for issue in issues if issue.severity == "WARN"]

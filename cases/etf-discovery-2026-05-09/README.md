@@ -6,9 +6,8 @@
 
 - case_status: historical_example
 - not_investment_advice: true
-- legacy_evidence_schema: true
-- stale_after: 2026-05-16 for listed-product status; earlier if issuer, exchange, or fund data changes
-- refresh_policy: refresh before any live trading or portfolio decision
+- historical_status: stale_since 2026-05-16 for listed-product status; refresh before reuse
+- refresh policy: refresh before any live trading or portfolio decision
 
 ## Files
 
@@ -17,7 +16,7 @@
 - `discovery-log.md`
   本轮搜索路径、筛选判断、优先级和缺口。
 - `evidence-log.csv`
-  本轮使用的来源登记。
+  本轮使用的 claim-level evidence records。
 
 ## Next Suggested Analyses
 

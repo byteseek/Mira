@@ -9,7 +9,6 @@ resource-cycle names.
 
 - case_status: historical_example
 - not_investment_advice: true
-- legacy_evidence_schema: true
 - research_cutoff_date: 2026-05-25
 - stale_after: 2026-06-30
 - refresh_policy: refresh before any live trading or portfolio decision
@@ -20,7 +19,7 @@ resource-cycle names.
   Classification note, current working conclusions, source notes, and refresh
   policy.
 - `evidence-log.csv`
-  Source records used to support the public watchlist framing.
+  Claim-level evidence records used to support the public watchlist framing.
 
 ## Next Refresh
 

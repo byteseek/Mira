@@ -6,7 +6,6 @@ This case maps the ETF underlyings available in the user's ETF option menu to th
 
 - case_status: historical_example
 - not_investment_advice: true
-- legacy_evidence_schema: true
 - refresh_policy: refresh before any live trading or portfolio decision
 
 - market: `CN A-share`
@@ -22,7 +21,7 @@ This case maps the ETF underlyings available in the user's ETF option menu to th
 - `case-notes.md`
   Routing notes, source quality notes, and open issues for future refresh.
 - `evidence-log.csv`
-  Source records used in this run.
+  Claim-level evidence records used in this run.
 
 ## Next Refresh
 

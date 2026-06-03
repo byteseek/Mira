@@ -6,7 +6,6 @@ Eos Energy Enterprises, Inc. (EOSE) FY2026 Q1 earnings analysis package.
 
 - case_status: historical_example
 - not_investment_advice: true
-- legacy_evidence_schema: true
 - stale_after: next quarterly results, guidance update, or 2026-08-13, whichever comes first
 - refresh_policy: refresh before any live trading or portfolio decision
 

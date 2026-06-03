@@ -6,7 +6,6 @@ This package analyzes three recent U.S. ETF launches as of 2026-05-09.
 
 - case_status: historical_example
 - not_investment_advice: true
-- legacy_evidence_schema: true
 - research_cutoff_date: 2026-05-09
 - stale_after: first 5 / 20 / 60 trading-day follow-up windows after listing
 - refresh_policy: refresh before any live trading or portfolio decision
@@ -24,7 +23,7 @@ This package analyzes three recent U.S. ETF launches as of 2026-05-09.
 - `euv-deep-dive.md`
   Deeper Chinese analysis of EUV's issuer intent, exposure map, active weighting risk, peers, and inferred stock read-through.
 - `evidence-log.csv`
-  Source records used in this run.
+  Claim-level evidence records used in this run.
 
 ## Next Refresh
 
