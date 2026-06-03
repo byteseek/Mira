@@ -34,7 +34,7 @@
 - `L1` 或 `L4` 业绩会 transcript / prepared remarks / Q&A 摘要
 - `L5` 价格、估值、市场预期或分析师一致预期
 - `L1` 至少一家核心竞争对手的同期财报、公告或业绩新闻稿
-- `L6` 派生计算表可选，但必须指向上游 `L1` 到 `L5`
+- `L6` 派生计算表在只摘录披露数字时可选；如果输出同比、环比、margin bridge、implied guidance、peer relative quality、valuation delta 或任何影响 thesis/actionability 的数量判断，则必须生成 calculation ledger，并指向上游 `L1` 到 `L5`
 
 ## Output Package
 
@@ -104,6 +104,7 @@
 - balance sheet：现金、应收、存货、债务、递延收入、营运资本
 - cash flow：经营现金流、自由现金流、资本开支、回购、分红
 - 三表之间必须互相校验，不能只看利润表。
+- 如果三表交叉校验会影响财报质量、thesis impact 或 actionability，必须运行 `data-analysis-quality-gate`，并把派生指标写入 `calculation-ledger.csv` 或 explicit formula note。
 
 ### 5. Forward Outlook / Guidance Bridge
 
@@ -123,6 +124,8 @@
 - `transcript_QA_delta`：业绩会 Q&A 是否改变新闻稿表面结论，若 transcript 不可得必须标记 `source_gap`
 
 如果公司不提供正式指引，必须用 prepared remarks、Q&A、订单/产能数据、同行指引和市场预期构建 `soft guidance bridge`，并降低证据强度。
+
+如果使用指引倒推后续季度路径、implied bridge 或 guide vs consensus，必须运行 `data-analysis-quality-gate`。如果 consensus 或必要输入不可得，相关判断必须标记 `source_gap` 或 `calculation_gap`，不能写成高置信预期差结论。
 
 ### 6. Driver Bridge
 
@@ -280,7 +283,7 @@
 - 每条进入 evidence log 的信息都必须保留 `claim_type`、`claim_text`、`source_speaker` 和 `verification_status`。
 - 财务事实、管理层口径、正式指引、长期目标、外部 consensus、市场反应和 Mira 倒推计算必须分开标注。
 - 非 GAAP 指标必须同时检查调整项，不能只引用调整后 EPS。
-- 如果使用 agent 计算的同比、环比、margin bridge，必须登记为 `L6` 并写上游来源。
+- 如果使用 agent 计算的同比、环比、margin bridge、implied guidance、peer relative quality 或 valuation delta，必须登记为 `L6`、写上游来源，并在 `calculation-ledger.csv` 或 explicit formula note 中记录公式、口径、期间、单位和限制。
 - 指引、consensus 和 implied bridge 必须区分公司口径、市场预期和 agent 倒推计算。
 - 如果 transcript / Q&A 尚不可得，必须把未来预期分析标记为 `source_gap`，并把 transcript 发布列为刷新触发。
 - 定价权、放量和竞争优劣必须有财务指标、订单/产能信号、管理层原话或同行财报支撑。

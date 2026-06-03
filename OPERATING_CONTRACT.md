@@ -30,6 +30,7 @@ Every formal output must:
 | PM / book review | [loops/portfolio-review-loop.md](loops/portfolio-review-loop.md) | portfolio register template and research index |
 | Source routing | [data/source-taxonomy.md](data/source-taxonomy.md) | [data/source-coverage-matrix.csv](data/source-coverage-matrix.csv) |
 | Evidence logging | [data/evidence-log-schema.md](data/evidence-log-schema.md) | [data/claim-taxonomy.md](data/claim-taxonomy.md) |
+| Numeric / calculation gate | [skills/data-analysis-quality-gate/SKILL.md](skills/data-analysis-quality-gate/SKILL.md) | [templates/data-requirement-brief.md](templates/data-requirement-brief.md) and [templates/calculation-ledger.csv](templates/calculation-ledger.csv) |
 | State/action tokens | [data/controlled-vocabulary.md](data/controlled-vocabulary.md) | task-specific template |
 | Final self-check | [templates/delivery-checklist.md](templates/delivery-checklist.md) | task-specific quality bar |
 

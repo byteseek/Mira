@@ -19,6 +19,9 @@
 - horizon_bucket: {{ horizon_bucket }}
 - horizon_basis: {{ horizon_basis }}
 - stale_after: {{ stale_after }}
+- quant_dependency: {{ quant_dependency }}
+- calculation_gate: {{ calculation_gate }}
+- calculation_status: {{ calculation_status }}
 - not_investment_advice: true
 
 ## Decision Header
@@ -54,6 +57,8 @@
 {{ valuation_and_expectation_quant }}
 
 At minimum, include current valuation anchor, what is priced in, base/bull/bear scenario assumptions, downside path, and whether the valuation anchor quality is `high`, `medium`, `low`, or `source_gap`.
+
+If this section relies on derived numbers, include `calculation-ledger` refs or explicit formula notes. If calculation was waived, state `calculation_gap` or `calculation_waived_by_speed` and downgrade actionability.
 
 ## Actionability Bridge
 

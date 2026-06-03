@@ -72,6 +72,15 @@ Strategic data candidates:
 - options-implied move and skew data
 - institutional ownership / positioning and short interest
 
+## Evidence And Calculation Gap Tokens
+
+Use these tokens in notes, expectation maps, delivery checks and gate outputs when a conclusion cannot be fully supported.
+
+- `source_gap`: required source is missing, stale, inaccessible or below the evidence quality needed for the conclusion.
+- `calculation_gap`: required calculation, formula, peer comparison, time-series check or numeric cross-check is missing or not reproducible.
+- `calculation_waived_by_speed`: user accepted a faster read without full calculation; related conclusions must remain preliminary.
+- `verified_calculation`: derived number has a recorded formula, upstream sources and calculation ledger or explicit formula note.
+
 ## Language Field
 
 Formal outputs may include `output_language`.

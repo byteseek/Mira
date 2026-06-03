@@ -28,6 +28,7 @@ When the user says `Mira` in this repo context, treat it as an instruction to en
   `git pull --ff-only`.
 - Start by identifying the research object, time boundary, market scope, and available sources.
 - Before formal analysis, run total analysis routing using `loops/analysis-routing.md`.
+- If a conclusion depends on derived numbers, comparisons, valuation math, time-series checks, or peer ranking, run the quant dependency gate in `skills/data-analysis-quality-gate/SKILL.md` or explicitly waive it and downgrade the conclusion.
 - If routing enters single-equity research, then run thesis horizon and framework selection using `skills/equity-research-core/references/thesis-horizon-routing.md` and `skills/equity-research-core/references/framework-routing.md`.
 - If a focused evidence path would materially improve the answer, run overlay selection using `skills/equity-research-core/references/overlay-routing.md`.
 - Keep facts, inferences, and judgments separate.

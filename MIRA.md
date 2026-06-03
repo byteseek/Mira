@@ -123,6 +123,7 @@ Every formal Mira research output must include or explicitly waive:
 - `primary_skill_or_loop`
 - `routing_basis`
 - source notes or evidence log
+- `quant_dependency`, `calculation_gate`, or an explicit waiver when conclusions depend on derived numbers
 - facts / inferences / judgments separation
 - `stale_after`, `must_refresh_if`, or equivalent refresh condition
 
