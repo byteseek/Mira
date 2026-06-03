@@ -20,7 +20,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 VALIDATION_DIR = Path("cases/long-term-workflow-validation-2026-05-30")
 MANIFEST = VALIDATION_DIR / "institutional-release-bundle-manifest.csv"
-DEFAULT_OUTPUT = Path("/private/tmp/mira-institutional-release-packet")
+DEFAULT_OUTPUT = Path("exports/mira-institutional-release-packet")
 
 REQUIRED_COLUMNS = {
     "bundle_section",

@@ -58,6 +58,49 @@ Research-only qualitative sizing language. These are not trade instructions.
 - `normal_only_after_confirmation`
 - `reduce_risk_context`
 
+## Position Data Status
+
+Use in position and portfolio review templates before drawing position-level conclusions.
+
+- `no_position_data`: no real holding, weight, cost basis or mandate was provided.
+- `partial_position_data`: some position information exists, but key fields are missing.
+- `position_data_provided`: user provided enough position context for a position-level review.
+- `research_only`: the review is intentionally limited to thesis exposure, not real portfolio holdings.
+
+## Position Review Action
+
+Use in `position-review.md`, `position-register.csv`, portfolio exposure reviews and decision logs when a real or proposed position is discussed. These are review actions, not executed trades.
+
+- `research_only`: return thesis or exposure implications without position-level conclusion.
+- `hold_review`: current position remains reviewable if thesis, evidence and refresh conditions still support it.
+- `add_only_if_confirmed`: adding exposure would require specified confirming evidence first.
+- `trim_review`: position size appears high relative to evidence, risk, stale status or constraints; review risk reduction.
+- `exit_review`: thesis or risk evidence is weak enough that an exit review is required.
+- `risk_cap_review`: review whether a cap, hedge context or concentration limit is needed.
+- `needs_refresh`: thesis, source, valuation or position data is stale or incomplete before stronger review action.
+- `no_action`: no position-management implication beyond recordkeeping.
+
+## Position Sizing Context
+
+Use in position and portfolio reviews. These are qualitative context labels, not target weights.
+
+- `not_applicable`
+- `watchlist_only`
+- `starter_only`
+- `normal_if_confirmed`
+- `too_large_for_evidence`
+- `too_small_for_conviction`
+- `reduce_risk_context`
+- `source_gap`
+
+## Portfolio Review Scope
+
+Use when a task discusses multiple holdings or theses.
+
+- `research_book`: thesis/watchlist review only; real position weights are absent.
+- `real_portfolio`: holdings, weights or mandate are provided.
+- `mixed`: real holdings plus research-only watchlist objects.
+
 ## Technical / Market Pricing State
 
 Use in [../templates/technical-analysis-check.csv](../templates/technical-analysis-check.csv) and memo `technical_context` fields.

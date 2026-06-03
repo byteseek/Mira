@@ -19,7 +19,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 VALIDATION_DIR = Path("cases/long-term-workflow-validation-2026-05-30")
 MANIFEST = VALIDATION_DIR / "external-reviewer-bundle-manifest.csv"
-DEFAULT_OUTPUT = Path("/private/tmp/mira-external-reviewer-packet")
+DEFAULT_OUTPUT = Path("exports/mira-external-reviewer-packet")
 
 REQUIRED_COLUMNS = {
     "bundle_section",

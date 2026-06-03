@@ -59,6 +59,7 @@ Mira, 研究/更新/看一下/评估方法: <对象>
 市场范围: <美股/A股/港股/全球/宏观区域>
 时间边界: <日内/1-2个季度/未来1-2年/长期>
 来源边界: <公开来源/本地文件/指定链接/已有 case>
+输出深度: <quick_map / standard / deep_dive>
 输出要求: <研究包/财报包/宏观 note/产业地图/只要结论摘要>
 ```
 
@@ -79,6 +80,14 @@ Mira, 研究 CRWV
 
 如果 context 紧张，先读 [OPERATING_CONTRACT.md](OPERATING_CONTRACT.md)。它给出最短 loading map：每一步只读当前需要的 loop、skill 或模板。
 
+先确定 `depth_mode`，避免快看被完整模板拖慢，也避免正式研究缺少证据：
+
+| depth_mode | 默认场景 | 输出边界 |
+| --- | --- | --- |
+| `quick_map` | “看一下”、早期 triage、来源边界不完整 | routing card、核心判断、source notes、source gaps、refresh triggers |
+| `standard` | “研究 X”、正式 case、普通财报或 monitoring update | routed package 的必需文件 |
+| `deep_dive` | “深挖”、长期 thesis、复杂估值、SEC 深拆、PM / 方法论复核 | 完整 package + 被 gate 触发的附加 artifact |
+
 | 用户意图 | 默认路由 | 输出 |
 | --- | --- | --- |
 | 首次研究或重建 thesis | [loops/research-loop.md](loops/research-loop.md) | `investment-memo.md`, `case-notes.md`, `evidence-log.csv` |
@@ -88,7 +97,10 @@ Mira, 研究 CRWV
 | 财报、业绩会、指引 | [skills/earnings-report-analysis/SKILL.md](skills/earnings-report-analysis/SKILL.md) | earnings package |
 | SEC 补充核验 | [skills/sec-filing-analysis/SKILL.md](skills/sec-filing-analysis/SKILL.md) | `sec-supplement-source-note.csv` + active case updates |
 | SEC 文件专项拆解 | [skills/sec-filing-analysis/SKILL.md](skills/sec-filing-analysis/SKILL.md) | SEC filing analysis package |
-| 多 thesis / PM 组合视角 | [loops/portfolio-review-loop.md](loops/portfolio-review-loop.md) | thesis register, exposure notes, follow-up queue |
+| 多 thesis / PM 研究 book 视角 | [loops/portfolio-review-loop.md](loops/portfolio-review-loop.md) | thesis register, exposure notes, follow-up queue |
+| 单一真实头寸复盘 | [loops/position-review-loop.md](loops/position-review-loop.md) | position review, sizing context, required follow-up |
+| 真实组合结构复盘 | [loops/portfolio-construction-review-loop.md](loops/portfolio-construction-review-loop.md) | portfolio exposure review, duplicate-bet notes, position-review queue |
+| 决策质量复盘 | [loops/decision-quality-review-loop.md](loops/decision-quality-review-loop.md) | decision-quality review, postmortem, methodology update candidate |
 | 单一股票 | [skills/equity-research-core/SKILL.md](skills/equity-research-core/SKILL.md) | research package |
 | 产业、技术、供应链概念 | [skills/industry-concept-analysis/SKILL.md](skills/industry-concept-analysis/SKILL.md) | industry package |
 | 宏观、利率、通胀、美元、信用、流动性 | [skills/macro-economic-analysis/SKILL.md](skills/macro-economic-analysis/SKILL.md) | macro note 或 macro overlay |
@@ -111,6 +123,14 @@ Mira, 研究 <ticker/company>
 市场范围: <市场>
 时间边界: <1-2Q / 2-8Q / >1y>
 输出: 标准 research package，包含 selected_framework、selected_overlays、evidence log、stale_after 和 must_refresh_if。
+```
+
+如果只想先判断值不值得正式研究：
+
+```text
+Mira, 看一下 <ticker/company>
+输出深度: quick_map
+请只给 routing card、核心分歧、关键 source gap、是否值得升级为 standard research package。
 ```
 
 ### 股票增量更新
@@ -183,6 +203,34 @@ Mira, 这个方法靠谱吗: <方法/指标/框架>
 请按 methodology research loop 评估假设、适用范围、失效模式、证据质量、可复现性和是否进入 trial/adopted。
 ```
 
+### 单一头寸复盘
+
+```text
+Mira, review 我的 <ticker/company> 仓位
+当前仓位: <权重/成本/入场日期/约束，如果可以提供>
+研究问题: 原 thesis 还成立吗？仓位大小和证据强度是否匹配？
+输出 position-review，使用 position_review_action 和 position_sizing_context，但不要生成交易指令。
+```
+
+### 组合结构复盘
+
+```text
+Mira, 看这个组合是不是暴露太集中
+组合范围: <持仓列表/权重/mandate/风险约束，如果可以提供>
+重点看主题、因子、宏观驱动、催化剂拥挤、重复 bet 和 stale thesis。
+输出 portfolio-construction-review 和 position-review queue。
+```
+
+### 决策质量复盘
+
+```text
+Mira, 复盘我当时对 <ticker/company/theme> 的判断质量
+原判断日期: <日期>
+结果窗口: <日期或事件>
+重点区分 thesis 对错、市场 beta、估值变化、timing、运气和执行约束。
+输出 decision-quality-review，并说明是否需要更新 methodology 或 postmortem。
+```
+
 ## 4.1 分角色入口
 
 | 你是谁 | 默认问法 | 默认产出 |
@@ -190,6 +238,8 @@ Mira, 这个方法靠谱吗: <方法/指标/框架>
 | 研究员 | `Mira, 研究 <对象>，重点判断 <问题>` | research package、evidence log、thesis objects |
 | 交易员 | `Mira, 看 <对象> 的预期差和失效条件` | actionability bridge、invalidation、risk/reward frame、next catalyst |
 | PM | `Mira, 复盘这组 thesis / 看组合层风险` | thesis index、portfolio register、主题/因子/催化剂暴露和 follow-up queue |
+| 持仓复盘 | `Mira, review 我的 <ticker> 仓位` | position review、仓位语义、风险/证据匹配和 follow-up queue |
+| 决策复盘 | `Mira, 复盘当时这个判断` | decision-quality review、postmortem、methodology update candidate |
 
 ## 5. 输出位置
 
@@ -231,11 +281,21 @@ memory/research/<OBJECT>/
 └── postmortem.md
 ```
 
+决策质量复盘模板：
+
+```text
+templates/outcome-review/decision-quality-review.md
+```
+
 PM / 组合研究对象：
 
 ```text
 memory/research/INDEX.md
 templates/portfolio-system/portfolio-register.csv
+templates/portfolio-system/position-register.csv
+templates/portfolio-system/position-review.md
+templates/portfolio-system/portfolio-construction-review.md
+templates/portfolio-system/portfolio-exposure-review.csv
 ```
 
 产业概念：

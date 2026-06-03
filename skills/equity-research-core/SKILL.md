@@ -50,6 +50,8 @@
 - research_question
 - research_cutoff_date
 - thesis_horizon
+- `depth_mode`
+  可选；默认由 `analysis-routing` 推断
 - `framework_hint`
   可选，用户已有明确框架偏好时使用
 - `overlay_hint`
@@ -112,11 +114,13 @@
 
 overlay 不改变主框架，只补充一条高价值研究路径。
 
-当前默认支持：
+当前可用 overlay 以 [references/overlay-routing.md](references/overlay-routing.md) 为单一来源，常用包括：
 
 - [supply-chain-overlay](references/supply-chain-overlay.md)
 - [macro-overlay](references/macro-overlay.md)
+- [commodity-overlay](references/commodity-overlay.md)
 - [strategic-catalyst-overlay](references/strategic-catalyst-overlay.md)
+- [valuation-expectation-overlay](references/valuation-expectation-overlay.md)
 
 overlay 选择规则见：
 
@@ -168,7 +172,13 @@ overlay 选择规则见：
 
 ## Output Package
 
-这个 skill 必须输出统一的 `research package`：
+这个 skill 默认输出统一的 `research package`，但受 `depth_mode` 约束：
+
+- `quick_map`: 可以只输出 routing card、core judgment、source notes、source gaps、refresh triggers 和升级条件；不默认写完整 case artifacts。
+- `standard`: 输出完整 `research package`。
+- `deep_dive`: 在完整 package 外，按 gate 触发 expectation map、calculation artifacts、workflow scorecard 或专题 overlay 文件。
+
+标准 `research package` 包括：
 
 - `investment-memo.md`
 - `evidence-log.csv`

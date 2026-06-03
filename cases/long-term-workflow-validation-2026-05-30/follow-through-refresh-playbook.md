@@ -109,15 +109,15 @@ G04 execution packet:
 Default packet:
 
 ```bash
-python3 scripts/build_follow_through_packet.py --output /private/tmp/mira-follow-through-packet
+python3 scripts/build_follow_through_packet.py --output exports/mira-follow-through-packet
 ```
 
 Explicit live-case overrides:
 
 ```bash
-python3 scripts/build_follow_through_packet.py --case-id ETN_2026 --output /private/tmp/mira-follow-through-packet-etn
-python3 scripts/build_follow_through_packet.py --case-id VRT_2026 --output /private/tmp/mira-follow-through-packet-vrt
-python3 scripts/build_follow_through_packet.py --case-id LLY_2026 --output /private/tmp/mira-follow-through-packet-lly
+python3 scripts/build_follow_through_packet.py --case-id ETN_2026 --output exports/mira-follow-through-packet-etn
+python3 scripts/build_follow_through_packet.py --case-id VRT_2026 --output exports/mira-follow-through-packet-vrt
+python3 scripts/build_follow_through_packet.py --case-id LLY_2026 --output exports/mira-follow-through-packet-lly
 ```
 
 ## Refresh Conditions

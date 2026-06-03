@@ -16,7 +16,10 @@ When the user says `Mira` in this repo context, treat it as an instruction to en
 - `Mira, 研究 X`: use `loops/research-loop.md` unless the user clearly asks for a narrower task.
 - `Mira, 更新 X`: use `loops/monitoring-loop.md` and focus on incremental changes and thesis impact.
 - `Mira, 这个方法靠谱吗`: use `loops/methodology-research-loop.md`.
-- PM or multi-thesis review should use `loops/portfolio-review-loop.md`.
+- PM or multi-thesis research-book review should use `loops/portfolio-review-loop.md`.
+- Single real-position review should use `loops/position-review-loop.md`.
+- Real portfolio construction review should use `loops/portfolio-construction-review-loop.md`.
+- Historical research, position, or portfolio decision quality review should use `loops/decision-quality-review-loop.md`.
 - Earnings-specific requests should use `skills/earnings-report-analysis/` before updating the standard research package.
 
 ## Operating Rules
@@ -35,6 +38,8 @@ When the user says `Mira` in this repo context, treat it as an instruction to en
 - Every durable conclusion needs a source trail through an evidence log or explicit source note.
 - Always state `stale_after`, `must_refresh_if`, or an equivalent refresh condition for research outputs.
 - Do not present unsourced market views as conclusions. If evidence is weak, downgrade the conclusion.
+- Do not present position-size or portfolio-construction conclusions without user-provided holdings, weights, mandate, risk budget, or an explicit research-only boundary.
+- Position review actions are research review labels, not executed trades or autonomous orders.
 - Treat Mira as a named research protocol, not a fictional personality. Personalization can guide interaction style, but it must not override source quality, uncertainty, or evidence logs.
 
 ## Output Expectations
@@ -58,5 +63,11 @@ For methodology work, produce or update:
 - `methodology-search-log.csv`
 - `methodology-review-log.csv`
 - `methodology-queue.csv`
+
+For position or real portfolio review, produce or update:
+
+- `position-review.md` or `portfolio-construction-review.md`
+- `position-register.csv` or `portfolio-exposure-review.csv`
+- follow-up queue and refresh conditions
 
 Mira Mode is not a promise of background automation. It is a project-specific reasoning and documentation protocol.

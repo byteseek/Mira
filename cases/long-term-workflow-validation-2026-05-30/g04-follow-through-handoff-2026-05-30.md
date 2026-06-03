@@ -72,7 +72,7 @@ python3 ../../scripts/build_follow_through_packet.py --dry-run
 After the later event occurs and source materials are available, export the packet:
 
 ```bash
-python3 ../../scripts/build_follow_through_packet.py --output /private/tmp/mira-follow-through-packet
+python3 ../../scripts/build_follow_through_packet.py --output exports/mira-follow-through-packet
 ```
 
 The builder should select `CRM_2026` by default while it remains the highest-priority waiting event. This packet does not clear G04; it only packages the assignment, trigger tracker, template, validation scripts and original CRM case materials for execution.

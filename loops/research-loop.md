@@ -11,6 +11,8 @@
 - `market_scope`
 - `research_cutoff_date`
 - `thesis_horizon`
+- `depth_mode`
+  可选；默认由 `analysis-routing` 推断为 `quick_map` / `standard` / `deep_dive`
 - `framework_hint`
   可选
 - `overlay_hint`
@@ -34,6 +36,9 @@
 - `research_object`
 - `market_scope`
 - `time_boundary`
+- `depth_mode`
+- `source_budget`
+- `artifact_budget`
 - `primary_skill_or_loop`
 - `routing_basis`
 - `routing_mismatch_risk`
@@ -42,6 +47,16 @@
 如果总路由显示任务应进入 `earnings_event`、`monitoring_update`、`methodology_review`、`macro_asset_or_regime` 或 `etf_or_product_listing`，不要继续强行走普通单票 research loop。
 
 如果主题是 `存储`、`CPU`、`GPU`、`ABF`、`HBM`、`CPO`、`液冷`、`先进封装` 这类产业概念，先进入 `industry-concept` 分支。
+
+### `depth-budget`
+
+按 `analysis-routing` 的 `depth_mode` 控制本轮研究成本：
+
+- `quick_map`: 只做 routing、最高增量来源读取、核心判断、source gap 和 refresh trigger；不默认写完整 research package 或 thesis ledger。
+- `standard`: 输出 routed package 的必需文件；只读取本轮 route 和 gate 需要的 loop、skill、template。
+- `deep_dive`: 允许多轮 refine、peer / contrary evidence、calculation artifacts、expectation map 和专题 overlay，但每个附加 artifact 必须能提高证据质量、结论强度或刷新条件。
+
+如果一个步骤不会改变结论、source gap、actionability 或 refresh condition，应显式 waive，而不是机械填满模板。
 
 ### `industry-concept`
 
@@ -239,8 +254,10 @@
 
 如果 `quant-check` 触发 calculation gate，还必须输出或明确 waived：
 
+- formula note
 - `data-requirement-brief.md`
 - `calculation-ledger.csv`
+- full model / spreadsheet，若 gate 要求
 
 并记录：
 

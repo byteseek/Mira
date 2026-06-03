@@ -233,7 +233,7 @@ def write_g06_assignment_tracker(path: Path, reviewer: str = "synthetic_independ
                 reviewer,
                 "2026-06-01",
                 "2026-06-20",
-                "python3 scripts/build_external_review_packet.py --output /private/tmp/mira-external-reviewer-packet",
+                "python3 scripts/build_external_review_packet.py --output exports/mira-external-reviewer-packet",
                 "python3 scripts/validate_external_review_return.py --scorecard PATH/TO/completed-external-reviewer-scorecard.csv --results PATH/TO/external-review-results-YYYY-MM-DD.md --intake PATH/TO/completed-external-review-intake-checklist.csv --assignment-tracker PATH/TO/g06-reviewer-assignment-tracker.csv --independence-screen PATH/TO/g06-reviewer-independence-screen.csv",
                 "returned_not_validated",
                 "blocks_external_release",

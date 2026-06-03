@@ -136,7 +136,7 @@ python3 scripts/build_external_review_packet.py --dry-run
 python3 scripts/validate_g06_reviewer_independence_screen.py
 python3 scripts/validate_external_review_dispatch_packet.py
 python3 scripts/validate_g06_dispatch_readiness.py
-python3 scripts/build_external_review_packet.py --output /private/tmp/mira-external-reviewer-packet
+python3 scripts/build_external_review_packet.py --output exports/mira-external-reviewer-packet
 ```
 
 The builder copies only `send_to_reviewer=yes` rows from `../external-reviewer-bundle-manifest.csv` and excludes internal do-not-send rows. The dispatch validator performs a temporary real export and confirms the packet is ready to assign while still not clearing G06.
@@ -160,7 +160,7 @@ Before execution, update and validate the later-event candidate screen. Do not d
 python3 scripts/validate_g04_later_event_candidate_screen.py
 python3 scripts/build_follow_through_packet.py --dry-run
 python3 scripts/validate_follow_through_packet_matrix.py
-python3 scripts/build_follow_through_packet.py --output /private/tmp/mira-follow-through-packet
+python3 scripts/build_follow_through_packet.py --output exports/mira-follow-through-packet
 ```
 
 ## Release QA

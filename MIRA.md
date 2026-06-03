@@ -120,6 +120,7 @@ Every formal Mira research output must include or explicitly waive:
 - `research_object`
 - `market_scope`
 - `time_boundary`
+- `depth_mode`
 - `primary_skill_or_loop`
 - `routing_basis`
 - source notes or evidence log

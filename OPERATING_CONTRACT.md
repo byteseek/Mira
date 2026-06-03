@@ -12,6 +12,7 @@ Every formal output must:
 
 - identify `research_object`, `market_scope`, `time_boundary` and available sources
 - run [loops/analysis-routing.md](loops/analysis-routing.md) before formal analysis
+- choose `depth_mode`: `quick_map`, `standard` or `deep_dive`
 - separate `facts`, `inferences` and `judgments`
 - keep every durable conclusion tied to an evidence log or explicit source note
 - include `stale_after`, `must_refresh_if` or equivalent refresh conditions
@@ -29,7 +30,10 @@ Every formal output must:
 | Event or earnings delta | [loops/event-delta-loop.md](loops/event-delta-loop.md) | earnings skill and event-delta template |
 | SEC fact supplement | [skills/sec-filing-analysis/SKILL.md](skills/sec-filing-analysis/SKILL.md) | [templates/sec-supplement-source-note.csv](templates/sec-supplement-source-note.csv) |
 | SEC filing deep dive | [skills/sec-filing-analysis/SKILL.md](skills/sec-filing-analysis/SKILL.md) | [templates/sec-filing-analysis-package/](templates/sec-filing-analysis-package/) |
-| PM / book review | [loops/portfolio-review-loop.md](loops/portfolio-review-loop.md) | portfolio register template and research index |
+| PM / research book review | [loops/portfolio-review-loop.md](loops/portfolio-review-loop.md) | portfolio register template and research index |
+| Single position review | [loops/position-review-loop.md](loops/position-review-loop.md) | [templates/portfolio-system/position-review.md](templates/portfolio-system/position-review.md) and position register |
+| Real portfolio construction review | [loops/portfolio-construction-review-loop.md](loops/portfolio-construction-review-loop.md) | portfolio exposure review and position register |
+| Decision quality review | [loops/decision-quality-review-loop.md](loops/decision-quality-review-loop.md) | postmortem and thesis scorecard |
 | Source routing | [data/source-taxonomy.md](data/source-taxonomy.md) | [data/source-coverage-matrix.csv](data/source-coverage-matrix.csv) |
 | Evidence logging | [data/evidence-log-schema.md](data/evidence-log-schema.md) | [data/claim-taxonomy.md](data/claim-taxonomy.md) |
 | Numeric / calculation gate | [skills/data-analysis-quality-gate/SKILL.md](skills/data-analysis-quality-gate/SKILL.md) | [templates/data-requirement-brief.md](templates/data-requirement-brief.md) and [templates/calculation-ledger.csv](templates/calculation-ledger.csv) |
@@ -38,15 +42,25 @@ Every formal output must:
 
 Do not load all `memory/`, all `skills/` or all cases at startup. Retrieve only the files required by the routed task.
 
+## Depth Defaults
+
+| depth_mode | use when | default cost control |
+| --- | --- | --- |
+| `quick_map` | fast read, early triage, unclear source boundary | read only the most relevant sources; output routing card, core judgment, source notes and refresh triggers |
+| `standard` | normal research package, earnings package, monitoring update | load only routed loop / skill plus triggered references; output required package artifacts |
+| `deep_dive` | long-term thesis, complex valuation, SEC deep dive, PM / methodology review | allow extra sources and artifacts only when each one improves evidence quality, actionability, or refresh conditions |
+
+If the user does not specify depth, infer it from the requested output. "看一下" defaults to `quick_map`; "研究 X" defaults to `standard`; "深挖 / 完整 / 方法验证 / PM review" defaults to `deep_dive`.
+
 ## Role Defaults
 
 | user role | default path | default output |
 | --- | --- | --- |
 | Research analyst | `analysis-routing` -> `research-loop` or relevant skill | research package, evidence log, thesis objects if durable |
 | Trader | `analysis-routing` -> thesis/event update -> actionability bridge | research action, invalidation, risk/reward frame, next catalyst |
-| Portfolio manager | `portfolio-review-loop` plus thesis index | thesis board, exposure/crowding notes, follow-up list |
+| Portfolio manager | `portfolio-review-loop`, `position-review-loop` or `portfolio-construction-review-loop` depending on data | thesis board, position review, exposure/crowding notes, follow-up list |
 
-If the user does not name a role, infer it from the requested output. A request for "能不能动" or "预期差" is trader-facing; a request for "哪些 thesis 需要看" is PM-facing; a request for "研究 X" is analyst-facing.
+If the user does not name a role, infer it from the requested output. A request for "能不能动" or "预期差" is trader-facing; a request for "哪些 thesis 需要看" is PM-facing; a request for "review 我的仓位" is position-review-facing; a request for "研究 X" is analyst-facing.
 
 ## Golden Examples
 
@@ -66,5 +80,6 @@ Stop or downgrade when:
 - valuation anchor is missing for an actionability claim
 - the case is past `stale_after` and the user wants live use
 - facts, inferences and judgments cannot be separated
+- the user asks for position-size or portfolio conclusions without holdings, weights, mandate or risk budget
 
 When stopped, return `source_gap`, `watch_only`, `no_action` or `needs_refresh` instead of forcing a stronger conclusion. Use [data/controlled-vocabulary.md](data/controlled-vocabulary.md) for machine-facing state/action tokens.

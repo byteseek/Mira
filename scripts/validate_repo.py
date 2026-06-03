@@ -98,6 +98,9 @@ DATE_RE = re.compile(r"^\d{4}-\d{2}-\d{2}$")
 DATE_IN_TEXT_RE = re.compile(r"\b(\d{4}-\d{2}-\d{2})\b")
 STALE_AFTER_RE = re.compile(r"stale_after:\s*(\d{4}-\d{2}-\d{2})", re.IGNORECASE)
 FIELD_RE = re.compile(r"^-\s*(state|research_action):\s*(.+?)\s*$")
+LOCAL_ABSOLUTE_PATH_RE = re.compile(
+    r"(/" r"Users/[^)\s,]+|/" r"private/(?:tmp|var)/[^)\s,]+)"
+)
 
 THESIS_STATES = {
     "draft",
@@ -495,6 +498,28 @@ def validate_markdown_vocabulary(path: Path) -> list[Issue]:
     return issues
 
 
+def validate_no_local_absolute_paths(path: Path) -> list[Issue]:
+    """Prevent local workstation paths from leaking into portable docs."""
+    if path.is_dir() or ".git" in path.parts:
+        return []
+    if path.suffix.lower() not in {".md", ".csv", ".py"}:
+        return []
+
+    issues: list[Issue] = []
+    for i, line in enumerate(read_text(path).splitlines(), start=1):
+        match = LOCAL_ABSOLUTE_PATH_RE.search(line)
+        if match:
+            issues.append(
+                Issue(
+                    "ERROR",
+                    path,
+                    i,
+                    f"local absolute path `{match.group(1)}`; use a repo-relative path",
+                )
+            )
+    return issues
+
+
 def validate_research_index(path: Path, as_of: date) -> list[Issue]:
     if not path.exists():
         return []
@@ -704,8 +729,17 @@ def validate_repo(root: Path, as_of: date) -> list[Issue]:
     for path in sorted(root.glob("**/*.md")):
         if ".git" in path.parts:
             continue
+        issues.extend(validate_no_local_absolute_paths(path))
         issues.extend(validate_staleness(path, as_of))
         issues.extend(validate_markdown_vocabulary(path))
+    for path in sorted(root.glob("**/*.csv")):
+        if ".git" in path.parts:
+            continue
+        issues.extend(validate_no_local_absolute_paths(path))
+    for path in sorted(root.glob("**/*.py")):
+        if ".git" in path.parts:
+            continue
+        issues.extend(validate_no_local_absolute_paths(path))
     issues.extend(validate_research_index(root / "memory" / "research" / "INDEX.md", as_of))
     cases_dir = root / "cases"
     if cases_dir.exists():
@@ -726,18 +760,23 @@ def validate_paths(paths: list[Path], as_of: date) -> list[Issue]:
                 issues.append(Issue("ERROR", path, 0, "directory has no evidence-log.csv"))
             readme = path / "README.md"
             if readme.exists():
+                issues.extend(validate_no_local_absolute_paths(readme))
                 issues.extend(validate_case_readme(path))
                 issues.extend(validate_staleness(readme, as_of))
             for md_path in sorted(path.glob("*.md")):
                 if md_path != readme:
+                    issues.extend(validate_no_local_absolute_paths(md_path))
                     issues.extend(validate_staleness(md_path, as_of))
                     issues.extend(validate_markdown_vocabulary(md_path))
             decision_log = path / "decision-log.csv"
             if decision_log.exists():
+                issues.extend(validate_no_local_absolute_paths(decision_log))
                 issues.extend(validate_decision_log(decision_log))
         elif path.name == "evidence-log.csv":
+            issues.extend(validate_no_local_absolute_paths(path))
             issues.extend(validate_evidence_log(path))
         elif path.name == "decision-log.csv":
+            issues.extend(validate_no_local_absolute_paths(path))
             issues.extend(validate_decision_log(path))
         else:
             issues.append(Issue("ERROR", path, 0, "expected evidence-log.csv or case directory"))

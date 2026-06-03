@@ -137,4 +137,4 @@
 
 该 checklist 已写入：
 
-- [templates/variant-perception-checklist.md](/Users/byteseek/.codex/worktrees/9ee2/market-research-agents/templates/variant-perception-checklist.md:1)
+- [templates/variant-perception-checklist.md](../../templates/variant-perception-checklist.md)

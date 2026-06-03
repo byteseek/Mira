@@ -56,11 +56,54 @@
   `none` / `calculation_gap` / `source_gap` / `watch_only` / `needs_refresh`
 - `recommended_tool_path`
   `none` / `manual_formula_note` / `local_csv_script` / `spreadsheet` / `python` / `public_api` / `external_plugin`
+- `calculation_depth`
+  `none` / `formula_note` / `ledger_required` / `full_model_required`
 - `refresh_condition`
+
+## Calculation Depth
+
+### `none`
+
+用于没有派生数量结论，或数量只作为非核心背景且已有可靠来源直接披露的场景。
+
+输出要求：
+
+- 记录 `quant_dependency: none` 或 `low`
+- 不生成 calculation artifact
+
+### `formula_note`
+
+用于简单、低行数、可口头复核的计算，例如一个同比、一个 run-rate sanity check、简单估值倍数或明确公式的市场隐含值。
+
+输出要求：
+
+- 在正文或 source note 写明公式、输入来源、期间和限制
+- evidence log 可记录 `claim_type=derived_calculation`
+- 不默认生成 `calculation-ledger.csv`
+
+### `ledger_required`
+
+用于会影响 thesis impact、research action、actionability bridge、peer ranking、scenario table 或多来源冲突处理的计算。
+
+输出要求：
+
+- 使用 `templates/calculation-ledger.csv`
+- 记录输入来源、公式、结果、交叉校验、限制和对应 evidence ref
+- 若缺失数据阻断结论，输出 `data-requirement-brief.md` 或 `source_gap`
+
+### `full_model_required`
+
+用于多变量估值、三表联动、复杂 peer set、时间序列、宏观/商品历史比较、TAM / SAM / SOM 或需要用户复用的 spreadsheet / script。
+
+输出要求：
+
+- 先明确工具和数据权限
+- 生成可复算 model、script、spreadsheet 或 notebook，并把摘要写回 calculation ledger
+- 如果用户选择不做，相关结论只能是 `watch_only`、`needs_refresh`、`source_gap` 或 `calculation_gap`
 
 ## Data Requirement Brief
 
-如果 `data_requirement_brief_required = yes`，使用：
+如果 `data_requirement_brief_required = yes`，或 `calculation_depth` 为 `ledger_required` / `full_model_required` 且关键输入缺失，使用：
 
 - `templates/data-requirement-brief.md`
 
@@ -77,7 +120,7 @@ brief 必须回答：
 
 ## Calculation Ledger
 
-如果 `calculation_ledger_required = yes`，使用：
+如果 `calculation_ledger_required = yes`，或 `calculation_depth` 为 `ledger_required` / `full_model_required`，使用：
 
 - `templates/calculation-ledger.csv`
 

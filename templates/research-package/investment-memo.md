@@ -5,6 +5,7 @@
 - research_question: {{ research_question }}
 - research_cutoff_date: {{ research_cutoff_date }}
 - task_mode: {{ task_mode }}
+- depth_mode: {{ depth_mode }}
 - research_object: {{ research_object }}
 - routing_basis: {{ routing_basis }}
 - selected_framework: {{ selected_framework }}
@@ -22,6 +23,7 @@
 - stale_after: {{ stale_after }}
 - quant_dependency: {{ quant_dependency }}
 - calculation_gate: {{ calculation_gate }}
+- calculation_depth: {{ calculation_depth }}
 - calculation_status: {{ calculation_status }}
 - not_investment_advice: true
 
@@ -59,7 +61,9 @@
 
 {{ valuation_and_expectation_quant }}
 
-At minimum, include current valuation anchor, what is priced in, base/bull/bear scenario assumptions, downside path, and whether the valuation anchor quality is `high`, `medium`, `low`, or `source_gap`.
+For `standard` and `deep_dive`, include current valuation anchor, what is priced in, base/bull/bear scenario assumptions, downside path, and whether the valuation anchor quality is `high`, `medium`, `low`, or `source_gap`.
+
+For `quick_map`, include only the best available valuation / expectation note, explicit source gaps, and what would justify upgrading to `standard`.
 
 If this section relies on derived numbers, include `calculation-ledger` refs or explicit formula notes. If calculation was waived, state `calculation_gap` or `calculation_waived_by_speed` and downgrade actionability.
 
@@ -74,6 +78,8 @@ Use [../../templates/technical-analysis-check.csv](../../templates/technical-ana
 {{ actionability_bridge }}
 
 Use this as a research-action bridge only. Do not write autonomous trade instructions. If evidence is insufficient, set `research_action: watch_only` or `no_action`.
+
+For `quick_map`, actionability must default to `watch_only`, `needs_refresh` or `no_action` unless valuation anchor, consensus proxy, catalyst path and invalidation condition are all source-backed.
 
 ## Evidence Quality
 
