@@ -20,6 +20,8 @@ Every formal output must:
 - include `stale_after`, `must_refresh_if` or equivalent refresh conditions
 - downgrade conclusions when evidence quality is weak
 - avoid autonomous trade instructions; use research actions only
+- apply [data/actionability-risk-control.md](data/actionability-risk-control.md) before any participation, add, trim, chase or event-trade framing
+- load [data/instrument-strategy-gate.md](data/instrument-strategy-gate.md) only when the user explicitly asks about options, short selling, hedges, pair trades, margin, leverage or other instruments
 
 ## Lazy Loading Map
 
@@ -39,6 +41,8 @@ Every formal output must:
 | Source routing | [data/source-taxonomy.md](data/source-taxonomy.md) | [data/source-coverage-matrix.csv](data/source-coverage-matrix.csv) |
 | Evidence logging | [data/evidence-log-schema.md](data/evidence-log-schema.md) | [data/claim-taxonomy.md](data/claim-taxonomy.md) and [data/evidence-posture-taxonomy.md](data/evidence-posture-taxonomy.md) |
 | Numeric / calculation gate | [skills/data-analysis-quality-gate/SKILL.md](skills/data-analysis-quality-gate/SKILL.md) | [templates/data-requirement-brief.md](templates/data-requirement-brief.md) and [templates/calculation-ledger.csv](templates/calculation-ledger.csv) |
+| Actionability / participation risk control | [data/actionability-risk-control.md](data/actionability-risk-control.md) | [templates/actionability-system/actionability-bridge.md](templates/actionability-system/actionability-bridge.md), position or portfolio loop if real holdings are provided |
+| Instrument strategy gate | [data/instrument-strategy-gate.md](data/instrument-strategy-gate.md) | [templates/actionability-system/instrument-strategy-gate.md](templates/actionability-system/instrument-strategy-gate.md), option chain / borrow / hedge data only if needed |
 | Readiness / handoff | [data/research-readiness-gate.md](data/research-readiness-gate.md) | [data/handoff-contracts.md](data/handoff-contracts.md) and [templates/research-package/research-package-manifest.json](templates/research-package/research-package-manifest.json) |
 | State/action tokens | [data/controlled-vocabulary.md](data/controlled-vocabulary.md) | task-specific template |
 | Final self-check | [templates/delivery-checklist.md](templates/delivery-checklist.md) | task-specific quality bar |
@@ -63,7 +67,7 @@ If the user does not specify depth, infer it from the requested output. "看一�
 | Trader | `analysis-routing` -> thesis/event update -> actionability bridge | research action, invalidation, risk/reward frame, next catalyst |
 | Portfolio manager | `portfolio-review-loop`, `position-review-loop` or `portfolio-construction-review-loop` depending on data | thesis board, position review, exposure/crowding notes, follow-up list |
 
-If the user does not name a role, infer it from the requested output. A request for "能不能动" or "预期差" is trader-facing; a request for "哪些 thesis 需要看" is PM-facing; a request for "review 我的仓位" is position-review-facing; a request for "研究 X" is analyst-facing.
+If the user does not name a role, infer it from the requested output. A request for "能不能动", "能不能冲", "目标价到了还能不能买" or "预期差" is trader-facing and must load the actionability risk-control policy; a request for "用期权怎么玩", "怎么对冲", "能不能做空", "pair trade" or "结构化一点" is trader-facing and must also load the instrument strategy gate; a request for "哪些 thesis 需要看" is PM-facing; a request for "review 我的仓位" is position-review-facing; a request for "研究 X" is analyst-facing.
 
 ## Golden Examples
 
@@ -81,6 +85,8 @@ Stop or downgrade when:
 - the key conclusion rests only on L4/L6, sentiment, opinion or rumor
 - consensus proxy cannot be stated at variable level
 - valuation anchor is missing for an actionability claim
+- participation framing lacks confirmation and invalidation conditions
+- instrument framing lacks objective, risk budget, access, data status or named failure modes
 - the case is past `stale_after` and the user wants live use
 - facts, inferences and judgments cannot be separated
 - `readiness_level` cannot be upgraded past `working_view` without resolving named evidence, calculation or freshness gaps

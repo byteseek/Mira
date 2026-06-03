@@ -93,6 +93,35 @@ Use in position and portfolio reviews. These are qualitative context labels, not
 - `reduce_risk_context`
 - `source_gap`
 
+## Instrument Strategy Family
+
+Use in instrument strategy gates. These are research routes, not trade
+instructions. See [instrument-strategy-gate.md](instrument-strategy-gate.md).
+
+- `cash_equity`
+- `listed_option_long_premium`
+- `listed_option_spread`
+- `protective_option`
+- `collar_or_overlay`
+- `income_overlay`
+- `short_sale`
+- `pair_or_relative_value`
+- `portfolio_hedge`
+- `no_instrument_route`
+
+## Instrument Data Status
+
+Use in instrument strategy gates to explain whether structure-specific data is
+usable. Human-readable details belong in `notes`, `basis` or the required-data
+table.
+
+- `available`
+- `partial`
+- `missing`
+- `stale`
+- `not_applicable`
+- `source_gap`
+
 ## Portfolio Review Scope
 
 Use when a task discusses multiple holdings or theses.

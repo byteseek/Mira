@@ -6,6 +6,8 @@
 - price_date: {{ price_date }}
 - research_action: {{ research_action }}
 - action_boundary: research_action_only_not_trade_instruction
+- risk_control_policy: ../../data/actionability-risk-control.md
+- instrument_gate_policy: ../../data/instrument-strategy-gate.md
 
 ## Setup Type
 
@@ -52,6 +54,28 @@ Use qualitative sizing language only:
 
 Use [../../data/controlled-vocabulary.md](../../data/controlled-vocabulary.md) `position_sizing_implication` tokens.
 
+## Participation Risk Control
+
+| control | status | note |
+| --- | --- | --- |
+| source_control | {{ source_control_status }} | {{ source_control_note }} |
+| valuation_control | {{ valuation_control_status }} | {{ valuation_control_note }} |
+| event_control | {{ event_control_status }} | {{ event_control_note }} |
+| confirmation_control | {{ confirmation_control_status }} | {{ confirmation_control_note }} |
+| invalidation_control | {{ invalidation_control_status }} | {{ invalidation_control_note }} |
+| position_data_control | {{ position_data_control_status }} | {{ position_data_control_note }} |
+| refresh_control | {{ refresh_control_status }} | {{ refresh_control_note }} |
+
+If any material control fails, downgrade to `watch_only`, `needs_refresh`,
+`research_only`, `small_if_confirmed` or
+`normal_only_after_confirmation` rather than forcing a stronger actionability
+claim.
+
 ## Required Follow-Up
 
 {{ required_followup }}
+
+If the user explicitly asks about options, short selling, hedges, pair trades,
+margin, leverage or other instruments, attach
+[instrument-strategy-gate.md](instrument-strategy-gate.md). Otherwise stop at
+the participation posture.
