@@ -4,6 +4,13 @@
 
 It is not a portfolio management system and does not produce trade orders. It turns single-name thesis objects into a book-level research view: what is active, stale, crowded, correlated, over-dependent on one theme, or missing follow-up.
 
+If the user provides real holdings, weights, cost basis, mandate or risk budget, first decide whether the task should use:
+
+- [position-review-loop.md](position-review-loop.md) for one position
+- [portfolio-construction-review-loop.md](portfolio-construction-review-loop.md) for a real or mixed portfolio
+
+Keep this loop for research-book reviews when real position data is absent or intentionally out of scope.
+
 ## Loop Input
 
 - `book_scope`
@@ -11,7 +18,7 @@ It is not a portfolio management system and does not produce trade orders. It tu
 - `review_date`
 - `market_scope`
 - `portfolio_context`
-  optional; use only if the user provides it
+  optional; use only if the user provides it; if it contains real holdings or weights, consider `portfolio-construction-review-loop`
 - `constraints`
   optional; examples: liquidity, mandate, risk budget, no live positions
 
@@ -98,6 +105,7 @@ Run `python3 scripts/validate_repo.py` after updating [../memory/research/INDEX.
 - Every included thesis has a state, horizon, stale condition and primary reference.
 - Any cluster or concentration claim is tied to listed objects.
 - Research actions remain separate from trade instructions.
+- If real position data is provided, routing either remains explicitly research-only or escalates to the position/portfolio construction loops.
 - Stale or source-gap items are marked before any stronger conclusion.
 - Follow-up list is sorted by research urgency.
 

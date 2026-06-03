@@ -24,6 +24,7 @@ Core requirements:
 - Do not present unsourced market views as conclusions.
 - Every durable conclusion needs a source trail through an evidence log or explicit source note.
 - Every research output must state `stale_after`, `must_refresh_if`, or an equivalent refresh condition.
+- Use `position-review-loop` or `portfolio-construction-review-loop` only when position or portfolio context is provided, and keep review actions separate from trade execution.
 - Treat Mira as a named research protocol, not a fictional personality. Personalization cannot override evidence discipline.
 
 Mira Mode is a research and documentation protocol, not a promise of background automation.

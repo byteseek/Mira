@@ -45,3 +45,8 @@ Use this before handing off a formal research output.
 - [ ] Thesis register or portfolio register is updated when multiple research objects are discussed.
 - [ ] Theme, factor, liquidity, macro or single-name concentration is called out when relevant.
 - [ ] No research action is represented as an executed trade or portfolio instruction.
+- [ ] Position-level conclusions use user-provided holdings, weights, cost basis or constraints; otherwise `position_data_status` is `no_position_data` or `research_only`.
+- [ ] `position_review_action` and `position_sizing_context` use controlled-vocabulary tokens.
+- [ ] Numeric exposure, concentration, return or risk claims have a calculation note or are downgraded to `calculation_gap`.
+- [ ] Duplicate-bet or concentration claims list the exact objects behind the claim.
+- [ ] Decision-quality reviews separate what was knowable at the original decision date from hindsight evidence.

@@ -127,6 +127,38 @@
 
 - `loops/research-loop.md`
 
+### `position_review`
+
+用于用户明确要求 review 自己的头寸、某个持仓、仓位是否匹配 thesis、是否需要加证据/降风险/退出复盘。
+
+默认进入：
+
+- `loops/position-review-loop.md`
+
+如果没有提供真实持仓、权重、成本、约束或组合语境，只能输出 `research_only` 或 `no_position_data`，不能做 position-size 结论。
+
+### `portfolio_construction_review`
+
+用于真实投资组合或多头寸结构复盘，例如主题集中、因子暴露、重复 bet、催化剂拥挤、流动性风险、风险预算或组合层 thesis 冲突。
+
+默认进入：
+
+- `loops/portfolio-construction-review-loop.md`
+
+如果只是多 thesis 维护、没有真实持仓或权重，保留在：
+
+- `loops/portfolio-review-loop.md`
+
+### `decision_quality_review`
+
+用于复盘过去的研究判断、头寸动作或组合决策质量。
+
+默认进入：
+
+- `loops/decision-quality-review-loop.md`
+
+如果只是在更新 thesis state 或记录事件 delta，使用 `thesis_system_update`，不要升级成完整决策质量复盘。
+
 ### `discovery_or_screening`
 
 用于找候选、发现新 ETF、发现产业链标的或建立 watchlist。
@@ -212,6 +244,19 @@
 如果问题明确围绕事件前后变化，进入：
 
 - `loops/event-delta-loop.md`
+
+### `position_or_portfolio`
+
+对象是用户提供的真实头寸、持仓清单、组合、watchlist + holdings 混合表，或一组需要从 PM 角度复盘的 thesis。
+
+默认按数据可得性分流：
+
+- 单一真实头寸：`loops/position-review-loop.md`
+- 多个真实头寸或组合结构：`loops/portfolio-construction-review-loop.md`
+- 多 thesis 但无真实持仓：`loops/portfolio-review-loop.md`
+- 过去决策质量复盘：`loops/decision-quality-review-loop.md`
+
+真实头寸或组合结论必须先记录 `position_data_status` 或 `portfolio_review_scope`。
 
 ## Step 3: Time Boundary
 
@@ -396,6 +441,39 @@ lens 是对 thesis 的约束视角，不是额外研究对象。
 - `decision-log.csv`，如有研究动作
 - `postmortem.md`，如为复盘任务
 
+### Position Review Package
+
+用于单一真实或拟议头寸复盘：
+
+- `position-review.md`
+- `position-register.csv`，如维护组合文件
+- updated `decision-log.csv`，如研究动作变化
+- required follow-up and refresh triggers
+
+输出必须使用 `position_data_status`、`position_sizing_context` 和 `position_review_action` token。
+
+### Portfolio Construction Review Package
+
+用于真实组合或 mixed book 复盘：
+
+- `portfolio-construction-review.md`
+- `portfolio-exposure-review.csv`
+- position-review queue
+- stale thesis list
+- catalyst calendar
+- concentration and duplicate-bet notes
+
+如果没有真实持仓或权重，降级为 `research_book`，不要输出仓位大小判断。
+
+### Decision Quality Review Package
+
+用于研究判断、头寸动作或组合决策的事后质量复盘：
+
+- `decision-quality-review.md`
+- updated `postmortem.md`，如属于 thesis object
+- updated `thesis-scorecard.csv`，如 confidence calibration 改变
+- methodology update candidate，如发现流程错误
+
 ### Calculation Artifacts
 
 可附加到任意 output package：
@@ -415,6 +493,9 @@ lens 是对 thesis 的约束视角，不是额外研究对象。
 - 把 monitoring 小更新误升级为完整 thesis 重写
 - 把长期产业 thesis 写成短期交易结论
 - 把单票框架错配成错误的市值/流动性/机构持仓 regime
+- 把 research book review 误写成真实组合建议
+- 在没有持仓、权重、mandate 或风险预算时输出仓位大小判断
+- 把 position review action 误写成已执行交易或具体订单
 
 ## Stop Rules
 
