@@ -65,6 +65,16 @@ overlay 不是新的主框架，而是额外的验证视角。
 - 需要把 thesis 写入 `thesis-ledger` 或 `actionability_bridge`
 - 标的已有可用估值锚，或者必须明确估值锚不可用
 
+### `top-bottom-risk`
+
+适用于以下情形：
+
+- 用户问是否顶部、底部、涨疯了、跌惨了、过热、拥挤、泡沫、capitulation 或“有问题吗”
+- 标的、板块、行业或宏观资产刚经历大幅上涨 / 下跌，核心问题是风险状态而不是首次覆盖
+- 基本面和价格都很强，但下一步需要判断是否已经进入 `fragile_upside` 或 `distribution_risk`
+- 基本面和价格都很弱，但下一步需要判断是否进入 `capitulation_watch` 或 `base_building`
+- 单看估值、技术面、宏观或供应链都不足以解释风险，因为价格、预期、仓位和事件路径必须同时看
+
 ## Selection Questions
 
 判断是否启用 `supply-chain` overlay 时，至少回答：
@@ -110,6 +120,15 @@ overlay 不是新的主框架，而是额外的验证视角。
 - Mira 的 base/bull/bear 和市场预期差在哪里？
 - 收益或风险来自 revenue revision、margin revision、cash flow revision、multiple rerating、risk premium change 还是 positioning unwind？
 - 下行场景和证伪条件是什么？
+
+判断是否启用 `top-bottom-risk` overlay 时，至少回答：
+
+- 研究对象的基本面斜率是继续加速、正但放缓、稳定高位、恶化、混合还是 source-gapped？
+- 当前价格隐含的 expectation burden 是 low、medium、high、extreme 还是 source_gap？
+- 当前 move 更像 clean revision、crowded long、crowded short、squeeze / forced flow、liquidity gap 还是 source_gap？
+- 好消息和坏消息的 reaction quality 如何，是否出现 good-news fade、bad-news absorbed 或 gap fill？
+- 下一催化剂需要 upside surprise、confirmation、digest、reset 还是 capitulation？
+- 输出应该是 `watch_only`、`valuation_reset_watch`、`risk_reduction_context`、`event_setup` 还是回到主框架？
 
 ## Usage Rule
 
@@ -162,6 +181,18 @@ overlay 不是新的主框架，而是额外的验证视角。
 - `revision_path`
 - `valuation_anchor_quality`
 
+如果启用 `top-bottom-risk` overlay，还必须记录：
+
+- `risk_regime`
+  one of `trend_confirmation`, `fragile_upside`, `distribution_risk`, `capitulation_watch`, `base_building`, `bear_trap_risk`, `no_clear_extreme`
+- `fundamental_slope`
+- `expectation_burden`
+- `positioning_liquidity`
+- `reaction_quality`
+- `next_catalyst_burden`
+- `research_action`
+- `must_refresh_if`
+
 如果不启用，也允许明确写：
 
 - `selected_overlays: none`
@@ -212,6 +243,15 @@ overlay 不是新的主框架，而是额外的验证视角。
 - revision path
 - downside path
 - actionability bridge input
+
+`top-bottom-risk` overlay 通常应补充以下内容：
+
+- top / bottom risk check
+- fundamental slope and expectation burden
+- positioning / liquidity posture
+- event reaction quality
+- next catalyst burden
+- research action and refresh trigger
 
 ## Regime-Specific Notes
 

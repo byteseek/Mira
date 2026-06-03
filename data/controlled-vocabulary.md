@@ -136,6 +136,55 @@ Use in [../templates/technical-analysis-check.csv](../templates/technical-analys
 
 Technical state tokens are market-pricing descriptors only. They must not be used as proof of company execution, fundamental quality or long-term thesis durability.
 
+## Top / Bottom Risk Overlay Tokens
+
+Use when `top-bottom-risk` overlay is selected. These labels describe risk state, not trade instructions.
+
+`risk_regime`:
+
+- `trend_confirmation`: fundamentals, expectations and reaction quality still align.
+- `fragile_upside`: fundamentals are strong, but price requires continued upside surprise.
+- `distribution_risk`: good news fades or relative strength weakens after a large move.
+- `capitulation_watch`: downside may be forced or exhausted, but thesis repair is not yet proven.
+- `base_building`: bad news is being absorbed and evidence is stabilizing.
+- `bear_trap_risk`: weak fundamentals coexist with crowded short exposure or removable left-tail assumptions.
+- `no_clear_extreme`: no reliable top / bottom risk state can be assigned.
+
+`fundamental_slope`:
+
+- `accelerating`
+- `positive_but_decelerating`
+- `stable_high_level`
+- `deteriorating`
+- `mixed`
+- `source_gap`
+
+`expectation_burden`:
+
+- `low`
+- `medium`
+- `high`
+- `extreme`
+- `source_gap`
+
+`positioning_liquidity`:
+
+- `clean_revision`
+- `crowded_long`
+- `crowded_short`
+- `squeeze_or_forced_flow`
+- `liquidity_gap`
+- `source_gap`
+
+`next_catalyst_burden`:
+
+- `needs_upside_surprise`
+- `needs_confirmation`
+- `can_digest`
+- `needs_reset`
+- `waiting_for_capitulation`
+- `source_gap`
+
 ## Strategic Data Dependency
 
 Institutional expectation work is constrained without reliable consensus and estimate data.

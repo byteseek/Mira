@@ -111,3 +111,9 @@
   expected_increment: 把技术面从主观图形评论升级为可复现的 market-pricing 层，记录趋势、相对强弱、量能、事件反应、波动、期权/空头/流动性和触发/失效位，用来改善 actionability、refresh trigger 和风险窗口。
   falsification_condition: 如果它只是增加描述性 K 线语言，不能改变研究动作、刷新条件或风险判断，或经常把价格反应误写成基本面验证，就不升级到 `adopted`。
   notes: 方法论卡见 `memory/methodologies/technical-market-pricing-context.md`，填写模板见 `templates/technical-analysis-check.csv`。
+
+- `top-bottom-risk-overlay`
+  target_case: `AI semis / opticals / memory 2026`, `CPO optical suppliers`, `commodity squeeze`, `macro index drawdown`, `failed growth top`, and `capitulation bottom`
+  expected_increment: 把“顶部 / 底部 / 过热 / 洗出”问题拆成 fundamental_slope、expectation_burden、positioning_liquidity、reaction_quality 和 next_catalyst_burden，避免把强基本面误判成好风险收益，或把大跌误判成底部。
+  falsification_condition: 如果它只是重复 valuation / technical / macro 检查，不能改变 action label、refresh trigger 或 evidence gap，或系统性过早叫顶 / 抄底，就不升级到 `adopted`。
+  notes: 方法论卡见 `memory/methodologies/top-bottom-risk-overlay.md`，填写模板见 `templates/top-bottom-risk-check.csv`。
