@@ -46,6 +46,28 @@ overlay 不是新的主框架，而是额外的验证视角。
 - 公司基本面结论与价格表现长期背离，需要解释“谁会买、为什么现在买、什么条件下重估”
 - 治理、控股股东、国企 / 民企属性、关联交易、披露质量或会计可信度会改变 shareholder return、风险溢价或估值折价
 
+### `flow-intent-inference`
+
+适用于以下情形：
+
+- 大单、异常期权、block trade、ATS / dark pool、龙虎榜、大宗交易、Form 4、13F、ETF / 指数资金流、short interest、borrow 或 open interest 变化成为研究问题本身
+- 用户明确问“谁在买 / 卖”“这是 smart money 还是 hedge”“交易意图是什么”“这笔 flow 是否改变 thesis”
+- 当前价格变化可能来自信息交易、对冲、dealer / gamma 机械流、指数 / ETF 被动流、融资 / 减持 / lock-up、short squeeze、liquidation 或流动性真空
+- 基本面证据与价格反应不一致，需要判断可见 flow 是否只改变风险窗口 / refresh trigger，而不是改变 fundamental thesis
+
+默认只作为 `market_pricing` 和 `weak_signal` 路径使用。除非有独立事实或事件证据确认，不得用它升级收入、利润率、现金流、产品、客户或 moat 结论。
+
+### `options-flow-analysis`
+
+适用于以下情形：
+
+- 用户提供或引用系统性期权流数据，而不是单条 unusual-options alert
+- 研究问题依赖 options volume、OI / OI change、IV、skew、term structure、gamma / pin risk、option-to-stock volume、event implied move 或期权成交分类
+- 需要判断期权市场正在定价方向、波动、尾部风险、对冲、dealer 机械流、event lottery 还是 noise
+- 需要用历史样本验证期权状态对 1d / 5d / 20d return、realized vol、IV crush、event gap、post-event drift 或 false positive rate 的解释力
+
+如果期权数据是主要输入，优先用 `options-flow-analysis`；如果只是把期权作为可见 flow 的一类零散线索，再用 `flow-intent-inference`。
+
 ### `commodity`
 
 适用于以下情形：
@@ -103,6 +125,31 @@ overlay 不是新的主框架，而是额外的验证视角。
 - 公司是否存在 A/H/ADR 多地上市、同股不同价、外资可达性或本地投资者偏好差异？
 - 如果基本面判断正确但股票不重估，最可能卡在哪个市场结构变量？
 - 下一步最直接的确认或证伪来源是什么：交易所数据、监管公告、持仓 / 资金流、公司治理动作、指数公告、回购 / 分红记录还是政策文件？
+
+判断是否启用 `flow-intent-inference` overlay 时，至少回答：
+
+- 可见 flow 是什么：股票大单、异常期权、block / ATS、龙虎榜、大宗交易、Form 4、13F、ETF / 指数、short / borrow 还是 open interest？
+- 这个 flow 相对自身历史、ADV、OI、float、spread、event window 和同业是否真的异常？
+- 是否能区分 opening / closing、方向、hedge leg、spread / roll、dealer inventory 或被动调仓？
+- 可能的交易意图假设有哪些：信息交易、对冲、套利、被动流、融资 / 减持消化、short squeeze、liquidation、buyback / insider alignment 还是 routine compensation / tax / diversification？
+- 最强机械解释是什么？如果机械解释成立，结论应如何降级？
+- 这个 flow 影响的是 thesis 变量、催化剂、风险窗口、refresh trigger、evidence priority，还是只是噪音？
+- 下一步最直接的确认或证伪来源是什么：OI 次日变化、filing、事件结果、重复 flow、borrow / short data、交易所公开信息、公司公告还是价格跟随失败？
+
+判断是否启用 `options-flow-analysis` 时，至少回答：
+
+- 是否有结构化期权流数据，而不是截图、社媒 alert 或单条成交？
+- 数据质量层级是什么：timestamp、bid/ask、underlying price、OI、IV、Greeks、trade-side、opening / closing、multi-leg、corporate action 是否可用？
+- 这笔大单是否应按 `prior_position_aware` 解读：买方/卖方是否可能已经有股票、期权、convertible、borrow、ETF / index 或 portfolio hedge 仓位？
+- 如果像机构大单，是否应按 `rational_prior_position_enhancement` 解读：这笔交易是在增强、保护、重构、融资或变现一个此前理性建立的仓位吗？
+- 这笔交易暗示的既有 thesis 或既有风险暴露是什么？
+- 这笔交易更像新增方向暴露、对冲、roll、monetize、overwrite、融资、保护尾部、卖波动、转移风险，还是未知的边际调仓？
+- 当前期权状态更像 `directional`、`volatility`、`skew_tail`、`dealer_mechanical`、`hedge`、`roll_or_spread`、`closing`、`retail_lottery`、`ambiguous` 还是 `noise`？
+- OI 次日变化是否确认新仓，还是成交更可能是平仓、roll、spread、覆盖卖出或对冲？
+- IV、skew、term structure、event implied move 和 realized vol 的关系是什么？
+- gamma / expiry / pin risk 是否会改变短期价格弹性，而不是基本面预期？
+- 历史验证中，相同状态对 return、realized vol、IV crush、event gap 或 false positive control 是否有增量？
+- 它改变的是 risk window、refresh trigger、event delta、volatility expectation、evidence priority，还是不改变结论？
 
 判断是否启用 `commodity` overlay 时，至少回答：
 
@@ -163,6 +210,48 @@ overlay 不是新的主框架，而是额外的验证视角。
 - `valuation_anchor_impairment`
 - `what_is_already_priced`
 - `market_structure_refresh_triggers`
+
+如果启用 `flow-intent-inference` overlay，还必须记录：
+
+- `flow_intent_weight`
+  one of `none`, `context`, `secondary`, `primary`
+- `visible_flow_object`
+  one of `stock_large_print`, `options_uoa`, `block_or_ats`, `insider_filing`, `13f_or_ownership`, `etf_or_index_flow`, `short_or_borrow`, `a_share_public_flow`, `hk_connect_or_ccass`, `mixed`
+- `abnormality_basis`
+- `possible_counterparties`
+- `mechanical_explanations`
+- `ranked_intent_hypotheses`
+- `intent_confidence`
+  one of `low`, `medium`, `high`
+- `thesis_variable_affected`
+- `what_would_confirm`
+- `what_would_disconfirm`
+- `flow_refresh_triggers`
+
+如果启用 `options-flow-analysis`，还必须记录：
+
+- `options_flow_weight`
+  one of `none`, `context`, `secondary`, `primary`
+- `options_data_quality_tier`
+  one of `blocked`, `exploratory`, `usable`, `validated`
+- `dominant_option_state`
+  one of `directional`, `volatility`, `skew_tail`, `dealer_mechanical`, `hedge`, `roll_or_spread`, `closing`, `retail_lottery`, `ambiguous`, `noise`
+- `opening_flow_confidence`
+  one of `low`, `medium`, `high`
+- `counterparty_assumption`
+  one of `rational_prior_position_enhancement`, `prior_position_aware`, `blank_slate_directional`, `unknown`
+- `prior_position_hypotheses`
+- `prior_thesis_hypothesis`
+- `enhancement_hypothesis`
+- `marginal_action_hypothesis`
+  one of `add_exposure`, `reduce_exposure`, `hedge`, `monetize`, `roll`, `finance`, `overwrite`, `tail_protect`, `volatility_trade`, `transfer_risk`, `unknown`
+- `oi_confirmation`
+- `iv_skew_term_structure_read`
+- `gamma_or_expiry_mechanics`
+- `historical_base_rate_ref`
+- `thesis_variable_affected`
+- `options_refresh_triggers`
+- `blocked_use_cases`
 
 如果启用 `commodity` overlay，还必须记录：
 
@@ -232,6 +321,32 @@ overlay 不是新的主框架，而是额外的验证视角。
 - refresh triggers
 - falsification conditions
 
+`flow-intent-inference` overlay 通常应补充以下内容：
+
+- visible-flow map
+- abnormality and liquidity baseline
+- possible counterparty map
+- mechanical-explanation check
+- ranked intent hypotheses
+- thesis-variable impact
+- confirmation / falsification path
+- refresh triggers
+
+`options-flow-analysis` 通常应补充以下内容：
+
+- options data-quality gate
+- options state map
+- flow classification
+- prior-position hypothesis map
+- rational prior-position enhancement map
+- marginal-action classification
+- OI confirmation check
+- IV / skew / term-structure map
+- gamma / expiry mechanics note
+- event-window or historical base-rate check
+- false-positive downgrade
+- refresh triggers
+
 `commodity` overlay 通常应补充以下内容：
 
 - commodity exposure map
@@ -271,6 +386,8 @@ overlay 不是新的主框架，而是额外的验证视角。
 - 判断单一产品或周期变化对更大产业链的影响
 - 用 `macro` overlay 判断实际利率、美元、流动性、财政、AI capex、机构配置和风险偏好是否主导估值倍数
 - 用 `market-structure-policy` 判断指数权重、外资配置、本地政策、回购分红、国企 / 民企属性和治理折价是否主导估值倍数
+- 用 `options-flow-analysis` 判断系统性期权流是否改变 event-risk、volatility、gamma、skew 或 refresh priority
+- 用 `flow-intent-inference` 判断大额期权、block、13F / Form 4、buyback、被动资金或 short / borrow 是否只改变风险窗口与刷新优先级，而不是改变基本面结论
 - 用 `commodity` overlay 判断资源、能源、材料或化工大票的商品 beta 是否主导盈利 revision
 
 这里更像在看：
@@ -288,6 +405,8 @@ overlay 不是新的主框架，而是额外的验证视角。
 - 从单一供应商、单一订单或单一产能约束判断脆弱点
 - 从竞品和同层级公司看公司叙事是不是伪稀缺
 - 用 `strategic-catalyst` 捕捉巨头合作、投资、并购、客户认证和供应链导入的早期 alpha 线索
+- 用 `options-flow-analysis` 判断小票期权异动是否只是 event lottery、retail flow、short squeeze 或 dealer 机械流
+- 用 `flow-intent-inference` 捕捉异常量价、期权、Form 4、融资 / 减持、lock-up、short squeeze 或 liquidation 对催化剂窗口和生存性风险的影响
 - `macro` 通常只作为背景，除非融资环境、流动性或风险偏好直接影响融资生存性
 - `market-structure-policy` 用于检查流通盘、限售 / 减持、再融资、壳价值、交易制度、政策题材和监管风险是否比公司经营更能解释价格
 - `commodity` 通常只作为 secondary 或 context，除非单一资源项目、矿权、offtake 或商品价格直接决定生存性
@@ -306,6 +425,8 @@ overlay 不是新的主框架，而是额外的验证视角。
 - 用 `supply-chain` 判断景气和业绩兑现是否真实
 - 用 `macro` 判断板块轮动来自行业 alpha，还是来自利率、信用、政策和风险偏好扩张
 - 用 `market-structure-policy` 判断板块轮动来自真实盈利 revision，还是来自政策主题、资金流、互联互通、指数 / ETF、再融资 / 减持或治理折价修复
+- 用 `options-flow-analysis` 判断期权市场在交易方向、波动、skew、gamma、event-risk 还是噪音
+- 用 `flow-intent-inference` 判断板块或单票异动来自信息流、对冲、被动资金、期权 / dealer 机械流、融资供给还是仓位 unwind
 - 检查宏观变量是否改变估值修复空间、盈利 revision 或催化剂窗口
 - 用 `commodity` 判断商品 beta、成本曲线位置、项目弹性、hedges 和区域基差是否改变盈利 revision
 

@@ -117,3 +117,15 @@
   expected_increment: 把技术面从主观图形评论升级为可复现的 market-pricing 层，记录趋势、相对强弱、量能、事件反应、波动、期权/空头/流动性和触发/失效位，用来改善 actionability、refresh trigger 和风险窗口。
   falsification_condition: 如果它只是增加描述性 K 线语言，不能改变研究动作、刷新条件或风险判断，或经常把价格反应误写成基本面验证，就不升级到 `adopted`。
   notes: 方法论卡见 `memory/methodologies/technical-market-pricing-context.md`，填写模板见 `templates/technical-analysis-check.csv`。
+
+- `flow-intent-inference`
+  target_case: `1 isolated unusual-options clue without full dataset support`, `1 block trade / secondary / lock-up case`, `1 Form 4 insider cluster`, `1 A-share / HK public-flow disclosure case`, and `1 false-positive visible-flow case`
+  expected_increment: 把大单、零散异常期权、block / ATS、龙虎榜、大宗交易、Form 4、13F、ETF / 指数、short / borrow 从“smart money 叙事”降级为可验证的 counterparty-intent hypothesis，改善 evidence priority、risk window、refresh trigger 和 false-positive control。
+  falsification_condition: 如果它只能产出合理故事，不能区分信息交易、对冲、被动流、dealer / gamma 机械流、融资供给或 routine filing，或经常把 market-pricing 证据误写成基本面验证，就不升级到 `adopted`。
+  notes: 方法论卡见 `memory/methodologies/flow-intent-inference.md`，填写模板见 `templates/flow-intent-inference-check.csv`。
+
+- `options-flow-analysis`
+  target_case: `user options-flow dataset quality audit`, `pre-earnings / event-window validation`, `non-event directional-flow validation`, `volatility / skew / gamma state validation`, and `false-positive high-options-activity cases`
+  expected_increment: 把系统性期权流从 UOA 叙事升级为可回测的 market-pricing framework，默认按 `rational_prior_position_enhancement` 分析机构级大单，先重构此前理性既有仓位和既有 thesis，再判断新交易是增强、保护、重构、融资、变现还是新增暴露，用历史样本改善 risk window、refresh trigger、event delta 和 false-positive control。
+  falsification_condition: 如果数据质量不足、classification 需要未来信息、不能稳定区分新仓/平仓/spread/roll/hedge，或回测不能优于简单 event calendar / stock volume / IV rank baseline，就不升级到 `adopted`。
+  notes: 方法论卡见 `memory/methodologies/options-flow-analysis.md`，填写模板见 `templates/options-flow-analysis-check.csv` 和 `templates/options-flow-data-quality-check.csv`。

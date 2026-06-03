@@ -121,6 +121,8 @@ overlay 不改变主框架，只补充一条高价值研究路径。
 - [commodity-overlay](references/commodity-overlay.md)
 - [strategic-catalyst-overlay](references/strategic-catalyst-overlay.md)
 - [valuation-expectation-overlay](references/valuation-expectation-overlay.md)
+- `flow-intent-inference` in [references/overlay-routing.md](references/overlay-routing.md)
+- `options-flow-analysis` in [references/overlay-routing.md](references/overlay-routing.md)
 
 overlay 选择规则见：
 
