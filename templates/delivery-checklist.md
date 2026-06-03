@@ -21,6 +21,14 @@ Use this before handing off a formal research output.
 - [ ] Actionability bridge is present or explicitly waived.
 - [ ] Actionability uses only [../data/controlled-vocabulary.md](../data/controlled-vocabulary.md) research-action tokens.
 
+## SEC Additions
+
+- [ ] SEC use is routed as `sec_supplement` or `sec_filing_deep_dive`.
+- [ ] Filing claims record CIK, accession number, form type, filing date, report period and section or exhibit.
+- [ ] Companyfacts claims record CIK, taxonomy, tag, unit, period and frame if available.
+- [ ] Missing filing sections or unavailable 10-Q/10-K details are marked as `source_gap`.
+- [ ] Filing conflicts with release, market data or prior Mira work are escalated to filing deep dive, event delta or thesis update.
+
 ## Thesis System Additions
 
 - [ ] Thesis ledger has current thesis, supporting claims, key assumptions, variant view, disconfirming evidence and state.

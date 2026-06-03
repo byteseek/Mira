@@ -36,6 +36,26 @@
 - `L1` 至少一家核心竞争对手的同期财报、公告或业绩新闻稿
 - `L6` 派生计算表可选，但必须指向上游 `L1` 到 `L5`
 
+## SEC Filing Boundary
+
+财报分析默认使用 `sec_supplement`，而不是完整拆 filing。
+
+使用 `sec_supplement` 的场景：
+
+- 核验 10-Q / 10-K / 8-K exhibit 是否已发布
+- 补充 revenue、gross margin、operating cash flow、free cash flow、cash、debt、SBC、share count、inventory、RPO/backlog、segment 等事实
+- 用 SEC companyfacts 或具体 filing 纠正聚合数据
+- 标记 10-Q、cash flow、debt schedule、segment 或 transcript 的 source gap
+
+升级到 `sec_filing_deep_dive` 的场景：
+
+- release 与 10-Q/10-K/8-K exhibit 的数字或口径冲突
+- adjusted / non-GAAP 口径决定 thesis impact
+- cash conversion、debt/liquidity、SBC/dilution、related-party、customer concentration、risk-factor delta 是核心问题
+- 用户明确要求拆 10-Q、10-K、S-1、proxy 或 8-K exhibit
+
+如果 10-Q/10-K 尚未发布，必须写 source-gap refresh，不得把 release 中缺失的现金流、债务细节或风险因素当作不存在。
+
 ## Output Package
 
 默认输出到 `templates/earnings-analysis-package/` 结构：
