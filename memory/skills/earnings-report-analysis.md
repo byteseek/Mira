@@ -1,6 +1,6 @@
 # Skill Knowledge: Earnings Report Analysis
 
-- last_updated: 2026-05-07
+- last_updated: 2026-06-03
 
 ## Default Lens
 
@@ -10,6 +10,7 @@
 - 单季改善必须区分结构性改善、周期波动、低基数和一次性项目。
 - 财报分析必须先描述核心业务、核心增长和核心拖累，再解释财务数字。
 - 增长质量优先按“定价”和“放量”判断。
+- 定价、放量和持久性必须标记证据强度，且 durable conclusion 必须有 source trail。
 - 至少用 1 家竞争对手或最相关同行的同期财报做交叉验证。
 
 ## Minimum Checks
@@ -23,6 +24,8 @@
 - 核心业务是否仍是本期增长主来源
 - 定价权是否来自提价、产品 mix、供需紧缺、客户锁定或技术壁垒
 - 放量是否来自真实需求、产能释放、订单/backlog 或一次性补库存
+- 定价、放量和持久性的 evidence_strength 是 high、medium、low 还是 source_gap
+- 是否存在 ASP 下滑、折扣扩大、backlog 下降、库存/应收恶化、毛利承压或同行相反口径等反证
 - 同行财报是否验证公司的需求、价格、毛利率和指引口径
 
 ## Common Failure Modes
@@ -35,6 +38,8 @@
 - 把收入增长误判成经营质量改善，却没有拆分定价和放量
 - 只看公司自身财报，不用同行验证行业需求和供需主动权
 - 把短期供给紧张误判成长期定价权
+- 把管理层的 pipeline、TAM 或 pricing strong 叙事当作强证据
+- 只写支持证据，不写反证和 source gap
 
 ## Output Bias
 

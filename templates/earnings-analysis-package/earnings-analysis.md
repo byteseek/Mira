@@ -40,12 +40,20 @@
 
 {{ volume_analysis }}
 
+### Evidence Ladder
+
+| dimension | evidence_strength | strongest_evidence | counter_evidence | source_ids | conclusion |
+| --- | --- | --- | --- | --- | --- |
+| pricing | {{ pricing_evidence_strength }} | {{ pricing_strongest_evidence }} | {{ pricing_counter_evidence }} | {{ pricing_source_ids }} | {{ pricing_conclusion }} |
+| volume | {{ volume_evidence_strength }} | {{ volume_strongest_evidence }} | {{ volume_counter_evidence }} | {{ volume_source_ids }} | {{ volume_conclusion }} |
+| durability | {{ durability_evidence_strength }} | {{ durability_strongest_evidence }} | {{ durability_counter_evidence }} | {{ durability_source_ids }} | {{ durability_conclusion }} |
+
 ### Growth Attribution
 
-| driver | classification | evidence | durability |
-| --- | --- | --- | --- |
-| {{ growth_driver_1 }} | {{ growth_driver_1_classification }} | {{ growth_driver_1_evidence }} | {{ growth_driver_1_durability }} |
-| {{ growth_driver_2 }} | {{ growth_driver_2_classification }} | {{ growth_driver_2_evidence }} | {{ growth_driver_2_durability }} |
+| driver | classification | evidence_strength | evidence | counter_evidence | durability | source_ids |
+| --- | --- | --- | --- | --- | --- | --- |
+| {{ growth_driver_1 }} | {{ growth_driver_1_classification }} | {{ growth_driver_1_evidence_strength }} | {{ growth_driver_1_evidence }} | {{ growth_driver_1_counter_evidence }} | {{ growth_driver_1_durability }} | {{ growth_driver_1_source_ids }} |
+| {{ growth_driver_2 }} | {{ growth_driver_2_classification }} | {{ growth_driver_2_evidence_strength }} | {{ growth_driver_2_evidence }} | {{ growth_driver_2_counter_evidence }} | {{ growth_driver_2_durability }} | {{ growth_driver_2_source_ids }} |
 
 ## Financial Snapshot
 
