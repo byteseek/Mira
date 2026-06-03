@@ -107,6 +107,13 @@ Mira, 研究 AAPL。市场范围 US，时间边界截至 2026-04-14。
 python3 scripts/validate_repo.py
 ```
 
+SEC supplement 或 SEC filing deep dive 产物可以额外校验：
+
+```sh
+python3 scripts/validate_sec_filing_package.py path/to/sec-supplement-source-note.csv
+python3 scripts/validate_sec_filing_package.py path/to/sec-filing-package-dir
+```
+
 remote 更新检查：
 
 ```sh
@@ -449,6 +456,7 @@ ETF 新发发现可先输出一个轻量 `etf-listing-discovery package`：
 - `equity-research-core`：主投资分析 skill，负责统一视角、框架路由和 overlay 选择。
 - `industry-concept-analysis`：产业概念分析 skill，负责概念边界、产业链、供需/定价/放量机制、利润池和候选标的。
 - `earnings-report-analysis`：财报专项 skill，负责财报质量、同业对比和 thesis impact。
+- `sec-filing-analysis`：SEC 补充核验与专项 filing deep dive skill，负责 CIK/accession/form/tag provenance、filing metric extraction、risk delta 和 accounting-quality checks。
 - `macro-economic-analysis`：宏观专项 skill，负责宏观变量、金融条件和资产定价链分析。
 - `etf-listing-discovery`：ETF 新发发现 skill，负责结构化搜索新上市、即将上市、申请中或刚宣布的 ETF。
 - `etf-listing-analysis`：ETF 上市分析 skill，负责拆解发行意图、暴露地图、管理/权重机制和上市后跟踪。

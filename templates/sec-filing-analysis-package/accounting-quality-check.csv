@@ -1,0 +1,2 @@
+check_id,company_name,ticker,cik,accession_number,form_type,filing_date,report_period,quality_area,metric_or_section,evidence_summary,source_id,source_url,classification,thesis_relevance,source_gap,confidence,followup_required,notes
+{{ check_id }},{{ company_name }},{{ ticker }},{{ cik }},{{ accession_number }},{{ form_type }},{{ filing_date }},{{ report_period }},{{ quality_area }},{{ metric_or_section }},{{ evidence_summary }},{{ source_id }},{{ source_url }},{{ classification }},{{ thesis_relevance }},{{ source_gap }},{{ confidence }},{{ followup_required }},{{ notes }}

@@ -22,6 +22,8 @@ yahoo_finance_news_page,professional_media,L4 aggregated news target,reviewed,"D
 sec_company_submissions_api,regulatory_and_exchange,L2 SEC filing metadata API,reviewed,"Official filing timeline source."
 sec_companyfacts_api,regulatory_and_exchange,L2 SEC XBRL facts API,reviewed,"Official structured company facts; record tag and period."
 sec_xbrl_frames_api,regulatory_and_exchange,L2 SEC cross-company XBRL API,reviewed,"Official cross-company XBRL frames."
+sec_company_archive_filing,issuer_primary_disclosure,L1 SEC issuer filing archive,reviewed,"Primary issuer filing route; case evidence must record CIK accession form filing date report period and section or exhibit."
+sec_inline_xbrl_viewer,issuer_primary_disclosure,L1 SEC Inline XBRL filed document viewer,reviewed,"Use as readable filing route and tag trace; retain archive/companyfacts provenance for exact metrics."
 fred_macro_series_api,official_macro_and_industry,L2 official macro API,reviewed,"Record series id and vintage context."
 fred_release_calendar_api,official_macro_and_industry,L2 official release calendar API,reviewed,"Refresh trigger source."
 bls_public_data_api,official_macro_and_industry,L2 official labor and price API,reviewed,"Official macro data."

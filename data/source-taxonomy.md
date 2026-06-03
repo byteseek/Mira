@@ -38,6 +38,15 @@ source note，并把被使用的信息写入 canonical `evidence-log.csv`。
 | `local_user_material` | varies | varies | varies | user-provided filings, notes, exported data, screenshots, transcripts | 不自动假设版权、完整性或时效；缺日期不能支撑正式结论 | 按文件日期、用户说明和 case cutoff 记录 |
 | `mira_derived_analysis` | `derived_analysis` | `L6` | `secondary` | `derived_calculation`; assumption; interpretation; scenario; memo conclusion | 不伪装成事实；没有 upstream source 不能支撑结论 | 上游 source 刷新或模型假设变化后刷新 |
 
+## SEC Authority Note
+
+SEC sources have two different roles:
+
+- Specific issuer filings or filed exhibits from SEC Archives / Inline XBRL are `issuer_primary_disclosure` and can support `L1` company facts when the evidence row records CIK, accession number, form type, filing date, report period and section or exhibit.
+- SEC `submissions`, `companyfacts` and `frames` endpoints are official regulatory datasets. They are usually `regulatory_and_exchange` with default `L2` authority in the source registry. Case rows using them must record taxonomy, tag, unit, period and frame when available.
+
+Do not silently change authority level between registry and case evidence. If a case promotes or downgrades a specific SEC-derived claim, explain the reason in `notes`.
+
 ## Registry Classification
 
 [source-class-map.csv](source-class-map.csv) maps every row in

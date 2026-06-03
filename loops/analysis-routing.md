@@ -81,6 +81,36 @@
 
 - `loops/methodology-research-loop.md`
 
+### `sec_supplement`
+
+用于在单票研究、财报分析、monitoring 或事件分析中补充 SEC 事实核验。
+
+默认不独立成完整报告，而是补到当前研究包：
+
+- `templates/sec-supplement-source-note.csv`
+- 当前 case 的 `evidence-log.csv`
+- 当前 case 的 financial snapshot / case notes
+
+使用边界：
+
+- 适合查 CIK、最新 filing timeline、10-K/10-Q/8-K/proxy 是否存在、companyfacts 指标、share count、SBC、debt、cash flow、inventory、RPO/backlog 等事实。
+- 不做完整 filing 解剖。
+- 如果 filing 与 release、管理层口径或聚合数据冲突，升级为 `sec_filing_deep_dive`。
+
+### `sec_filing_deep_dive`
+
+用于专项分析 SEC 文件本身，例如 10-K、10-Q、S-1、8-K exhibit、DEF 14A 或 13F / Form 4。
+
+默认进入：
+
+- `skills/sec-filing-analysis/SKILL.md`
+
+使用边界：
+
+- 用户明确要求“拆 filing / 年报 / 10-K / 10-Q / S-1 / proxy / 8-K exhibit”。
+- 或核心 thesis/actionability 依赖 filing 细节、会计质量、风险因素、股权结构、客户集中度、债务/流动性、相关方交易、segment 口径。
+- 输出 filing-level 结论后，再决定是否更新 research package、earnings package 或 thesis system。
+
 ### `thesis_system_update`
 
 用于已有研究对象的 thesis 更新、预期差判断、事件 delta、状态变更或复盘。
@@ -161,6 +191,15 @@
 默认进入：
 
 - `loops/methodology-research-loop.md`
+
+### `filing_or_disclosure`
+
+对象是具体 SEC 文件、监管披露、招股书、proxy、8-K exhibit 或一组 filing 差异。
+
+默认按问题深度路由：
+
+- 只为其他研究补事实：`sec_supplement`
+- 研究 filing 本身：`sec_filing_deep_dive`
 
 ### `thesis_object`
 
@@ -292,6 +331,26 @@ lens 是对 thesis 的约束视角，不是额外研究对象。
 - `evidence-log.csv`
 
 如果财报改变 thesis，再更新 research package。
+
+### SEC Supplement Package
+
+用于当前研究包中的补充型 SEC 核验：
+
+- `sec-supplement-source-note.csv`
+- 当前 case 的 `evidence-log.csv`
+- 当前 case 的 financial snapshot / case notes 更新
+- 如有缺口，追加 `source-gap-refresh.md` 触发条件
+
+### SEC Filing Deep Dive Package
+
+用于专项 SEC 文件分析：
+
+- `filing-analysis.md`
+- `filing-metric-table.csv`
+- `filing-risk-delta.csv`
+- `accounting-quality-check.csv`
+- `evidence-log.csv`
+- 如影响 thesis，追加 `thesis-impact.md`、`event-delta.md` 或 research package 更新
 
 ### Industry Package
 

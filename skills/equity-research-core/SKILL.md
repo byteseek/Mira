@@ -151,6 +151,21 @@ overlay 选择规则见：
 - 如果启用 `macro` overlay，至少补充官方宏观数据、政策材料或市场定价数据中的两类
 - 如果启用 `strategic-catalyst` overlay，允许使用 `social_and_community` 作为 alpha signal，但必须降级标记并写入验证路径
 
+## SEC Filing Boundary
+
+单票研究默认把 SEC 作为事实底座和冲突校验，走 `sec_supplement`：
+
+- 查 CIK、最新 filing timeline、10-K/10-Q/8-K/proxy 是否覆盖研究 cutoff。
+- 抽取 thesis-critical 指标，例如 cash flow、debt、share count、SBC、inventory、RPO/backlog、segment、customer concentration 或 risk-factor facts。
+- 在 `evidence-log.csv`、financial snapshot 或 case notes 中记录 SEC provenance。
+
+只有在以下情况升级为 `sec_filing_deep_dive`：
+
+- 用户明确要求拆 SEC 文件。
+- 核心 thesis 依赖 accounting quality、risk factor delta、debt/liquidity、related-party、ownership/control、dilution 或 segment 细节。
+- filing 与 release、management commentary、market-data page 或 prior Mira case 冲突。
+- 缺失 filing 阻断 actionability，需要 source-gap refresh 后再复核。
+
 ## Output Package
 
 这个 skill 必须输出统一的 `research package`：

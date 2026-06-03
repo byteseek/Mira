@@ -86,6 +86,8 @@ Mira, 研究 CRWV
 | 更新 thesis object / 看预期差 / 复盘判断 | [loops/thesis-update-loop.md](loops/thesis-update-loop.md) | thesis-ledger, expectation-map, decision-log, postmortem |
 | 事件前后 delta | [loops/event-delta-loop.md](loops/event-delta-loop.md) | event-delta, expectation map update, thesis impact |
 | 财报、业绩会、指引 | [skills/earnings-report-analysis/SKILL.md](skills/earnings-report-analysis/SKILL.md) | earnings package |
+| SEC 补充核验 | [skills/sec-filing-analysis/SKILL.md](skills/sec-filing-analysis/SKILL.md) | `sec-supplement-source-note.csv` + active case updates |
+| SEC 文件专项拆解 | [skills/sec-filing-analysis/SKILL.md](skills/sec-filing-analysis/SKILL.md) | SEC filing analysis package |
 | 多 thesis / PM 组合视角 | [loops/portfolio-review-loop.md](loops/portfolio-review-loop.md) | thesis register, exposure notes, follow-up queue |
 | 单一股票 | [skills/equity-research-core/SKILL.md](skills/equity-research-core/SKILL.md) | research package |
 | 产业、技术、供应链概念 | [skills/industry-concept-analysis/SKILL.md](skills/industry-concept-analysis/SKILL.md) | industry package |
@@ -140,6 +142,22 @@ Mira, 看 <ticker/company> 这次 <财报/FOMC/产品发布/监管事件> 是否
 Mira, 分析 <ticker/company> 最新财报
 重点看收入质量、利润率、现金流、指引、同业对比、管理层口径、市场预期差和 thesis impact。
 先输出 earnings package，再判断是否需要更新标准 research package。
+```
+
+### SEC 补充核验
+
+```text
+Mira, 给 <ticker/company> 当前 case 补一下 SEC 核验
+重点查 <指标/section>，只做 supplement，不完整拆 10-Q/10-K。
+把 CIK、accession、form、filing date、report period、tag/section 和 source_gap 写清楚。
+```
+
+### SEC 文件专项拆解
+
+```text
+Mira, 专项拆 <ticker/company> 的 <10-K/10-Q/S-1/DEF 14A/8-K exhibit>
+研究问题: <这份 filing 要回答什么>
+输出 filing-analysis、filing-metric-table、filing-risk-delta、accounting-quality-check 和 evidence-log。
 ```
 
 ### 产业概念
@@ -311,3 +329,10 @@ python3 scripts/validate_repo.py --report-only
 ```
 
 当前 canonical evidence schema 见 [data/evidence-log-schema.md](data/evidence-log-schema.md)。新的 `evidence-log.csv` 必须是 claim-level 表，不再允许把 source registry 表头直接放入 evidence log。
+
+SEC supplement 或 SEC filing deep dive 还可以额外跑：
+
+```sh
+python3 scripts/validate_sec_filing_package.py templates/sec-supplement-source-note.csv
+python3 scripts/validate_sec_filing_package.py templates/sec-filing-analysis-package
+```

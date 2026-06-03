@@ -56,6 +56,8 @@ Yahoo Finance 适合做公开市场数据入口，但不作为公司原始事实
 
 公开 JSON/API 端点只作为“按需打开的结构化网页目标”。默认不做定时请求、不批量抓取、不保存完整镜像：
 
+- `sec_company_archive_filing`: 读取具体 10-K、10-Q、8-K、S-1、DEF 14A 或 exhibit；进入 case 时必须记录 CIK、accession number、form type、filing date、report period、section/exhibit。
+- `sec_inline_xbrl_viewer`: 读取 Inline XBRL 可读页面和 tag/context；用于导航和 tag trace，指标事实仍要保留 archive 或 companyfacts provenance。
 - `sec_company_submissions_api`: 查 filing timeline、8-K、10-Q、10-K、proxy、Form 4 等。
 - `sec_companyfacts_api`: 查 US issuer 的 XBRL 财务事实，优先级高于聚合站三表。
 - `sec_xbrl_frames_api`: 做跨公司同一 XBRL tag 的横截面比较。
@@ -79,6 +81,8 @@ ETF 新发发现是按需搜索，不是后台批量采集。默认先覆盖：
 - 只在具体研究问题需要时读取目标页面；不要因为 target 存在就自动扫全量页面。
 - 核心业务和财务事实优先使用 `L1/L2`；Yahoo、StockAnalysis、MacroTrends 只作为 `L5` secondary 或 signal。
 - 同一指标如果聚合站之间不一致，先检查口径、时间点、调整项，再回到 SEC 或公司披露。
+- SEC supplement 只补充当前研究的事实核验；专项拆 10-K / 10-Q / S-1 / proxy / 8-K exhibit 时进入 `skills/sec-filing-analysis/SKILL.md`。
+- SEC companyfacts 指标必须记录 CIK、taxonomy、tag、unit、period、form、filed date 和 frame（如有）；非标准 tag 或公司自定义 tag 不能直接做跨公司比较。
 - 所有市场数据必须带 as-of date；期权、盘中价格和新闻还必须带 quote time 或 publish time。
 - `free_with_key` 不等于付费，但需要记录 key 依赖、限流和失败降级路径。
 - 新闻聚合页只用于发现事件；memo 中引用新闻结论时要登记原始文章或公告的 source record。
