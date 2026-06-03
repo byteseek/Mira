@@ -6,6 +6,7 @@ Use this before handing off a formal research output.
 
 - [ ] The task was routed through `analysis-routing` or the route was explicitly waived with a reason.
 - [ ] `research_object`, `market_scope`, `time_boundary` and source boundary are stated.
+- [ ] `depth_mode` is stated, and artifacts match `quick_map`, `standard` or `deep_dive`.
 - [ ] Facts, inferences and judgments are separated.
 - [ ] Every durable conclusion has an evidence-log row or explicit source note.
 - [ ] Numeric conclusions were routed through `data-analysis-quality-gate` or explicitly waived with a reason.

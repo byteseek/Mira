@@ -21,7 +21,7 @@ Use the attached bundle manifest:
 Packet build command:
 
 ```bash
-python3 scripts/build_external_review_packet.py --output /private/tmp/mira-external-reviewer-packet
+python3 scripts/build_external_review_packet.py --output exports/mira-external-reviewer-packet
 ```
 
 Only files listed as `send_to_reviewer=yes` in the manifest should be included.

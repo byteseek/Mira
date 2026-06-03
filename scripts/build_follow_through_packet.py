@@ -19,7 +19,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 VALIDATION_DIR = Path("cases/long-term-workflow-validation-2026-05-30")
 TRIGGER_TRACKER = VALIDATION_DIR / "follow-through-trigger-tracker.csv"
-DEFAULT_OUTPUT = Path("/private/tmp/mira-follow-through-packet")
+DEFAULT_OUTPUT = Path("exports/mira-follow-through-packet")
 
 PRIORITY_ORDER = {
     "highest": 0,

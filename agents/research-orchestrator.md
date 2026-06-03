@@ -6,9 +6,10 @@
 
 - 明确研究问题和时间边界
 - 读取并检查来源是否符合 `data/` 协议
+- 先运行 `analysis-routing`，确认任务类型、研究对象、时间边界和深度预算
 - 按 `research-loop` 组织研究过程
 - 按 `monitoring-loop` 组织持续更新
-- 在分析前执行 `framework selection`
+- 仅在路由确认是单票研究后执行 `framework selection`
 - 在主框架确定后执行 `overlay selection`
 - 使用 `equity-research-core` 组织统一输出和可路由研究框架
 - 当输入是产业、技术、材料、零部件、设备、工艺或供应链概念时，使用 `industry-concept-analysis` 先建立产业地图和候选标的池
@@ -28,18 +29,19 @@
 这个 agent 默认按以下阶段工作：
 
 1. `define`
-2. `industry-concept`，如果输入是产业概念而不是单一股票
-3. `route-framework`
-4. `select-overlays`
-5. `collect`
-6. `scan`
-7. `gap-check`
-8. `refine`
-9. `package`
-10. `write-thesis-ledger`
-11. `refresh`
+2. `analysis-routing`
+3. selected loop / skill from routing
+4. `route-framework`，仅当对象是单票
+5. `select-overlays`，仅当专题证据路径有增量价值
+6. `collect`
+7. `scan`
+8. `gap-check`
+9. `refine`
+10. `package`
+11. `write-thesis-ledger`
+12. `refresh`
 
-完整定义见 [loops/research-loop.md](/Users/byteseek/Documents/Longmind/market-research-agents/loops/research-loop.md:1)。
+完整定义见 [loops/research-loop.md](../loops/research-loop.md)。
 
 ## Industry Concept Rule
 
@@ -68,7 +70,7 @@
 4. `assess-impact`
 5. `escalate-or-close`
 
-完整定义见 [loops/monitoring-loop.md](/Users/byteseek/Documents/Longmind/market-research-agents/loops/monitoring-loop.md:1)。
+完整定义见 [loops/monitoring-loop.md](../loops/monitoring-loop.md)。
 
 ## Thesis System Rule
 
@@ -129,14 +131,17 @@ Thesis System 只记录研究动作，不输出交易指令或自动投资建议
 - `mid-cap`
 - `large-mega`
 
-框架说明见 [skills/equity-research-core/references/framework-routing.md](/Users/byteseek/.codex/worktrees/9ee2/market-research-agents/skills/equity-research-core/references/framework-routing.md:1)。
+框架说明见 [skills/equity-research-core/references/framework-routing.md](../skills/equity-research-core/references/framework-routing.md)。
 
-当前默认 overlay：
+当前可用 overlay：
 
 - `supply-chain`
 - `macro`
+- `commodity`
+- `strategic-catalyst`
+- `valuation-expectation`
 
-overlay 说明见 [skills/equity-research-core/references/overlay-routing.md](/Users/byteseek/.codex/worktrees/9ee2/market-research-agents/skills/equity-research-core/references/overlay-routing.md:1)。
+overlay inventory 和选择规则以 [skills/equity-research-core/references/overlay-routing.md](../skills/equity-research-core/references/overlay-routing.md) 为单一来源。
 
 ## Loop Memory
 

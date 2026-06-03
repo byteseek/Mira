@@ -59,6 +59,7 @@ Mira, 研究/更新/看一下/评估方法: <对象>
 市场范围: <美股/A股/港股/全球/宏观区域>
 时间边界: <日内/1-2个季度/未来1-2年/长期>
 来源边界: <公开来源/本地文件/指定链接/已有 case>
+输出深度: <quick_map / standard / deep_dive>
 输出要求: <研究包/财报包/宏观 note/产业地图/只要结论摘要>
 ```
 
@@ -78,6 +79,14 @@ Mira, 研究 CRWV
 正式分析前必须先运行 [loops/analysis-routing.md](loops/analysis-routing.md)，不要直接套股票模板。
 
 如果 context 紧张，先读 [OPERATING_CONTRACT.md](OPERATING_CONTRACT.md)。它给出最短 loading map：每一步只读当前需要的 loop、skill 或模板。
+
+先确定 `depth_mode`，避免快看被完整模板拖慢，也避免正式研究缺少证据：
+
+| depth_mode | 默认场景 | 输出边界 |
+| --- | --- | --- |
+| `quick_map` | “看一下”、早期 triage、来源边界不完整 | routing card、核心判断、source notes、source gaps、refresh triggers |
+| `standard` | “研究 X”、正式 case、普通财报或 monitoring update | routed package 的必需文件 |
+| `deep_dive` | “深挖”、长期 thesis、复杂估值、SEC 深拆、PM / 方法论复核 | 完整 package + 被 gate 触发的附加 artifact |
 
 | 用户意图 | 默认路由 | 输出 |
 | --- | --- | --- |
@@ -111,6 +120,14 @@ Mira, 研究 <ticker/company>
 市场范围: <市场>
 时间边界: <1-2Q / 2-8Q / >1y>
 输出: 标准 research package，包含 selected_framework、selected_overlays、evidence log、stale_after 和 must_refresh_if。
+```
+
+如果只想先判断值不值得正式研究：
+
+```text
+Mira, 看一下 <ticker/company>
+输出深度: quick_map
+请只给 routing card、核心分歧、关键 source gap、是否值得升级为 standard research package。
 ```
 
 ### 股票增量更新

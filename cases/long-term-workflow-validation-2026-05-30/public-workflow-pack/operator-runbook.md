@@ -56,15 +56,15 @@ After a later material event and source collection, update `g04-later-event-cand
 Then export the packet:
 
 ```bash
-python3 scripts/build_follow_through_packet.py --output /private/tmp/mira-follow-through-packet
+python3 scripts/build_follow_through_packet.py --output exports/mira-follow-through-packet
 ```
 
 For a non-default live case after a qualifying later event:
 
 ```bash
-python3 scripts/build_follow_through_packet.py --case-id ETN_2026 --output /private/tmp/mira-follow-through-packet-etn
-python3 scripts/build_follow_through_packet.py --case-id VRT_2026 --output /private/tmp/mira-follow-through-packet-vrt
-python3 scripts/build_follow_through_packet.py --case-id LLY_2026 --output /private/tmp/mira-follow-through-packet-lly
+python3 scripts/build_follow_through_packet.py --case-id ETN_2026 --output exports/mira-follow-through-packet-etn
+python3 scripts/build_follow_through_packet.py --case-id VRT_2026 --output exports/mira-follow-through-packet-vrt
+python3 scripts/build_follow_through_packet.py --case-id LLY_2026 --output exports/mira-follow-through-packet-lly
 ```
 
 After writing the refresh, validate it:
@@ -95,7 +95,7 @@ python3 scripts/validate_g06_dispatch_readiness.py
 To create the reviewer packet:
 
 ```bash
-python3 scripts/build_external_review_packet.py --output /private/tmp/mira-external-reviewer-packet
+python3 scripts/build_external_review_packet.py --output exports/mira-external-reviewer-packet
 ```
 
 After the reviewer returns materials:
@@ -187,7 +187,7 @@ The colleague acceptance check must also remain incomplete until a real institut
 Only after G04/G06 clear and `--require-external-ready` exits 0 should the release owner run:
 
 ```bash
-python3 scripts/build_institutional_release_packet.py --output /private/tmp/mira-institutional-release-packet
+python3 scripts/build_institutional_release_packet.py --output exports/mira-institutional-release-packet
 ```
 
 ## Evidence Discipline

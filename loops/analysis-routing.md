@@ -11,11 +11,12 @@
 1. `task_mode`
 2. `research_object`
 3. `time_boundary`
-4. `quant_dependency`
-5. `primary_skill_or_loop`
-6. `equity_route`
-7. `overlays_and_lenses`
-8. `output_package`
+4. `depth_mode_and_budget`
+5. `quant_dependency`
+6. `primary_skill_or_loop`
+7. `equity_route`
+8. `overlays_and_lenses`
+9. `output_package`
 
 如果前面步骤已经说明任务不是单票公司研究，就不要强行进入 `equity-research-core`。
 
@@ -27,6 +28,10 @@
 - `research_object`
 - `market_scope`
 - `time_boundary`
+- `depth_mode`
+- `source_budget`
+- `artifact_budget`
+- `token_budget_policy`
 - `quant_dependency`
 - `calculation_gate`
 - `primary_skill_or_loop`
@@ -238,6 +243,60 @@ This loop is currently `candidate_internal_release`, not final external-grade.
 
 - `skills/equity-research-core/references/thesis-horizon-routing.md`
 
+## Step 3.25: Depth Mode And Budget
+
+在进入来源收集、quant gate 或模板输出前，先选择 `depth_mode`。目标是“不节约必要证据，也不浪费 token 在低增量模板字段上”。
+
+### `quick_map`
+
+用于：
+
+- 用户说“看一下”“快看”“先判断方向”
+- 研究对象或来源边界还不完整
+- 目标是决定是否值得进入标准研究，而不是写 durable thesis
+
+预算规则：
+
+- `source_budget`: 只读最高增量来源，通常 3-6 个来源或已有 case 的最相关文件。
+- `artifact_budget`: 输出 routing card、核心判断、source notes、source gaps 和 refresh triggers；不默认创建完整 research package。
+- `token_budget_policy`: `concise`，先给一页可读结论，保留升级路径。
+- quant 处理：可用 formula note 或明确 `calculation_gap`；不得把未复算数字写成高置信 durable conclusion。
+
+### `standard`
+
+用于：
+
+- 首次覆盖、重建 thesis、正式 monitoring update、财报包或普通单票 research package
+- 用户需要可追溯、可复核、能写入 case 的输出
+
+预算规则：
+
+- `source_budget`: 覆盖任务所需的 L1/L2/L5 和关键 L3/L4，不追求穷尽。
+- `artifact_budget`: 输出 routed package 的必需文件；只生成被 route 或 gate 触发的附加 artifact。
+- `token_budget_policy`: `balanced`，完整但避免重复贴模板字段。
+- quant 处理：按 data-analysis-quality-gate 决定 formula note、calculation ledger 或 full model。
+
+### `deep_dive`
+
+用于：
+
+- 用户明确要求深挖、专项拆解、方法验证、长期 thesis、多变量定价或外部复核质量
+- 结论会进入 durable thesis、PM review、actionability bridge 或 methodology evidence
+
+预算规则：
+
+- `source_budget`: 允许多轮 source gap closure、peer checks、contrary evidence 和 cross-source validation。
+- `artifact_budget`: 允许完整 package、calculation artifacts、expectation map、workflow scorecard 或专题 overlay 文件。
+- `token_budget_policy`: `full`，但每个附加 artifact 必须说明增量用途。
+- quant 处理：若数量判断影响 actionability，默认需要 calculation ledger 或明确降级。
+
+### Upgrade / Downgrade Rules
+
+- `quick_map -> standard`: 发现可行动 thesis、关键 source gap 可关闭、用户要求正式 package。
+- `standard -> deep_dive`: 触发长期多变量 thesis、SEC 深拆、复杂 valuation、peer ranking、方法论验证或 PM 复核。
+- `deep_dive -> standard`: 额外 lens / overlay 不能改变证据质量、结论强度或刷新条件。
+- 不论深度如何，source quality、facts / inferences / judgments、refresh condition 和 downgrade rules 不能被省略。
+
 ## Step 3.5: Quant Dependency Check
 
 在选择最终输出包之前，判断研究结论是否依赖数量型判断。
@@ -262,6 +321,7 @@ This loop is currently `candidate_internal_release`, not final external-grade.
 - `quant_dependency`: `none` / `low` / `medium` / `high`
 - `calculation_gate`: `not_required` / `required` / `waived`
 - `calculation_gate_basis`
+- `calculation_depth`: `none` / `formula_note` / `ledger_required` / `full_model_required`
 - `tool_consent_required`: `yes` / `no`
 
 如果 `calculation_gate = required` 但用户选择不计算，或当前来源不足以计算，必须把相关结论降级为 `calculation_gap`、`source_gap`、`watch_only`、`needs_refresh` 或 `no_action`。
@@ -403,7 +463,7 @@ lens 是对 thesis 的约束视角，不是额外研究对象。
 - `data-requirement-brief.md`
 - `calculation-ledger.csv`
 
-当 `calculation_gate = required`，且结论包含派生数量判断时，必须输出 calculation artifact，或显式写明 `calculation_gap` / `calculation_waived_by_speed` 和结论降级方式。
+当 `calculation_gate = required`，且结论包含派生数量判断时，必须按 gate 深度输出 formula note、`data-requirement-brief.md`、`calculation-ledger.csv` 或 full model；如果当前深度或来源不支持计算，显式写明 `calculation_gap` / `calculation_waived_by_speed` 和结论降级方式。
 
 ## Mismatch Risks
 

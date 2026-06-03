@@ -12,6 +12,7 @@ Every formal output must:
 
 - identify `research_object`, `market_scope`, `time_boundary` and available sources
 - run [loops/analysis-routing.md](loops/analysis-routing.md) before formal analysis
+- choose `depth_mode`: `quick_map`, `standard` or `deep_dive`
 - separate `facts`, `inferences` and `judgments`
 - keep every durable conclusion tied to an evidence log or explicit source note
 - include `stale_after`, `must_refresh_if` or equivalent refresh conditions
@@ -37,6 +38,16 @@ Every formal output must:
 | Final self-check | [templates/delivery-checklist.md](templates/delivery-checklist.md) | task-specific quality bar |
 
 Do not load all `memory/`, all `skills/` or all cases at startup. Retrieve only the files required by the routed task.
+
+## Depth Defaults
+
+| depth_mode | use when | default cost control |
+| --- | --- | --- |
+| `quick_map` | fast read, early triage, unclear source boundary | read only the most relevant sources; output routing card, core judgment, source notes and refresh triggers |
+| `standard` | normal research package, earnings package, monitoring update | load only routed loop / skill plus triggered references; output required package artifacts |
+| `deep_dive` | long-term thesis, complex valuation, SEC deep dive, PM / methodology review | allow extra sources and artifacts only when each one improves evidence quality, actionability, or refresh conditions |
+
+If the user does not specify depth, infer it from the requested output. "看一下" defaults to `quick_map`; "研究 X" defaults to `standard`; "深挖 / 完整 / 方法验证 / PM review" defaults to `deep_dive`.
 
 ## Role Defaults
 
