@@ -115,6 +115,24 @@
 - 弱信号 vs 可用证据
 - 价格反应 vs 基本面验证
 
+### `quant-check`
+
+识别已分类 claim 中的数量型、比较型、估值型和趋势型依赖，并决定是否运行：
+
+- `skills/data-analysis-quality-gate/SKILL.md`
+
+必须检查：
+
+- 是否存在同比、环比、CAGR、run-rate 或 margin bridge
+- 是否存在 peer comparison、peer rank、相对估值或相对财务质量
+- 是否存在 valuation implied expectation、base / bull / bear scenario math
+- 是否存在市场规模、渗透率、份额或 TAM / SAM / SOM
+- 是否存在三表交叉校验、现金流质量或营运资本异常
+- 是否存在宏观、商品、价格、库存、利率、就业或通胀时间序列
+- 是否存在多来源数字冲突或口径不一致
+
+如果结论会影响 `thesis_impact`、`research_action` 或 `actionability_bridge`，且缺少可复算计算，必须标记 `calculation_gap` 或 `source_gap`，并在必要时向用户征求是否动用本地 CSV、Python、Spreadsheet、API 或插件。
+
 ### `scan`
 
 从公司、财务、技术面、事件四个统一视角快速建立初判，但要按已选框架调整权重，并用 overlay 补充验证关键传导链。
@@ -219,6 +237,19 @@
 - `company-map.csv`
 - `evidence-log.csv`
 
+如果 `quant-check` 触发 calculation gate，还必须输出或明确 waived：
+
+- `data-requirement-brief.md`
+- `calculation-ledger.csv`
+
+并记录：
+
+- `quant_dependency`
+- `calculation_gate`
+- `calculation_gate_basis`
+- `tool_consent_required`
+- `calculation_status`
+
 ### `write-thesis-ledger`
 
 如果研究结论已经足够稳定，写入或更新 Thesis System 对象：
@@ -245,6 +276,7 @@
 - `research package` 已生成
 - 若结论进入持续跟踪，`thesis-ledger` 与 `expectation-map` 已生成或明确 waived
 - 若结论进入行动跟踪，`valuation_and_expectation_quant` 与 `actionability_bridge` 已生成或明确 waived
+- 若存在数量型结论，已完成 `quant-check`，并输出 calculation artifact 或明确写明 `calculation_gap` / `calculation_waived_by_speed`
 - 事实、公司口径、承诺、指引、预测、假设、观点和市场定价已分离
 - 已写出后续刷新条件
 - 已完成总分析路由并说明为什么进入当前 loop / skill

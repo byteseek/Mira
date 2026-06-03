@@ -41,6 +41,7 @@ source_id,claim_area,claim_type,claim_text,source_speaker,verification_status,au
 - `source_date` 和 `as_of_date` 必须是 `YYYY-MM-DD`。
 - `confidence` 必须是 `high`、`medium` 或 `low`。
 - `derived_calculation` 或 `authority_level=L6` 的记录必须有非空 `upstream_sources`，且不能写 `not_applicable`。
+- 影响 durable conclusion 的 `derived_calculation` 必须有 `calculation-ledger.csv` 记录或 explicit formula note。
 - `rumor_signal` 不能有 `confidence=high`。
 - `sentiment`、`opinion`、`rumor_signal` 默认不能作为 durable conclusion 的唯一证据。
 - `market_pricing` 只能说明市场如何定价，不能写成基本面验证。
@@ -62,3 +63,9 @@ source_id,claim_area,claim_type,claim_text,source_speaker,verification_status,au
 - 这条 claim 改变了哪个 expectation variable。
 - 它是事实、公司口径、预测、市场定价还是 Mira 推断。
 - 如果它错了，哪个 thesis、event delta 或 research action 会被影响。
+
+## Calculation Relationship
+
+`evidence-log.csv` 记录派生计算作为 claim 的来源链和研究用途；`calculation-ledger.csv` 记录公式、口径、输入、结果和复算限制。
+
+当一个数字由 Mira 或研究员计算得出，并且会影响 thesis、event delta、valuation、peer comparison 或 actionability 时，不能只在 evidence log 中写 `derived_calculation`。还必须在 calculation ledger 或 explicit formula note 中保留可复算路径。

@@ -8,6 +8,9 @@ Use this before handing off a formal research output.
 - [ ] `research_object`, `market_scope`, `time_boundary` and source boundary are stated.
 - [ ] Facts, inferences and judgments are separated.
 - [ ] Every durable conclusion has an evidence-log row or explicit source note.
+- [ ] Numeric conclusions were routed through `data-analysis-quality-gate` or explicitly waived with a reason.
+- [ ] Derived calculations have a `calculation-ledger` row or explicit formula note.
+- [ ] Numeric claims that affect thesis/actionability were cross-checked, or downgraded to `calculation_gap`, `source_gap`, `watch_only`, `needs_refresh` or equivalent.
 - [ ] No unresolved `{{ placeholder }}` remains.
 - [ ] `stale_after`, `must_refresh_if` or equivalent refresh condition is present.
 - [ ] Weak evidence is downgraded to `source_gap`, `watch_only`, `needs_refresh` or equivalent.

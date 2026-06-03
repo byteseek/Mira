@@ -34,7 +34,7 @@
 - `L1` 或 `L4` 业绩会 transcript / prepared remarks / Q&A 摘要
 - `L5` 价格、估值、市场预期或分析师一致预期
 - `L1` 至少一家核心竞争对手的同期财报、公告或业绩新闻稿
-- `L6` 派生计算表可选，但必须指向上游 `L1` 到 `L5`
+- `L6` 派生计算表在只摘录披露数字时可选；如果输出同比、环比、margin bridge、implied guidance、peer relative quality、valuation delta 或任何影响 thesis/actionability 的数量判断，则必须生成 calculation ledger，并指向上游 `L1` 到 `L5`
 
 ## Output Package
 
@@ -96,7 +96,26 @@
 - 产能扩张、供应链、营运资本和 CapEx 是否支持继续放量
 - 放量是否以牺牲价格、毛利率或现金流为代价
 
-每个增长驱动必须标记为 `price-driven`、`volume-driven`、`mix-driven`、`cost-driven`、`accounting-driven` 或 `one-off`。
+每个增长驱动必须标记为 `price-driven`、`volume-driven`、`mix-driven`、`cost-driven`、`accounting-driven` 或 `one-off`，并标记证据强度：`high`、`medium`、`low` 或 `source_gap`。
+
+#### Evidence Ladder
+
+定价、放量和持久性不能只引用管理层口径。必须把证据分层，并记录反证。
+
+| dimension | high evidence | medium evidence | weak evidence / not enough alone | common counter-evidence |
+| --- | --- | --- | --- | --- |
+| pricing | realized price / ASP / net price 上升；折扣收窄；续约或新合同提价被接受；毛利改善可排除成本、汇率、补贴或一次性项目 | product mix 向高 ASP / 高毛利迁移；交期拉长、配额销售或供给紧张；同行同步提价或折扣收窄 | 管理层只说 pricing strong；收入增长但没有 ASP、折扣或毛利桥；毛利改善主要来自成本下降或良率改善 | ASP 下滑；促销或折扣扩大；gross-to-net 恶化；客户重谈合同；同行降价 |
+| volume | 出货、销量、活跃客户、订单、RPO/backlog、book-to-bill 或 usage 明确增长；产能、供应链和客户验收支持交付 | 指引隐含放量；产能扩张按期；新客户、新地区或新平台开始贡献；渠道 sell-through 改善 | 低基数同比高增；一次性补库存；提前拉货；只给 TAM 或 pipeline 叙事 | backlog / RPO 环比下降；订单取消或延期；库存快于收入上升；应收恶化；渠道库存过高 |
+| durability | 多季度连续验证；订单可取消性低；留存、续约、复购或客户预算强；现金流、营运资本、CapEx 和同行口径支持持续增长 | backlog 覆盖未来几个季度；管理层指引与历史兑现率匹配；产能爬坡路径可解释；同行需求方向一致 | 单季 beat；短期供需紧缺；一次性大单；政策、补贴或事件催化尚未转成合同和现金流 | 指引依赖后置季度；放量靠降价；毛利率随放量下降；现金消耗扩大；同行口径相反 |
+
+Evidence strength rules：
+
+- `high`：至少有一个 L1/L4/L5 来源直接支持，并能被财务表、订单/合同、客户行为、同行或市场预期中的至少一类交叉验证。
+- `medium`：证据方向一致，但缺少直接 ASP / volume / contract / cash-flow 披露，或只覆盖未来指引而未被本期验证。
+- `low`：主要来自管理层叙事、单季同比、低基数、pipeline、TAM 或 agent 推断。
+- `source_gap`：关键证据缺失；不得把该驱动写成 durable conclusion。
+- L6 派生计算可以支持解释，但不能单独把结论升级为 `high`。
+- 若存在 material counter-evidence，必须把结论标记为 `mixed` 或降低 evidence_strength，并写明需要什么后续披露来证伪或确认。
 
 ### 4. Three-Statement Read
 
@@ -104,6 +123,7 @@
 - balance sheet：现金、应收、存货、债务、递延收入、营运资本
 - cash flow：经营现金流、自由现金流、资本开支、回购、分红
 - 三表之间必须互相校验，不能只看利润表。
+- 如果三表交叉校验会影响财报质量、thesis impact 或 actionability，必须运行 `data-analysis-quality-gate`，并把派生指标写入 `calculation-ledger.csv` 或 explicit formula note。
 
 ### 5. Forward Outlook / Guidance Bridge
 
@@ -123,6 +143,8 @@
 - `transcript_QA_delta`：业绩会 Q&A 是否改变新闻稿表面结论，若 transcript 不可得必须标记 `source_gap`
 
 如果公司不提供正式指引，必须用 prepared remarks、Q&A、订单/产能数据、同行指引和市场预期构建 `soft guidance bridge`，并降低证据强度。
+
+如果使用指引倒推后续季度路径、implied bridge 或 guide vs consensus，必须运行 `data-analysis-quality-gate`。如果 consensus 或必要输入不可得，相关判断必须标记 `source_gap` 或 `calculation_gap`，不能写成高置信预期差结论。
 
 ### 6. Driver Bridge
 
@@ -146,6 +168,7 @@
 - 毛利率改善是否可以在放量后维持
 - 现金流、库存、应收、CapEx 是否支持当前增长叙事
 - 管理层指引是否与实际订单、backlog、产能和同行口径一致
+- 是否存在 pricing、volume 或 durability 的反证；若存在，必须说明为什么不改变结论，或把结论降级
 
 ### 8. Peer Earnings Cross-Check
 
@@ -180,7 +203,7 @@
 - headline result
 - source map
 - core business map
-- price volume bridge
+- price volume bridge with evidence ladder
 - financial snapshot
 - three-statement analysis
 - forward outlook / guidance bridge
@@ -280,7 +303,7 @@
 - 每条进入 evidence log 的信息都必须保留 `claim_type`、`claim_text`、`source_speaker` 和 `verification_status`。
 - 财务事实、管理层口径、正式指引、长期目标、外部 consensus、市场反应和 Mira 倒推计算必须分开标注。
 - 非 GAAP 指标必须同时检查调整项，不能只引用调整后 EPS。
-- 如果使用 agent 计算的同比、环比、margin bridge，必须登记为 `L6` 并写上游来源。
+- 如果使用 agent 计算的同比、环比、margin bridge、implied guidance、peer relative quality 或 valuation delta，必须登记为 `L6`、写上游来源，并在 `calculation-ledger.csv` 或 explicit formula note 中记录公式、口径、期间、单位和限制。
 - 指引、consensus 和 implied bridge 必须区分公司口径、市场预期和 agent 倒推计算。
 - 如果 transcript / Q&A 尚不可得，必须把未来预期分析标记为 `source_gap`，并把 transcript 发布列为刷新触发。
 - 定价权、放量和竞争优劣必须有财务指标、订单/产能信号、管理层原话或同行财报支撑。

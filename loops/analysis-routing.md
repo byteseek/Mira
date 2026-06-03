@@ -11,10 +11,11 @@
 1. `task_mode`
 2. `research_object`
 3. `time_boundary`
-4. `primary_skill_or_loop`
-5. `equity_route`
-6. `overlays_and_lenses`
-7. `output_package`
+4. `quant_dependency`
+5. `primary_skill_or_loop`
+6. `equity_route`
+7. `overlays_and_lenses`
+8. `output_package`
 
 如果前面步骤已经说明任务不是单票公司研究，就不要强行进入 `equity-research-core`。
 
@@ -26,6 +27,8 @@
 - `research_object`
 - `market_scope`
 - `time_boundary`
+- `quant_dependency`
+- `calculation_gate`
 - `primary_skill_or_loop`
 - `routing_basis`
 - `routing_mismatch_risk`
@@ -196,6 +199,34 @@ This loop is currently `candidate_internal_release`, not final external-grade.
 
 - `skills/equity-research-core/references/thesis-horizon-routing.md`
 
+## Step 3.5: Quant Dependency Check
+
+在选择最终输出包之前，判断研究结论是否依赖数量型判断。
+
+如果触发以下任一条件，必须运行：
+
+- `skills/data-analysis-quality-gate/SKILL.md`
+
+触发条件：
+
+- 同比、环比、CAGR、run-rate、margin bridge
+- peer comparison、peer ranking、相对估值或相对财务质量
+- valuation implied expectation、base / bull / bear scenario math
+- 市场规模、渗透率、份额、TAM / SAM / SOM
+- 财报三表交叉校验、现金流质量、营运资本异常
+- 宏观、商品、价格、库存、利率、就业或通胀时间序列
+- 多来源数字冲突或口径不一致
+- 任何会影响 `thesis_impact`、`research_action`、`actionability_bridge` 或 durable conclusion 的数量判断
+
+路由输出必须记录：
+
+- `quant_dependency`: `none` / `low` / `medium` / `high`
+- `calculation_gate`: `not_required` / `required` / `waived`
+- `calculation_gate_basis`
+- `tool_consent_required`: `yes` / `no`
+
+如果 `calculation_gate = required` 但用户选择不计算，或当前来源不足以计算，必须把相关结论降级为 `calculation_gap`、`source_gap`、`watch_only`、`needs_refresh` 或 `no_action`。
+
 ## Step 4: Single-Equity Route
 
 如果 `research_object = single_equity`，按以下顺序继续：
@@ -305,6 +336,15 @@ lens 是对 thesis 的约束视角，不是额外研究对象。
 - `event-delta.md`，如有事件
 - `decision-log.csv`，如有研究动作
 - `postmortem.md`，如为复盘任务
+
+### Calculation Artifacts
+
+可附加到任意 output package：
+
+- `data-requirement-brief.md`
+- `calculation-ledger.csv`
+
+当 `calculation_gate = required`，且结论包含派生数量判断时，必须输出 calculation artifact，或显式写明 `calculation_gap` / `calculation_waived_by_speed` 和结论降级方式。
 
 ## Mismatch Risks
 
