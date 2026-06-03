@@ -11,7 +11,7 @@
 | layer | default targets | role |
 | --- | --- | --- |
 | 原始披露 | SEC EDGAR company submissions、companyfacts、公司 IR | 核心事实、财务、公告时间线 |
-| 市场快照 | Yahoo Finance quote、statistics、history、options、holders | 价格、估值、量价、持仓、期权和市场背景 |
+| 市场快照 | Yahoo Finance quote、statistics、history、options、holders | 价格、估值、技术面、量价、持仓、期权和市场背景 |
 | 财务交叉核验 | Yahoo Finance financials、StockAnalysis、MacroTrends | 快速 screening 和趋势核验 |
 | 宏观背景 | FRED、BLS、BEA | 利率、通胀、就业、GDP、行业周期 |
 | 新闻与叙事 | Yahoo Finance news、主流媒体原文、X/YouTube watchlist | 事件发现、情绪和叙事变化 |
@@ -30,6 +30,27 @@ Yahoo Finance 适合做公开市场数据入口，但不作为公司原始事实
 - `holders`: 机构和内部人持仓概览，重大持仓结论需回到 13F、proxy 或其他原始文件。
 - `profile`: 业务描述、行业、管理层和地址，只用于快速定位。
 - `news`: 聚合新闻入口，正式引用必须追到原始媒体、公告或公司材料。
+
+## Technical / Market Pricing Targets
+
+技术面只作为 `market_price_and_trading` 来源下的市场定价层。它适合回答价格、成交、波动、事件反应、流动性和仓位问题，不适合证明基本面兑现。
+
+默认按需目标：
+
+- `daily_ohlcv`: 至少 252 个交易日的开高低收和成交量，用于趋势、均线、回撤、波动和量能计算。
+- `benchmark_ohlcv`: 指数 ETF、行业 ETF 或 peer basket，用于相对强弱和异常收益。
+- `event_calendar`: 财报、指引、监管、产品发布、宏观事件或其他明确 catalyst 日期。
+- `options_chain`: expiry、strike、bid/ask、open interest、volume、implied volatility 和 quote time，用于隐含波动、skew、put/call 和 event implied move。
+- `short_interest`: short interest、float、days to cover 和 as-of date，用于拥挤度和挤压风险。
+- `holders_or_float`: 机构持仓、内部人持仓、float 和 share count，用于流动性和仓位背景。
+
+记录要求：
+
+- 所有技术面数据必须写 `as_of_date`。
+- 盘中、期权和 quote 类数据必须写 `quote_time`。
+- 事件反应必须写明 `event_date` 和 event source。
+- 相对收益必须写明 benchmark 或 peer basket。
+- 派生指标必须在 evidence log 里标为 `derived_calculation`，并列出上游 market-data source id。
 
 ## Public Endpoint Targets
 

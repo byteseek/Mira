@@ -1,6 +1,6 @@
 # Methodology Queue: Trial
 
-- last_updated: 2026-06-01
+- last_updated: 2026-06-03
 
 ## Purpose
 
@@ -105,3 +105,9 @@
   target_case: `CPO / silicon photonics`, `AI power / grid bottleneck`, and one historical failed-bottleneck backtest
   expected_increment: 从已确认路线图出发，沿物理、工艺、材料、产能、认证和集成约束递归上游，找到比普通产业链图更窄、更可验证、更可映射到股票代理的下一层瓶颈。
   falsification_condition: 如果它不能比普通 `industry-concept-analysis` 和 `supply-chain` 更好地改变瓶颈排序、公司 handoff、source-gap map 或 refresh trigger，或反复把技术节点误判成可投资价值捕获，就不升级到 `adopted`。
+
+- `technical-market-pricing-context`
+  target_case: `2 earnings/event cases`, `1 failed-breakout or failed-breakdown monitoring case`, `1 high-volatility / high-short-interest case`, and `1 ETF or product-liquidity case`
+  expected_increment: 把技术面从主观图形评论升级为可复现的 market-pricing 层，记录趋势、相对强弱、量能、事件反应、波动、期权/空头/流动性和触发/失效位，用来改善 actionability、refresh trigger 和风险窗口。
+  falsification_condition: 如果它只是增加描述性 K 线语言，不能改变研究动作、刷新条件或风险判断，或经常把价格反应误写成基本面验证，就不升级到 `adopted`。
+  notes: 方法论卡见 `memory/methodologies/technical-market-pricing-context.md`，填写模板见 `templates/technical-analysis-check.csv`。

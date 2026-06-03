@@ -67,6 +67,8 @@ Use `consensus_and_estimates` for market expectation baseline. If unavailable, w
 
 Use `market_price_and_trading` for price, volume, valuation and options-implied reaction. Treat it as `market_pricing`, not evidence that fundamentals improved or deteriorated.
 
+For technical / market-pricing context, record price, volume, volatility, options, short interest and derived levels as `market_pricing` or `derived_calculation`. These claims can support setup quality, follow-through, trigger levels, invalidation and refresh priority, but they cannot by themselves support business execution, demand, margin or moat conclusions.
+
 ### Industry Context
 
 Use `official_macro_and_industry`, `industry_and_supply_chain_signal`, `sellside_and_expert_research` and `professional_media` together. Single-source industry narratives should be downgraded unless confirmed by primary data or multiple independent sources.

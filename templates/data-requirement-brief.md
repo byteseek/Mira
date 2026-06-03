@@ -49,4 +49,3 @@
 ## Refresh Condition
 
 {{ refresh_condition }}
-

@@ -58,6 +58,41 @@ Research-only qualitative sizing language. These are not trade instructions.
 - `normal_only_after_confirmation`
 - `reduce_risk_context`
 
+## Technical / Market Pricing State
+
+Use in [../templates/technical-analysis-check.csv](../templates/technical-analysis-check.csv) and memo `technical_context` fields.
+
+`trend_state`:
+
+- `uptrend_confirmed`
+- `uptrend_extended`
+- `range_constructive`
+- `range_neutral`
+- `range_distribution`
+- `downtrend_confirmed`
+- `reversal_attempt`
+- `technical_source_gap`
+
+`event_reaction_quality`:
+
+- `positive_follow_through`
+- `negative_follow_through`
+- `reversal_against_news`
+- `gap_and_hold`
+- `gap_fill`
+- `range_digesting`
+- `no_clear_signal`
+- `source_gap`
+
+`positioning_risk`:
+
+- `low`
+- `medium`
+- `high`
+- `source_gap`
+
+Technical state tokens are market-pricing descriptors only. They must not be used as proof of company execution, fundamental quality or long-term thesis durability.
+
 ## Strategic Data Dependency
 
 Institutional expectation work is constrained without reliable consensus and estimate data.
