@@ -344,7 +344,7 @@ ROUTING_EXAMPLE_EXPECTATIONS = {
         "secondary_intents": "[AMD peer / industry compare, position review of both]",
         "execution_order": "earnings → peer compare → position review",
         "scope_confirmation_required": "yes",
-        "decision_pressure": "medium",
+        "decision_pressure": "low",
     },
 }
 

@@ -407,3 +407,11 @@ SEC supplement 或 SEC filing deep dive 还可以额外跑：
 python3 scripts/validate_sec_filing_package.py templates/sec-supplement-source-note.csv
 python3 scripts/validate_sec_filing_package.py templates/sec-filing-analysis-package
 ```
+
+上面的脚本校验的是**语法**（schema、词表、路由卡 token）。要校验**行为**——模型在真实回答里是否真的做了契约要求的事（决策压力下的反向检验、弱证据降级、不可知时的诚实终态、无持仓不给仓位），跑行为级 eval：
+
+```sh
+python3 scripts/score_behavior_eval.py --transcripts evals/transcripts
+```
+
+它把 [templates/delivery-checklist.md](templates/delivery-checklist.md) 的语义纪律变成对模型输出的可打分断言。用例、schema 和录制 transcript 的方法见 [evals/README.md](evals/README.md)。

@@ -73,5 +73,5 @@ Prompt: `Mira, 看 NVDA 这次财报，顺便对比 AMD，这俩我都重仓了`
 - `secondary_intents`: [AMD peer / industry compare, position review of both]
 - `execution_order`: earnings → peer compare → position review
 - `scope_confirmation_required`: `yes`
-- `decision_pressure`: `medium` (持仓语境 + “都重仓了”)
-- routing_basis: 复合 prompt，先确认范围再花 depth 预算；持仓部分进 position review，无真实持仓数据时保持 `research_only`。
+- `decision_pressure`: `low` (持仓被陈述但**无动作语**：未问“能不能加/减/冲”。陈述持仓 → low；叠加动作语才升 `medium`，见 #1 counter-example)
+- routing_basis: 复合 prompt，先确认范围再花 depth 预算；持仓部分进 position review，无真实持仓数据时保持 `research_only`。“都重仓了”只是陈述语境，不是动作请求，故 `decision_pressure=low`（仍显式输出，不静默跳过）。
