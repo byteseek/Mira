@@ -36,7 +36,14 @@ Define the review boundary:
 
 ### `load-thesis-index`
 
-Read [../memory/research/INDEX.md](../memory/research/INDEX.md) first.
+Read the private thesis index first when it exists and the task is tied to the
+user's prior views:
+
+- `private/views/view-register.csv`
+- `private/research/INDEX.md`, if the user maintains one
+
+Use [../memory/research/INDEX.md](../memory/research/INDEX.md) only as product
+context, a public example, or a fallback when no private research state exists.
 
 Only load individual thesis ledgers when the index is insufficient, stale, or the object is part of the current review set.
 
@@ -98,7 +105,9 @@ Output a PM-facing review:
 - follow-up queue
 - actionability boundary
 
-Run `python3 scripts/validate_repo.py` after updating [../memory/research/INDEX.md](../memory/research/INDEX.md), because the validator checks index state/action tokens and date-like stale cells.
+Run `python3 scripts/validate_repo.py` after updating tracked [../memory/research/INDEX.md](../memory/research/INDEX.md), because the validator checks index state/action tokens and date-like stale cells.
+
+Do not run repo validation solely because user-private `private/` state changed.
 
 ## Exit Criteria
 

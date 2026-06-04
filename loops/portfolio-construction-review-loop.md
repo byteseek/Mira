@@ -32,9 +32,11 @@ If holdings or weights are absent, do not infer position size.
 
 Read:
 
-- [../memory/research/INDEX.md](../memory/research/INDEX.md)
-- position register if provided
-- portfolio register if provided
+- private thesis index first when user continuity matters:
+  `private/views/view-register.csv` or `private/research/INDEX.md`
+- private position register if provided, usually under `private/portfolio/`
+- private portfolio register if provided, usually under `private/portfolio/`
+- [../memory/research/INDEX.md](../memory/research/INDEX.md) only as product context, public example or fallback
 - thesis ledgers only when the index is stale, insufficient or in the review set
 
 Reconcile state, stale status and action tokens against [../data/controlled-vocabulary.md](../data/controlled-vocabulary.md).

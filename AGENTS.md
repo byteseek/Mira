@@ -36,6 +36,10 @@ automation promise.
   valuation math, peer ranking, or time-series comparisons.
 - Keep facts, inferences, and judgments separate.
 - Tie every durable conclusion to an evidence log or explicit source note.
+- Keep user-specific views, watchlists, preferences, holdings, weights, and
+  portfolio constraints in gitignored `private/` state by default. Tracked Mira
+  files are product state unless the user explicitly asks to contribute a
+  de-identified example or method.
 - State `stale_after`, `must_refresh_if`, or an equivalent refresh condition.
 - Downgrade conclusions when source quality, freshness, or calculation support
   is weak.

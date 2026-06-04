@@ -261,7 +261,19 @@ cases/<ticker>-<YYYY-MM>/
 └── evidence-log.csv
 ```
 
-Thesis System 对象：
+用户私有观点和工作视图默认位置：
+
+```text
+private/views/view-register.csv
+private/research/<OBJECT>/
+├── working-view.md
+├── thesis-ledger.md
+└── expectation-map.csv
+```
+
+`private/` 已被 gitignore，用于用户私有状态，不随 Mira 本体更新提交。模板见 [templates/private-state/](templates/private-state)，执行规则见 [loops/view-continuity-loop.md](loops/view-continuity-loop.md)。
+
+Thesis System 产品样例或公共对象：
 
 ```text
 memory/research/<OBJECT>/
@@ -308,7 +320,7 @@ cases/<concept>-<YYYY-MM>/
 - [cases/aapl-2026-04/](cases/aapl-2026-04/) 也是 golden case：case 包内放了 `thesis-ledger.md` 和 `decision-log.csv`，用于 agent few-shot。
 - [cases/nvts-2026-05/](cases/nvts-2026-05/)：财报事件样板，包含 earnings package、同行验证、canonical `evidence-log.csv`、`expectation-map.csv` 和 `actionability-bridge.md`。
 
-PM / 组合研究视角使用 [memory/research/INDEX.md](memory/research/INDEX.md) 作为 thesis 总览板。
+PM / 组合研究视角的产品样例可参考 [memory/research/INDEX.md](memory/research/INDEX.md)。用户私有组合、持仓和观点默认使用 `private/portfolio/` 与 `private/views/view-register.csv`。
 
 交付前用 [templates/delivery-checklist.md](templates/delivery-checklist.md) 做自检。
 

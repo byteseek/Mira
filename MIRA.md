@@ -58,9 +58,12 @@ Agents should load the project in this order:
 4. [AGENT_QUICKSTART.md](AGENT_QUICKSTART.md), when the user needs prompt patterns or output locations.
 5. [loops/analysis-routing.md](loops/analysis-routing.md), before formal analysis.
 6. The selected loop or skill for the routed task.
-7. Relevant `memory/` files only when they are directly useful to the current task.
+7. Relevant `private/` state only when the task depends on a user's prior
+   views, positions, watchlist or preferences.
+8. Relevant `memory/` files only when they are directly useful to the current task.
 
-Do not load all memory indiscriminately. Retrieve only the memory layer needed for the task.
+Do not load all private state or memory indiscriminately. Retrieve only the
+object-specific private state or memory layer needed for the task.
 
 ## Personalization Rules
 
@@ -83,6 +86,31 @@ Do not store:
 
 Preference memory must not override evidence quality. If a user prefers a bullish or bearish framing, Mira should still preserve uncertainty and contrary evidence.
 
+## Product / Private State Boundary
+
+Mira's tracked repository is product state: protocols, loops, skills, templates,
+default methodology memory, public examples and reusable playbooks.
+
+User-specific views are private state. They should be kept outside tracked Mira
+product files so repository updates do not conflict with a user's current views
+or expose private research context.
+
+Default write locations:
+
+- `private/views/view-register.csv`: object-level index of user working views.
+- `private/research/<OBJECT>/working-view.md`: lightweight user view from Q&A.
+- `private/research/<OBJECT>/thesis-ledger.md`: user-specific thesis state.
+- `private/research/<OBJECT>/expectation-map.csv`: user-specific expectations.
+- `private/portfolio/`: user holdings, weights, risk budgets and constraints.
+- `private/preferences/user-preferences.md`: user-specific preferences.
+
+`private/` and `local/` are intentionally gitignored. Do not create real user
+state under tracked `memory/`, `cases/` or `templates/`.
+
+Promote private state into tracked Mira product files only when the user
+explicitly asks to contribute it as a product method, public example or
+de-identified case, and only after privacy, source and evidence checks.
+
 ## Research Memory Rules
 
 Research memory is for durable, reusable knowledge. It is not a transcript archive.
@@ -97,13 +125,21 @@ Before writing to memory, verify that the entry has:
 
 Use these memory layers:
 
-- `memory/research/`: durable thesis chains and refresh logs for specific companies or themes
+- `private/research/`: user-specific working views, thesis chains and refresh logs
+- `memory/research/`: public or product-level thesis examples and reusable research memory
 - `memory/methodologies/`: methods under `todo`, `trial`, `adopted`, or `retired`
 - `memory/playbooks/`: reusable market behavior patterns
 - `memory/skills/`: stable skill-level methods and checklists
-- `memory/user-preferences.md`: stable user preferences, if created
+- `private/preferences/user-preferences.md`: stable user preferences, if created
+- `memory/user-preferences.md`: product example or legacy preference memory only
 
 If a memory candidate is useful but not verified, write it as `hypothesis` or keep it in a case note instead of formal memory.
+
+For Q&A outputs that contain a reusable but not yet durable view, prefer
+`private/research/<OBJECT>/working-view.md` and record whether the view should
+be saved, waived or promoted. Use [loops/view-continuity-loop.md](loops/view-continuity-loop.md)
+when a task depends on saving, continuing, updating or comparing a user's prior
+view.
 
 ## Persona Boundary
 
@@ -130,6 +166,7 @@ Every formal Mira research output must include or explicitly waive:
 - `primary_skill_or_loop`
 - `routing_basis`
 - `followup_prompt_mode` and route-bound, object-specific progressive follow-up prompts, or an explicit waiver
+- `private_state_action`: `load` / `save_working_view` / `update` / `promote` / `waive`
 - source notes or evidence log
 - `quant_dependency`, `calculation_gate`, or an explicit waiver when conclusions depend on derived numbers
 - facts / inferences / judgments separation

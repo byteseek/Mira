@@ -15,6 +15,10 @@ Every formal output must:
 - choose `depth_mode`: `quick_map`, `standard` or `deep_dive`
 - separate `facts`, `inferences` and `judgments`
 - keep every durable conclusion tied to an evidence log or explicit source note
+- keep user-specific views, holdings, watchlists and preferences in gitignored
+  `private/` state by default; tracked Mira files are product state
+- record `private_state_action` when an output creates, continues, updates,
+  promotes or waives a reusable user view
 - label evidence posture with [data/evidence-posture-taxonomy.md](data/evidence-posture-taxonomy.md) when creating new evidence logs
 - assign a package/actionability readiness level using [data/research-readiness-gate.md](data/research-readiness-gate.md)
 - include `stale_after`, `must_refresh_if` or equivalent refresh conditions
@@ -31,6 +35,7 @@ Every formal output must:
 | Wake word / identity | [MIRA.md](MIRA.md) | [AGENT_QUICKSTART.md](AGENT_QUICKSTART.md) for prompts |
 | Mira self-update | run `scripts/mira_update.sh`; use `--help` only for options | [AGENT_QUICKSTART.md](AGENT_QUICKSTART.md) update section |
 | Any formal task | [loops/analysis-routing.md](loops/analysis-routing.md) | selected loop from routing |
+| Continue / save user view | [loops/view-continuity-loop.md](loops/view-continuity-loop.md) | `private/research/<OBJECT>/` and `private/views/view-register.csv` only when relevant |
 | First-pass single equity | [loops/research-loop.md](loops/research-loop.md) | thesis horizon, framework and overlay references |
 | Thesis update / expectation change | [loops/thesis-update-loop.md](loops/thesis-update-loop.md) | thesis ledger, expectation map and decision-log templates |
 | Event or earnings delta | [loops/event-delta-loop.md](loops/event-delta-loop.md) | earnings skill and event-delta template |
@@ -49,7 +54,10 @@ Every formal output must:
 | State/action tokens | [data/controlled-vocabulary.md](data/controlled-vocabulary.md) | task-specific template |
 | Final self-check | [templates/delivery-checklist.md](templates/delivery-checklist.md) | task-specific quality bar |
 
-Do not load all `memory/`, all `skills/` or all cases at startup. Retrieve only the files required by the routed task.
+Do not load all `private/`, all `memory/`, all `skills/` or all cases at startup.
+Retrieve only the files required by the routed task. If private and tracked
+memory both exist for the same object, prefer the object-specific private state
+for continuity and use tracked memory only as product context or examples.
 
 ## Depth Defaults
 

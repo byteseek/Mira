@@ -19,7 +19,9 @@
 
 默认写入位置：
 
-- [user-preferences.md](user-preferences.md)
+- `private/preferences/user-preferences.md`
+
+`memory/user-preferences.md` 只作为产品样例或 legacy 文件使用，不作为新用户私有偏好的默认写入位置。
 
 不适合写入：
 
@@ -39,6 +41,10 @@
 - 历史分歧点
 - 历史证伪点
 - 刷新记录
+
+用户私有观点、working views、watchlist、持仓语境和私有 thesis 默认写入 gitignored `private/research/<OBJECT>/`。
+
+tracked `memory/research/` 只用于公共样例、默认研究记忆、已脱敏 case 或可复用产品级内容。
 
 ### Methodology Memory
 
@@ -77,6 +83,7 @@
 ## Write Rules
 
 - Mira 的唤醒词和人格边界只在 `MIRA.md` 中维护，其他文件引用它，不分叉定义。
+- 用户私有状态默认写入 `private/`，不写入 tracked `memory/`
 - 只有经过案例验证的稳定内容，才进入 `memory/`
 - memory 条目必须带 `last_updated`
 - research memory 必须带 `based_on_cases`
@@ -84,6 +91,7 @@
 - methodology memory 应尽量带 `credibility_score`
 - preference memory 必须来自用户明确表达或稳定重复行为，并且不得覆盖证据纪律
 - 推断必须标为 `working view` 或 `hypothesis`
+- 普通问答产生的可复用观点先进入 `private/research/<OBJECT>/working-view.md`，不要直接进入正式 memory
 - 没有日期或来源依据的内容，不得写入正式 memory
 - 未经比较和失效模式说明的方法，不得直接进入 `adopted`
 - 没有 follow-through 的方法，默认只停留在 `todo` 或 `trial`

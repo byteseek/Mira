@@ -11,14 +11,15 @@
 1. `task_mode`
 2. `research_object`
 3. `time_boundary`
-4. `depth_mode_and_budget`
-5. `quant_dependency`
-6. `primary_skill_or_loop`
-7. `equity_route`
-8. `overlays_and_lenses`
-9. `handoff_and_readiness`
-10. `progressive_followup_prompts`
-11. `output_package`
+4. `private_state_boundary`
+5. `depth_mode_and_budget`
+6. `quant_dependency`
+7. `primary_skill_or_loop`
+8. `equity_route`
+9. `overlays_and_lenses`
+10. `handoff_and_readiness`
+11. `progressive_followup_prompts`
+12. `output_package`
 
 如果前面步骤已经说明任务不是单票公司研究，就不要强行进入 `equity-research-core`。
 
@@ -34,6 +35,9 @@
 - `source_budget`
 - `artifact_budget`
 - `token_budget_policy`
+- `private_state_action`
+- `private_state_refs`
+- `view_continuity_basis`
 - `quant_dependency`
 - `calculation_gate`
 - `primary_skill_or_loop`
@@ -143,6 +147,27 @@
 如果事件 delta 改变核心前提，再升级回：
 
 - `loops/research-loop.md`
+
+### `view_continuity`
+
+用于普通问答观点、working view、用户私有 thesis、watchlist note 或“接着上次看”的延续和更新。
+
+默认进入：
+
+- `loops/view-continuity-loop.md`
+
+触发条件：
+
+- 用户要求保存、延续、更新、对比或复盘之前的观点。
+- 本次回答形成了可复用但未达到正式 research package 的 working view。
+- 用户观点、持仓、watchlist、偏好或私有 thesis 会影响当前边界。
+- 输出需要说明 `save_as_working_view`、`private_state_action` 或 promotion / waiver。
+
+边界：
+
+- 用户私有观点默认写入 gitignored `private/`，不写入 tracked `memory/`。
+- 只有用户明确要求贡献为 Mira 产品方法、公开样例或脱敏 case，才允许进入 tracked 文件。
+- 没有来源或证据不足的观点只能保存为 `working_view`、`hypothesis` 或 `watch_item`，不能升级为正式 thesis。
 
 ### `position_review`
 
@@ -299,6 +324,36 @@ This loop is currently `candidate_internal_release`, not final external-grade.
 单票时间跨度规则见：
 
 - `skills/equity-research-core/references/thesis-horizon-routing.md`
+
+## Step 3.1: Private State Boundary
+
+在选择深度和输出包前，判断本次任务是否涉及用户私有状态。
+
+默认规则：
+
+- Mira 产品状态包括 tracked 的协议、loops、skills、templates、公开样例、默认方法论 memory 和 playbooks。
+- 用户状态包括观点、working views、私有 thesis、watchlist、持仓、权重、风险预算、偏好和本地数据。
+- 用户状态默认只读写 gitignored `private/` 或 `local/`。
+- 不要把用户私有观点、持仓或 watchlist 写入 tracked `memory/`、`cases/` 或 `templates/`。
+
+路由输出必须记录：
+
+- `private_state_action`: `none` / `load` / `save_working_view` / `update` / `promote` / `waive`
+- `private_state_refs`: 例如 `private/views/view-register.csv` 或 `private/research/<OBJECT>/working-view.md`
+- `view_continuity_basis`: 为什么需要或不需要延续上次观点
+
+动作规则：
+
+- `none`: 纯方法论、公开资料解释、一次性事实查询，且没有可复用观点。
+- `load`: 用户说“之前那个观点”“继续看”“更新 X”，或当前任务依赖既有私有 thesis。
+- `save_working_view`: quick_map 或普通问答产生了可复用但未达到 durable thesis 的观点。
+- `update`: 新证据会改变已有 private working view、expectation map 或 thesis state。
+- `promote`: private working view 已满足 evidence、source trail、refresh condition 和 scope 要求，用户也明确希望升级。
+- `waive`: 用户明确不要保存，或观点太弱、太临时、无来源，不应进入私有状态。
+
+如果 `private_state_action` 不是 `none` 或 `waive`，先进入或并行使用：
+
+- `loops/view-continuity-loop.md`
 
 ## Step 3.25: Depth Mode And Budget
 

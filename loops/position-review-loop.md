@@ -37,7 +37,8 @@ If the user does not provide real position data, mark `position_data_status = no
 
 ### `load-current-thesis`
 
-Load the current thesis package:
+Load the current private thesis package first when the position belongs to the
+user's private book:
 
 - thesis ledger
 - expectation map
@@ -45,6 +46,16 @@ Load the current thesis package:
 - decision log
 - actionability bridge
 - evidence log or explicit source note
+
+Default private locations:
+
+- `private/research/<OBJECT>/thesis-ledger.md`
+- `private/research/<OBJECT>/expectation-map.csv`
+- `private/research/<OBJECT>/working-view.md`
+- `private/portfolio/position-register.csv`
+
+Use tracked `memory/research/<OBJECT>/` or case packages only as public product
+context, examples, or fallback when private state does not exist.
 
 If the thesis is stale, mark `position_review_action = needs_refresh` before making any stronger position-level judgment.
 
