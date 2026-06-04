@@ -16,6 +16,7 @@
 3.2 `sticky_context_carryover`
 4. `private_state_boundary`
 5. `depth_mode_and_budget`
+5.5 `information_value_knowability_gate`
 6. `quant_dependency`
 7. `primary_skill_or_loop`
 8. `equity_route`
@@ -27,6 +28,7 @@
 `intent_intake`（Step 0）先于一切：拆分复合 prompt、声明运行假设、按 depth 缩放入口卡片，再进入 task_mode。它只做拆分和排序，不做任务分类，分类仍由 Step 1 负责。
 `decision_pressure_gate`（Step 0.5）只在路由进入 actionability / position / portfolio 时强制输出，禁止静默跳过。
 `sticky_context_carryover`（Step 3.2）在同一会话内决定哪些路由字段沿用、哪些在对象切换后重置；跨会话延续必须走 view-continuity 或 private state。
+`information_value_knowability_gate`（Step 3.3）在选定 depth 后校验问题是否值得深挖、核心变量是否可知，可反向下调 depth，并允许 `irreducible_uncertainty` 作为诚实终态。
 
 如果前面步骤已经说明任务不是单票公司研究，就不要强行进入 `equity-research-core`。
 
@@ -50,6 +52,9 @@
 - `source_budget`
 - `artifact_budget`
 - `token_budget_policy`
+- `information_value`
+- `knowability_status`
+- `depth_override_reason`
 - `private_state_action`
 - `private_state_refs`
 - `view_continuity_basis`
@@ -552,6 +557,28 @@ This loop is currently `candidate_internal_release`, not final external-grade.
 - `deep_dive -> standard`: 额外 lens / overlay 不能改变证据质量、结论强度或刷新条件。
 - 不论深度如何，source quality、facts / inferences / judgments、refresh condition 和 downgrade rules 不能被省略。
 
+## Step 3.3: Information Value And Knowability Gate
+
+在选定 `depth_mode` 之后、进入来源收集和 quant gate 之前，校验这个问题是否值得当前深度、核心变量是否可知。`depth_mode` 管的是成本，本 gate 管的是“深挖会不会真的提高判断质量”。
+
+它可以**反向下调 depth**：如果主导变量当前不可知，即使 prompt 看起来像 deep_dive，也应降级为更轻的输出 + 诚实的不确定性，而不是制造伪精确结论。
+
+记录：
+
+- `information_value`: `low` / `medium` / `high`——再多一轮研究会改变结论或决策的程度。
+- `knowability_status`:
+  - `knowable`: 关键变量可由现有来源或合理研究确定。
+  - `partially_knowable`: 部分变量可知，核心仍有不可消除的不确定。
+  - `unknowable_now`: 关键变量当前不可知，需等事件、披露或时间。
+  - `irreducible_uncertainty`: 结论由本质不可知的变量主导，深挖不会提高质量。
+- `depth_override_reason`: 若本 gate 改变了 Step 3.25 选定的 depth，说明原因。
+
+规则：
+
+- `information_value = low`，或 `knowability_status` 为 `unknowable_now` / `irreducible_uncertainty` 时，默认下调 depth，并在输出中显式说明“为什么深挖不会改变结论”。
+- `irreducible_uncertainty` 是一个**诚实终态**：允许直接输出“这件事当前由不可知变量主导”，并配 `watch_only` / `needs_refresh` 和触发刷新的可观察条件，而不是强行给方向。
+- 本 gate 不替代 source quality、facts/inferences/judgments 或刷新条件；它只防止过度研究。
+
 ## Step 3.5: Quant Dependency Check
 
 在选择最终输出包之前，判断研究结论是否依赖数量型判断。
@@ -967,6 +994,8 @@ lens 是对 thesis 的约束视角，不是额外研究对象。
 - 在 actionability / position / portfolio 路由上静默跳过 decision pressure gate，不输出 `decision_pressure`
 - 把瞬时偏误读数（`decision_pressure` / `framing_risk`）当成用户长期偏好存入 memory
 - 跨会话误用 carryover，把会话内沿用变成隐性长期记忆，或对象 pivot 后不重置
+- 在 `information_value=low` 或主导变量不可知时仍强行 deep_dive，制造伪精确结论
+- 把判断当作无置信度的“语感”输出，缺 `judgment_confidence` 和 `reversal_condition`
 
 ## Stop Rules
 
@@ -975,3 +1004,4 @@ lens 是对 thesis 的约束视角，不是额外研究对象。
 - 如果来源不足以支撑 durable conclusion，只能输出低置信判断和刷新条件。
 - 如果总路由与用户明确要求冲突，遵循用户要求，但记录 `routing_override`。
 - 如果 progressive follow-up 的答案会改变核心结论等级，先把当前结论标成 preliminary / working_view，不要假装已经 decision-ready。
+- 如果核心变量当前不可知，输出 `irreducible_uncertainty` 或 `unknowable_now` + 可观察刷新条件，不要用深挖掩盖不可知。

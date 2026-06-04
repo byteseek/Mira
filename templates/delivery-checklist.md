@@ -5,9 +5,13 @@ Use this before handing off a formal research output.
 ## Required
 
 - [ ] The task was routed through `analysis-routing` or the route was explicitly waived with a reason.
+- [ ] Intent intake ran: compound prompts were split into `primary_intent` / `secondary_intents`, running assumptions were declared, and the routing card was scaled to `depth_mode`.
+- [ ] On actionability / position / portfolio routes, `decision_pressure` is emitted (even if `none`), with a disconfirmation check when pressure is medium/high.
 - [ ] `research_object`, `market_scope`, `time_boundary` and source boundary are stated.
 - [ ] `depth_mode` is stated, and artifacts match `quick_map`, `standard` or `deep_dive`.
+- [ ] Information value and knowability were checked; if a dominant variable is unknowable, depth was overridden and `irreducible_uncertainty` / `unknowable_now` stated instead of over-researching.
 - [ ] Facts, inferences and judgments are separated.
+- [ ] Each material judgment states `judgment_confidence`, `confidence_basis` and `reversal_condition` (and `base_rate_anchor` when a reference class applies).
 - [ ] Every durable conclusion has an evidence-log row or explicit source note.
 - [ ] New evidence logs include evidence posture fields or explicitly state why legacy v1 schema is being used.
 - [ ] `readiness_level`, `readiness_basis` and `blocking_gaps` are stated before any actionability conclusion.

@@ -52,6 +52,43 @@ Carryover whitelist (may inherit within a session): `market_scope`, `time_bounda
 
 Never inherit: `decision_pressure`, `framing_risk`, `disconfirmation_required`, or any inferred user motive.
 
+## Information Value And Knowability
+
+Use in routing intake (analysis-routing Step 3.3), after `depth_mode` is selected. This gate can override the depth choice downward.
+
+`information_value`:
+
+- `low`: another research round is unlikely to change the conclusion or decision.
+- `medium`: more research would sharpen but not flip the conclusion.
+- `high`: more research can change the conclusion or the decision at stake.
+
+`knowability_status`:
+
+- `knowable`: key variables can be settled with available sources or reasonable research.
+- `partially_knowable`: some variables are knowable; core uncertainty remains.
+- `unknowable_now`: key variables cannot be known yet; awaits an event, disclosure or time.
+- `irreducible_uncertainty`: the conclusion is dominated by an inherently unknowable variable; deeper research will not improve quality. A legitimate honest terminal — pair with `watch_only` / `needs_refresh` and an observable refresh trigger.
+
+`depth_override_reason`: free-text basis when this gate changes the depth selected in Step 3.25.
+
+## Judgment Confidence
+
+Use at the delivery layer for any material judgment (see MIRA.md Required Output Discipline and the delivery checklist). These are calibrated bands, not pseudo-precise probabilities.
+
+`judgment_confidence`:
+
+- `low`: directional lean only; evidence is thin or conflicting.
+- `medium`: supported by evidence but with material open variables.
+- `high`: multiple high-weight, cross-checked claims support it.
+
+Companion fields:
+
+- `confidence_basis`: the evidence and reasoning the band rests on.
+- `base_rate_anchor`: the reference class or base rate the judgment is anchored against, when applicable.
+- `reversal_condition`: the evidence that would flip or downgrade the judgment.
+
+`judgment_confidence` is about Mira's confidence in a judgment, not about source verification (`verification_status`) or evidence posture. A judgment that rests mainly on `forecast`, `assumption`, `opinion` or `sentiment` inputs cannot be `high`; downgrade it and state the `reversal_condition`.
+
 ## Thesis State
 
 Use in `thesis-ledger.md`, `event-delta.md`, portfolio registers and [memory/research/INDEX.md](../memory/research/INDEX.md).

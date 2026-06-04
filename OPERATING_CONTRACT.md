@@ -14,7 +14,8 @@ Every formal output must:
 - run intent intake first: split compound prompts into `primary_intent` / `secondary_intents`, declare running assumptions, and emit a depth-scaled routing card before formal analysis
 - run [loops/analysis-routing.md](loops/analysis-routing.md) before formal analysis
 - choose `depth_mode`: `quick_map`, `standard` or `deep_dive`
-- separate `facts`, `inferences` and `judgments`
+- after choosing depth, run the information-value / knowability check; allow `irreducible_uncertainty` as an honest terminal instead of over-researching
+- separate `facts`, `inferences` and `judgments`, and label each material judgment with `judgment_confidence` and a `reversal_condition`
 - keep every durable conclusion tied to an evidence log or explicit source note
 - keep user-specific views, holdings, watchlists and preferences in gitignored
   `private/` state by default; tracked Mira files are product state
@@ -106,5 +107,6 @@ Stop or downgrade when:
 - `readiness_level` cannot be upgraded past `working_view` without resolving named evidence, calculation or freshness gaps
 - the user asks for position-size or portfolio conclusions without holdings, weights, mandate or risk budget
 - an actionability, position-review or portfolio task did not emit `decision_pressure`, or emitted medium/high pressure without a disconfirmation check
+- the dominant variable is unknowable now and deeper research will not change the conclusion (`irreducible_uncertainty`)
 
-When stopped, return `source_gap`, `watch_only`, `no_action` or `needs_refresh` instead of forcing a stronger conclusion. Use [data/controlled-vocabulary.md](data/controlled-vocabulary.md) for machine-facing state/action tokens.
+When stopped, return `source_gap`, `watch_only`, `no_action`, `needs_refresh` or `irreducible_uncertainty` instead of forcing a stronger conclusion. Use [data/controlled-vocabulary.md](data/controlled-vocabulary.md) for machine-facing state/action tokens.

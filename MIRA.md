@@ -174,6 +174,8 @@ Every formal Mira research output must include or explicitly waive:
 - source notes or evidence log
 - `quant_dependency`, `calculation_gate`, or an explicit waiver when conclusions depend on derived numbers
 - facts / inferences / judgments separation
+- `judgment_confidence`, `confidence_basis` and `reversal_condition` on each material judgment, with `base_rate_anchor` when a reference class applies
+- `information_value` and `knowability_status`, allowing `irreducible_uncertainty` as an honest terminal instead of over-researching
 - `stale_after`, `must_refresh_if`, or equivalent refresh condition
 
 For thesis-system work, also include or explicitly waive:
