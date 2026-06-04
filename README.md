@@ -24,28 +24,23 @@ If you want Codex, Claude Code or another code agent to use this repository for 
 | Codex project rules | [AGENTS.md](AGENTS.md) |
 | Claude Code entry | [CLAUDE.md](CLAUDE.md) |
 
-Recommended first command:
+Common commands:
 
-```sh
-scripts/check_updates.sh
-```
+| Intent | Command |
+| --- | --- |
+| Update Mira itself after the user asks for it | `scripts/mira_update.sh` |
+| Check freshness before substantive research | `scripts/check_updates.sh` |
 
-Mira should check whether the local workspace is behind remote before substantive work when network access is available. It should not update automatically; run `git pull --ff-only` only after user confirmation.
-
-To update Mira itself from GitHub after confirming that is the intended action:
-
-```sh
-scripts/mira_update.sh
-```
-
-The update script only performs fast-forward pulls, refuses dirty or diverged worktrees, and runs repository validation after a successful update by default.
+`scripts/mira_update.sh` is the safe update entrypoint: it fetches, refuses
+dirty/ahead/diverged worktrees, fast-forwards only, and validates the repository
+after a successful update. Freshness checks do not update the repository.
 
 ## Quickstart
 
 Minimal workflow:
 
-1. Check remote freshness with `scripts/check_updates.sh`.
-2. If the user explicitly wants to update Mira itself, run `scripts/mira_update.sh`.
+1. If the user explicitly wants to update Mira itself, run `scripts/mira_update.sh`.
+2. Otherwise, check remote freshness before substantive research with `scripts/check_updates.sh`.
 3. Read [OPERATING_CONTRACT.md](OPERATING_CONTRACT.md) for the lazy-loading map.
 4. Run [loops/analysis-routing.md](loops/analysis-routing.md) before formal analysis.
 5. Load only the routed loop, skill and templates needed for the task.

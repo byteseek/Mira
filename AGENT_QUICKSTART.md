@@ -8,33 +8,16 @@ Mira 也是本项目的唤醒词。完整定义见 [MIRA.md](MIRA.md)：Mira 是
 
 ## 1. Agent 入口
 
-### 使用前检查更新
+### 更新和启动
 
-为了避免使用过期的 loop、skill 或模板，建议每次开始正式任务前先检查本地仓库是否落后于 remote：
+| 场景 | 命令 | 说明 |
+| --- | --- | --- |
+| 用户明确要更新 Mira 本体 | `scripts/mira_update.sh` | 安全更新入口；会 fetch、拒绝 dirty/ahead/diverged，并在成功后校验仓库。 |
+| 开始正式研究前检查 freshness | `scripts/check_updates.sh` | 只报告是否落后 remote，不自动更新。 |
+| 离线或权限受限时只比较本地 remote refs | `scripts/check_updates.sh --no-fetch` | 不联网，结果可能基于旧 refs。 |
+| 想让检查脚本在发现落后时询问更新 | `scripts/check_updates.sh --prompt` | 只适合有 upstream 的普通分支。 |
 
-```sh
-scripts/check_updates.sh
-```
-
-如果用户明确要“更新 Mira 本体”或“从 GitHub 拉最新 Mira”，使用安全更新入口：
-
-```sh
-scripts/mira_update.sh
-```
-
-如果只希望在发现 remote 有更新时由检查脚本询问是否更新，也可以使用：
-
-```sh
-scripts/check_updates.sh --prompt
-```
-
-原则：
-
-- 检查 remote 可以自动做；更新仓库必须由用户确认。
-- 默认更新命令使用 `scripts/mira_update.sh` 或 `git pull --ff-only`，避免自动产生 merge commit。
-- 如果工作区有本地修改，先提交、暂存或确认不需要保留后再更新。
-- 如果暂时离线，可以用 `scripts/check_updates.sh --no-fetch` 只对比本地已有的 remote-tracking refs。
-- `scripts/mira_update.sh` 会拒绝 dirty worktree、无 upstream/default remote、ahead 或 diverged 状态；在 detached worktree 中会 fast-forward 到 remote 默认分支；成功拉取后默认运行 `python3 scripts/validate_repo.py`。
+原则：用户已经明确说“更新 Mira”时，不要先跑 freshness check；直接跑 `scripts/mira_update.sh`。研究任务开始前才跑 `scripts/check_updates.sh`。
 
 ### Codex
 

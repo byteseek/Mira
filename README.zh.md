@@ -24,24 +24,28 @@ Mira 关注的是 investment thesis：这个判断基于什么证据、在什么
 | Codex 项目规则 | [AGENTS.md](AGENTS.md) |
 | Claude Code 入口 | [CLAUDE.md](CLAUDE.md) |
 
-推荐第一条命令：
+常用命令：
 
-```sh
-scripts/check_updates.sh
-```
+| 意图 | 命令 |
+| --- | --- |
+| 用户明确要求更新 Mira 本体 | `scripts/mira_update.sh` |
+| 正式研究前检查 freshness | `scripts/check_updates.sh` |
 
-Mira 在开始实质任务前，应在网络可用时检查本地 workspace 是否落后 remote。Mira 不应自动更新仓库；只有用户确认后才运行 `git pull --ff-only`。
+`scripts/mira_update.sh` 是安全更新入口：会 fetch、拒绝 dirty/ahead/diverged
+worktree、只做 fast-forward，并在成功更新后默认运行仓库校验。Freshness check
+只报告状态，不自动更新仓库。
 
 ## Quickstart
 
 最小工作流：
 
-1. 用 `scripts/check_updates.sh` 检查 remote freshness。
-2. 读 [OPERATING_CONTRACT.md](OPERATING_CONTRACT.md)，按 lazy-loading map 只加载必要文件。
-3. 正式分析前先运行 [loops/analysis-routing.md](loops/analysis-routing.md)。
-4. 只加载当前任务路由到的 loop、skill 和 template。
-5. 输出带 evidence log、时间边界、刷新条件的产物；证据弱时主动降级结论。
-6. 用 [templates/delivery-checklist.md](templates/delivery-checklist.md) 和相关脚本校验正式 case。
+1. 如果用户明确要更新 Mira 本体，运行 `scripts/mira_update.sh`。
+2. 否则，正式研究前用 `scripts/check_updates.sh` 检查 remote freshness。
+3. 读 [OPERATING_CONTRACT.md](OPERATING_CONTRACT.md)，按 lazy-loading map 只加载必要文件。
+4. 正式分析前先运行 [loops/analysis-routing.md](loops/analysis-routing.md)。
+5. 只加载当前任务路由到的 loop、skill 和 template。
+6. 输出带 evidence log、时间边界、刷新条件的产物；证据弱时主动降级结论。
+7. 用 [templates/delivery-checklist.md](templates/delivery-checklist.md) 和相关脚本校验正式 case。
 
 典型 prompt：
 

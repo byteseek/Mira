@@ -28,7 +28,7 @@ Every formal output must:
 | task step | read only this first | load next only if needed |
 | --- | --- | --- |
 | Wake word / identity | [MIRA.md](MIRA.md) | [AGENT_QUICKSTART.md](AGENT_QUICKSTART.md) for prompts |
-| Mira self-update | `scripts/mira_update.sh --help` | [AGENT_QUICKSTART.md](AGENT_QUICKSTART.md) update section |
+| Mira self-update | run `scripts/mira_update.sh`; use `--help` only for options | [AGENT_QUICKSTART.md](AGENT_QUICKSTART.md) update section |
 | Any formal task | [loops/analysis-routing.md](loops/analysis-routing.md) | selected loop from routing |
 | First-pass single equity | [loops/research-loop.md](loops/research-loop.md) | thesis horizon, framework and overlay references |
 | Thesis update / expectation change | [loops/thesis-update-loop.md](loops/thesis-update-loop.md) | thesis ledger, expectation map and decision-log templates |
