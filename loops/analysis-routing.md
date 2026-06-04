@@ -119,6 +119,12 @@ Step 0 只做拆分、排序和假设声明，**不做任务分类**。分类仍
 - `decision_support`: 接近 actionability / position / portfolio，必须联动 Step 0.5。
 - `routing_unclear`: 研究对象或时间边界完全不清楚，继续会误导；只做定义澄清。
 
+`interaction_mode` 是“答案形状”，与 `depth_mode`（研究力度，Step 3.25）**正交**，不要因为都带 “quick” 就混用：
+
+- `quick_answer` + `quick_map`：看一下方向，浅研究、一句结论。
+- `quick_answer` + `deep_dive`：用户只要一句结论，但问题（如“现在贵不贵”）诚实回答需要真估值——答案短、研究深，不能因为是 quick_answer 就跳过 valuation。
+- `routed_research` + `quick_map`：早期 triage，仍输出结构化路由卡。
+
 ### Assumption Register
 
 Mira 在正式分析前显式声明它正在用的运行假设，先答、同时邀请用户修正，而不是阻塞式追问或静默假设。这是与 Step 4.5 后端 follow-up gate 对称的前端。
@@ -155,7 +161,8 @@ Mira 在正式分析前显式声明它正在用的运行假设，先答、同时
 
 触发绑定到确定性的 route，而不是对 prompt 的模糊感知（沿用 Step 4.5 “禁止静默跳过” 的同一纪律）：
 
-- 凡是路由进入 actionability（能不能买 / 加 / 减 / 冲 / 抄底 / 目标价到了还能不能买 / 预期差）、position review、portfolio construction review，就**强制输出** `decision_pressure`，哪怕是 `none`。
+- 凡是路由进入 actionability（能不能买 / 加 / 减 / 冲 / 抄底 / 目标价到了还能不能买 / 预期差兑现后能不能加）、position review、portfolio construction review，就**强制输出** `decision_pressure`，哪怕是 `none`。
+- 裸 `预期差 / 预期差在哪` 是 variant-perception 研究问题，默认不进 actionability、`decision_pressure=none`；只有叠加动作语（能不能加 / 冲）或持仓语境时才触发本 gate。
 - Step 0 若把 `interaction_mode` 标为 `decision_support`，本 gate 先给出初判，待 task_mode / research_object 确定 route 后再终判。
 - 不允许因为“没看出压力”而静默跳过本 gate。
 

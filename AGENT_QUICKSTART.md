@@ -80,6 +80,8 @@ Mira, 研究 CRWV
 | `standard` | “研究 X”、正式 case、普通财报或 monitoring update | routed package 的必需文件 |
 | `deep_dive` | “深挖”、长期 thesis、复杂估值、SEC 深拆、PM / 方法论复核 | 完整 package + 被 gate 触发的附加 artifact |
 
+注意 `interaction_mode`（答案形状，Step 0）和 `depth_mode`（研究力度）是两个轴，别因为都带 “quick” 就混用：`quick_answer + quick_map`（看一下方向，浅研究一句话）、`quick_answer + deep_dive`（只要一句结论，但问题需要真估值才答得诚实）、`routed_research + quick_map`（triage 但仍出结构化卡）。组合样例见 [examples/routing-examples.md](examples/routing-examples.md)。
+
 | 用户意图 | 默认路由 | 输出 |
 | --- | --- | --- |
 | 首次研究或重建 thesis | [loops/research-loop.md](loops/research-loop.md) | `investment-memo.md`, `case-notes.md`, `evidence-log.csv` |
