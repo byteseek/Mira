@@ -23,6 +23,8 @@ Every formal output must:
 - assign a package/actionability readiness level using [data/research-readiness-gate.md](data/research-readiness-gate.md)
 - include `stale_after`, `must_refresh_if` or equivalent refresh conditions
 - end with 1-3 route-bound, object-specific progressive follow-up prompts when they can improve research boundary, evidence quality, readiness, or next-route selection
+- never silently omit progressive follow-up: if no prompt is useful, state
+  `followup_prompt_mode=none` and a route-specific waiver reason
 - downgrade conclusions when evidence quality is weak
 - avoid autonomous trade instructions; use research actions only
 - apply [data/actionability-risk-control.md](data/actionability-risk-control.md) before any participation, add, trim, chase or event-trade framing
@@ -63,7 +65,7 @@ for continuity and use tracked memory only as product context or examples.
 
 | depth_mode | use when | default cost control |
 | --- | --- | --- |
-| `quick_map` | fast read, early triage, unclear source boundary | read only the most relevant sources; output routing card, core judgment, source notes and refresh triggers |
+| `quick_map` | fast read, early triage, unclear source boundary | read only the most relevant sources; output routing card, core judgment, source notes, refresh triggers and light progressive follow-up unless explicitly waived |
 | `standard` | normal research package, earnings package, monitoring update | load only routed loop / skill plus triggered references; output required package artifacts |
 | `deep_dive` | long-term thesis, complex valuation, SEC deep dive, PM / methodology review | allow extra sources and artifacts only when each one improves evidence quality, actionability, or refresh conditions |
 

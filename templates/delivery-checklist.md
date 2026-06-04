@@ -16,6 +16,7 @@ Use this before handing off a formal research output.
 - [ ] Numeric claims that affect thesis/actionability were cross-checked, or downgraded to `calculation_gap`, `source_gap`, `watch_only`, `needs_refresh` or equivalent.
 - [ ] No unresolved `{{ placeholder }}` remains.
 - [ ] `stale_after`, `must_refresh_if` or equivalent refresh condition is present.
+- [ ] Progressive follow-up is complete: either 1-3 route-bound, object-specific questions are present, or `followup_prompt_mode=none` has a concrete waiver reason.
 - [ ] Weak evidence is downgraded to `source_gap`, `watch_only`, `needs_refresh` or equivalent.
 - [ ] Cross-skill handoffs preserve source IDs, evidence categories, freshness/conflict status and named gaps.
 - [ ] Output states `not_investment_advice` or an equivalent boundary.

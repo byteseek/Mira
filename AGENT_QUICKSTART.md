@@ -74,7 +74,7 @@ Mira, 研究 CRWV
 
 | depth_mode | 默认场景 | 输出边界 |
 | --- | --- | --- |
-| `quick_map` | “看一下”、早期 triage、来源边界不完整 | routing card、核心判断、source notes、source gaps、refresh triggers |
+| `quick_map` | “看一下”、早期 triage、来源边界不完整 | routing card、核心判断、source notes、source gaps、refresh triggers、1 个 light follow-up 或显式 waiver |
 | `standard` | “研究 X”、正式 case、普通财报或 monitoring update | routed package 的必需文件 |
 | `deep_dive` | “深挖”、长期 thesis、复杂估值、SEC 深拆、PM / 方法论复核 | 完整 package + 被 gate 触发的附加 artifact |
 
