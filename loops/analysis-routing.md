@@ -17,6 +17,7 @@
 - `sticky_context_carryover`（Step 3.2）
 - `depth_mode_and_budget`（Step 3.25）
 - `information_value_knowability_gate`（Step 3.3）
+- `data_tool_ingestion_gate`（Step 3.4）
 - `quant_dependency`（Step 3.5）
 - `primary_skill_or_loop`
 - `equity_route`（Step 5）
@@ -29,6 +30,7 @@
 `decision_pressure_gate`（Step 0.5）只在路由进入 actionability / position / portfolio 时强制输出，禁止静默跳过。
 `sticky_context_carryover`（Step 3.2）在同一会话内决定哪些路由字段沿用、哪些在对象切换后重置；跨会话延续必须走 view-continuity 或 private state。
 `information_value_knowability_gate`（Step 3.3）在选定 depth 后校验问题是否值得深挖、核心变量是否可知，可反向下调 depth，并允许 `irreducible_uncertainty` 作为诚实终态。
+`data_tool_ingestion_gate`（Step 3.4）在 evidence logging 和 quant dependency 前处理新材料、API、vendor、portfolio export 和 retained derived dataset 的权限、存储、字段映射和证据用途。
 
 如果前面步骤已经说明任务不是单票公司研究，就不要强行进入 `equity-research-core`。
 
@@ -50,6 +52,9 @@
 - `time_boundary`
 - `depth_mode`
 - `source_budget`
+- `ingestion_route`
+- `ingestion_artifacts`
+- `source_registry_action`
 - `artifact_budget`
 - `token_budget_policy`
 - `information_value`
@@ -586,6 +591,32 @@ This loop is currently `candidate_internal_release`, not final external-grade.
 - `irreducible_uncertainty` 是一个**诚实终态**：允许直接输出“这件事当前由不可知变量主导”，并配 `watch_only` / `needs_refresh` 和触发刷新的可观察条件，而不是强行给方向。
 - 本 gate 不替代 source quality、facts/inferences/judgments 或刷新条件；它只防止过度研究。
 
+## Step 3.4: Data / Tool Ingestion Gate
+
+如果本轮任务依赖新上传文件、用户本地材料、公开 API 输出、第三方授权数据、portfolio/risk export 或保留下来的派生数据集，先运行：
+
+- `data/ingestion-layer.md`
+
+本 gate 发生在 evidence logging 和 quant dependency 之前。工具返回值、网页抓取、API payload、用户文件和 vendor export 都只是 acquisition path，不是 evidence 本身。
+
+记录：
+
+- `ingestion_route`: `public_on_demand` / `user_material` / `authorized_provider` / `portfolio_private` / `derived_dataset` / `none`
+- `ingestion_artifacts`: `dataset_manifest` / `user_material_intake` / `restricted_source_note` / `connector_registry` / `field_map` / `ingestion_log` / `waived`
+- `source_registry_action`: `reuse` / `case_local_note` / `add_source` / `waive`
+- `license_scope`
+- `storage_scope`
+- `evidence_log_mapping`
+- `calculation_ledger_required`
+- `ingestion_readiness_impact`
+
+规则：
+
+- 用户材料默认进入 `private/`，除非用户明确要求贡献为去标识化 product method 或 public example。
+- 付费、保密、账户级、专家访谈或 vendor 原始数据只能记录合规 metadata 和简短 effect note；不得提交原文或原始数据 dump。
+- 没有 date、permission、as-of 或 field coverage 的材料只能支持 discovery / working_view，不能支撑 durable conclusion。
+- 如果 material 会驱动估值、peer ranking、event reaction、position/portfolio review 或 actionability，继续进入 Step 3.5 quant dependency。
+
 ## Step 3.5: Quant Dependency Check
 
 在选择最终输出包之前，判断研究结论是否依赖数量型判断。
@@ -979,6 +1010,17 @@ lens 是对 thesis 的约束视角，不是额外研究对象。
 
 - `data-requirement-brief.md`
 - `calculation-ledger.csv`
+
+### Ingestion Artifacts
+
+当新材料或新数据输入影响 formal output 时，按 [../data/ingestion-layer.md](../data/ingestion-layer.md) 附加或引用：
+
+- `dataset-manifest.json`
+- `user-material-intake.md`
+- `restricted-source-note.md`
+- `connector-registry.yaml`
+- `field-map.yaml`
+- `ingestion-log.csv`
 
 当 `calculation_gate = required`，且结论包含派生数量判断时，必须按 gate 深度输出 formula note、`data-requirement-brief.md`、`calculation-ledger.csv` 或 full model；如果当前深度或来源不支持计算，显式写明 `calculation_gap` / `calculation_waived_by_speed` 和结论降级方式。
 

@@ -63,6 +63,7 @@ Mira 支持：
 - 对已有 thesis 做增量监控，区分普通更新和改变 thesis 的证据
 - 财报、SEC filing、宏观、产业概念和 ETF 专项分析
 - 用 evidence log 区分事实、公司口径、假设、观点、市场定价和派生计算
+- 通过受控 ingestion layer 接入用户材料、公开 API 输出和第三方授权数据
 - 维护 expectation map、event delta、decision log、postmortem 等 thesis system 对象
 - 在用户提供持仓、权重、mandate 或风险约束后，做 position / portfolio review
 - 对研究方法做 trial、adopted、retired 等方法论状态管理
@@ -74,6 +75,7 @@ Mira 不是交易机器人、行情后台程序或自动组合管理器。
 | 概念 | 含义 | 细节 |
 | --- | --- | --- |
 | `research package` | 正式研究对象的标准 memo、evidence log 和 case notes。 | [docs/research-artifacts.md](docs/research-artifacts.md) |
+| `ingestion layer` | 将公开 API、用户文件、vendor 数据和组合导出纳入 Mira，同时保留来源、授权、证据和计算边界。 | [data/ingestion-layer.md](data/ingestion-layer.md) |
 | `evidence log` | 为结论和关键观察保留 claim-level source trail。 | [data/evidence-log-schema.md](data/evidence-log-schema.md) |
 | `thesis system` | 从 source 到 claim、expectation、thesis、event delta、decision log 和 postmortem 的持续链路。 | [architecture/thesis-system.md](architecture/thesis-system.md) |
 | `refresh boundary` | `stale_after`、`must_refresh_if` 或等价条件，用于标记旧结论何时不再安全复用。 | [data/time-policy.md](data/time-policy.md) |

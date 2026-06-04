@@ -172,6 +172,9 @@ Every formal Mira research output must include or explicitly waive:
   route-specific waiver reason
 - `private_state_action`: `load` / `save_working_view` / `update` / `promote` / `waive`
 - source notes or evidence log
+- `ingestion_route`, `ingestion_artifacts`, or an explicit waiver when the
+  output depends on newly supplied files, API pulls, vendor exports, portfolio
+  data or retained derived datasets
 - `quant_dependency`, `calculation_gate`, or an explicit waiver when conclusions depend on derived numbers
 - facts / inferences / judgments separation
 - `judgment_confidence`, `confidence_basis` and `reversal_condition` on each material judgment, with `base_rate_anchor` when a reference class applies

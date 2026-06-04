@@ -1,0 +1,29 @@
+# Field map template from provider fields to Mira canonical fields.
+
+field_map_id: "{{ field_map_id }}"
+provider_name: "{{ provider_name }}"
+dataset_name: "{{ dataset_name }}"
+manifest_ref: "{{ dataset_manifest_path }}"
+as_of_date: "{{ YYYY-MM-DD }}"
+
+mappings:
+  - provider_field: "{{ provider_field }}"
+    provider_definition: "{{ provider_definition }}"
+    mira_canonical_family: "{{ company_financials | market_price | valuation_snapshot | consensus_estimate | estimate_revision | transcript_claim | ownership_short_interest | options_surface | portfolio_position | macro_series }}"
+    mira_field: "{{ mira_field }}"
+    unit: "{{ unit }}"
+    currency: "{{ currency_or_not_applicable }}"
+    period_type: "{{ point_in_time | fiscal_period | calendar_period | trailing | forward | event_window }}"
+    transformation: "{{ none_or_formula }}"
+    upstream_fields: ["{{ upstream_field }}"]
+    evidence_claim_type: "{{ claim_type }}"
+    authority_level: "{{ L1-L6 }}"
+    freshness_rule: "{{ freshness_rule }}"
+    notes: "{{ notes }}"
+
+quality_rules:
+  required_fields: ["{{ required_field }}"]
+  reject_if_missing: ["{{ reject_if_missing_field }}"]
+  downgrade_if_missing: ["{{ downgrade_if_missing_field }}"]
+  conflict_checks:
+    - "{{ conflict_check }}"

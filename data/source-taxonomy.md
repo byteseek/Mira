@@ -10,6 +10,12 @@
 正式研究中仍然必须把具体 source 写入 `source-registry.csv` 或 case-local
 source note，并把被使用的信息写入 canonical `evidence-log.csv`。
 
+When a source enters through a user file, public API call, authorized data
+provider, portfolio export or retained derived dataset, first apply
+[ingestion-layer.md](ingestion-layer.md). The ingestion artifact records
+permission, storage, field mapping and refresh scope; the evidence log records
+the claim-level use.
+
 仓库级 registry 的逐条分类见 [source-class-map.csv](source-class-map.csv)。
 
 ## Core Distinction

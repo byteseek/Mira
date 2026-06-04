@@ -63,6 +63,7 @@ Mira supports:
 - monitoring updates that separate incremental evidence from thesis-changing evidence
 - earnings, SEC filing, macro, industry-concept and ETF specialty analysis
 - evidence logs that classify facts, claims, assumptions, opinions, market pricing and derived calculations
+- user-provided materials, public API outputs and authorized third-party data through a controlled ingestion layer
 - thesis system objects such as expectation maps, event deltas, decision logs and postmortems
 - position and portfolio reviews when the user provides holdings, weights, mandate or risk constraints
 - methodology research for adopting, trialing or retiring reusable research methods
@@ -74,6 +75,7 @@ Mira is not a trade bot, market-data daemon or autonomous portfolio manager.
 | Concept | Meaning | Details |
 | --- | --- | --- |
 | `research package` | Standard memo, evidence log and case notes for a formal research object. | [docs/research-artifacts.md](docs/research-artifacts.md) |
+| `ingestion layer` | Contract for bringing public APIs, user files, vendor data and portfolio exports into Mira without bypassing source, license, evidence and calculation controls. | [data/ingestion-layer.md](data/ingestion-layer.md) |
 | `evidence log` | Claim-level source trail for conclusions and key observations. | [data/evidence-log-schema.md](data/evidence-log-schema.md) |
 | `thesis system` | Durable chain from source to claim, expectation, thesis, event delta, decision log and postmortem. | [architecture/thesis-system.md](architecture/thesis-system.md) |
 | `refresh boundary` | `stale_after`, `must_refresh_if` or equivalent conditions that make a conclusion unsafe to reuse. | [data/time-policy.md](data/time-policy.md) |

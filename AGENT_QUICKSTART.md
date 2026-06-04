@@ -374,6 +374,7 @@ Mira 输出里必须分开写：
 - 是否先做 Step 0 意图入口：拆分复合意图、声明运行假设、按 depth 给出路由卡。
 - 若问题涉及 actionability / position / portfolio，是否输出 `decision_pressure`，压力高时是否给 disconfirmation。
 - 是否做了信息价值 / 可知性判断；主导变量不可知时是否诚实输出 `irreducible_uncertainty`，而非强行深挖。
+- 若使用新文件、API、vendor export 或 portfolio/risk 数据，是否先走 ingestion layer 并记录权限、as-of、field mapping 和 evidence/calculation 映射。
 - 正式判断是否带 `judgment_confidence`、`confidence_basis` 和 `reversal_condition`。
 - 同一会话内 carryover 是否只沿用范围 / 时间 / 对象等白名单字段，未把偏误读数当长期偏好。
 - 是否遵守 [MIRA.md](MIRA.md) 的唤醒词、人格边界和 memory 规则。

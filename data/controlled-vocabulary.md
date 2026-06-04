@@ -71,6 +71,55 @@ Use in routing intake (analysis-routing Step 3.3), after `depth_mode` is selecte
 
 `depth_override_reason`: free-text basis when this gate changes the depth selected in Step 3.25.
 
+## Data / Tool Ingestion
+
+Use in analysis-routing Step 3.4 and ingestion artifacts. These tokens describe
+how new material enters Mira before it becomes evidence or calculation input.
+
+`ingestion_route`:
+
+- `public_on_demand`: public API or public page read for a specific task.
+- `user_material`: user-provided files, notes, models, screenshots,
+  transcripts or exported tables.
+- `authorized_provider`: licensed third-party provider or institution-approved
+  connector.
+- `portfolio_private`: holdings, weights, risk reports, mandates or
+  constraints provided by the user.
+- `derived_dataset`: retained normalized table, peer table, model output or
+  scenario dataset created by Mira or a researcher.
+- `none`: no new retained material or dataset enters the workflow.
+
+`ingestion_artifacts`:
+
+- `dataset_manifest`
+- `user_material_intake`
+- `restricted_source_note`
+- `connector_registry`
+- `field_map`
+- `ingestion_log`
+- `waived`
+
+`source_registry_action`:
+
+- `reuse`: existing source record is sufficient.
+- `case_local_note`: use an explicit case-local source note.
+- `add_source`: add or propose a source registry row.
+- `waive`: no retained source record is needed because the material was not
+  used for evidence or calculation.
+
+`storage_scope`:
+
+- `tracked_allowed`: may be committed to tracked Mira files.
+- `private`: keep under gitignored private state.
+- `transient_only`: do not retain raw material after the task.
+
+`redistribution_allowed`:
+
+- `yes`
+- `no`
+- `derived_only`
+- `unknown`
+
 ## Judgment Confidence
 
 Use at the delivery layer for any material judgment (see MIRA.md Required Output Discipline and the delivery checklist). These are calibrated bands, not pseudo-precise probabilities.

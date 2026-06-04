@@ -44,6 +44,9 @@
 - calculation_required: {{ calculation_required }}
 - tool_consent_required: {{ tool_consent_required }}
 - recommended_tool_path: {{ recommended_tool_path }}
+- ingestion_route: {{ ingestion_route }}
+- ingestion_artifacts_required: {{ ingestion_artifacts_required }}
+- source_registry_action: {{ source_registry_action }}
 - calculation_ledger_required: {{ calculation_ledger_required }}
 
 ## Refresh Condition

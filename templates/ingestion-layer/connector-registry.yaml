@@ -1,0 +1,50 @@
+# Connector registry template.
+# Keep real credentials, account ids, API keys and entitlement details outside tracked files.
+
+connector_id: "{{ connector_id }}"
+provider_name: "{{ provider_name }}"
+provider_type: "public_api" # public_api | authorized_provider | local_file | portfolio_system | derived
+status: "proposed" # proposed | approved | trial | active | deprecated
+
+access:
+  access_method: "{{ access_method }}"
+  acquisition_mode: "{{ acquisition_mode }}" # free | free_with_key | paid | manual
+  credential_location: "private_or_environment_only"
+  entitlement_owner: "{{ entitlement_owner }}"
+  license_scope: "{{ license_scope }}"
+  redistribution_allowed: "unknown" # yes | no | derived_only | unknown
+  storage_scope: "private" # tracked_allowed | private | transient_only
+
+coverage:
+  market_scope: "{{ market_scope }}"
+  asset_classes: ["{{ asset_class }}"]
+  datasets: ["{{ dataset_name }}"]
+  field_families: ["{{ field_family }}"]
+  history_start: "{{ history_start }}"
+  update_frequency: "{{ update_frequency }}"
+  latency_class: "{{ latency_class }}"
+
+canonical_outputs:
+  - output_family: "{{ canonical_family }}"
+    field_map: "templates/ingestion-layer/field-map.yaml"
+    evidence_log_mapping: "{{ evidence_log_mapping }}"
+    calculation_ledger_required: "{{ yes_or_no }}"
+
+quality_controls:
+  as_of_date_required: "yes"
+  source_date_required: "yes"
+  known_failure_modes:
+    - "{{ known_failure_mode }}"
+  fallback_source_path: "{{ fallback_source_path }}"
+  refresh_rule: "{{ refresh_rule }}"
+
+compliance:
+  allowed_use: "{{ allowed_use }}"
+  blocked_use: "{{ blocked_use }}"
+  public_case_use: "metadata_only" # allowed | metadata_only | blocked
+  restricted_source_note_required: "{{ yes_or_no }}"
+
+last_review:
+  reviewed_by: "{{ reviewer }}"
+  reviewed_at: "{{ YYYY-MM-DD }}"
+  notes: "{{ notes }}"

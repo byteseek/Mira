@@ -25,6 +25,31 @@ Each public case should include:
 - Short summaries of public articles, research notes, and commentary, with
   source metadata and links.
 - Derived calculations when inputs, formulas, and assumptions are visible.
+- User-provided files, notes, models, screenshots, transcripts or exports when
+  their permission, date, source and storage boundary are recorded.
+- Third-party authorized datasets when the user or institution confirms access
+  rights and Mira records license scope, storage scope and redistribution
+  boundary.
+
+## Ingestion Boundary
+
+Public API pulls, uploaded files, local spreadsheets, vendor exports and
+portfolio/risk reports must enter Mira through the ingestion layer before they
+support formal conclusions.
+
+Use [data/ingestion-layer.md](data/ingestion-layer.md) and
+[templates/ingestion-layer/](templates/ingestion-layer/) to record:
+
+- ingestion route and source posture
+- provider or submitter
+- license, storage and redistribution scope
+- as-of date, source date and refresh rule
+- canonical field mapping
+- evidence log and calculation ledger mapping
+
+Tools and connectors are acquisition paths, not evidence. A browser result,
+API response, file parse or vendor adapter output still needs a source record
+or case-local source note and claim-level evidence rows.
 
 ## Restricted Source Material
 
@@ -35,10 +60,15 @@ Do not commit:
   redistributed.
 - Private call notes, expert-network transcripts, or confidential materials.
 - Personal, brokerage, or account-level data.
+- API keys, cookies, tokens, account identifiers or entitlement details.
 
 If a restricted source informs a workflow, record only compliant metadata and a
 brief note about how it affected the analysis. Label the source as restricted,
 secondary, or low-confidence when appropriate.
+
+Restricted materials should default to `private/` or transient local storage.
+Tracked cases may include only compliant metadata, short effect notes and
+derived claims that the license permits.
 
 ## Source Quality
 

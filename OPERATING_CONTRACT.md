@@ -21,6 +21,9 @@ Every formal output must:
   `private/` state by default; tracked Mira files are product state
 - record `private_state_action` when an output creates, continues, updates,
   promotes or waives a reusable user view
+- route newly supplied files, public API pulls, vendor exports and portfolio
+  data through [data/ingestion-layer.md](data/ingestion-layer.md) before using
+  them as evidence or calculations
 - label evidence posture with [data/evidence-posture-taxonomy.md](data/evidence-posture-taxonomy.md) when creating new evidence logs
 - assign a package/actionability readiness level using [data/research-readiness-gate.md](data/research-readiness-gate.md)
 - include `stale_after`, `must_refresh_if` or equivalent refresh conditions
@@ -51,6 +54,7 @@ Every formal output must:
 | Real portfolio construction review | [loops/portfolio-construction-review-loop.md](loops/portfolio-construction-review-loop.md) | portfolio exposure review and position register |
 | Decision quality review | [loops/decision-quality-review-loop.md](loops/decision-quality-review-loop.md) | postmortem and thesis scorecard |
 | Source routing | [data/source-taxonomy.md](data/source-taxonomy.md) | [data/source-coverage-matrix.csv](data/source-coverage-matrix.csv) |
+| Data / tool ingestion | [data/ingestion-layer.md](data/ingestion-layer.md) | [templates/ingestion-layer/](templates/ingestion-layer/) when retaining user material, public API output, vendor data or portfolio exports |
 | Evidence logging | [data/evidence-log-schema.md](data/evidence-log-schema.md) | [data/claim-taxonomy.md](data/claim-taxonomy.md) and [data/evidence-posture-taxonomy.md](data/evidence-posture-taxonomy.md) |
 | Numeric / calculation gate | [skills/data-analysis-quality-gate/SKILL.md](skills/data-analysis-quality-gate/SKILL.md) | [templates/data-requirement-brief.md](templates/data-requirement-brief.md) and [templates/calculation-ledger.csv](templates/calculation-ledger.csv) |
 | Actionability / participation risk control | [data/actionability-risk-control.md](data/actionability-risk-control.md) | [templates/actionability-system/actionability-bridge.md](templates/actionability-system/actionability-bridge.md), position or portfolio loop if real holdings are provided |

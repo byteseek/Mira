@@ -157,6 +157,33 @@ Core `claim_type` values include:
 
 LLMs may extract, classify and label long-text claims. The researcher or agent still has to verify whether the claims are sufficient to support the memo conclusion.
 
+## Data And Tool Ingestion Artifacts
+
+When formal research depends on a newly supplied file, public API pull,
+authorized provider export, portfolio/risk report or derived dataset, route it
+through [data/ingestion-layer.md](../data/ingestion-layer.md) before treating it
+as evidence.
+
+Reusable ingestion templates:
+
+- [connector-registry.yaml](../templates/ingestion-layer/connector-registry.yaml):
+  authorized data connectors and public API adapters.
+- [dataset-manifest.json](../templates/ingestion-layer/dataset-manifest.json):
+  retained structured data snapshots.
+- [field-map.yaml](../templates/ingestion-layer/field-map.yaml): provider-field
+  to Mira canonical-field mapping.
+- [ingestion-log.csv](../templates/ingestion-layer/ingestion-log.csv): case or
+  private ingestion audit trail.
+- [user-material-intake.md](../templates/ingestion-layer/user-material-intake.md):
+  user-provided files, models and notes.
+- [restricted-source-note.md](../templates/ingestion-layer/restricted-source-note.md):
+  metadata-only record for paid, confidential or non-redistributable sources.
+
+Ingestion artifacts do not replace `evidence-log.csv`. They document how data
+entered the workflow and what it is allowed to support. Claim-level use still
+belongs in the evidence log, and material derived numbers still need
+`calculation-ledger.csv` or an explicit formula note.
+
 ## Validation
 
 Validate a formal case:

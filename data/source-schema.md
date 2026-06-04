@@ -134,6 +134,9 @@ Canonical case-level evidence schema 见 [evidence-log-schema.md](evidence-log-s
 - `web_search`、`web_read`、`public_api` 来源与 `repo_local` 来源字段完全一致，不另开口径。
 - `web_read` 表示已知 URL 的按需读取和解析；`web_search` 表示先通过搜索发现网页再读取。
 - `web_search`、`web_read` 和 `public_api` 都不表示订阅、定时采集、批量抓取或落库。
+- 用户文件、第三方授权数据、portfolio export 或保留下来的 API 数据集必须额外走
+  [ingestion-layer.md](ingestion-layer.md)，记录 license、storage、field mapping
+  和 evidence/calculation 映射。
 - 可复用公开 target 可以用 `{ticker}`、`{cik10}`、`{series_id}` 这类占位符登记；进入具体案例时必须在 evidence log 记录实际标的、序列、读取日期和 as-of date。
 - 没有 `last_checked_date` 的来源不能支撑正式结论。
 - `social_and_community` 默认不能是 `primary`。

@@ -1,0 +1,62 @@
+{
+  "manifest_version": 1,
+  "ingestion_id": "{{ ingestion_id }}",
+  "ingestion_route": "{{ public_on_demand | user_material | authorized_provider | portfolio_private | derived_dataset }}",
+  "research_object": "{{ research_object }}",
+  "market_scope": "{{ market_scope }}",
+  "prepared_at": "{{ YYYY-MM-DD }}",
+  "prepared_by": "Mira",
+  "provider_or_submitter": "{{ provider_or_submitter }}",
+  "source_id": "{{ source_id_or_case_local_note }}",
+  "source_class": "{{ source_class }}",
+  "authority_level": "{{ L1-L6 }}",
+  "access_method": "{{ access_method }}",
+  "acquisition_mode": "{{ acquisition_mode }}",
+  "license_scope": "{{ license_scope }}",
+  "storage_scope": "{{ tracked_allowed | private | transient_only }}",
+  "redistribution_allowed": "{{ yes | no | derived_only | unknown }}",
+  "source_date": "{{ YYYY-MM-DD }}",
+  "as_of_date": "{{ YYYY-MM-DD }}",
+  "retrieved_at": "{{ YYYY-MM-DD }}",
+  "dataset_location": "{{ repo_path_or_private_path_or_external_ref }}",
+  "query": {
+    "endpoint_or_file": "{{ endpoint_or_file }}",
+    "parameters": "{{ query_parameters }}",
+    "coverage": "{{ tickers_series_periods_or_rows }}"
+  },
+  "field_coverage": [
+    {
+      "field": "{{ field_name }}",
+      "definition": "{{ definition }}",
+      "unit": "{{ unit }}",
+      "currency": "{{ currency_or_not_applicable }}",
+      "period": "{{ period_or_not_applicable }}",
+      "canonical_family": "{{ canonical_family }}"
+    }
+  ],
+  "transformations": [
+    {
+      "step": "{{ step_name }}",
+      "description": "{{ transformation_description }}",
+      "upstream_fields": ["{{ upstream_field }}"],
+      "output_fields": ["{{ output_field }}"]
+    }
+  ],
+  "quality_checks": {
+    "row_count": "{{ row_count }}",
+    "missing_field_summary": "{{ missing_field_summary }}",
+    "conflict_status": "{{ none | unresolved | contradicted | not_checked }}",
+    "known_failure_modes": ["{{ known_failure_mode }}"]
+  },
+  "evidence_log_mapping": [
+    {
+      "claim_area": "{{ claim_area }}",
+      "claim_type": "{{ claim_type }}",
+      "evidence_category": "{{ evidence_category }}",
+      "readiness_impact": "{{ readiness_impact }}"
+    }
+  ],
+  "calculation_ledger_required": "{{ yes | no }}",
+  "readiness_impact": "{{ readiness_impact }}",
+  "must_refresh_if": "{{ refresh_condition }}"
+}

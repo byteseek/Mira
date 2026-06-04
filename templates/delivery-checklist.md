@@ -13,6 +13,8 @@ Use this before handing off a formal research output.
 - [ ] Facts, inferences and judgments are separated.
 - [ ] Each material judgment states `judgment_confidence`, `confidence_basis` and `reversal_condition` (and `base_rate_anchor` when a reference class applies).
 - [ ] Every durable conclusion has an evidence-log row or explicit source note.
+- [ ] Newly supplied files, API pulls, vendor exports or portfolio data have an
+  ingestion artifact or an explicit ingestion waiver.
 - [ ] New evidence logs include evidence posture fields or explicitly state why legacy v1 schema is being used.
 - [ ] `readiness_level`, `readiness_basis` and `blocking_gaps` are stated before any actionability conclusion.
 - [ ] Numeric conclusions were routed through `data-analysis-quality-gate` or explicitly waived with a reason.

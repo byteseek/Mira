@@ -76,6 +76,8 @@ Overlay references include:
 [data/](../data/) defines:
 
 - source schemas, taxonomy, registry and source policy
+- data and tool ingestion contracts for public APIs, user material and
+  authorized providers
 - source coverage and time policy
 - claim taxonomy and evidence posture
 - readiness gates, handoff contracts and controlled vocabulary
@@ -83,6 +85,7 @@ Overlay references include:
 Key files:
 
 - [data/evidence-log-schema.md](../data/evidence-log-schema.md)
+- [data/ingestion-layer.md](../data/ingestion-layer.md)
 - [data/source-taxonomy.md](../data/source-taxonomy.md)
 - [data/claim-taxonomy.md](../data/claim-taxonomy.md)
 - [data/research-readiness-gate.md](../data/research-readiness-gate.md)
