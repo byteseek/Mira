@@ -3,7 +3,8 @@
 These are golden routing cards: a user prompt and the routing output Mira should
 produce before any analysis. They double as few-shot references and as a manual
 regression fixture for [../loops/analysis-routing.md](../loops/analysis-routing.md).
-They are routing examples, not investment recommendations.
+They are routing examples, not investment recommendations. Key fields are
+validated by `scripts/validate_repo.py`.
 
 - not_investment_advice: true
 - purpose: lock routing behavior for ambiguous prompts (预期差 sense, interaction_mode vs depth_mode, knowability, compound intent)

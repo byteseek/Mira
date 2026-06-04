@@ -40,7 +40,7 @@ investment recommendations.
 8. `examples/routing-examples.md`
    Golden routing cards for ambiguous prompts (预期差 research vs trade sense,
    `interaction_mode` vs `depth_mode`, knowability terminal, compound intent).
-   Use as few-shot references and as a manual regression fixture for
+   Use as few-shot references and as a validated regression fixture for
    `loops/analysis-routing.md`.
 
 ## How To Reuse A Case Pattern

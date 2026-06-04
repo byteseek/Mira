@@ -158,6 +158,9 @@ DATE_RE = re.compile(r"^\d{4}-\d{2}-\d{2}$")
 DATE_IN_TEXT_RE = re.compile(r"\b(\d{4}-\d{2}-\d{2})\b")
 STALE_AFTER_RE = re.compile(r"stale_after:\s*(\d{4}-\d{2}-\d{2})", re.IGNORECASE)
 FIELD_RE = re.compile(r"^-\s*(state|research_action):\s*(.+?)\s*$")
+ROUTING_PROMPT_RE = re.compile(r"^Prompt:\s*`(.+?)`\s*$")
+ROUTING_FIELD_RE = re.compile(r"^-\s*`([^`]+)`:\s*(.+?)\s*$")
+ROUTING_BASIS_RE = re.compile(r"^-\s*routing_basis:\s*(.+?)\s*$")
 LOCAL_ABSOLUTE_PATH_RE = re.compile(
     r"(/" r"Users/[^)\s,]+|/" r"private/(?:tmp|var)/[^)\s,]+)"
 )
@@ -260,6 +263,90 @@ SOURCE_COVERAGE_MATRIX_COLUMNS = [
     "refresh_rule",
     "notes",
 ]
+
+INTERACTION_MODES = {
+    "quick_answer",
+    "routed_research",
+    "decision_support",
+    "routing_unclear",
+}
+
+DECISION_PRESSURES = {"none", "low", "medium", "high"}
+FRAMING_RISKS = {
+    "confirmation_seeking",
+    "fomo",
+    "anchoring",
+    "loss_aversion",
+    "position_defense",
+    "none",
+}
+DISCONFIRMATION_REQUIRED = {"yes", "no"}
+DEPTH_MODES = {"quick_map", "standard", "deep_dive"}
+QUANT_DEPENDENCIES = {"none", "low", "medium", "high"}
+CALCULATION_GATES = {"not_required", "required", "waived"}
+INFORMATION_VALUES = {"low", "medium", "high"}
+KNOWABILITY_STATUSES = {
+    "knowable",
+    "partially_knowable",
+    "unknowable_now",
+    "irreducible_uncertainty",
+}
+SCOPE_CONFIRMATION_REQUIRED = {"yes", "no"}
+
+ROUTING_EXAMPLE_TOKEN_FIELDS = {
+    "interaction_mode": INTERACTION_MODES,
+    "decision_pressure": DECISION_PRESSURES,
+    "framing_risk": FRAMING_RISKS,
+    "disconfirmation_required": DISCONFIRMATION_REQUIRED,
+    "depth_mode": DEPTH_MODES,
+    "quant_dependency": QUANT_DEPENDENCIES,
+    "calculation_gate": CALCULATION_GATES,
+    "information_value": INFORMATION_VALUES,
+    "knowability_status": KNOWABILITY_STATUSES,
+    "scope_confirmation_required": SCOPE_CONFIRMATION_REQUIRED,
+}
+
+ROUTING_EXAMPLE_EXPECTATIONS = {
+    "Mira, NVDA 的预期差在哪？": {
+        "interaction_mode": "routed_research",
+        "task_mode": "thesis_system_update",
+        "research_object": "single_equity",
+        "selected_lenses": "variant-perception",
+        "decision_pressure": "none",
+        "framing_risk": "none",
+        "disconfirmation_required": "no",
+    },
+    "Mira, NVDA 预期差兑现了，现在还能不能加？": {
+        "interaction_mode": "decision_support",
+        "task_mode": "thesis_system_update",
+        "decision_pressure": "medium",
+        "framing_risk": "position_defense",
+        "disconfirmation_required": "yes",
+    },
+    "Mira, 看一下 AAPL 方向就行": {
+        "interaction_mode": "quick_answer",
+        "depth_mode": "quick_map",
+        "user_visible_routing_card": "一行假设条",
+    },
+    "Mira, 一句话告诉我 CRWV 现在贵不贵": {
+        "interaction_mode": "quick_answer",
+        "depth_mode": "deep_dive",
+        "quant_dependency": "high",
+        "calculation_gate": "required",
+    },
+    "Mira, 下个月 CPI 会不会超预期？": {
+        "interaction_mode": "quick_answer",
+        "information_value": "low",
+        "knowability_status": "unknowable_now",
+    },
+    "Mira, 看 NVDA 这次财报，顺便对比 AMD，这俩我都重仓了": {
+        "primary_intent": "NVDA earnings event",
+        "secondary_intents": "[AMD peer / industry compare, position review of both]",
+        "execution_order": "earnings → peer compare → position review",
+        "scope_confirmation_required": "yes",
+        "decision_pressure": "medium",
+    },
+}
 
 RESEARCH_PACKAGE_MANIFEST_REQUIRED_FIELDS = [
     "manifest_version",
@@ -914,10 +1001,101 @@ def validate_source_coverage_matrix(root: Path) -> list[Issue]:
     return issues
 
 
+def routing_field_value(raw: str) -> str:
+    """Normalize a routing example value while preserving free-text fields."""
+    value = raw.strip()
+    backticked = re.match(r"`([^`]+)`", value)
+    if backticked:
+        return backticked.group(1).strip()
+    return value
+
+
+def validate_routing_examples(root: Path) -> list[Issue]:
+    path = root / "examples" / "routing-examples.md"
+    if not path.exists():
+        return [Issue("ERROR", path, 0, "missing routing examples fixture")]
+
+    lines = read_text(path).splitlines()
+    issues: list[Issue] = []
+    text = "\n".join(lines)
+
+    if "not_investment_advice: true" not in text:
+        issues.append(Issue("ERROR", path, 1, "routing examples must state not_investment_advice: true"))
+
+    examples: dict[str, dict[str, object]] = {}
+    current_prompt: str | None = None
+    for line_no, line in enumerate(lines, start=1):
+        prompt_match = ROUTING_PROMPT_RE.match(line)
+        if prompt_match:
+            current_prompt = prompt_match.group(1)
+            if current_prompt in examples:
+                issues.append(Issue("ERROR", path, line_no, f"duplicate routing prompt `{current_prompt}`"))
+            examples[current_prompt] = {"line": line_no, "fields": {}, "has_basis": False}
+            continue
+
+        if current_prompt is None:
+            continue
+
+        field_match = ROUTING_FIELD_RE.match(line)
+        if field_match:
+            field = field_match.group(1)
+            value = routing_field_value(field_match.group(2))
+            fields = examples[current_prompt]["fields"]
+            assert isinstance(fields, dict)
+            fields[field] = value
+            allowed_values = ROUTING_EXAMPLE_TOKEN_FIELDS.get(field)
+            if allowed_values is not None and value not in allowed_values:
+                issues.append(Issue("ERROR", path, line_no, f"`{field}` has non-canonical token `{value}`"))
+            continue
+
+        if ROUTING_BASIS_RE.match(line):
+            examples[current_prompt]["has_basis"] = True
+
+    for prompt, expected_fields in ROUTING_EXAMPLE_EXPECTATIONS.items():
+        example = examples.get(prompt)
+        if example is None:
+            issues.append(Issue("ERROR", path, 0, f"missing golden routing prompt `{prompt}`"))
+            continue
+
+        line_no = int(example["line"])
+        fields = example["fields"]
+        assert isinstance(fields, dict)
+        if not example["has_basis"]:
+            issues.append(Issue("ERROR", path, line_no, "routing example is missing routing_basis"))
+
+        for field, expected_value in expected_fields.items():
+            actual_value = fields.get(field)
+            if actual_value is None:
+                issues.append(Issue("ERROR", path, line_no, f"routing example missing `{field}`"))
+            elif actual_value != expected_value:
+                issues.append(
+                    Issue(
+                        "ERROR",
+                        path,
+                        line_no,
+                        f"`{field}` expected `{expected_value}` but found `{actual_value}`",
+                    )
+                )
+
+    for prompt, example in examples.items():
+        if prompt not in ROUTING_EXAMPLE_EXPECTATIONS:
+            issues.append(
+                Issue(
+                    "WARN",
+                    path,
+                    int(example["line"]),
+                    "routing prompt is documented but not locked in ROUTING_EXAMPLE_EXPECTATIONS",
+                )
+            )
+
+    return issues
+
+
 def validate_repo(root: Path, as_of: date) -> list[Issue]:
     issues = validate_root_readiness(root)
     issues.extend(validate_source_class_map(root))
     issues.extend(validate_source_coverage_matrix(root))
+    issues.extend(validate_routing_examples(root))
     for path in sorted(root.glob("**/evidence-log.csv")):
         if ".git" in path.parts:
             continue
@@ -987,6 +1165,8 @@ def validate_paths(paths: list[Path], as_of: date) -> list[Issue]:
             issues.extend(validate_decision_log(path))
         elif path.name == "research-package-manifest.json":
             issues.extend(validate_research_package_manifest(path))
+        elif path.as_posix().endswith("examples/routing-examples.md"):
+            issues.extend(validate_routing_examples(path.parent.parent))
         else:
             issues.append(
                 Issue(
