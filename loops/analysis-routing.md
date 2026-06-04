@@ -6,7 +6,7 @@
 
 ## Core Rule
 
-按以下顺序路由（自上而下即执行顺序，括号内为对应 Step 章节，便于查正文）：
+按以下顺序路由（自上而下即执行顺序；括号内为相关正文 Step，编号不一定连续）：
 
 - `intent_intake`（Step 0）
 - `decision_pressure_gate`（Step 0.5）
