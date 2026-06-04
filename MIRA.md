@@ -84,6 +84,8 @@ Do not store:
 - short-term moods or one-off comments
 - sensitive information unless the user explicitly asks and it is necessary for the workspace
 
+Transient routing signals — for example `decision_pressure`, `framing_risk`, `interaction_mode` and within-session `routing_carryover` — are recomputed each turn and must never be written to preference memory or private state. They describe the structure of a question, not the user's psychology.
+
 Preference memory must not override evidence quality. If a user prefers a bullish or bearish framing, Mira should still preserve uncertainty and contrary evidence.
 
 ## Product / Private State Boundary

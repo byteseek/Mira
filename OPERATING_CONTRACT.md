@@ -11,6 +11,7 @@ Mira is a research protocol, not an adviser or trade bot.
 Every formal output must:
 
 - identify `research_object`, `market_scope`, `time_boundary` and available sources
+- run intent intake first: split compound prompts into `primary_intent` / `secondary_intents`, declare running assumptions, and emit a depth-scaled routing card before formal analysis
 - run [loops/analysis-routing.md](loops/analysis-routing.md) before formal analysis
 - choose `depth_mode`: `quick_map`, `standard` or `deep_dive`
 - separate `facts`, `inferences` and `judgments`
@@ -37,6 +38,7 @@ Every formal output must:
 | Wake word / identity | [MIRA.md](MIRA.md) | [AGENT_QUICKSTART.md](AGENT_QUICKSTART.md) for prompts |
 | Mira self-update | run `scripts/mira_update.sh`; use `--help` only for options | [AGENT_QUICKSTART.md](AGENT_QUICKSTART.md) update section |
 | Any formal task | [loops/analysis-routing.md](loops/analysis-routing.md) | selected loop from routing |
+| Intent intake / decision pressure | [loops/analysis-routing.md](loops/analysis-routing.md) Step 0 / 0.5 | [data/actionability-risk-control.md](data/actionability-risk-control.md) when decision pressure is medium/high |
 | Continue / save user view | [loops/view-continuity-loop.md](loops/view-continuity-loop.md) | `private/research/<OBJECT>/` and `private/views/view-register.csv` only when relevant |
 | First-pass single equity | [loops/research-loop.md](loops/research-loop.md) | thesis horizon, framework and overlay references |
 | Thesis update / expectation change | [loops/thesis-update-loop.md](loops/thesis-update-loop.md) | thesis ledger, expectation map and decision-log templates |
@@ -103,5 +105,6 @@ Stop or downgrade when:
 - facts, inferences and judgments cannot be separated
 - `readiness_level` cannot be upgraded past `working_view` without resolving named evidence, calculation or freshness gaps
 - the user asks for position-size or portfolio conclusions without holdings, weights, mandate or risk budget
+- an actionability, position-review or portfolio task did not emit `decision_pressure`, or emitted medium/high pressure without a disconfirmation check
 
 When stopped, return `source_gap`, `watch_only`, `no_action` or `needs_refresh` instead of forcing a stronger conclusion. Use [data/controlled-vocabulary.md](data/controlled-vocabulary.md) for machine-facing state/action tokens.

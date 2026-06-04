@@ -4,6 +4,54 @@ This file is the canonical vocabulary source for Mira research state and action 
 
 Human-readable explanation can be written in `basis`, `notes`, `risk`, `required_followup` or prose sections. Machine-facing fields should use the tokens below so outputs can be aggregated across cases, memory and PM registers.
 
+## Interaction Mode
+
+Use in routing intake (analysis-routing Step 0).
+
+- `quick_answer`: user wants a one-line direction or fact; no full package.
+- `routed_research`: normal entry into a routed loop / skill.
+- `decision_support`: near actionability / position / portfolio; must run the decision pressure gate (Step 0.5).
+- `routing_unclear`: research object or time boundary is fully unclear; clarify definition only.
+
+## Decision Pressure And Framing Risk
+
+Use in routing intake (analysis-routing Step 0.5). These are transient, per-turn routing signals. They describe the structure of the question, not the user's psychology, and must never be written to preference memory or private state.
+
+`decision_pressure`:
+
+- `none`
+- `low`
+- `medium`
+- `high`
+
+`framing_risk` (describe the question structure, not the user):
+
+- `confirmation_seeking`: question is shaped to confirm an existing view.
+- `fomo`: question is driven by a recent move or fear of missing it.
+- `anchoring`: question anchors on a prior price, cost basis or target.
+- `loss_aversion`: question is shaped around avoiding a realized loss.
+- `position_defense`: question is shaped to justify keeping an existing exposure.
+- `none`
+
+`disconfirmation_required`:
+
+- `yes`
+- `no`
+
+## Routing Carryover
+
+Use in routing intake (analysis-routing Step 3.2). Carryover is valid within a single session only; cross-session continuity must go through view-continuity-loop or private state.
+
+`routing_carryover`:
+
+- `none`
+- `inherit`
+- `reset`
+
+Carryover whitelist (may inherit within a session): `market_scope`, `time_boundary`, `research_object`, `depth_mode`, `output_language`.
+
+Never inherit: `decision_pressure`, `framing_risk`, `disconfirmation_required`, or any inferred user motive.
+
 ## Thesis State
 
 Use in `thesis-ledger.md`, `event-delta.md`, portfolio registers and [memory/research/INDEX.md](../memory/research/INDEX.md).

@@ -8,9 +8,12 @@
 
 按以下顺序路由：
 
+0. `intent_intake`
+0.5 `decision_pressure_gate`
 1. `task_mode`
 2. `research_object`
 3. `time_boundary`
+3.2 `sticky_context_carryover`
 4. `private_state_boundary`
 5. `depth_mode_and_budget`
 6. `quant_dependency`
@@ -21,12 +24,24 @@
 11. `progressive_followup_prompts`
 12. `output_package`
 
+`intent_intake`（Step 0）先于一切：拆分复合 prompt、声明运行假设、按 depth 缩放入口卡片，再进入 task_mode。它只做拆分和排序，不做任务分类，分类仍由 Step 1 负责。
+`decision_pressure_gate`（Step 0.5）只在路由进入 actionability / position / portfolio 时强制输出，禁止静默跳过。
+`sticky_context_carryover`（Step 3.2）在同一会话内决定哪些路由字段沿用、哪些在对象切换后重置；跨会话延续必须走 view-continuity 或 private state。
+
 如果前面步骤已经说明任务不是单票公司研究，就不要强行进入 `equity-research-core`。
 
 ## Required Routing Output
 
 每次正式研究前先记录：
 
+- `interaction_mode`
+- `primary_intent`
+- `secondary_intents`
+- `execution_order`
+- `scope_confirmation_required`
+- `routing_assumptions`
+- `assumption_confidence`
+- `user_visible_routing_card`
 - `task_mode`
 - `research_object`
 - `market_scope`
@@ -38,6 +53,12 @@
 - `private_state_action`
 - `private_state_refs`
 - `view_continuity_basis`
+- `routing_carryover`
+- `carryover_fields`
+- `context_reset_trigger`
+- `decision_pressure`
+- `framing_risk`
+- `disconfirmation_required`
 - `quant_dependency`
 - `calculation_gate`
 - `primary_skill_or_loop`
@@ -61,6 +82,91 @@
 - `selected_framework`
 - `selected_overlays`
 - `selected_lenses`
+
+## Step 0: Intent + Interaction Intake
+
+在 `task_mode` 之前，先做意图与交互入口处理。目标：复合 prompt 不被压扁成单任务，运行假设对用户显式，且入口本身不浪费 token。
+
+Step 0 只做拆分、排序和假设声明，**不做任务分类**。分类仍由 Step 1 `task_mode` 负责；Step 0 输出的子任务候选逐个进入 Step 1–12，secondary intents 进入队列，不抢 `task_mode`。
+
+### Multi-Intent Decomposition
+
+很多真实 prompt 是复合的，例如“看 NVDA 财报，顺便对比 AMD，这俩我都重仓了”= earnings_event + peer/industry + position/portfolio 三件事。
+
+记录：
+
+- `primary_intent`: 本轮先执行的主任务。
+- `secondary_intents`: 其余子任务，进入队列，本轮默认不深做。
+- `execution_order`: 子任务执行顺序及理由。
+- `scope_confirmation_required`: `yes` / `no`，是否需要先和用户确认范围再花 depth 预算。
+
+规则：
+
+- 如果子任务之间存在 depth 或数据冲突（例如一个要 quick_map、一个要真实持仓 review），先确认范围，不要默认全做。
+- secondary intents 在输出末尾用 progressive follow-up 提示是否进入下一轮，不要静默丢弃。
+
+### Interaction Mode
+
+记录 `interaction_mode`：
+
+- `quick_answer`: 用户要一句话方向或事实，不要完整 package。
+- `routed_research`: 正常进入 routed loop / skill。
+- `decision_support`: 接近 actionability / position / portfolio，必须联动 Step 0.5。
+- `routing_unclear`: 研究对象或时间边界完全不清楚，继续会误导；只做定义澄清。
+
+### Assumption Register
+
+Mira 在正式分析前显式声明它正在用的运行假设，先答、同时邀请用户修正，而不是阻塞式追问或静默假设。这是与 Step 4.5 后端 follow-up gate 对称的前端。
+
+记录：
+
+- `routing_assumptions`: 3-4 条本轮假设（真正要判断的问题、market_scope、time_boundary、什么算“答完了”）。
+- `assumption_confidence`: `low` / `medium` / `high`。
+- `user_visible_routing_card`: 入口卡片的可见形态，随 depth 缩放（见下）。
+
+### Card Verbosity By Depth
+
+入口卡片必须随 `depth_mode` 缩放，安静的入口也是聪明的入口：
+
+- `quick_map`: 只出一行假设条，例如“按美股 / 方向性判断 / 截止今天来看，如不对请说”。
+- `standard`: 出简短卡片：`primary_intent`、`market_scope`、`time_boundary`、关键假设、是否需要确认范围。
+- `deep_dive`: 出完整卡片：含 `secondary_intents`、`execution_order` 和 `scope_confirmation_required`。
+
+如果 `assumption_confidence = low` 或 `scope_confirmation_required = yes`，即使在 quick_map 也要把最关键的一条假设提到用户可见。
+
+## Step 0.5: Decision Pressure Gate
+
+用于识别 prompt 本身携带的决策压力和框架偏误，并在必要时强制一个 disconfirmation 动作。这是 Mira “证据不被偏好绑架” 身份的前端防线。
+
+### Non-Diagnostic Rule
+
+为了不违反 [../MIRA.md](../MIRA.md) 的 personalization 边界（不得存储对用户动机的推测）：
+
+- 偏误标签锚定到**问题结构**，不是用户心理。不写“用户在死扛仓位”，而写“问题锚定在某个成本价 / 目标价上”。
+- `decision_pressure` 和 `framing_risk` 是**每轮重算的瞬时路由信号，永不写入 preference memory 或 private state**。
+- 这些字段不进入 Step 3.2 的 carryover 白名单。
+
+### Trigger Rule (No Silent Skip)
+
+触发绑定到确定性的 route，而不是对 prompt 的模糊感知（沿用 Step 4.5 “禁止静默跳过” 的同一纪律）：
+
+- 凡是路由进入 actionability（能不能买 / 加 / 减 / 冲 / 抄底 / 目标价到了还能不能买 / 预期差）、position review、portfolio construction review，就**强制输出** `decision_pressure`，哪怕是 `none`。
+- Step 0 若把 `interaction_mode` 标为 `decision_support`，本 gate 先给出初判，待 task_mode / research_object 确定 route 后再终判。
+- 不允许因为“没看出压力”而静默跳过本 gate。
+
+记录：
+
+- `decision_pressure`: `none` / `low` / `medium` / `high`。
+- `framing_risk`: `confirmation_seeking` / `fomo` / `anchoring` / `loss_aversion` / `position_defense` / `none`（描述问题结构，非用户心理）。
+- `disconfirmation_required`: `yes` / `no`。
+
+### Disconfirmation Move
+
+当 `decision_pressure` 为 `medium` 或 `high`，或 `framing_risk` 非 `none` 时，`disconfirmation_required = yes`，输出必须包含一个反向检验：
+
+- “如果你没有这个持仓 / 把问题反过来问，当前证据会得出什么？”
+- 反向判断必须带一个 `reversal_condition`（什么证据会翻转它），即使完整的 `judgment_confidence` 阶梯尚未落地。
+- 不得用 disconfirmation 把 research-only 输出诱导成交易指令；仍遵守 [../data/actionability-risk-control.md](../data/actionability-risk-control.md) 边界。
 
 ## Step 1: Task Mode
 
@@ -354,6 +460,43 @@ This loop is currently `candidate_internal_release`, not final external-grade.
 如果 `private_state_action` 不是 `none` 或 `waive`，先进入或并行使用：
 
 - `loops/view-continuity-loop.md`
+
+## Step 3.2: Sticky Context And Carryover
+
+用于同一会话内的增量路由：哪些字段默认沿用，哪些在对象切换后必须重置。目标是既不反复追问，也不静默漂移。
+
+### Boundary
+
+- carryover 只在**同一会话内**有效。跨会话的观点延续必须走 [view-continuity-loop.md](view-continuity-loop.md) 或 private state，不得用 carryover 变成隐性长期记忆（见 [../MIRA.md](../MIRA.md) 的 private state 边界）。
+
+记录：
+
+- `routing_carryover`: `none` / `inherit` / `reset`。
+- `carryover_fields`: 本轮实际沿用的字段。
+- `context_reset_trigger`: 触发重置的条件。
+
+### Carryover Whitelist
+
+默认只允许沿用：
+
+- `market_scope`
+- `time_boundary`
+- `research_object`（同一对象继续深入时）
+- `depth_mode`（用户未改变要求时）
+- `output_language`
+
+显式排除（每轮重算，禁止沿用）：
+
+- `decision_pressure`
+- `framing_risk`
+- `disconfirmation_required`
+- 任何对用户动机的推测
+
+### Reset Rules
+
+- 研究对象 pivot（换公司 / 换产业 / 换资产）→ `routing_carryover = reset`，重新跑 Step 0–3。
+- 时间边界或市场范围被用户改写 → 重置对应字段。
+- 从 research-only 转入 actionability / position / portfolio → 不沿用旧结论强度，必须重新跑 Step 0.5 和相应 gate。
 
 ## Step 3.25: Depth Mode And Budget
 
@@ -820,6 +963,10 @@ lens 是对 thesis 的约束视角，不是额外研究对象。
 - 把 position review action 误写成已执行交易或具体订单
 - 把 progressive follow-up 写成泛泛闲聊，而不是连接边界、证据、readiness 或下一层 route
 - 静默遗漏 progressive follow-up，既没有 1-3 个 route-bound 问题，也没有 `followup_prompt_mode=none` 和 waiver reason
+- 把复合 prompt 压扁成单任务，漏掉 `secondary_intents` 或不确认范围就花 depth 预算
+- 在 actionability / position / portfolio 路由上静默跳过 decision pressure gate，不输出 `decision_pressure`
+- 把瞬时偏误读数（`decision_pressure` / `framing_risk`）当成用户长期偏好存入 memory
+- 跨会话误用 carryover，把会话内沿用变成隐性长期记忆，或对象 pivot 后不重置
 
 ## Stop Rules
 
