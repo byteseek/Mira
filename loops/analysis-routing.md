@@ -6,24 +6,24 @@
 
 ## Core Rule
 
-按以下顺序路由：
+按以下顺序路由（自上而下即执行顺序；括号内为相关正文 Step，编号不一定连续）：
 
-0. `intent_intake`
-0.5 `decision_pressure_gate`
-1. `task_mode`
-2. `research_object`
-3. `time_boundary`
-3.2 `sticky_context_carryover`
-4. `private_state_boundary`
-5. `depth_mode_and_budget`
-5.5 `information_value_knowability_gate`
-6. `quant_dependency`
-7. `primary_skill_or_loop`
-8. `equity_route`
-9. `overlays_and_lenses`
-10. `handoff_and_readiness`
-11. `progressive_followup_prompts`
-12. `output_package`
+- `intent_intake`（Step 0）
+- `decision_pressure_gate`（Step 0.5）
+- `task_mode`（Step 1）
+- `research_object`（Step 2）
+- `time_boundary`（Step 3）
+- `private_state_boundary`（Step 3.1）
+- `sticky_context_carryover`（Step 3.2）
+- `depth_mode_and_budget`（Step 3.25）
+- `information_value_knowability_gate`（Step 3.3）
+- `quant_dependency`（Step 3.5）
+- `primary_skill_or_loop`
+- `equity_route`（Step 5）
+- `overlays_and_lenses`（Step 5）
+- `handoff_and_readiness`（Step 4）
+- `progressive_followup_prompts`（Step 4.5）
+- `output_package`（Output Package Routing）
 
 `intent_intake`（Step 0）先于一切：拆分复合 prompt、声明运行假设、按 depth 缩放入口卡片，再进入 task_mode。它只做拆分和排序，不做任务分类，分类仍由 Step 1 负责。
 `decision_pressure_gate`（Step 0.5）只在路由进入 actionability / position / portfolio 时强制输出，禁止静默跳过。
