@@ -8,13 +8,16 @@ automation promise.
 
 1. `MIRA.md` for the wake word, identity boundary, and memory contract.
 2. `OPERATING_CONTRACT.md` for the one-screen lazy-loading map.
-3. `AGENT_QUICKSTART.md` only when user-facing prompts or examples are needed.
+3. `START_HERE.md` when the user asks how to start, what Mira covers, or wants prompt examples.
+4. `AGENT_QUICKSTART.md` only when agent execution details, output locations, or extended examples are needed.
 
 ## Fast Paths
 
 | user intent | do this |
 | --- | --- |
+| empty first prompt, `hi Mira`, `你好 Mira`, `Mira mode`, or onboarding request | Return a concise `START_HERE.md` summary before any research workflow. |
 | `update mira`, `Mira self-update`, `从 GitHub 拉最新 Mira` | Run `scripts/mira_update.sh`. Do not run `scripts/check_updates.sh` first. |
+| `Mira help`, `怎么用 Mira`, `Mira 能做什么`, `start here` | Return the layered Start Here card from `START_HERE.md`; keep it user-facing and concise. |
 | start a substantive Mira research task | Run `scripts/check_updates.sh` when network access is available; report if behind, but do not update unless the user asks. |
 | `Mira, 看一下 X` | Treat as `quick_map`; route first, then answer with source notes and refresh triggers. |
 | `Mira, 研究 X` | Use `loops/research-loop.md` unless routing selects a narrower path. |
@@ -22,6 +25,10 @@ automation promise.
 | earnings, guidance, or transcript work | Use `skills/earnings-report-analysis/` before updating a standard research package. |
 | methodology reliability | Use `loops/methodology-research-loop.md`. |
 | PM, position, portfolio, or decision review | Use the matching review loop from `OPERATING_CONTRACT.md`. |
+
+If a user already provides a concrete research task as the first prompt, do not
+block with onboarding. Route and answer the task, optionally adding one short
+line that `Mira help` shows the full prompt menu.
 
 ## Research Rules
 

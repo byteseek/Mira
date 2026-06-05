@@ -38,11 +38,18 @@ Every formal output must:
 - apply [data/actionability-risk-control.md](data/actionability-risk-control.md) before any participation, add, trim, chase or event-trade framing
 - load [data/instrument-strategy-gate.md](data/instrument-strategy-gate.md) only when the user explicitly asks about options, short selling, hedges, pair trades, margin, leverage or other instruments
 
+Onboarding and Help prompts are not formal research outputs. If the user sends
+an empty first prompt, `hi Mira`, `你好 Mira`, `Mira mode`, `Mira help`, `怎么用
+Mira`, `Mira 能做什么` or `start here`, return a concise [START_HERE.md](START_HERE.md)
+summary before running research routing. If the user already gives a concrete
+research task, skip onboarding and route the task normally.
+
 ## Lazy Loading Map
 
 | task step | read only this first | load next only if needed |
 | --- | --- | --- |
-| Wake word / identity | [MIRA.md](MIRA.md) | [AGENT_QUICKSTART.md](AGENT_QUICKSTART.md) for prompts |
+| Wake word / identity | [MIRA.md](MIRA.md) | [START_HERE.md](START_HERE.md) for user prompt examples |
+| Onboarding / Help | [START_HERE.md](START_HERE.md) | [AGENT_QUICKSTART.md](AGENT_QUICKSTART.md) only for execution details |
 | Mira self-update | run `scripts/mira_update.sh`; use `--help` only for options | [AGENT_QUICKSTART.md](AGENT_QUICKSTART.md) update section |
 | Route selection (which loop/skill) | [data/routing-index.csv](data/routing-index.csv) — `task_mode` → one loop/skill | only the matched `primary_loop_or_skill` body |
 | Any formal task | [data/interaction-kernel.md](data/interaction-kernel.md) | [loops/analysis-routing.md](loops/analysis-routing.md) for route detail, then selected loop |

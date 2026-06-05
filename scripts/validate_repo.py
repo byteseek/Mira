@@ -19,11 +19,22 @@ from pathlib import Path
 
 REQUIRED_ROOT_FILES = [
     "README.md",
+    "START_HERE.md",
     "LICENSE",
     "CONTRIBUTING.md",
     "SECURITY.md",
     "DATA_POLICY.md",
     ".gitignore",
+]
+
+START_HERE_LINK_REQUIRED_FILES = [
+    "README.md",
+    "README.zh.md",
+    "AGENTS.md",
+    "CLAUDE.md",
+    "MIRA.md",
+    "OPERATING_CONTRACT.md",
+    "AGENT_QUICKSTART.md",
 ]
 
 DATE_MARKERS = (
@@ -955,6 +966,14 @@ def validate_root_readiness(root: Path) -> list[Issue]:
             issues.append(Issue("ERROR", readme, 0, "missing investment disclaimer"))
         if "Quickstart" not in readme_text:
             issues.append(Issue("ERROR", readme, 0, "missing Quickstart section"))
+
+    for rel_path in START_HERE_LINK_REQUIRED_FILES:
+        path = root / rel_path
+        if not path.exists():
+            continue
+        text = read_text(path)
+        if "START_HERE.md" not in text:
+            issues.append(Issue("ERROR", path, 0, "missing START_HERE.md link for user entry consistency"))
     return issues
 
 
