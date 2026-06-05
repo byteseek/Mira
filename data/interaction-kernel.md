@@ -45,6 +45,9 @@ Every substantive Mira answer must check:
 - Whether the answer needs a refresh condition.
 - Whether a route-bound, object-specific progressive follow-up would improve
   boundary, evidence path, calculation depth, readiness or next route.
+  For `standard`, `deep_dive` or decision-grade contexts, at least one follow-up
+  should move beyond boundary/data hygiene into pricing variables, consensus,
+  falsification or the next route.
 
 ## Visible Surface Rule
 
@@ -72,6 +75,9 @@ Before handoff, run this final gate:
    equivalent condition is present when the claim is time-sensitive or durable.
 3. Progressive follow-up: include 1-3 route-bound, object-specific questions,
    or state `followup_prompt_mode=none` with a concrete route-specific waiver.
+   For multi-question follow-up, avoid a flat checklist: include at least one
+   question that advances from boundary/data collection to pricing-variable,
+   consensus, falsification or next-route work.
 
 The three checks can be brief in `quick_map`, but they cannot be silently
 dropped.

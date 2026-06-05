@@ -90,7 +90,8 @@ coverage. Minimum visible surface:
 - triggered gates and named gaps
 - readiness level
 - refresh condition
-- standard follow-up
+- standard follow-up with at least one pricing-variable, consensus,
+  falsification or next-route question when more than one follow-up is shown
 
 ### `deep_dive`
 
@@ -101,7 +102,7 @@ PM review or portfolio construction. Minimum visible surface:
 - complete triggered artifacts
 - explicit calculations or ledgers when conclusions depend on numbers
 - thesis, expectation, decision or postmortem artifacts when applicable
-- decision-grade follow-up or explicit waiver
+- decision-grade follow-up with rung progression, or explicit waiver
 
 ## Failure Modes This Matrix Prevents
 

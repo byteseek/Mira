@@ -28,6 +28,10 @@ It also guards against the opposite failure: visible ceremony bloat. Short
 answers should not expose the full internal routing state when
 [../data/output-surface-matrix.md](../data/output-surface-matrix.md) says the
 discipline can stay brief.
+Progressive follow-up cases also check rung progression: standard and
+decision-grade answers should not end with only refresh or data-hygiene
+questions when a pricing variable, consensus proxy, falsification condition or
+next route is available.
 
 ## Run it
 

@@ -30,6 +30,7 @@ Use this before handing off a formal research output.
 - [ ] No unresolved `{{ placeholder }}` remains.
 - [ ] `stale_after`, `must_refresh_if` or equivalent refresh condition is present.
 - [ ] Progressive follow-up is complete: either 1-3 route-bound, object-specific questions are present, or `followup_prompt_mode=none` has a concrete waiver reason.
+- [ ] Progressive follow-up has rung progression: standard/deep_dive/decision-grade outputs do not stop at boundary/data hygiene when pricing variables, consensus, falsification or next-route questions are available.
 - [ ] For `quick_map`, follow-up was not silently omitted: 1 light follow-up is present unless the user explicitly requested no follow-up, the task is mechanical, or the next step is uniquely determined.
 - [ ] Weak evidence is downgraded to `source_gap`, `watch_only`, `needs_refresh` or equivalent.
 - [ ] Cross-skill handoffs preserve source IDs, evidence categories, freshness/conflict status and named gaps.
