@@ -693,7 +693,7 @@ This loop is currently `candidate_internal_release`, not final external-grade.
 
 记录：
 
-- `live_data_gate`: `required` / `waived_definition` / `not_applicable`
+- `live_data_gate`: `required_quote_time` / `required_publish_time` / `waived_definition` / `not_applicable`
 - `live_freshness_status`: `live` / `delayed` / `stale` / `unavailable`
 - `cross_check_status`: `passed` / `partial` / `failed`
 - `quote_time`
@@ -705,7 +705,9 @@ This loop is currently `candidate_internal_release`, not final external-grade.
 规则：
 
 - 时间敏感市场判断必须先搜索或读取 live-source；不能用模型记忆、旧 case note
-  或未标注时间的数据回答。
+  或未标注时间的数据回答。行情/价格/指数/波动率类使用
+  `live_data_gate=required_quote_time`；宏观发布、监管公告或新闻发布类没有可用盘中报价时使用
+  `live_data_gate=required_publish_time`。
 - 对 `崩盘`、`panic`、`squeeze`、`breakout`、`sharp selloff` 这类强标签，
   默认需要两个独立市场数据源，或一个官方/交易所/指数源加明确 source
   boundary。

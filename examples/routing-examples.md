@@ -91,7 +91,7 @@ Prompt: `今天目前大盘是调整还是崩盘？`
 - `research_object`: broad_market
 - `market_scope`: default from user context or explicit assumption (for example US equities)
 - `time_boundary`: intraday_current_session
-- `live_data_gate`: `required`
+- `live_data_gate`: `required_quote_time`
 - `live_freshness_status`: `delayed`
 - `cross_check_status`: `partial`
-- routing_basis: “今天 / 目前 / 调整还是崩盘”是同日市场定性问题，必须先搜索或刷新 live-source，记录 `quote_time` / `source_boundary`，再判断；若只有单一延迟聚合源，则降级为 delayed quick_map。
+- routing_basis: “今天 / 目前 / 调整还是崩盘”是同日行情定性问题，必须先搜索或刷新 live-source，记录 `quote_time` / `source_boundary`，再判断；若只有单一延迟聚合源，则降级为 delayed quick_map。宏观发布或新闻发布类无盘中报价时改用 `live_data_gate=required_publish_time`。

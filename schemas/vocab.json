@@ -31,7 +31,7 @@
     "enum": ["none", "comparison_association", "scale_shift", "trend_dynamics", "anomaly_detection"]
   },
   "live_data_gate": {
-    "enum": ["required", "waived_definition", "not_applicable"]
+    "enum": ["required_quote_time", "required_publish_time", "waived_definition", "not_applicable"]
   },
   "live_freshness_status": {
     "enum": ["live", "delayed", "stale", "unavailable"]

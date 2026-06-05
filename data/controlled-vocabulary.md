@@ -178,7 +178,8 @@ visible judgment.
 `live_data_gate`:
 
 <!-- vocab:live_data_gate start (tokens bound to schemas/vocab.json) -->
-- `required`: the prompt depends on current or same-day data and fresh lookup is required.
+- `required_quote_time`: the prompt depends on current or same-day market quote data and fresh lookup with `quote_time` is required.
+- `required_publish_time`: the prompt depends on same-day published event data and fresh lookup with `publish_time` is required.
 - `waived_definition`: the prompt uses live-market language but asks only for a stable definition or method.
 - `not_applicable`: the prompt does not depend on live or same-day data.
 <!-- vocab:live_data_gate end -->

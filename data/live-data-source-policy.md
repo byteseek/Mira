@@ -20,8 +20,9 @@ Do not rely on model memory, old case notes or stale market data.
 Minimum live chain:
 
 ```text
-time-sensitive prompt -> live data gate -> source cross-check -> quote_time/as_of
--> facts/inferences/judgment -> stale_after/must_refresh_if
+time-sensitive prompt -> live data gate -> source cross-check
+-> quote_time or publish_time/as_of -> facts/inferences/judgment
+-> stale_after/must_refresh_if
 ```
 
 If fresh data is unavailable, say so and downgrade the answer to `needs_refresh`,
@@ -71,6 +72,11 @@ freshness claims:
 - same-session index/price/volatility direction
 - market reaction to a newly published event
 - whether a move is a pullback, correction, crash, squeeze, breakout or panic
+
+For price, index, volatility, FX, commodity and other quote-bearing questions,
+use `live_data_gate=required_quote_time`. For macro releases, regulatory
+announcements, issuer news or other publication-only questions without a market
+quote, use `live_data_gate=required_publish_time`.
 
 When the question asks only for a stable definition, historical explanation or
 methodology, this gate can be waived with `live_data_gate=waived_definition`.

@@ -118,18 +118,39 @@ def main() -> int:
 
     # --- live-data gate: same-day market calls must carry freshness + quote context ---
     expect_invalid(
-        "live_data_gate required without live fields",
-        mutate(live_data_gate="required"),
+        "live_data_gate required_quote_time without live fields",
+        mutate(live_data_gate="required_quote_time"),
         "live_freshness_status",
     )
     expect_valid(
-        "live_data_gate required with live fields",
+        "live_data_gate required_quote_time with live fields",
         mutate(
-            live_data_gate="required",
+            live_data_gate="required_quote_time",
             live_freshness_status="delayed",
             cross_check_status="partial",
             quote_time="2026-06-05T10:07:00-04:00",
             source_boundary="single delayed public aggregator plus timestamped market-news search",
+        ),
+    )
+    expect_invalid(
+        "live_data_gate required_publish_time without publish_time",
+        mutate(
+            live_data_gate="required_publish_time",
+            live_freshness_status="live",
+            cross_check_status="passed",
+            quote_time=V_DROP,
+            source_boundary="official macro release page",
+        ),
+        "publish_time",
+    )
+    expect_valid(
+        "live_data_gate required_publish_time with publish_time",
+        mutate(
+            live_data_gate="required_publish_time",
+            live_freshness_status="live",
+            cross_check_status="passed",
+            publish_time="2026-06-05T08:30:00-04:00",
+            source_boundary="official macro release page",
         ),
     )
 

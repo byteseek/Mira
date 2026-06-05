@@ -188,7 +188,7 @@ Machine routing object:
   "depth_mode": "quick_map",
   "information_value": "high",
   "knowability_status": "knowable",
-  "live_data_gate": "required",
+  "live_data_gate": "required_quote_time",
   "live_freshness_status": "delayed",
   "cross_check_status": "partial",
   "quote_time": "2026-06-05T10:07:00-04:00",
@@ -211,5 +211,5 @@ Machine routing object:
 Visible routing card:
 
 ```text
-按默认市场范围 / quick_map / live_data_gate=required；先刷新或搜索同日行情，带 quote_time 和 live_freshness_status，再判断“调整”还是“崩盘”。
+按默认市场范围 / quick_map / live_data_gate=required_quote_time；先刷新或搜索同日行情，带 quote_time 和 live_freshness_status，再判断“调整”还是“崩盘”。
 ```

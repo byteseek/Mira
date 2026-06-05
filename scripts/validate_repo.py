@@ -392,7 +392,7 @@ ROUTING_EXAMPLE_EXPECTATIONS = {
     "今天目前大盘是调整还是崩盘？": {
         "interaction_mode": "quick_answer",
         "depth_mode": "quick_map",
-        "live_data_gate": "required",
+        "live_data_gate": "required_quote_time",
         "live_freshness_status": "delayed",
         "cross_check_status": "partial",
     },
