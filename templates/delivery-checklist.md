@@ -8,6 +8,9 @@ Use this before handing off a formal research output.
 - [ ] Intent intake ran: compound prompts were split into `primary_intent` / `secondary_intents`, running assumptions were declared, and the routing card was scaled to `depth_mode`.
 - [ ] On actionability / position / portfolio routes, `decision_pressure` is emitted (even if `none`), with a disconfirmation check when pressure is medium/high.
 - [ ] `research_object`, `market_scope`, `time_boundary` and source boundary are stated.
+- [ ] `output_language` is stated on formal output (defaults to `interaction_language`; `quick_answer` may inherit implicitly); `evidence_languages` is declared when evidence spans more than one language.
+- [ ] After `market_scope` is set, the matching `data/market-default-packs.csv` pack (sources, calendar, currency, accounting standard, translation caveats) was applied; local-disclosure gaps were downgraded per `coverage_gap_action`.
+- [ ] Localization: human-facing labels are rendered in `output_language` via `data/localization-glossary.csv`; machine tokens, schema field names and file names were NOT translated.
 - [ ] `depth_mode` is stated, and artifacts match `quick_map`, `standard` or `deep_dive`.
 - [ ] Information value and knowability were checked; if a dominant variable is unknowable, depth was overridden and `irreducible_uncertainty` / `unknowable_now` stated instead of over-researching.
 - [ ] Facts, inferences and judgments are separated.
@@ -15,7 +18,8 @@ Use this before handing off a formal research output.
 - [ ] Every durable conclusion has an evidence-log row or explicit source note.
 - [ ] Newly supplied files, API pulls, vendor exports or portfolio data have an
   ingestion artifact or an explicit ingestion waiver.
-- [ ] New evidence logs include evidence posture fields or explicitly state why legacy v1 schema is being used.
+- [ ] New evidence logs use the v1.2 schema (posture fields + `source_language` / `translation_basis`), or explicitly state why a legacy v1 / v1.1 schema is being used.
+- [ ] Non-English primary sources record `source_language` and `translation_basis`; judgment-bearing translated quotes keep `original_excerpt=` in `notes` (claim_text stays a single verifiable claim).
 - [ ] `readiness_level`, `readiness_basis` and `blocking_gaps` are stated before any actionability conclusion.
 - [ ] Numeric conclusions were routed through `data-analysis-quality-gate` or explicitly waived with a reason.
 - [ ] Derived calculations have a `calculation-ledger` row or explicit formula note.

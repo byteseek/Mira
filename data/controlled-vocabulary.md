@@ -455,12 +455,30 @@ Use these tokens in notes, expectation maps, delivery checks and gate outputs wh
 
 ## Language Field
 
-Formal outputs may include `output_language`.
+Mira separates three independent language axes. A user may ask in one language, request a deliverable in another, and rely on sources in several — these do not collapse into one field.
 
-Recommended values:
+`interaction_language`: the language the user is asking in, and the default language Mira answers in.
 
-- `zh-CN`: Chinese output.
-- `en`: English output.
-- `mixed`: intentionally bilingual or case-source-driven output.
+- Recommended values: `zh-CN`, `en`, `ja`, or other BCP-47-style tags.
+- **Determination**: derived from the language of the **current user message**. Do NOT inherit it from the workspace, memory, instruction files, or prior-case language — those are mostly Chinese here, but an English message is `interaction_language=en` and must yield `output_language=en` unless the user overrides.
+- Default rule: answer in the user's language. For mixed-language input, keep the dominant language and gloss key terms bilingually once.
 
-Default rule: use the user's language for new outputs unless the source package or target audience requires otherwise.
+`output_language`: the language of a formal deliverable (memo, package, evidence summary).
+
+- Recommended values: `zh-CN`, `en`, `ja`, `mixed` (intentionally bilingual or case-source-driven).
+- Scope: required on every formal Mira research output; defaults to `interaction_language` and may be explicitly overridden. `quick_answer` and casual replies inherit `interaction_language` implicitly and need not emit it.
+
+`evidence_languages`: output-level set of the languages the evidence in this output is drawn from, e.g. `[zh-CN, en]`.
+
+- Distinct from the row-level `source_language` in `evidence-log.csv` (one source's original language). The row-level `source_language` and `translation_basis` columns are introduced in the evidence-log v1.2 schema bump; see [../docs/i18n-plan.md](../docs/i18n-plan.md) Phase 1.
+
+Machine tokens, schema field names and file names stay language-invariant regardless of these fields. Only human-readable rendering localizes, via [localization-glossary.csv](localization-glossary.csv).
+
+## Localization Rendering
+
+How outputs render in `output_language` without forking templates or drifting the protocol:
+
+- **Render, don't fork.** Human-facing headings, labels, explanations and follow-up prompts are rendered into `output_language` at delivery time, using [localization-glossary.csv](localization-glossary.csv) for term consistency. Do NOT maintain per-language copies of templates, loops or skills.
+- **Never translate the machine layer.** Machine tokens (`quick_map`, `no_action`, `judgment_confidence`, …), schema field names / CSV headers (`research_object`, `claim_text`, `source_language`, …) and file names (`evidence-log.csv`, `investment-memo.md`) stay in their canonical English form in every output language.
+- **Token values vs prose.** A controlled-vocabulary token written as a field value stays canonical; only surrounding prose and labels localize. When a token first appears, gloss it once via the glossary, e.g. `快速侦察 (quick_map)`.
+- **Glossary is the lookup.** Resolve any domain term or protocol-token display string through `localization-glossary.csv` rather than translating ad hoc, so the same concept renders consistently across cases.

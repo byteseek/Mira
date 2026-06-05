@@ -54,6 +54,7 @@ Every formal output must:
 | Real portfolio construction review | [loops/portfolio-construction-review-loop.md](loops/portfolio-construction-review-loop.md) | portfolio exposure review and position register |
 | Decision quality review | [loops/decision-quality-review-loop.md](loops/decision-quality-review-loop.md) | postmortem and thesis scorecard |
 | Source routing | [data/source-taxonomy.md](data/source-taxonomy.md) | [data/source-coverage-matrix.csv](data/source-coverage-matrix.csv) |
+| Market default pack (after `market_scope` is set) | [data/market-default-packs.csv](data/market-default-packs.csv) | [data/public-source-targets.md](data/public-source-targets.md) Market Default Packs |
 | Data / tool ingestion | [data/ingestion-layer.md](data/ingestion-layer.md) | [templates/ingestion-layer/](templates/ingestion-layer/) when retaining user material, public API output, vendor data or portfolio exports |
 | Evidence logging | [data/evidence-log-schema.md](data/evidence-log-schema.md) | [data/claim-taxonomy.md](data/claim-taxonomy.md) and [data/evidence-posture-taxonomy.md](data/evidence-posture-taxonomy.md) |
 | Numeric / calculation gate | [skills/data-analysis-quality-gate/SKILL.md](skills/data-analysis-quality-gate/SKILL.md) | [templates/data-requirement-brief.md](templates/data-requirement-brief.md) and [templates/calculation-ledger.csv](templates/calculation-ledger.csv) |

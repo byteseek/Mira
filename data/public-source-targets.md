@@ -47,6 +47,22 @@
 - 欧股必须记录 home member state、OAM 或公司 IR route；不能只写 “Europe filing”。
 - 如果只找到聚合行情而缺本地披露，输出应标为 `source_gap` 或 `watch_only`，不得升级为 durable thesis。
 
+## Market Default Packs
+
+上面的分市场 target 已结构化为 [market-default-packs.csv](market-default-packs.csv)，按 `market_scope` 索引。一旦路由确定 `market_scope`（US / CN_A_share / HK / JP / TW / KR / EU），应自动套用对应包，无需逐次重新决定默认源。
+
+每个包包含：
+
+- `primary_disclosure_targets`：本地一手披露入口（优先级最高）。
+- `market_structure_targets`：行情、市场结构、交叉核验入口。
+- `calendar`：报告期与交易日历要点（如 A 股年报 4/30、台股月营收 10 日、日股多为 3 月财年末）。
+- `currency`：本币。
+- `accounting_standard`：会计准则（US GAAP / CAS / HKFRS / J-GAAP / TIFRS / K-IFRS / IFRS）——做跨市场比较时必须先对齐口径。
+- `translation_caveats`：翻译/原文回查注意事项，对接 evidence-log v1.2 的 `source_language` / `translation_basis`。
+- `coverage_gap_action`：缺本地一手披露时的统一降级动作（`source_gap` / `watch_only` / `needs_refresh`）。
+
+规则：`market_scope` 与语言正交——中文用户研究美股仍套用 US 包（EDGAR/USD/US GAAP），输出语言由 `output_language` 决定。若某市场只找到聚合行情而缺本地披露，按 `coverage_gap_action` 降级，不得升级为 durable thesis。
+
 ## Yahoo Finance Targets
 
 Yahoo Finance 适合做公开市场数据入口，但不作为公司原始事实来源：
