@@ -125,6 +125,7 @@ Machine routing object:
   "depth_mode": "standard",
   "information_value": "high",
   "knowability_status": "partially_knowable",
+  "scope_confirmation_required": "yes",
   "primary_question_lens": "comparison_association",
   "selected_question_lenses": [
     "comparison_association",
