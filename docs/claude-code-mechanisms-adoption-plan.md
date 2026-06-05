@@ -38,7 +38,7 @@ Mira 不缺机制，而是**用散文重新发明了 CC 已做成原语的东西
 | --- | --- | --- | --- | --- |
 | ToolSearch 索引→按需取 | 路由只读索引、命中才取正文 | 1.1k 行前置 | 1 屏 `routing-index.csv`，手读即可（工具可选） | **↓↓**（病①③） |
 | hooks 确定性交给代码 | 校验交给 CLI，模型只判断 | 40 个 validator 靠「记得跑」 | 交付前**一次** `check`，收成单次调用 | **↓**（病②） |
-| permission mode | 散落 gate 收敛成一个开关 | actionability / instrument / 无持仓 gate 散在多处 | 一个 `interaction_posture` 开关 | **↓**（病②） |
+| permission mode | 散落 gate 收敛成一个开关 | actionability / instrument / 无持仓 gate 散在多处 | 复用既有 `interaction_mode` 当 posture 开关 | **↓**（病②） |
 | plan mode 确认即状态 | 范围未确认不深挖 | `scope_confirmation_required` 可跳过 | 真冲突时**确认一次**，否则声明假设照答 | **净 0**（不新增阻塞，病④） |
 | subagent 对抗复核 | 独立视角复核 thesis | disconfirmation 偶发 | 强化既有 disconfirmation（**pattern**，不做工具） | 净 0（病④） |
 
@@ -87,7 +87,7 @@ CC 的 plan mode 是「未批准不执行」。Mira 今天 [analysis-routing.md]
 - **复用** Step 0 已有的 **Assumption Register**——它本就是「**声明运行假设、先答、邀请用户修正**」的非阻塞设计。默认就走它：声明假设，照常作答。
 - **只在真冲突时升级成一次明确停顿**，触发条件确定性（沿用 Step 0.5 「No Silent Skip」纪律，不另起炉灶）：
   - `复合 prompt 且子任务 depth / 数据冲突`（一个要 quick_map、一个要真实持仓 review），**或**
-  - `interaction_posture = decision_support 且 decision_pressure ∈ {medium, high}`。
+  - `interaction_mode = decision_support` 且 `decision_pressure ∈ {medium, high}`。
 - 升级后规则：该一次停顿里，**可**给 quick_map 级方向 + 路由卡 + 假设，但**不**花 deep_dive 预算、不写 durable artifact，直到用户确认或明确「别问直接做」。
 
 ### 4.2 净效果
@@ -96,16 +96,18 @@ CC 的 plan mode 是「未批准不执行」。Mira 今天 [analysis-routing.md]
 
 ---
 
-## 5. 顺带收敛：一个 `interaction_posture` 开关（病②）
+## 5. 顺带收敛：用既有 `interaction_mode` 当 posture 开关（病②）
 
 Mira 的领域 gate 今天**散落**：不给交易指令（MIRA.md）、actionability-risk-control、instrument-strategy-gate、无持仓不给仓位（多处 Stop Rule）。模型要同时记这 4 条。
 
-收敛成**一个一等开关** `interaction_posture ∈ {research_only, decision_support}`：
+收敛成**一个开关——但不新增字段**。`interaction_mode` 已有 `decision_support` 值，且 [schemas/routing.schema.json](../schemas/routing.schema.json) 已强制 `decision_support` → `decision_pressure`，它本就是那个开关；再造 `interaction_posture` 会与之同义、正中 §9 非目标，故**复用既有字段**：
 
-- `research_only`（默认）：禁仓位 / 订单 / 交易指令输出，现有各 gate 成为它的**子条款**（不删规则，只换成一个入口）。
-- `decision_support`：仅当用户带动作语或给真实持仓时进入；进入即触发 §4 的确认停顿 + Step 0.5 decision pressure gate。
+- **research_only posture** = `interaction_mode ∈ {quick_answer, routed_research, routing_unclear}`（默认）：禁仓位 / 订单 / 交易指令输出，现有各 gate 成为它的**子条款**（不删规则，只统一挂到这一个开关下）。
+- **decision_support posture** = `interaction_mode = decision_support`：仅当用户带动作语或给真实持仓时进入；进入即触发 §4 的确认停顿 + Step 0.5 decision pressure gate。
 
-**这是净减项**：模型从「记 4 条散落规则」变成「拨 1 个开关」。落地是协议开关 + 可选 `check` 校验 + eval，无 adapter。
+**这是净减项**：模型从「记 4 条散落规则」变成「判断一个 posture」，且**零新字段**。落地是 [loops/analysis-routing.md](../loops/analysis-routing.md) Step 0.5 的 posture 小节 + eval，无新 vocab、无 adapter。
+
+> **实现说明**：本仓库已落地此节——`analysis-routing.md` Step 0.5 新增「Posture: research_only ↔ decision_support」小节，把安全门统一挂到既有 `interaction_mode` 下，未新增字段、未改动安全门正文。
 
 ---
 
@@ -129,7 +131,7 @@ Mira 的领域 gate 今天**散落**：不给交易指令（MIRA.md）、actiona
 | # | 改动 | 让什么变轻 | 净复杂度 | 病症 |
 | --- | --- | --- | --- | --- |
 | 1 | `routing-index.csv`（+可选 `route.py`） | 路由从读 1.1k 行 → 读 1 屏 | ↓↓ | ①③ |
-| 2 | `interaction_posture` 开关 | 4 条散落 gate → 1 个开关 | ↓ | ② |
+| 2 | `interaction_mode`-as-posture（复用既有字段） | 4 条散落 gate → 1 个开关 | ↓ | ② |
 | 3 | scope 真冲突时确认一次（强化既有字段，**不新增**） | 停顿从「可静默跳过」→「稀而准」 | 净 0 | ④ |
 
 三件都不新增 mode 字段：`route_key` 复用既有枚举，`posture` 抵消散落 gate，scope 复用既有字段。**总账是减的。**
@@ -144,7 +146,7 @@ Mira 的领域 gate 今天**散落**：不给交易指令（MIRA.md）、actiona
 | --- | --- | --- | --- |
 | **0 地基** | `routing-index.csv` + schema 微调 | 新建 `data/routing-index.csv`、`vocab.json` 复用既有枚举、`validate_repo.py` 校验 key⊆vocab + 路径存在 | validate 0 err；eval 不回归(30 passed)；无行为变化 |
 | **1 路由变轻（MVP）** | 病①③ | 路由「只看索引」契约写进 [OPERATING_CONTRACT.md](../OPERATING_CONTRACT.md)；analysis-routing 不再前置整篇；**可选** `scripts/route.py` | 同 prompt 仍命中同 loop；route_key 跨 depth 稳定；路由上下文显著变轻 |
-| **2 模式变少 + 停顿变稀** | 病②④ | `interaction_posture` 收编 [actionability-risk-control](../data/actionability-risk-control.md) / [instrument-strategy-gate](../data/instrument-strategy-gate.md) / 无持仓 gate；scope 冲突即停一次（强化既有字段）；**可选**交付前 `check` | research_only 拒仓位输出；真冲突才停、否则照答；旧 gate 行为不回归 |
+| **2 模式变少 + 停顿变稀** | 病②④ | 复用 `interaction_mode` 当 posture，统一收编 [actionability-risk-control](../data/actionability-risk-control.md) / [instrument-strategy-gate](../data/instrument-strategy-gate.md) / 无持仓 gate（不改安全门正文）；scope 冲突即停一次（强化既有字段）；**可选**交付前 `check` | research_only 拒仓位输出；真冲突才停、否则照答；旧 gate 行为不回归 |
 
 **MVP**：Phase 0 + 1——纯减负、零新阻塞、零必经工具，是最安全的先导切片。
 
@@ -158,7 +160,7 @@ Mira 的领域 gate 今天**散落**：不给交易指令（MIRA.md）、actiona
 
 - ❌ **不做 CC 兼容 / 不建 `adapters/`。** 驱动专属原语（plan-mode、permission mode、MCP、plugin marketplace）不是交付物；至多日后做成**非承载性便利**（删了协议照样完整）。
 - ❌ **治疗不能比病重。** 不为强制力牺牲丝滑；任何增加字段 / 停顿 / 工具调用的改动，必须同时删掉等量或更多旧机制——净账只减不增。
-- ❌ **不新增与现有同义的 mode 字段。** 不引入 `scope_state` 四值枚举 / `display_mode`；**强化既有字段优先于造新字段**。
+- ❌ **不新增与现有同义的 mode 字段。** 不引入 `scope_state` 四值枚举 / `display_mode` / `interaction_posture`（`decision_support` 已是 `interaction_mode` 值并已 gate `decision_pressure`）；**强化既有字段优先于造新字段**。
 - ❌ **gate 默认不阻塞。** 不把研究 agent 变成「逢事先确认」的官僚；只在确定性冲突时停一次。
 - ❌ **工具不铺在每个检查点。** 只在减摩擦处放一个可选 `check`；索引够轻就手读，不强制 `route.py`。禁 driver-native / MCP；工具只读 canonical 单源；保留 markdown fallback。
 - ❌ **`routing-index.csv` 不是第二真值源**，只是既有枚举的窄投影 + 正文指针。
