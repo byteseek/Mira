@@ -32,5 +32,21 @@
   },
   "followup_prompt_mode": {
     "enum": ["none", "light", "standard", "decision_grade"]
+  },
+  "task_mode": {
+    "enum": [
+      "first_pass_research",
+      "monitoring_update",
+      "earnings_event",
+      "methodology_review",
+      "sec_supplement",
+      "sec_filing_deep_dive",
+      "thesis_system_update",
+      "view_continuity",
+      "position_review",
+      "portfolio_construction_review",
+      "decision_quality_review",
+      "discovery_or_screening"
+    ]
   }
 }

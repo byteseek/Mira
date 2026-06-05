@@ -2,7 +2,7 @@
   "schema_version": "1.0",
   "interaction_mode": "routed_research",
   "primary_intent": "First-pass single-equity research on AAPL with full thesis system",
-  "task_mode": "research",
+  "task_mode": "first_pass_research",
   "research_object": "single_equity",
   "market_scope": "US equities",
   "time_boundary": "12-24 months",

@@ -15,6 +15,29 @@ Use in routing intake (analysis-routing Step 0).
 - `routing_unclear`: research object or time boundary is fully unclear; clarify definition only.
 <!-- vocab:interaction_mode end -->
 
+## Task Mode
+
+Step 1 task classification. Per-mode routing and boundaries live in
+[../loops/analysis-routing.md](../loops/analysis-routing.md) Step 1; the token set
+is bound to `schemas/vocab.json`. `position_review` and
+`portfolio_construction_review` (and any `decision_support` interaction) must emit
+`decision_pressure` via Step 0.5.
+
+<!-- vocab:task_mode start (tokens bound to schemas/vocab.json) -->
+- `first_pass_research`
+- `monitoring_update`
+- `earnings_event`
+- `methodology_review`
+- `sec_supplement`
+- `sec_filing_deep_dive`
+- `thesis_system_update`
+- `view_continuity`
+- `position_review`
+- `portfolio_construction_review`
+- `decision_quality_review`
+- `discovery_or_screening`
+<!-- vocab:task_mode end -->
+
 ## Decision Pressure And Framing Risk
 
 Use in routing intake (analysis-routing Step 0.5). These are transient, per-turn routing signals. They describe the structure of the question, not the user's psychology, and must never be written to preference memory or private state.

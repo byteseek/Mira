@@ -63,8 +63,10 @@
   → 必须有 `decision_pressure`;medium/high → 必须有 `disconfirmation_required`。
   **触发不能只看 `primary_skill_or_loop`**——`if` 要覆盖 {`primary_skill_or_loop`、`task_mode`、
   `expected_output_package`、`expected_handoffs`} 任一指向这三类,**锚定 analysis-routing Step 0.5
-  decision_pressure_gate 的实际触发定义**(别自造字段)。长期更干净:加一个 `route_family` 单 token
-  让 schema 只 key 它,免去多字段 `if` 的脆性。
+  decision_pressure_gate 的实际触发定义**(别自造字段)。
+  **(Round-3 已落地**:用现有 `interaction_mode == decision_support`(line 124)+
+  `task_mode ∈ {position_review, portfolio_construction_review}`(line 169)的多字段 `if` 实现,
+  未引入 route_family 字段;见 Round-3 实施状态。**)**
 - **quant 条件**:`quant_dependency != none` → 必须有 `calculation_gate`。
 - **follow-up 条件**:`followup_prompt_mode=none` → 必须有 waiver 理由;非 none → 必须有
   `followup_questions`。
@@ -282,5 +284,23 @@ quant≠none 缺 calculation_gate、decision_pressure=high 配 disconfirmation=n
 设计已就绪(`transcripts/{claude-code,codex}/` + `substrates.json` manifest 标 model/agent/tool + scorer 按
 enforced 底座出 per-substrate 矩阵、向后兼容扁平模式),留作有第二底座录制时再落,不与本轮安全 value-add 捆绑。
 
-**Round-2 之后仍待办**:双底座矩阵(见上);route_family 单 token;迁剩余 19 个枚举进 vocab.json;烧 exempt 表;
+**Round-2 之后仍待办**:双底座矩阵(见上);迁剩余枚举进 vocab.json;烧 exempt 表;
 `mira` CLI / connector / UI / DB(长期)。
+
+## Round-3 实施状态(已交付,合并后)
+
+`just check` exit 0、`validate_repo` 0/0、schema 回归 + behavior eval 16/16 全过。
+
+**route 触发器(朋友点 2 收口)** —— actionability / position / portfolio 任务此前可**完全不 emit
+`decision_pressure`** 而通过(schema 只做了 decision_pressure→disconfirmation 耦合)。补上 Step 0.5 的真实触发:
+- `task_mode` 升级为 `$ref` vocab.json 枚举(Step 1 的 12 个值);**当场抓出我自己 2 个 typo**——
+  aapl `research`→`first_pass_research`、nvts `event_update`→`earnings_event`。
+- 加两条正交条件:`interaction_mode == decision_support`(合约 line 124)**或**
+  `task_mode ∈ {position_review, portfolio_construction_review}`(line 169)→ **必须 emit
+  `decision_pressure`**(哪怕 none)。
+- `controlled-vocabulary.md` 补 `task_mode` marked 段落;`test_routing_schema.py` 加回归。
+- **已验证**:decision_support / portfolio review 漏 decision_pressure 的卡片现在 fail;out-of-vocab task_mode 被拦。
+
+**实现选择(对外部 review 点 2 的落地)**:没有新增 `route_family` 字段——decision surface 在合约里已由
+**现有** `interaction_mode` + `task_mode` 表达(line 124 / 169),用多字段 `if` 即朋友点 2 要的"多字段触发",
+比新增 contract 字段 blast radius 小。route_family 单 token 仅在未来这两字段不够用时再引入。

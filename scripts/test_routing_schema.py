@@ -95,6 +95,27 @@ def main() -> int:
     )
     expect_invalid("empty required string", mutate(routing_basis="   "), "routing_basis")
 
+    # --- route_family enforcement: actionability/position/portfolio must emit decision_pressure ---
+    expect_invalid("out-of-vocab task_mode", mutate(task_mode="bogus_mode"), "not one of")
+    expect_invalid(
+        "decision_support without decision_pressure",
+        mutate(interaction_mode="decision_support", decision_pressure=V_DROP),
+        "decision_pressure",
+    )
+    expect_valid(
+        "decision_support with decision_pressure",
+        mutate(interaction_mode="decision_support"),
+    )
+    expect_invalid(
+        "position_review without decision_pressure",
+        mutate(task_mode="position_review", decision_pressure=V_DROP),
+        "decision_pressure",
+    )
+    expect_valid(
+        "position_review with decision_pressure",
+        mutate(task_mode="position_review"),
+    )
+
     print("routing_schema_tests: pass")
     return 0
 
