@@ -14,6 +14,7 @@ Every formal output must:
 - identify `research_object`, `market_scope`, `time_boundary` and available sources
 - run intent intake first: split compound prompts into `primary_intent` / `secondary_intents`, declare running assumptions, and emit a depth-scaled routing card before formal analysis
 - run [loops/analysis-routing.md](loops/analysis-routing.md) before formal analysis
+- route via the machine index first: read [data/routing-index.csv](data/routing-index.csv) (`task_mode` → one `primary_loop_or_skill` + trigger + `load_gate`), then load only that one loop/skill body; do not front-load the whole analysis-routing.md
 - choose `depth_mode`: `quick_map`, `standard` or `deep_dive`
 - after choosing depth, run the information-value / knowability check; allow `irreducible_uncertainty` as an honest terminal instead of over-researching
 - separate `facts`, `inferences` and `judgments`, and label each material judgment with `judgment_confidence` and a `reversal_condition`
@@ -43,7 +44,8 @@ Every formal output must:
 | --- | --- | --- |
 | Wake word / identity | [MIRA.md](MIRA.md) | [AGENT_QUICKSTART.md](AGENT_QUICKSTART.md) for prompts |
 | Mira self-update | run `scripts/mira_update.sh`; use `--help` only for options | [AGENT_QUICKSTART.md](AGENT_QUICKSTART.md) update section |
-| Any formal task | [data/interaction-kernel.md](data/interaction-kernel.md) | [loops/analysis-routing.md](loops/analysis-routing.md), then selected loop from routing |
+| Route selection (which loop/skill) | [data/routing-index.csv](data/routing-index.csv) — `task_mode` → one loop/skill | only the matched `primary_loop_or_skill` body |
+| Any formal task | [data/interaction-kernel.md](data/interaction-kernel.md) | [loops/analysis-routing.md](loops/analysis-routing.md) for route detail, then selected loop |
 | Intent intake / decision pressure | [loops/analysis-routing.md](loops/analysis-routing.md) Step 0 / 0.5 | [data/actionability-risk-control.md](data/actionability-risk-control.md) when decision pressure is medium/high |
 | Continue / save user view | [loops/view-continuity-loop.md](loops/view-continuity-loop.md) | `private/research/<OBJECT>/` and `private/views/view-register.csv` only when relevant |
 | First-pass single equity | [loops/research-loop.md](loops/research-loop.md) | thesis horizon, framework and overlay references |

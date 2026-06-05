@@ -4,6 +4,8 @@
 
 目标是先判断“这是什么类型的研究任务”，再决定进入哪个 loop / skill。不要一开始就把所有问题都塞进单票 `framework-routing`。
 
+> 机器索引优先：路由决策先读 [../data/routing-index.csv](../data/routing-index.csv)（`task_mode` → 唯一 `primary_loop_or_skill` + 一句话触发条件 + `load_gate`），命中后只加载那一个 loop / skill 正文，**不要前置整篇本文档**。本文档是各 route 的正文与边界细节，按需取用。索引的 `task_mode` 与 [../schemas/vocab.json](../schemas/vocab.json) 同源，`scripts/validate_repo.py` 校验其覆盖完整、路径存在。
+
 ## Core Rule
 
 按以下顺序路由（自上而下即执行顺序；括号内为相关正文 Step，编号不一定连续）：
