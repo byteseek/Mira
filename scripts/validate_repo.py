@@ -1606,6 +1606,19 @@ def validate_routing_index(root: Path) -> list[Issue]:
             issues.append(
                 Issue("ERROR", path, i, f"`{task_mode}` primary_loop_or_skill `{target}` does not exist")
             )
+        elif not (target.endswith(".md") and (target.startswith("loops/") or target.startswith("skills/"))):
+            # The loading contract loads this body on hit, so it must be an
+            # executable loop/skill body, not a template/data file (a template
+            # CSV would leave the routed task without analysis instructions).
+            issues.append(
+                Issue(
+                    "ERROR",
+                    path,
+                    i,
+                    f"`{task_mode}` primary_loop_or_skill `{target}` must be an executable "
+                    "loop/skill body (.md under loops/ or skills/), not a template/data file",
+                )
+            )
         load_gate = (row.get("load_gate") or "").strip()
         if load_gate not in valid_load_gates:
             issues.append(
