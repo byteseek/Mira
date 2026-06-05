@@ -34,7 +34,11 @@
 
 如果前面步骤已经说明任务不是单票公司研究，就不要强行进入 `equity-research-core`。
 
-## Required Routing Output
+## Internal Routing State
+
+每次正式研究前先记录以下内部路由状态。它是 agent 的工作状态，不是默认
+用户可见模板。交付时只按 [../data/output-surface-matrix.md](../data/output-surface-matrix.md)
+展示对应 `depth_mode` 需要的字段；短答不得因为本清单而暴露全部机器字段。
 
 每次正式研究前先记录：
 
@@ -92,6 +96,10 @@
 - `selected_framework`
 - `selected_overlays`
 - `selected_lenses`
+
+Visible-output rule: `quick_map`, `standard` and `deep_dive` are the only output
+surfaces. `quick_answer` is an `interaction_mode`; it controls prose length but
+does not create a fourth surface.
 
 ## Step 0: Intent + Interaction Intake
 

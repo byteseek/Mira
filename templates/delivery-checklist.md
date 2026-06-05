@@ -4,6 +4,7 @@ Use this before handing off a formal research output.
 
 ## Required
 
+- [ ] Interaction kernel passed: the non-negotiable checks in `data/interaction-kernel.md` ran before choosing visible output.
 - [ ] Final strong-habit gate passed: evidence strength, refresh condition and progressive follow-up were all checked together before handoff.
 - [ ] Visible fields were scaled using `data/output-surface-matrix.md`; short outputs did not expose unnecessary package fields or omit required discipline.
 - [ ] The task was routed through `analysis-routing` or the route was explicitly waived with a reason.

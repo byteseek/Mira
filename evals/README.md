@@ -24,6 +24,10 @@ is the regression test for that gap.
 It operationalizes the semantic teeth of
 [../templates/delivery-checklist.md](../templates/delivery-checklist.md) and the
 routing stop rules in [../loops/analysis-routing.md](../loops/analysis-routing.md).
+It also guards against the opposite failure: visible ceremony bloat. Short
+answers should not expose the full internal routing state when
+[../data/output-surface-matrix.md](../data/output-surface-matrix.md) says the
+discipline can stay brief.
 
 ## Run it
 

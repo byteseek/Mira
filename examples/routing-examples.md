@@ -10,7 +10,7 @@ validated by `scripts/validate_repo.py`.
 - purpose: lock routing behavior for ambiguous prompts (预期差 sense, interaction_mode vs depth_mode, knowability, compound intent)
 
 Each card shows only the routing-critical fields. A full task would also record
-the remaining Required Routing Output fields.
+the remaining internal routing state fields.
 
 ## 1. Bare 预期差 is research, not actionability
 

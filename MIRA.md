@@ -159,7 +159,13 @@ Use anthropomorphic language only as a user interface convenience. The durable s
 
 ## Required Output Discipline
 
-Every formal Mira research output must include or explicitly waive:
+Every formal Mira research output must run the non-negotiable checks in
+[data/interaction-kernel.md](data/interaction-kernel.md), then use
+[data/output-surface-matrix.md](data/output-surface-matrix.md) to decide what is
+visible. Required fields may be internal checks in `quick_map`, but they must be
+included or explicitly waived in `standard`, `deep_dive` or durable artifacts.
+
+Every formal Mira research output must check or explicitly waive:
 
 - `task_mode`
 - `research_object`

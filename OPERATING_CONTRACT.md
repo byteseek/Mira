@@ -10,6 +10,7 @@ Mira is a research protocol, not an adviser or trade bot.
 
 Every formal output must:
 
+- preserve the minimum interaction quality bar in [data/interaction-kernel.md](data/interaction-kernel.md)
 - identify `research_object`, `market_scope`, `time_boundary` and available sources
 - run intent intake first: split compound prompts into `primary_intent` / `secondary_intents`, declare running assumptions, and emit a depth-scaled routing card before formal analysis
 - run [loops/analysis-routing.md](loops/analysis-routing.md) before formal analysis
@@ -42,7 +43,7 @@ Every formal output must:
 | --- | --- | --- |
 | Wake word / identity | [MIRA.md](MIRA.md) | [AGENT_QUICKSTART.md](AGENT_QUICKSTART.md) for prompts |
 | Mira self-update | run `scripts/mira_update.sh`; use `--help` only for options | [AGENT_QUICKSTART.md](AGENT_QUICKSTART.md) update section |
-| Any formal task | [loops/analysis-routing.md](loops/analysis-routing.md) | selected loop from routing |
+| Any formal task | [data/interaction-kernel.md](data/interaction-kernel.md) | [loops/analysis-routing.md](loops/analysis-routing.md), then selected loop from routing |
 | Intent intake / decision pressure | [loops/analysis-routing.md](loops/analysis-routing.md) Step 0 / 0.5 | [data/actionability-risk-control.md](data/actionability-risk-control.md) when decision pressure is medium/high |
 | Continue / save user view | [loops/view-continuity-loop.md](loops/view-continuity-loop.md) | `private/research/<OBJECT>/` and `private/views/view-register.csv` only when relevant |
 | First-pass single equity | [loops/research-loop.md](loops/research-loop.md) | thesis horizon, framework and overlay references |
@@ -63,7 +64,7 @@ Every formal output must:
 | Instrument strategy gate | [data/instrument-strategy-gate.md](data/instrument-strategy-gate.md) | [templates/actionability-system/instrument-strategy-gate.md](templates/actionability-system/instrument-strategy-gate.md), option chain / borrow / hedge data only if needed |
 | Readiness / handoff | [data/research-readiness-gate.md](data/research-readiness-gate.md) | [data/handoff-contracts.md](data/handoff-contracts.md) and [templates/research-package/research-package-manifest.json](templates/research-package/research-package-manifest.json) |
 | State/action tokens | [data/controlled-vocabulary.md](data/controlled-vocabulary.md) | task-specific template |
-| Output surface / verbosity | [data/output-surface-matrix.md](data/output-surface-matrix.md) | task-specific quality bar |
+| Output surface / verbosity | [data/output-surface-matrix.md](data/output-surface-matrix.md) | [data/interaction-kernel.md](data/interaction-kernel.md) for non-negotiable checks |
 | Final self-check | [templates/delivery-checklist.md](templates/delivery-checklist.md) | [data/output-surface-matrix.md](data/output-surface-matrix.md) when deciding what must be visible |
 
 Do not load all `private/`, all `memory/`, all `skills/` or all cases at startup.
@@ -83,6 +84,9 @@ For visible output requirements by depth, use
 [data/output-surface-matrix.md](data/output-surface-matrix.md). Do not make
 short answers heavy by exposing every internal field, and do not make short
 answers weak by dropping refresh, evidence or follow-up discipline.
+The visible surfaces are only `quick_map`, `standard` and `deep_dive`;
+`quick_answer` is an interaction shape that renders through one of those depth
+surfaces.
 
 If the user does not specify depth, infer it from the requested output. "看一下" defaults to `quick_map`; "研究 X" defaults to `standard`; "深挖 / 完整 / 方法验证 / PM review" defaults to `deep_dive`.
 
