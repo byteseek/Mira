@@ -317,6 +317,7 @@ CALCULATION_GATES = _vocab_set("calculation_gate")
 INFORMATION_VALUES = _vocab_set("information_value")
 KNOWABILITY_STATUSES = _vocab_set("knowability_status")
 SCOPE_CONFIRMATION_REQUIRED = _vocab_set("scope_confirmation_required")
+TASK_MODES = _vocab_set("task_mode")
 
 ROUTING_EXAMPLE_TOKEN_FIELDS = {
     "interaction_mode": INTERACTION_MODES,
@@ -1375,6 +1376,7 @@ def validate_repo(root: Path, as_of: date) -> list[Issue]:
     issues.extend(validate_routing_json_examples(root))
     issues.extend(validate_vocab_doc_consistency(root))
     issues.extend(validate_localization_glossary(root))
+    issues.extend(validate_routing_index(root))
     for path in sorted(root.glob("**/routing.json")):
         if ".git" in path.parts:
             continue
@@ -1553,6 +1555,68 @@ def validate_localization_glossary(root: Path) -> list[Issue]:
                         "controlled vocabulary source (vocab.json, hardcoded enums, or documented field tokens)",
                     )
                 )
+    return issues
+
+
+def validate_routing_index(root: Path) -> list[Issue]:
+    """Structure + anti-drift check for data/routing-index.csv.
+
+    The routing index is a machine-first projection of Step 1 task_mode routing:
+    each task_mode -> the one loop/skill body to load on hit. It exists so a
+    router can read one screen instead of front-loading the whole
+    loops/analysis-routing.md. To stay honest it must mirror the vocabulary
+    exactly: every `task_mode` is a vocab.json enum value, the set covers ALL of
+    them (no silently dropped route), every `primary_loop_or_skill` path exists,
+    and `load_gate` is a known token. Optional file: absent -> no issues.
+    """
+    path = root / "data" / "routing-index.csv"
+    if not path.exists():
+        return []
+
+    header, rows, issues = read_csv(path)
+    if not header:
+        return issues
+
+    required_cols = {"task_mode", "trigger_one_liner", "primary_loop_or_skill", "load_gate"}
+    missing_cols = sorted(required_cols - set(header))
+    if missing_cols:
+        issues.append(Issue("ERROR", path, 1, f"routing-index missing columns: {missing_cols}"))
+        return issues
+
+    valid_load_gates = {"on_hit", "on_hit_decision_support"}
+    seen: set[str] = set()
+    for i, row in enumerate(rows, start=2):
+        task_mode = (row.get("task_mode") or "").strip()
+        if not task_mode:
+            issues.append(Issue("ERROR", path, i, "routing-index row missing `task_mode`"))
+            continue
+        if task_mode not in TASK_MODES:
+            issues.append(
+                Issue("ERROR", path, i, f"`{task_mode}` is not a schemas/vocab.json task_mode")
+            )
+        if task_mode in seen:
+            issues.append(Issue("ERROR", path, i, f"duplicate task_mode `{task_mode}`"))
+        seen.add(task_mode)
+        if not (row.get("trigger_one_liner") or "").strip():
+            issues.append(Issue("ERROR", path, i, f"`{task_mode}` missing `trigger_one_liner`"))
+        target = (row.get("primary_loop_or_skill") or "").strip()
+        if not target:
+            issues.append(Issue("ERROR", path, i, f"`{task_mode}` missing `primary_loop_or_skill`"))
+        elif not (root / target).exists():
+            issues.append(
+                Issue("ERROR", path, i, f"`{task_mode}` primary_loop_or_skill `{target}` does not exist")
+            )
+        load_gate = (row.get("load_gate") or "").strip()
+        if load_gate not in valid_load_gates:
+            issues.append(
+                Issue("ERROR", path, i, f"`{task_mode}` invalid load_gate `{load_gate}`; use {sorted(valid_load_gates)}")
+            )
+
+    uncovered = sorted(TASK_MODES - seen)
+    if uncovered:
+        issues.append(
+            Issue("ERROR", path, 0, f"routing-index does not cover task_mode(s): {uncovered}")
+        )
     return issues
 
 

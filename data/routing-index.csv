@@ -1,0 +1,13 @@
+task_mode,trigger_one_liner,primary_loop_or_skill,load_gate
+first_pass_research,"首次覆盖 / 重建 thesis / 从零建研究包",loops/research-loop.md,on_hit
+monitoring_update,"已有 thesis 的增量更新",loops/monitoring-loop.md,on_hit
+earnings_event,"新财报 / 业绩会 / 指引 / 财报后市场反应",skills/earnings-report-analysis/SKILL.md,on_hit
+methodology_review,"研究方法 / 框架质量 / 是否值得纳入 Mira",loops/methodology-research-loop.md,on_hit
+sec_supplement,"为其他研究补 SEC 事实核验，不拆全文",templates/sec-supplement-source-note.csv,on_hit
+sec_filing_deep_dive,"专项拆 10-K / 10-Q / S-1 / 8-K exhibit / proxy",skills/sec-filing-analysis/SKILL.md,on_hit
+thesis_system_update,"thesis 更新 / 预期差 / 事件 delta / 状态变更 / 复盘",loops/thesis-update-loop.md,on_hit
+view_continuity,"保存 / 延续 / 更新 / 对比上次观点或 working view",loops/view-continuity-loop.md,on_hit
+position_review,"review 单一真实头寸是否匹配 thesis",loops/position-review-loop.md,on_hit_decision_support
+portfolio_construction_review,"真实组合结构 / 集中度 / 重复 bet / 因子暴露 / 风险预算",loops/portfolio-construction-review-loop.md,on_hit_decision_support
+decision_quality_review,"复盘过去研究判断 / 头寸动作 / 组合决策质量",loops/decision-quality-review-loop.md,on_hit
+discovery_or_screening,"找候选 / 筛选 / 发现标的；按研究对象选对应 discovery skill",skills/etf-listing-discovery/SKILL.md,on_hit
