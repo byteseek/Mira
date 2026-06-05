@@ -34,7 +34,7 @@ Common commands:
 | Intent | Command |
 | --- | --- |
 | Update Mira itself after the user asks for it | `scripts/mira_update.sh` |
-| Check freshness before substantive research | `scripts/check_updates.sh` |
+| Check freshness before `standard`/`deep_dive` research | `scripts/check_updates.sh --local-first` |
 
 `scripts/mira_update.sh` is the safe update entrypoint: it fetches, refuses
 dirty/ahead/diverged worktrees, fast-forwards only, and validates the repository
@@ -45,7 +45,7 @@ after a successful update. Freshness checks do not update the repository.
 Minimal workflow:
 
 1. If the user explicitly wants to update Mira itself, run `scripts/mira_update.sh`.
-2. Otherwise, check remote freshness before substantive research with `scripts/check_updates.sh`.
+2. Otherwise, for `standard`/`deep_dive` research run `scripts/check_updates.sh --local-first` (local-first, 24h remote TTL; `quick_map` skips it). A blocked fetch degrades to cached local refs — never elevate sandbox permissions for a freshness check.
 3. Read [OPERATING_CONTRACT.md](OPERATING_CONTRACT.md) for the lazy-loading map.
 4. Run [loops/analysis-routing.md](loops/analysis-routing.md) before formal analysis.
 5. Load only the routed loop, skill and templates needed for the task.

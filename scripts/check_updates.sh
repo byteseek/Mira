@@ -5,26 +5,50 @@ set -eu
 
 usage() {
   cat <<'EOF'
-Usage: scripts/check_updates.sh [--no-fetch] [--prompt]
+Usage: scripts/check_updates.sh [--local-first] [--ttl-hours N] [--no-fetch] [--prompt]
 
 Checks whether the current branch has remote updates.
 
 Options:
-  --no-fetch   Do not contact the remote; compare against local remote-tracking refs only.
-  --prompt     If the branch is behind, ask whether to run `git pull --ff-only`.
+  --local-first  Local-first freshness gate: only contact the remote when the
+                 last fetch attempt is older than the TTL (default 24h);
+                 otherwise compare against cached remote-tracking refs. Use this
+                 for standard/deep_dive research so freshness is checked at most
+                 once per TTL instead of once per task.
+  --ttl-hours N  TTL window in hours for --local-first (default 24; 0 forces a
+                 fetch attempt every run).
+  --no-fetch     Never contact the remote; compare against cached remote-tracking
+                 refs only. Wins over --local-first.
+  --prompt       If the branch is behind, ask whether to run `git pull --ff-only`.
 
-The script never updates the repository unless --prompt is used and the user
-explicitly answers yes.
+Freshness-check state (last attempt/success, status, remote head) is recorded in
+local/mira-update-check.json (gitignored; override with MIRA_UPDATE_STATE_FILE).
+A blocked or failed fetch degrades to local refs and is reported, never elevated;
+the repository is never updated unless --prompt is used and the user explicitly
+answers yes.
 EOF
 }
 
 fetch_remote=1
 prompt_update=0
+local_first=0
+ttl_hours=24
 
 while [ "$#" -gt 0 ]; do
   case "$1" in
     --no-fetch)
       fetch_remote=0
+      ;;
+    --local-first)
+      local_first=1
+      ;;
+    --ttl-hours)
+      shift
+      if [ "$#" -eq 0 ]; then
+        echo "--ttl-hours requires a value." >&2
+        exit 2
+      fi
+      ttl_hours="$1"
       ;;
     --prompt)
       prompt_update=1
@@ -42,10 +66,73 @@ while [ "$#" -gt 0 ]; do
   shift
 done
 
+case "$ttl_hours" in
+  ''|*[!0-9]*)
+    echo "--ttl-hours must be a non-negative integer." >&2
+    exit 2
+    ;;
+esac
+
 if ! git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
   echo "Not inside a git work tree." >&2
   exit 2
 fi
+
+repo_root="$(git rev-parse --show-toplevel 2>/dev/null || pwd)"
+state_file="${MIRA_UPDATE_STATE_FILE:-$repo_root/local/mira-update-check.json}"
+have_python=0
+if command -v python3 >/dev/null 2>&1; then
+  have_python=1
+fi
+
+# Read one value from the gitignored state file. Prints nothing if the key,
+# file, or python3 is unavailable, so callers must tolerate an empty result.
+state_get() {
+  [ "$have_python" -eq 1 ] || return 0
+  [ -f "$state_file" ] || return 0
+  python3 - "$state_file" "$1" <<'PY'
+import json, sys
+try:
+    with open(sys.argv[1]) as fh:
+        data = json.load(fh)
+except Exception:
+    sys.exit(0)
+if isinstance(data, dict):
+    value = data.get(sys.argv[2])
+    if value is not None:
+        print(value)
+PY
+}
+
+# Merge key/value pairs into the state file (JSON). Keys ending in _at are
+# stored as integers. A no-op when python3 is unavailable.
+state_set() {
+  [ "$have_python" -eq 1 ] || return 0
+  mkdir -p "$(dirname "$state_file")" 2>/dev/null || true
+  python3 - "$state_file" "$@" <<'PY'
+import json, sys
+path = sys.argv[1]
+args = sys.argv[2:]
+try:
+    with open(path) as fh:
+        data = json.load(fh)
+    if not isinstance(data, dict):
+        data = {}
+except Exception:
+    data = {}
+for i in range(0, len(args) - 1, 2):
+    key, value = args[i], args[i + 1]
+    if key.endswith("_at"):
+        try:
+            value = int(value)
+        except ValueError:
+            pass
+    data[key] = value
+with open(path, "w") as fh:
+    json.dump(data, fh, indent=2, sort_keys=True)
+    fh.write("\n")
+PY
+}
 
 branch="$(git branch --show-current)"
 upstream=""
@@ -104,13 +191,38 @@ if [ -z "$upstream" ]; then
   exit 0
 fi
 
-if [ "$fetch_remote" -eq 1 ]; then
+# Try to refresh remote-tracking refs. Stamp every attempt (to throttle the
+# next try, even on failure), but only record a successful check separately so
+# the freshness verdict never trusts a fetch that was blocked.
+attempt_fetch() {
+  attempt_now="$(date +%s)"
   echo "Checking remote updates from '$remote'..."
-  if ! git fetch --quiet "$remote"; then
-    echo "Could not fetch '$remote'. Continue with existing local refs." >&2
+  state_set last_attempt_at "$attempt_now"
+  if git fetch --quiet "$remote" 2>/dev/null; then
+    fetched_head="$(git rev-parse "$upstream" 2>/dev/null || true)"
+    state_set last_remote_check_at "$attempt_now" status ok upstream "$upstream" remote_head "$fetched_head"
+  else
+    echo "Could not fetch '$remote' (network blocked or unavailable)." >&2
+    echo "Mira protocol remote freshness not checked; using local refs." >&2
+    state_set status fetch_failed upstream "$upstream"
+  fi
+}
+
+if [ "$fetch_remote" -eq 0 ]; then
+  echo "Skipping network fetch; comparing cached local refs only."
+elif [ "$local_first" -eq 1 ]; then
+  now="$(date +%s)"
+  last_attempt="$(state_get last_attempt_at || true)"
+  ttl_seconds=$((ttl_hours * 3600))
+  if [ -n "$last_attempt" ] && [ "$ttl_seconds" -gt 0 ] && [ "$((now - last_attempt))" -lt "$ttl_seconds" ]; then
+    age_hours=$(((now - last_attempt) / 3600))
+    last_status="$(state_get status || true)"
+    echo "Remote checked within the last ${ttl_hours}h (about ${age_hours}h ago, status: ${last_status:-unknown}); comparing against cached refs."
+  else
+    attempt_fetch
   fi
 else
-  echo "Skipping network fetch; comparing local refs only."
+  attempt_fetch
 fi
 
 local_head="$(git rev-parse HEAD)"

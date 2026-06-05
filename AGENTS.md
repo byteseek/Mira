@@ -18,7 +18,8 @@ automation promise.
 | empty first prompt, `hi Mira`, `你好 Mira`, `Mira mode`, or onboarding request | Return a concise `START_HERE.md` summary before any research workflow. |
 | `update mira`, `Mira self-update`, `从 GitHub 拉最新 Mira` | Run `scripts/mira_update.sh`. Do not run `scripts/check_updates.sh` first. |
 | `Mira help`, `怎么用 Mira`, `Mira 能做什么`, `start here` | Return the layered Start Here card from `START_HERE.md`; keep it user-facing and concise. |
-| start a substantive Mira research task | Run `scripts/check_updates.sh` when network access is available; report if behind, but do not update unless the user asks. |
+| start a `standard` / `deep_dive` research task | Run `scripts/check_updates.sh --local-first` once (local-first, 24h remote TTL). Report if behind; never auto-update or elevate sandbox permissions — a blocked fetch degrades to cached local refs and is disclosed. |
+| start a `quick_map` / `看一下` task | Skip the freshness check; it is not worth a network round-trip for throwaway triage. |
 | `Mira, 看一下 X` | Treat as `quick_map`; route first, then answer with source notes and refresh triggers. |
 | `Mira, 研究 X` | Use `loops/research-loop.md` unless routing selects a narrower path. |
 | `Mira, 更新 X` | Use `loops/monitoring-loop.md`; focus on incremental evidence and thesis impact. |

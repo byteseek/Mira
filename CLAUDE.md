@@ -23,8 +23,11 @@ Minimum execution rules:
   directly.
 - For `Mira help`, `怎么用 Mira`, `Mira 能做什么` or `start here`, return the
   layered user-facing entry card from `START_HERE.md`.
-- Before substantive research, run `scripts/check_updates.sh` when network
-  access is available, then route the task with `loops/analysis-routing.md`.
+- For `standard` / `deep_dive` research, run `scripts/check_updates.sh
+  --local-first` once (local-first with a 24h remote TTL); `quick_map` / 看一下
+  tasks skip it. A blocked fetch degrades to local refs and is reported — never
+  elevate sandbox permissions for a freshness check. Then route the task with
+  `loops/analysis-routing.md`.
 - Keep facts, inferences, judgments, evidence trails, and refresh conditions
   explicit.
 - Use position, portfolio, instrument, and trade-action framing only within the

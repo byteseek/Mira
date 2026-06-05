@@ -15,11 +15,16 @@ Mira 也是本项目的唤醒词。完整定义见 [MIRA.md](MIRA.md)：Mira 是
 | 场景 | 命令 | 说明 |
 | --- | --- | --- |
 | 用户明确要更新 Mira 本体 | `scripts/mira_update.sh` | 安全更新入口；会 fetch、拒绝 dirty/ahead/diverged，并在成功后校验仓库。 |
-| 开始正式研究前检查 freshness | `scripts/check_updates.sh` | 只报告是否落后 remote，不自动更新。 |
-| 离线或权限受限时只比较本地 remote refs | `scripts/check_updates.sh --no-fetch` | 不联网，结果可能基于旧 refs。 |
+| `standard` / `deep_dive` 研究前检查 freshness | `scripts/check_updates.sh --local-first` | local-first：TTL（默认 24h）内只比缓存的 remote refs，不联网；超过 TTL 才 fetch 一次。只报告是否落后，不自动更新。 |
+| 自定义 TTL 窗口 | `scripts/check_updates.sh --local-first --ttl-hours N` | N 小时内不重复联网；`--ttl-hours 0` 每次都尝试 fetch。 |
+| 离线或权限受限时只比较本地 remote refs | `scripts/check_updates.sh --no-fetch` | 完全不联网，结果可能基于旧 refs；优先级高于 `--local-first`。 |
 | 想让检查脚本在发现落后时询问更新 | `scripts/check_updates.sh --prompt` | 只适合有 upstream 的普通分支。 |
 
-原则：用户已经明确说“更新 Mira”时，不要先跑 freshness check；直接跑 `scripts/mira_update.sh`。研究任务开始前才跑 `scripts/check_updates.sh`。
+原则（分层 freshness gate）：
+- `quick_map` / 看一下：默认 **不跑** freshness check，一次性 triage 不值得联网。
+- `standard` / `deep_dive`：跑 `scripts/check_updates.sh --local-first`。TTL 内是瞬时 local 比较；TTL 过期才联网一次。
+- 真正联网更新只在用户明确说“更新 Mira”时由 `scripts/mira_update.sh` 承担——这时不要先跑 freshness check。
+- 沙箱里**不要为 freshness check 提权**。fetch 被拦就软降级到 local refs，并在输出里写一句 `Mira protocol remote freshness not checked; using local refs.`；检查状态记录在 gitignored 的 `local/mira-update-check.json`（`last_attempt_at` 节流重试，`last_remote_check_at` + `status` 只在成功时更新）。
 
 ### 用户入口
 
