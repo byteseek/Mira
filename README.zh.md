@@ -21,6 +21,7 @@ Mira 关注的是 investment thesis：这个判断基于什么证据、在什么
 | 唤醒词、身份边界和 memory contract | [MIRA.md](MIRA.md) |
 | 一屏版 agent lazy-loading contract | [OPERATING_CONTRACT.md](OPERATING_CONTRACT.md) |
 | 面向使用者的 prompt 和任务卡 | [AGENT_QUICKSTART.md](AGENT_QUICKSTART.md) |
+| 可直接复制到 ChatGPT 对话的指令 | [docs/chatgpt-conversation-instructions.md](docs/chatgpt-conversation-instructions.md) |
 | Codex 项目规则 | [AGENTS.md](AGENTS.md) |
 | Claude Code 入口 | [CLAUDE.md](CLAUDE.md) |
 
@@ -127,6 +128,7 @@ Mira 不是交易机器人、行情后台程序或自动组合管理器。
 校验仓库或正式 case：
 
 ```sh
+python3 scripts/run_quality_gate.py
 python3 scripts/validate_repo.py
 python3 scripts/validate_repo.py cases/<case-id>
 ```

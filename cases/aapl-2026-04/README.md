@@ -31,6 +31,7 @@
 ## Package Files
 
 - `investment-memo.md`
+- `research-package-manifest.json`
 - `evidence-log.csv`
 - `case-notes.md`
 - `expectation-map.csv`

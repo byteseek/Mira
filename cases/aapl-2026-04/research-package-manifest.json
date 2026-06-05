@@ -1,0 +1,49 @@
+{
+  "manifest_version": "mira_research_package_v1",
+  "case_id": "aapl-2026-04",
+  "research_object": "AAPL",
+  "market_scope": "US equity",
+  "time_boundary": "12-24 months from 2026-04-14; historical example, refresh before live use",
+  "research_cutoff_date": "2026-04-14",
+  "package_type": "research_package",
+  "readiness_level": "working_view",
+  "readiness_basis": "The package ties the historical thesis to primary filings, quarterly results and market context, but live actionability is blocked by stale market data and missing refreshed valuation work.",
+  "blocking_gaps": [
+    "current price and valuation snapshot must be refreshed before live use",
+    "base/bull/bear valuation model was not built in this case",
+    "next quarterly results and guidance must be checked before reuse"
+  ],
+  "primary_loop": "loops/research-loop.md",
+  "lead_skill": "skills/equity-research-core/SKILL.md",
+  "support_skills": [],
+  "hero_artifacts": [
+    "investment-memo.md"
+  ],
+  "support_artifacts": [
+    "evidence-log.csv",
+    "case-notes.md",
+    "expectation-map.csv",
+    "thesis-ledger.md",
+    "decision-log.csv",
+    "actionability-bridge.md"
+  ],
+  "handoffs": [
+    {
+      "target": "actionability_bridge",
+      "artifact": "actionability-bridge.md",
+      "boundary": "research_action_only_not_trade_instruction"
+    }
+  ],
+  "source_scope": "SEC Form 10-K, company quarterly results, public market data and selected public event-risk sources through the research cutoff date.",
+  "evidence_log_status": "canonical_v1_1",
+  "quant_gate_status": "waived_with_source_gap_for_live_actionability",
+  "calculation_artifacts": [],
+  "stale_after": "2026-07-13",
+  "must_refresh_if": [
+    "Apple publishes the next quarterly results or formal guidance update",
+    "core AI or product-cycle timing changes materially",
+    "tariff, supply-chain or regulatory disclosures materially affect gross margin",
+    "current price and valuation context differ materially from the April 2026 case"
+  ],
+  "notes": "Historical case package for Mira workflow demonstration; not investment advice."
+}

@@ -6,6 +6,8 @@ Mira 不是一个自动荐股器，也不是后台行情机器人。它是一套
 
 Mira 也是本项目的唤醒词。完整定义见 [MIRA.md](MIRA.md)：Mira 是有名字的研究协议，不是会替代证据判断的虚构人格。
 
+如果只想在普通 ChatGPT 对话里使用 Mira 的研究纪律，而不是让代码 agent 读取整个仓库，可以直接复制 [docs/chatgpt-conversation-instructions.md](docs/chatgpt-conversation-instructions.md) 里的 instruction pack。
+
 ## 1. Agent 入口
 
 ### 使用前检查更新
@@ -254,6 +256,7 @@ cases/<object>-<YYYY-MM>/
 ```text
 cases/<ticker>-<YYYY-MM>/
 ├── README.md
+├── research-package-manifest.json
 ├── investment-memo.md
 ├── case-notes.md
 └── evidence-log.csv
@@ -264,11 +267,19 @@ cases/<ticker>-<YYYY-MM>/
 ```text
 cases/<ticker>-<YYYY-MM>/
 ├── README.md
+├── research-package-manifest.json
 ├── earnings-analysis.md
 ├── event-delta.md
 ├── financial-snapshot.csv
 ├── peer-comparison.csv
 └── evidence-log.csv
+```
+
+如果 case 已有 `README.md` 和 `evidence-log.csv`，可以生成或刷新 manifest：
+
+```sh
+python3 scripts/generate_case_manifests.py cases/<case-id>
+python3 scripts/generate_case_manifests.py --all
 ```
 
 Thesis System 对象：

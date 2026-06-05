@@ -10,6 +10,7 @@ Use this before handing off a formal research output.
 - [ ] Facts, inferences and judgments are separated.
 - [ ] Every durable conclusion has an evidence-log row or explicit source note.
 - [ ] New evidence logs include evidence posture fields or explicitly state why legacy v1 schema is being used.
+- [ ] Formal case packages include `research-package-manifest.json` with hero artifacts, support artifacts, readiness, source scope and refresh conditions.
 - [ ] `readiness_level`, `readiness_basis` and `blocking_gaps` are stated before any actionability conclusion.
 - [ ] Numeric conclusions were routed through `data-analysis-quality-gate` or explicitly waived with a reason.
 - [ ] Derived calculations have a `calculation-ledger` row or explicit formula note.
