@@ -121,6 +121,15 @@ bound to `schemas/vocab.json` (the single source) and to
 - `no`
 <!-- vocab:scope_confirmation_required end -->
 
+`followup_prompt_mode` (Step 4.5; `light` / `standard` / `decision_grade` must carry 1-3 route-bound questions, `none` must carry a `followup_waiver_reason`):
+
+<!-- vocab:followup_prompt_mode start (tokens bound to schemas/vocab.json) -->
+- `none`: no follow-up is useful; pair with an explicit `followup_waiver_reason`.
+- `light`: a single sharpening question.
+- `standard`: 1-3 route-bound questions.
+- `decision_grade`: near actionability / position / portfolio / instrument / PM handoff / durable thesis; 2-3 questions, each naming the next loop / skill.
+<!-- vocab:followup_prompt_mode end -->
+
 ## Data / Tool Ingestion
 
 Use in analysis-routing Step 3.4 and ingestion artifacts. These tokens describe

@@ -28,8 +28,12 @@ eval:
 eval-strict:
     python3 scripts/score_behavior_eval.py --transcripts evals/transcripts --json --require-all
 
-# Everything CI should gate on: strict validation + strict behavior eval.
-check: validate eval-strict
+# Unit tests for the routing-card schema checker (conditional-required teeth).
+test:
+    python3 scripts/test_routing_schema.py
+
+# Everything CI should gate on: strict validation + schema tests + strict behavior eval.
+check: validate test eval-strict
 
 # Print the routing controlled vocabulary as seen by the machine (schemas/vocab.json).
 vocab:

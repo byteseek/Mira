@@ -29,5 +29,8 @@
   },
   "scope_confirmation_required": {
     "enum": ["yes", "no"]
+  },
+  "followup_prompt_mode": {
+    "enum": ["none", "light", "standard", "decision_grade"]
   }
 }

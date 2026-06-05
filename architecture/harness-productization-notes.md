@@ -110,7 +110,10 @@
     是**唯一**豁免。新 case 不产 routing.json 直接 fail;往清单加新条目在 review 被拦
     (不需要"新旧探测器")。
   - 这张清单 = **可见债务计数器**,烧下去即可。
-- golden 例子加 round-trip:每个 `routing-examples.md` 卡片必须先通过 schema。
+- routing-examples.md 卡片**故意只含 routing-critical 字段**(见该文件抬头),因此**不跑完整
+  routing.schema 的 round-trip**(会因缺核心必填字段而 fail);它们仍由 `validate_routing_examples`
+  做 token 级 golden 校验,完整实例级 schema 强制落在 `cases/*/routing.json`。(纠正早期把"卡片必须先过
+  schema"写成已实现——实为 N/A,见 Round-2 后记。)
 - 验收:`validate_repo --report-only` 仍 0/0(首轮回填 6 个 case 的 `routing.json`;其余 ~19 进豁免表)。
 
 ### WS3 — schema-first 输出契约(真正的杠杆)  `[P1/P2]`
@@ -180,6 +183,18 @@
 - 每次改动必须保持 `validate_repo` 0/0、behavior eval 全绿(现为双底座)。
 
 ## Review 吸收记录
+
+### v5 — PR #51 review(合并前),2 点全收
+
+1. **[P1 blocking] follow-up schema 漏洞** → `followup_prompt_mode=decision_grade` 没有
+   `followup_questions` 时被漏过:schema 条件枚举写成臆造的 `["light","standard","deep"]`,而合约
+   ([analysis-routing.md:687](../loops/analysis-routing.md))真实模式是 `none/light/standard/decision_grade`;
+   且该字段是自由字符串,连 bogus 值都过。修:vocab.json 加 `followup_prompt_mode` 枚举、routing.schema `$ref` 它、
+   条件枚举改 `decision_grade`、补 `controlled-vocabulary.md` marked 段落、新增 `scripts/test_routing_schema.py`
+   永久回归(并入 `just check`)。已验证 `decision_grade` 无 questions 现在 fail、`deep` 被枚举拦下。
+2. **[P2 non-blocking] routing-examples round-trip 过度宣称** → 文档曾写"每个 routing-examples.md 卡片必须先过
+   schema",但这些卡片故意只含 routing-critical 字段、不应跑完整 schema。已改为 N/A + token 级 golden 校验,
+   完整实例级强制在 `cases/*/routing.json`。
 
 ### v4 — 第三轮 review(边界压实),4 点全收
 

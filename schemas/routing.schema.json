@@ -29,7 +29,7 @@
     "expected_output_package": {"type": "string", "minLength": 1},
     "readiness_level": {"type": "string", "minLength": 1},
     "private_state_action": {"type": "string", "minLength": 1},
-    "followup_prompt_mode": {"type": "string", "minLength": 1},
+    "followup_prompt_mode": {"$ref": "vocab.json#/followup_prompt_mode"},
     "followup_questions": {"type": "array", "minItems": 1},
     "followup_waiver_reason": {"type": "string", "minLength": 1}
   },
@@ -70,8 +70,8 @@
       "then": {"required": ["disconfirmation_required"], "properties": {"disconfirmation_required": {"enum": ["yes"]}}}
     },
     {
-      "$comment": "follow-up: a non-none mode requires concrete questions",
-      "if": {"properties": {"followup_prompt_mode": {"enum": ["light", "standard", "deep"]}}, "required": ["followup_prompt_mode"]},
+      "$comment": "follow-up: light/standard/decision_grade require concrete questions (analysis-routing.md line 706)",
+      "if": {"properties": {"followup_prompt_mode": {"enum": ["light", "standard", "decision_grade"]}}, "required": ["followup_prompt_mode"]},
       "then": {"required": ["followup_questions"]}
     },
     {
