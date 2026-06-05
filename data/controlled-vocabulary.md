@@ -169,6 +169,31 @@ bound to `schemas/vocab.json` (the single source) and to
 - `decision_grade`: near actionability / position / portfolio / instrument / PM handoff / durable thesis; 2-3 questions, each naming the next loop / skill.
 <!-- vocab:followup_prompt_mode end -->
 
+## Live Data Freshness
+
+Use in analysis-routing Step 3.35 and live market source notes. These tokens
+describe whether a same-day market answer has current enough data to support the
+visible judgment.
+
+`live_data_gate`:
+
+- `required`: the prompt depends on current or same-day data and fresh lookup is required.
+- `waived_definition`: the prompt uses live-market language but asks only for a stable definition or method.
+- `not_applicable`: the prompt does not depend on live or same-day data.
+
+`freshness_status`:
+
+- `live`: source claims real-time or near-real-time data and has a usable quote/publish time.
+- `delayed`: source is delayed or likely delayed, but still usable for a bounded quick map.
+- `stale`: source timestamp is outside the stated live-use window.
+- `unavailable`: no usable fresh source was obtained.
+
+`cross_check_status`:
+
+- `passed`: two independent sources align, or one official/primary market source is sufficient for the bounded claim.
+- `partial`: only one usable source, delayed source, or source boundary caveat remains.
+- `failed`: sources conflict materially or the timestamp cannot support the judgment.
+
 ## Data / Tool Ingestion
 
 Use in analysis-routing Step 3.4 and ingestion artifacts. These tokens describe

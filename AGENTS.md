@@ -20,6 +20,7 @@ automation promise.
 | `Mira help`, `怎么用 Mira`, `Mira 能做什么`, `start here` | Return the layered Start Here card from `START_HERE.md`; keep it user-facing and concise. |
 | start a substantive Mira research task | Run `scripts/check_updates.sh` when network access is available; report if behind, but do not update unless the user asks. |
 | `Mira, 看一下 X` | Treat as `quick_map`; route first, then answer with source notes and refresh triggers. |
+| time-sensitive market question (`今天`, `现在`, `目前`, `latest`, intraday, premarket, after-hours, crash/pullback) | Run `data/live-data-source-policy.md`; search or refresh live sources before judging, and show quote/publish time plus freshness caveat. |
 | `Mira, 研究 X` | Use `loops/research-loop.md` unless routing selects a narrower path. |
 | `Mira, 更新 X` | Use `loops/monitoring-loop.md`; focus on incremental evidence and thesis impact. |
 | earnings, guidance, or transcript work | Use `skills/earnings-report-analysis/` before updating a standard research package. |
@@ -35,6 +36,8 @@ line that `Mira help` shows the full prompt menu.
 - Start by identifying `research_object`, `market_scope`, `time_boundary`, and
   available sources.
 - Before formal analysis, run `loops/analysis-routing.md`.
+- For time-sensitive market questions, run `data/live-data-source-policy.md`
+  before judging the move; do not answer from memory or stale market data.
 - Use `quick_map`, `standard`, or `deep_dive` to control depth. Do not let a
   quick look become a full package unless the user asks.
 - For single-equity research, run thesis horizon and framework routing; add

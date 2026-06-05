@@ -11,6 +11,10 @@ Use this before handing off a formal research output.
 - [ ] Intent intake ran: compound prompts were split into `primary_intent` / `secondary_intents`, running assumptions were declared, and the routing card was scaled to `depth_mode`.
 - [ ] On actionability / position / portfolio routes, `decision_pressure` is emitted (even if `none`), with a disconfirmation check when pressure is medium/high.
 - [ ] `research_object`, `market_scope`, `time_boundary` and source boundary are stated.
+- [ ] Time-sensitive market answers ran `data/live-data-source-policy.md`: fresh
+  lookup/search was performed or explicitly waived as a stable definition;
+  `quote_time` / `publish_time`, freshness status, cross-check status and
+  `stale_after` are present or the answer is downgraded.
 - [ ] `output_language` is stated on formal output (defaults to `interaction_language`; `quick_answer` may inherit implicitly); `evidence_languages` is declared when evidence spans more than one language.
 - [ ] After `market_scope` is set, the matching `data/market-default-packs.csv` pack (sources, calendar, currency, accounting standard, translation caveats) was applied; local-disclosure gaps were downgraded per `coverage_gap_action`.
 - [ ] Localization: human-facing labels are rendered in `output_language` via `data/localization-glossary.csv`; machine tokens, schema field names and file names were NOT translated.

@@ -84,6 +84,12 @@ Use `market_price_and_trading` for price, volume, valuation and options-implied 
 
 For technical / market-pricing context, record price, volume, volatility, options, short interest and derived levels as `market_pricing` or `derived_calculation`. These claims can support setup quality, follow-through, trigger levels, invalidation and refresh priority, but they cannot by themselves support business execution, demand, margin or moat conclusions.
 
+When the user asks about today, now, current market reaction, intraday direction
+or whether a move is a pullback/crash/panic, first apply
+[live-data-source-policy.md](live-data-source-policy.md). Live-use market
+judgments require `quote_time` or `publish_time`, source freshness status and a
+cross-check or explicit downgrade.
+
 ### Industry Context
 
 Use `official_macro_and_industry`, `industry_and_supply_chain_signal`, `sellside_and_expert_research` and `professional_media` together. Single-source industry narratives should be downgraded unless confirmed by primary data or multiple independent sources.
@@ -129,6 +135,8 @@ Every case output using this taxonomy should include either:
 Default stale rules:
 
 - Company financial facts: next quarterly or annual report.
+- Live market data: 30-60 minutes for intraday use unless the output states a
+  stricter `stale_after`; same day for closing-session summaries.
 - Market data: same day for live use; 30 days for background technical context.
 - Event/news sources: 14 days unless confirmed by primary disclosure.
 - Social and rumor signals: 24-72 hours for active monitoring; otherwise `watch_only`.

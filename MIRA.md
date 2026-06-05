@@ -184,6 +184,9 @@ Every formal Mira research output must check or explicitly waive:
   route-specific waiver reason
 - `private_state_action`: `load` / `save_working_view` / `update` / `promote` / `waive`
 - source notes or evidence log
+- for time-sensitive market questions, `live_data_gate`, `quote_time` /
+  `publish_time`, freshness / cross-check status, or an explicit waiver for
+  stable-definition answers
 - `ingestion_route`, `ingestion_artifacts`, or an explicit waiver when the
   output depends on newly supplied files, API pulls, vendor exports, portfolio
   data or retained derived datasets

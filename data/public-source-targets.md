@@ -98,6 +98,33 @@ Yahoo Finance 适合做公开市场数据入口，但不作为公司原始事实
 - 相对收益必须写明 benchmark 或 peer basket。
 - 派生指标必须在 evidence log 里标为 `derived_calculation`，并列出上游 market-data source id。
 
+## Live Market Snapshot Targets
+
+当问题涉及“今天 / 现在 / latest / 盘中 / premarket / after-hours / 是否调整或崩盘”等同日判断时，先套用
+[live-data-source-policy.md](live-data-source-policy.md)。默认目标不是固定供应商，而是按市场选择最窄的可用实时或延迟源：
+
+| need | preferred targets | fallback targets | output requirement |
+| --- | --- | --- | --- |
+| US index snapshot | official index/exchange page where available; Google Finance; Yahoo Finance; Stooq; authorized provider | timestamped CNBC/MarketWatch/Reuters/Bloomberg live coverage when quote endpoints fail | index level, pct change, `quote_time`, source freshness, VIX or volatility context when judging panic |
+| US single-stock snapshot | exchange/Nasdaq/NYSE page where available; Google Finance; Yahoo Finance quote; authorized provider | timestamped professional media live article | price move, volume/relative move where available, event source if explaining why |
+| Non-US equity snapshot | local exchange or official market page first; issuer IR for event source | Yahoo/Stooq/Google as delayed cross-check | local source status or explicit delayed/aggregated caveat |
+| Macro/rates reaction | official release page plus Treasury/FRED/Fed/BLS/BEA where applicable | timestamped professional media live coverage | released number source, reaction source, publish/quote time |
+| Volatility/options context | Cboe/VIX or exchange/provider option data | aggregated quote page | quote time, expiry if options chain is used |
+
+Rules:
+
+- Search or source lookup is required for time-sensitive market questions.
+- Use at least two independent market-data sources when the classification is
+  material (`崩盘`, `panic`, `squeeze`, `breakout`, `sharp selloff`), unless one
+  source is an official exchange/index source and the answer labels the source
+  boundary.
+- If only one delayed aggregator is reachable, answer as a delayed quick map and
+  downgrade confidence.
+- Do not mix futures, ETF and cash index without naming which instrument each
+  number describes.
+- News/live blogs can explain catalysts only after the market snapshot is
+  timestamped; they are not substitutes for the quote itself.
+
 ## Public Endpoint Targets
 
 公开 JSON/API 端点只作为“按需打开的结构化网页目标”。默认不做定时请求、不批量抓取、不保存完整镜像：
