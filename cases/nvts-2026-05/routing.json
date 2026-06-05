@@ -2,7 +2,7 @@
   "schema_version": "1.0",
   "interaction_mode": "routed_research",
   "primary_intent": "NVTS FY2026 Q1 earnings analysis package with peer verification",
-  "task_mode": "event_update",
+  "task_mode": "earnings_event",
   "research_object": "single_equity",
   "market_scope": "US equities",
   "time_boundary": "next 1-2 quarters",

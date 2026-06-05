@@ -10,7 +10,7 @@
     "primary_intent": {"type": "string", "minLength": 1},
     "secondary_intents": {"type": "array"},
     "execution_order": {"type": "string", "minLength": 1},
-    "task_mode": {"type": "string", "minLength": 1},
+    "task_mode": {"$ref": "vocab.json#/task_mode"},
     "research_object": {"type": "string", "minLength": 1},
     "market_scope": {"type": "string", "minLength": 1},
     "time_boundary": {"type": "string", "minLength": 1},
@@ -63,6 +63,16 @@
       "$comment": "quant: any non-none dependency requires a calculation gate",
       "if": {"properties": {"quant_dependency": {"enum": ["low", "medium", "high"]}}, "required": ["quant_dependency"]},
       "then": {"required": ["calculation_gate"]}
+    },
+    {
+      "$comment": "route: decision_support interaction is actionability — must emit decision_pressure even if none (analysis-routing.md line 124 / Step 0.5)",
+      "if": {"properties": {"interaction_mode": {"const": "decision_support"}}, "required": ["interaction_mode"]},
+      "then": {"required": ["decision_pressure"]}
+    },
+    {
+      "$comment": "route: position/portfolio review must emit decision_pressure even if none (analysis-routing.md line 169 / Step 0.5)",
+      "if": {"properties": {"task_mode": {"enum": ["position_review", "portfolio_construction_review"]}}, "required": ["task_mode"]},
+      "then": {"required": ["decision_pressure"]}
     },
     {
       "$comment": "route: medium/high decision pressure requires an explicit disconfirmation=yes",
