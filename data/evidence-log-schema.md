@@ -6,14 +6,19 @@
 
 ## Canonical Columns
 
-所有新的 `evidence-log.csv` 必须使用以下表头，顺序固定：
+所有新的 `evidence-log.csv` 必须使用以下表头，顺序固定（v1.2）：
 
 ```csv
-source_id,claim_area,claim_type,claim_text,source_speaker,verification_status,authority_level,source_date,as_of_date,url_or_path,used_by_agent,used_by_skill,confidence,upstream_sources,notes,evidence_category,freshness_status,conflict_status,treatment,readiness_impact
+source_id,claim_area,claim_type,claim_text,source_speaker,verification_status,authority_level,source_date,as_of_date,url_or_path,used_by_agent,used_by_skill,confidence,upstream_sources,notes,evidence_category,freshness_status,conflict_status,treatment,readiness_impact,source_language,translation_basis
 ```
 
-历史 canonical v1 表头缺少最后五个 evidence posture 字段。validator 会继续兼容
-v1 历史 case，但新模板和新 case 应使用上面的 v1.1 表头。
+版本沿革：
+
+- v1：缺最后五个 evidence posture 字段。
+- v1.1：在 v1 末尾追加 `evidence_category,freshness_status,conflict_status,treatment,readiness_impact`。
+- v1.2：在 v1.1 末尾追加 `source_language,translation_basis`（i18n 语言列）。
+
+validator 继续兼容 v1 / v1.1 历史 case；新模板和新 case 应使用 v1.2 表头。两个语言列**追加在末尾**，因此 v1.1→v1.2 是纯追加迁移，不改动既有列顺序。
 
 ## Required Fields
 
@@ -39,6 +44,8 @@ v1 历史 case，但新模板和新 case 应使用上面的 v1.1 表头。
 | `conflict_status` | yes | `none` / `unresolved` / `contradicted` / `not_checked`。 |
 | `treatment` | yes | `use_normally` / `attribute` / `sensitize` / `haircut` / `source_gap` / `monitor` / `exclude` / `open_item`。 |
 | `readiness_impact` | yes | `supports_durable_conclusion` / `supports_working_view` / `monitoring_only` / `blocks_actionability` / `blocks_publication` / `not_material`。 |
+| `source_language` | yes (v1.2) | 来源原文语言，BCP-47 风格标签，例如 `zh-CN`、`en`、`ja`、`ko`。派生/无语言文本的行用底层来源语言或 `not_applicable`。 |
+| `translation_basis` | yes (v1.2) | `not_translated` / `mira_translation` / `provider_translation` / `official_translation` / `bilingual_source` / `not_applicable`。 |
 
 ## Validation Rules
 
@@ -56,10 +63,31 @@ v1 历史 case，但新模板和新 case 应使用上面的 v1.1 表头。
 - `market_pricing` 只能说明市场如何定价，不能写成基本面验证。
 - `evidence_category=verified_fact` 不应搭配 `verification_status=unverified`、`claim_type=assumption`、`claim_type=opinion`、`claim_type=sentiment` 或 `claim_type=rumor_signal`。
 - `readiness_impact=supports_durable_conclusion` 不应搭配 `evidence_category=unknown`、`weak_signal`、`stale` 或 `contradicted`，除非 notes 说明控制来源和降级方式。
+- v1.2：`source_language` 必须非空；`translation_basis` 必须是允许枚举。
+- v1.2：**判断性 claim**（`claim_type ∈ {guidance, company_claim, commitment, target}`）且 `translation_basis ∈ {mira_translation, provider_translation}` 的行，`notes` 应包含 `original_excerpt=`（保留原文片段，否则 validator WARN）。背景性/聚合类 claim 可只留译摘，不触发 WARN。
+
+## Translation Provenance (v1.2)
+
+外文一手源在进入 evidence log 时，**译文不能取代原文**——尤其管理层措辞本身就是 variant-perception 信号，翻译会丢失语气和对冲性措辞。
+
+字段职责（不新开第三列，原文进 `notes`）：
+
+- `claim_text`：保持**一句标准化、可核验 claim**，不得塞原文 + 译文。
+- `source_language`：来源原文语言标签。
+- `translation_basis`：译文来源（Mira 译 / 供应商译 / 官方译 / 双语源 / 未翻译 / 不适用）。
+- `notes`：承担判断的跨语言引用必须保留 `original_excerpt=...; translated_summary=...` 键值。背景性引用可只留译摘。
+
+判定边界：是否要 `original_excerpt` 跟随 [claim-taxonomy.md](claim-taxonomy.md)——做分析功的 claim（`guidance`、`company_claim`、`commitment`、`target` 等）要原文；纯背景/聚合数据可豁免。
+
+示例（中文公告，Mira 翻译，承担判断）：
+
+```csv
+cninfo_2026q1,guidance,guidance,"Management guided 2026 revenue growth to 'around 20%'.",management,disclosed,L1,2026-04-20,2026-04-20,https://www.cninfo.com.cn/...,research-orchestrator,equity-research-core,medium,not_applicable,"original_excerpt=公司预计2026年营收同比增长20%左右; translated_summary=full-year rev growth ~20%; hedged with 左右",company_statement,current,none,attribute,supports_working_view,zh-CN,mira_translation
+```
 
 ## Legacy Handling
 
-历史 case 中存在 source-record 形态或旧 claim schema 的 `evidence-log.csv`。这些文件应保留作为历史产物，但不得作为新样板。
+历史 case 中存在 source-record 形态或旧 claim schema 的 `evidence-log.csv`。这些文件应保留作为历史产物，但不得作为新样板。v1 / v1.1 表头仍被 validator 容忍为 legacy；新 case 用 v1.2。
 
 迁移顺序：
 

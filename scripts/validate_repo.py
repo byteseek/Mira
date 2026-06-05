@@ -76,6 +76,34 @@ EVIDENCE_POSTURE_COLUMNS = [
 
 CANONICAL_EVIDENCE_COLUMNS = CANONICAL_EVIDENCE_COLUMNS_V1 + EVIDENCE_POSTURE_COLUMNS
 
+EVIDENCE_LANGUAGE_COLUMNS = [
+    "source_language",
+    "translation_basis",
+]
+
+# v1.2 appends the two i18n columns. v1 / v1.1 headers stay tolerated.
+CANONICAL_EVIDENCE_COLUMNS_V1_2 = CANONICAL_EVIDENCE_COLUMNS + EVIDENCE_LANGUAGE_COLUMNS
+
+TRANSLATION_BASES = {
+    "not_translated",
+    "mira_translation",
+    "provider_translation",
+    "official_translation",
+    "bilingual_source",
+    "not_applicable",
+}
+
+# Only judgment-bearing claims must retain a verbatim original excerpt when
+# translated (management wording is itself the signal). Background/aggregated
+# claims may carry just a translated summary — matches the rule documented in
+# data/evidence-log-schema.md, so legitimate background translations don't WARN.
+JUDGMENT_BEARING_CLAIM_TYPES = {
+    "guidance",
+    "company_claim",
+    "commitment",
+    "target",
+}
+
 CLAIM_TYPES = {
     "fact",
     "reported_metric",
@@ -440,9 +468,11 @@ def validate_evidence_log(path: Path) -> list[Issue]:
     header_set = set(header)
     is_v1 = header == CANONICAL_EVIDENCE_COLUMNS_V1
     is_v1_1 = header == CANONICAL_EVIDENCE_COLUMNS
-    if not (is_v1 or is_v1_1):
-        missing = [c for c in CANONICAL_EVIDENCE_COLUMNS if c not in header_set]
-        extra = [c for c in header if c not in CANONICAL_EVIDENCE_COLUMNS]
+    is_v1_2 = header == CANONICAL_EVIDENCE_COLUMNS_V1_2
+    has_posture = is_v1_1 or is_v1_2
+    if not (is_v1 or is_v1_1 or is_v1_2):
+        missing = [c for c in CANONICAL_EVIDENCE_COLUMNS_V1_2 if c not in header_set]
+        extra = [c for c in header if c not in CANONICAL_EVIDENCE_COLUMNS_V1_2]
         if SOURCE_RECORD_COLUMNS & header_set:
             issues.append(
                 Issue(
@@ -466,7 +496,12 @@ def validate_evidence_log(path: Path) -> list[Issue]:
         return issues
 
     for i, row in enumerate(rows, start=2):
-        required_fields = CANONICAL_EVIDENCE_COLUMNS if is_v1_1 else CANONICAL_EVIDENCE_COLUMNS_V1
+        if is_v1_2:
+            required_fields = CANONICAL_EVIDENCE_COLUMNS_V1_2
+        elif is_v1_1:
+            required_fields = CANONICAL_EVIDENCE_COLUMNS
+        else:
+            required_fields = CANONICAL_EVIDENCE_COLUMNS_V1
         for field in required_fields:
             if not (row.get(field) or "").strip():
                 issues.append(Issue("ERROR", path, i, f"missing required field `{field}`"))
@@ -495,7 +530,27 @@ def validate_evidence_log(path: Path) -> list[Issue]:
         treatment = row.get("treatment", "").strip()
         readiness_impact = row.get("readiness_impact", "").strip()
 
-        if is_v1_1:
+        if is_v1_2:
+            translation_basis = row.get("translation_basis", "").strip()
+            if translation_basis and translation_basis not in TRANSLATION_BASES:
+                issues.append(Issue("ERROR", path, i, f"invalid translation_basis `{translation_basis}`"))
+            # Translation provenance: a judgment-bearing translated claim must keep
+            # the verbatim original snippet (background claims are exempt).
+            if (
+                claim_type in JUDGMENT_BEARING_CLAIM_TYPES
+                and translation_basis in {"mira_translation", "provider_translation"}
+                and "original_excerpt" not in row.get("notes", "")
+            ):
+                issues.append(
+                    Issue(
+                        "WARN",
+                        path,
+                        i,
+                        "translated claim should keep `original_excerpt=` in notes (translation provenance)",
+                    )
+                )
+
+        if has_posture:
             if evidence_category and evidence_category not in EVIDENCE_CATEGORIES:
                 issues.append(
                     Issue("ERROR", path, i, f"invalid evidence_category `{evidence_category}`")
@@ -549,7 +604,7 @@ def validate_evidence_log(path: Path) -> list[Issue]:
                 )
             )
 
-        if is_v1_1:
+        if has_posture:
             if evidence_category == "verified_fact" and (
                 verification_status == "unverified"
                 or claim_type in {"assumption", "opinion", "sentiment", "rumor_signal"}
@@ -1273,6 +1328,7 @@ def validate_repo(root: Path, as_of: date) -> list[Issue]:
     issues.extend(validate_source_coverage_matrix(root))
     issues.extend(validate_routing_examples(root))
     issues.extend(validate_vocab_doc_consistency(root))
+    issues.extend(validate_localization_glossary(root))
     for path in sorted(root.glob("**/routing.json")):
         if ".git" in path.parts:
             continue
@@ -1367,6 +1423,90 @@ def validate_paths(paths: list[Path], as_of: date) -> list[Issue]:
                     "expected evidence-log.csv, decision-log.csv, research-package-manifest.json or case directory",
                 )
             )
+    return issues
+
+
+def validate_localization_glossary(root: Path) -> list[Issue]:
+    """Structure + anti-drift check for data/localization-glossary.csv.
+
+    Each `kind=protocol_token` row's `canonical_token` must exist in a known
+    token source (schemas/vocab.json routing enums, the hardcoded
+    evidence/state/action enum sets, or the documented language field names), so
+    the glossary cannot silently drift from the controlled vocabulary.
+    """
+    path = root / "data" / "localization-glossary.csv"
+    if not path.exists():
+        return []
+
+    header, rows, issues = read_csv(path)
+    if not header:
+        return issues
+
+    required_cols = {"key", "kind", "en", "canonical_token"}
+    missing_cols = sorted(required_cols - set(header))
+    if missing_cols:
+        issues.append(Issue("ERROR", path, 1, f"glossary missing columns: {missing_cols}"))
+        return issues
+
+    valid_kinds = {"protocol_token", "field_label", "domain_term"}
+    documented_field_tokens = {
+        "output_language",
+        "interaction_language",
+        "evidence_languages",
+        "source_language",
+        "translation_basis",
+    }
+    known_tokens: set[str] = set(documented_field_tokens)
+    for fragment in _VOCAB.values():
+        if isinstance(fragment, dict) and "enum" in fragment:
+            known_tokens.update(fragment["enum"])
+    for enum_set in (
+        THESIS_STATES,
+        RESEARCH_ACTIONS,
+        SETUP_TYPES,
+        POSITION_SIZING,
+        CLAIM_TYPES,
+        VERIFICATION_STATUSES,
+        AUTHORITY_LEVELS,
+        CONFIDENCE_LEVELS,
+        EVIDENCE_CATEGORIES,
+        FRESHNESS_STATUSES,
+        CONFLICT_STATUSES,
+        EVIDENCE_TREATMENTS,
+        READINESS_IMPACTS,
+        READINESS_LEVELS,
+        TRANSLATION_BASES,
+    ):
+        known_tokens.update(enum_set)
+
+    seen_keys: set[str] = set()
+    for i, row in enumerate(rows, start=2):
+        key = (row.get("key") or "").strip()
+        kind = (row.get("kind") or "").strip()
+        if not key:
+            issues.append(Issue("ERROR", path, i, "glossary row missing `key`"))
+            continue
+        if key in seen_keys:
+            issues.append(Issue("ERROR", path, i, f"duplicate glossary key `{key}`"))
+        seen_keys.add(key)
+        if kind not in valid_kinds:
+            issues.append(Issue("ERROR", path, i, f"invalid kind `{kind}`; use {sorted(valid_kinds)}"))
+        if not (row.get("en") or "").strip():
+            issues.append(Issue("ERROR", path, i, f"glossary `{key}` missing `en` display string"))
+        if kind == "protocol_token":
+            canonical = (row.get("canonical_token") or "").strip()
+            if not canonical:
+                issues.append(Issue("ERROR", path, i, f"protocol_token `{key}` missing `canonical_token`"))
+            elif canonical not in known_tokens:
+                issues.append(
+                    Issue(
+                        "ERROR",
+                        path,
+                        i,
+                        f"protocol_token `{key}` canonical_token `{canonical}` not found in any "
+                        "controlled vocabulary source (vocab.json, hardcoded enums, or documented field tokens)",
+                    )
+                )
     return issues
 
 

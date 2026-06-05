@@ -1,0 +1,30 @@
+key,kind,en,zh-CN,ja,notes,canonical_token
+quick_answer,protocol_token,quick answer,快速回答,簡易回答,interaction_mode value,quick_answer
+routed_research,protocol_token,routed research,常规路由研究,ルーティング調査,interaction_mode value,routed_research
+decision_support,protocol_token,decision support,决策支持,意思決定支援,interaction_mode value,decision_support
+quick_map,protocol_token,quick map,快速侦察,クイックマップ,depth_mode value; canonical in OPERATING_CONTRACT Depth Defaults (not controlled-vocabulary),quick_map
+standard,protocol_token,standard,标准研究,標準,depth_mode value; canonical in OPERATING_CONTRACT Depth Defaults (not controlled-vocabulary),standard
+deep_dive,protocol_token,deep dive,深挖,深掘り,depth_mode value; canonical in OPERATING_CONTRACT Depth Defaults (not controlled-vocabulary),deep_dive
+watch_only,protocol_token,watch only,仅观察,観察のみ,research_action value,watch_only
+needs_refresh,protocol_token,needs refresh,需刷新,要更新,research_action value,needs_refresh
+no_action,protocol_token,no action,无动作,アクションなし,research_action value,no_action
+source_gap,protocol_token,source gap,证据缺口,ソース欠落,evidence/calculation gap token,source_gap
+irreducible_uncertainty,protocol_token,irreducible uncertainty,不可消除的不确定性,不可避の不確実性,knowability terminal,irreducible_uncertainty
+unknowable_now,protocol_token,not knowable yet,当前不可知,現時点で不可知,knowability status,unknowable_now
+output_language,protocol_token,output language,输出语言,出力言語,language field,output_language
+interaction_language,protocol_token,interaction language,交互语言,対話言語,language field (added Phase 0),interaction_language
+evidence_languages,protocol_token,evidence languages,证据语言集合,証拠言語の集合,language field (added Phase 0; output-level set),evidence_languages
+research_object,field_label,research object,研究对象,調査対象,routing card field,research_object
+market_scope,field_label,market scope,市场范围,市場スコープ,routing card field,market_scope
+time_boundary,field_label,time boundary,时间边界,時間境界,routing card field,time_boundary
+evidence_log,field_label,evidence log,证据日志,エビデンスログ,file name evidence-log.csv is invariant; label only,
+investment_memo,field_label,investment memo,投资备忘录,投資メモ,file name investment-memo.md is invariant; label only,
+facts_section,field_label,facts,事实,事実,facts/inferences/judgments section heading,
+inferences_section,field_label,inferences,推断,推論,facts/inferences/judgments section heading,
+judgments_section,field_label,judgments,判断,判断,facts/inferences/judgments section heading,
+refresh_condition,field_label,refresh condition,刷新条件,更新条件,renders stale_after / must_refresh_if; tokens stay English,
+variant_perception,domain_term,variant perception,预期差,予想とのギャップ,English synonym: expectations gap,
+guidance,domain_term,guidance,指引,ガイダンス,company forward guidance,
+consensus,domain_term,consensus,一致预期,コンセンサス,sell-side consensus estimate,
+moat,domain_term,economic moat,护城河,経済的な堀,durable competitive advantage,
+catalyst,domain_term,catalyst,催化剂,カタリスト,event that re-rates the thesis,
