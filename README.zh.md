@@ -16,26 +16,7 @@ Mira 关注的是 investment thesis：这个判断基于什么证据、在什么
 
 如果你只是想开始使用，先看 [START_HERE.md](START_HERE.md)。它是统一的用户入口卡，包含从一句话启动到完整任务卡、help 类型矩阵和使用边界。
 
-如果你刚 clone 这个仓库并在 agent 里首次打开，默认应该先看到 `START_HERE.md` 的摘要；如果第一句话已经是具体研究任务，agent 应直接路由任务，不用打断式 onboarding。
-
-最短启动：
-
-```text
-Mira, 看一下 NVDA
-Mira, 研究一下 AAPL
-Mira, 更新 CRWV
-Mira, 分析 TSLA 最新财报
-```
-
-更好的问法：
-
-```text
-Mira, 研究一下 NVDA
-我真正想判断的是：未来 2-4 个季度云厂 capex 是否还能支撑收入上修。
-市场范围：美股
-时间边界：截至今天
-输出：先给 quick_map，判断是否值得升级成标准研究包。
-```
+如果你在 agent 里只说 `hi Mira`、`你好 Mira`、`Mira mode`，或问“怎么用 Mira”，默认应该先看到 `START_HERE.md` 的摘要；如果第一句话已经是具体研究任务，agent 应直接路由任务，不用打断式 onboarding。
 
 如果你想用 Codex、Claude Code 或其他代码型 agent 直接引用本项目，主要文档是：
 

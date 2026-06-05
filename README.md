@@ -16,26 +16,7 @@ This repository is for research workflow design, documentation, and historical e
 
 If you just want to start using Mira, read [START_HERE.md](START_HERE.md). It is the single user-facing entry card for layered prompts, examples, the help matrix and usage boundaries.
 
-After cloning this repository and opening it in an agent for the first time, the agent should return a concise `START_HERE.md` summary by default. If the first prompt is already a concrete research task, it should route the task directly instead of interrupting with onboarding.
-
-Shortest prompts:
-
-```text
-Mira, look at NVDA
-Mira, research AAPL
-Mira, update CRWV
-Mira, analyze TSLA's latest earnings
-```
-
-Better prompt:
-
-```text
-Mira, research NVDA.
-Question: can cloud capex support revenue upside over the next 2-4 quarters?
-Market scope: US equities.
-Time boundary: through today.
-Output: start with quick_map and say whether this deserves a standard research package.
-```
+If you open the repository in an agent and only say `hi Mira`, `你好 Mira`, `Mira mode`, or ask how to use Mira, the agent should return a concise `START_HERE.md` summary. If the first prompt is already a concrete research task, it should route the task directly instead of interrupting with onboarding.
 
 If you want Codex, Claude Code or another code agent to use this repository directly, the main documents are:
 

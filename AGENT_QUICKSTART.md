@@ -23,61 +23,21 @@ Mira 也是本项目的唤醒词。完整定义见 [MIRA.md](MIRA.md)：Mira 是
 
 ### 用户入口
 
-面向用户的 prompt 不在本文件重复维护，统一见 [START_HERE.md](START_HERE.md)。最短入口：
-
-```text
-Mira, 看一下 NVDA
-Mira, 研究一下 AAPL
-Mira, 更新 CRWV
-Mira, 分析 TSLA 最新财报
-```
-
-更完整的任务卡、help 类型矩阵和边界说明也都在 [START_HERE.md](START_HERE.md)。
+面向用户的 prompt 不在本文件重复维护，统一见 [START_HERE.md](START_HERE.md)。短入口、完整任务卡、Help 类型矩阵和边界说明都以该文件为准。
 
 ### Codex
 
 在 Codex 中打开本仓库后，根目录的 [AGENTS.md](AGENTS.md) 会提供默认项目规则，[MIRA.md](MIRA.md) 会定义唤醒词和 memory 边界。用户入口提示统一从 [START_HERE.md](START_HERE.md) 摘要。
 
-示例：
-
-```text
-Mira, 研究 NVDA，关注未来 2-4 个季度 AI 资本开支变化对收入和估值的影响，市场范围是美股，截止今天。
-```
+用户需要示例时，返回 [START_HERE.md](START_HERE.md) 的摘要，不从本文件复制 prompt。
 
 ### Claude Code
 
 Claude Code 默认读取根目录 [CLAUDE.md](CLAUDE.md)。该文件会要求 Claude 同步遵守 [AGENTS.md](AGENTS.md)、[MIRA.md](MIRA.md) 和本 quickstart。
 
-建议在 Claude Code 里使用同样的触发语：
-
-```text
-Mira, 更新 AAPL 研究包，只看最近财报、指引、市场预期和 thesis impact。
-```
-
 ## 2. 最小任务卡
 
-完整用户任务卡的 canonical 版本见 [START_HERE.md](START_HERE.md)。为了让 agent 少猜，最好一次给出这几个字段。缺字段时，agent 应该先做合理补全或提出最少问题。
-
-```text
-Mira, 研究/更新/看一下/评估方法: <对象>
-研究问题: <你真正想判断什么>
-市场范围: <美股/A股/港股/全球/宏观区域>
-时间边界: <日内/1-2个季度/未来1-2年/长期>
-来源边界: <公开来源/本地文件/指定链接/已有 case>
-输出深度: <quick_map / standard / deep_dive>
-输出要求: <研究包/财报包/宏观 note/产业地图/只要结论摘要>
-```
-
-示例：
-
-```text
-Mira, 研究 CRWV
-研究问题: 市场是不是高估了未来 GPU 云收入持续性？
-市场范围: 美股
-时间边界: 未来 2-8 个季度
-来源边界: 公开财报、招股书、公司 IR、同业信息和市场数据
-输出要求: 标准 research package，并写清 must_refresh_if
-```
+完整用户任务卡的 canonical 版本见 [START_HERE.md](START_HERE.md)。缺字段时，agent 应该先做合理补全或提出最少问题；不要在本文件维护第二份任务卡。
 
 ## 3. 路由规则
 
@@ -124,135 +84,9 @@ Mira, 研究 CRWV
 - [skills/equity-research-core/references/framework-routing.md](skills/equity-research-core/references/framework-routing.md)
 - [skills/equity-research-core/references/overlay-routing.md](skills/equity-research-core/references/overlay-routing.md)，如果专题证据路径有增量价值
 
-## 4. 扩展提示词
+## 4. 用户 prompt 源头
 
-短入口和 Help 矩阵统一维护在 [START_HERE.md](START_HERE.md)。本节保留更细的扩展模式，供 agent few-shot 或用户需要更具体格式时使用。
-
-### 股票首次覆盖
-
-```text
-Mira, 研究 <ticker/company>
-研究问题: <核心错价或 thesis 问题>
-市场范围: <市场>
-时间边界: <1-2Q / 2-8Q / >1y>
-输出: 标准 research package，包含 selected_framework、selected_overlays、evidence log、stale_after 和 must_refresh_if。
-```
-
-如果只想先判断值不值得正式研究：
-
-```text
-Mira, 看一下 <ticker/company>
-输出深度: quick_map
-请只给 routing card、核心分歧、关键 source gap、是否值得升级为 standard research package。
-```
-
-### 股票增量更新
-
-```text
-Mira, 更新 <ticker/company> 的 thesis
-只看 <日期> 之后的新信息，判断是否改变原 thesis、风险、节奏、框架或 overlay。
-如果核心前提变化，升级为完整 research loop。
-```
-
-### Thesis System 更新
-
-```text
-Mira, 更新 <ticker/company> 的 thesis ledger
-请检查 current thesis、expectation map、supporting claims、disconfirming evidence 和 thesis state。
-如果只是弱信号或价格反应，只能写 watch item，不要升级 thesis。
-```
-
-### 事件 Delta
-
-```text
-Mira, 看 <ticker/company> 这次 <财报/FOMC/产品发布/监管事件> 是否改变 thesis
-请先写 pre-event setup，再比较 actual disclosure vs expectation，输出 event-delta、revision path、thesis impact 和 required follow-up。
-```
-
-### 财报事件
-
-```text
-Mira, 分析 <ticker/company> 最新财报
-重点看收入质量、利润率、现金流、指引、同业对比、管理层口径、市场预期差和 thesis impact。
-先输出 earnings package，再判断是否需要更新标准 research package。
-```
-
-### SEC 补充核验
-
-```text
-Mira, 给 <ticker/company> 当前 case 补一下 SEC 核验
-重点查 <指标/section>，只做 supplement，不完整拆 10-Q/10-K。
-把 CIK、accession、form、filing date、report period、tag/section 和 source_gap 写清楚。
-```
-
-### SEC 文件专项拆解
-
-```text
-Mira, 专项拆 <ticker/company> 的 <10-K/10-Q/S-1/DEF 14A/8-K exhibit>
-研究问题: <这份 filing 要回答什么>
-输出 filing-analysis、filing-metric-table、filing-risk-delta、accounting-quality-check 和 evidence-log。
-```
-
-### 产业概念
-
-```text
-Mira, 研究 <产业/技术/供应链概念>
-先给 One-Page Industry Map，再拆概念边界、产业链、供需、定价、放量、利润池和候选标的。
-输出 industry package，并把适合单票研究的公司做 stock_research_handoff。
-```
-
-### 宏观经济或资产定价
-
-```text
-Mira, 看一下 <宏观变量/数据发布/市场状态> 对 <资产/行业/股票> 的影响
-请区分增长、通胀、政策、利率、美元、信用、流动性、风险偏好和市场已计价部分。
-输出 transmission_chain、asset_impact、what_would_change_the_view、stale_after 和 must_refresh_if。
-```
-
-### 方法论评估
-
-```text
-Mira, 这个方法靠谱吗: <方法/指标/框架>
-请按 methodology research loop 评估假设、适用范围、失效模式、证据质量、可复现性和是否进入 trial/adopted。
-```
-
-### 单一头寸复盘
-
-```text
-Mira, review 我的 <ticker/company> 仓位
-当前仓位: <权重/成本/入场日期/约束，如果可以提供>
-研究问题: 原 thesis 还成立吗？仓位大小和证据强度是否匹配？
-输出 position-review，使用 position_review_action 和 position_sizing_context，但不要生成交易指令。
-```
-
-### 组合结构复盘
-
-```text
-Mira, 看这个组合是不是暴露太集中
-组合范围: <持仓列表/权重/mandate/风险约束，如果可以提供>
-重点看主题、因子、宏观驱动、催化剂拥挤、重复 bet 和 stale thesis。
-输出 portfolio-construction-review 和 position-review queue。
-```
-
-### 决策质量复盘
-
-```text
-Mira, 复盘我当时对 <ticker/company/theme> 的判断质量
-原判断日期: <日期>
-结果窗口: <日期或事件>
-重点区分 thesis 对错、市场 beta、估值变化、timing、运气和执行约束。
-输出 decision-quality-review，并说明是否需要更新 methodology 或 postmortem。
-```
-
-## 4.1 分角色入口
-
-| 你是谁 | 默认问法 | 默认产出 |
-| --- | --- | --- |
-| 研究员 | `Mira, 研究 <对象>，重点判断 <问题>` | research package、evidence log、thesis objects |
-| 交易员 | `Mira, 看 <对象> 的预期差和失效条件` | actionability bridge、invalidation、risk/reward frame、next catalyst |
-| PM | `Mira, 复盘这组 thesis / 看组合层风险` | thesis index、portfolio register、主题/因子/催化剂暴露和 follow-up queue |
-| 持仓复盘 | `Mira, review 我的 <ticker> 仓位` | position review、仓位语义、风险/证据匹配和 follow-up queue |
-| 决策复盘 | `Mira, 复盘当时这个判断` | decision-quality review、postmortem、methodology update candidate |
+用户可见 prompt、分角色入口和 Help 矩阵统一维护在 [START_HERE.md](START_HERE.md)。本 quickstart 不维护第二份 prompt 菜单；需要选择执行 loop 或 artifact 时，使用上面的路由表和下面的输出位置。
 
 ## 5. 输出位置
 

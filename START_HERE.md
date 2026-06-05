@@ -23,7 +23,7 @@ Mira, 这个估值方法靠谱吗
 | `看一下 X` | `quick_map` | 先路由，给核心判断、source notes、关键缺口和刷新触发条件。 |
 | `研究一下 X` / `研究 X` | `standard` | 进入正式研究路径，除非路由选中更窄的财报、产业、宏观、ETF 或方法论路径。 |
 | `更新 X` | `standard` | 聚焦增量证据、thesis impact 和是否需要升级完整研究。 |
-| `深挖 X` / `完整研究 X` | `deep_dive` | 用更完整证据路径和附加 artifact，但仍只加载有用材料。 |
+| `深挖 X` / `完整研究 X` / `方法验证` / `PM review` | `deep_dive` | 用更完整证据路径和附加 artifact，但仍只加载有用材料。 |
 
 ## 2. 更好的问法
 
@@ -102,7 +102,7 @@ Mira, 研究 CRWV
 
 给 agent 使用时，默认流程是：
 
-1. 用户刚 clone / 首次打开项目 / 空白启动 / 只说 `hi Mira`、`你好 Mira`、`Mira mode` 或问怎么开始时，先返回本文件的 Start Here 摘要。
+1. 用户空白启动、只说 `hi Mira`、`你好 Mira`、`Mira mode`，或问怎么开始时，先返回本文件的 Start Here 摘要。
 2. 用户已经给出具体研究任务时，不要插入完整 onboarding；直接按任务路由，最多附一句 `可输入 Mira help 查看更多问法`。
 3. 用户明确要求更新 Mira 本体时，运行 `scripts/mira_update.sh`。
 4. 正式研究前，网络可用时运行 `scripts/check_updates.sh` 只检查 freshness，不自动更新。

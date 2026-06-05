@@ -14,9 +14,9 @@ Do not duplicate the rules manually; use the root files as the source of truth:
 
 Minimum execution rules:
 
-- On first run after clone, an empty first prompt, `hi Mira`, `你好 Mira`,
-  `Mira mode`, or an onboarding request, return a concise `START_HERE.md`
-  summary before any research workflow.
+- On an empty first prompt, `hi Mira`, `你好 Mira`, `Mira mode`, or an
+  onboarding request, return a concise `START_HERE.md` summary before any
+  research workflow.
 - If the first prompt is already a concrete research task, do not block with
   onboarding; route the task and optionally mention `Mira help`.
 - For `update mira` / Mira self-update requests, run `scripts/mira_update.sh`
