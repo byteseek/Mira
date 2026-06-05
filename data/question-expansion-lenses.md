@@ -14,13 +14,23 @@ After `depth_mode` is selected and before information-value / knowability is
 finalized, choose at most two lenses:
 
 - `primary_question_lens`: the highest-value lens, or `none`.
-- `selected_question_lenses`: optional list when a second lens is needed.
+- `selected_question_lenses`: complete ordered list of active question lenses,
+  including `primary_question_lens`; omit or leave empty when the primary lens
+  is `none`.
 - `lens_selection_basis`: why the lens improves this specific question.
 - `lens_data_required`: what evidence, baseline or calculation the lens needs.
 - `lens_failure_mode`: how the lens can mislead if its requirements are absent.
 
 If the lens requirements are unavailable, keep the answer at `working_view`,
 `source_gap`, `calculation_gap`, `needs_refresh` or equivalent downgrade status.
+
+`question_lens` rewrites or sharpens the question before evidence work.
+`selected_lenses` in single-equity routing selects analysis frameworks such as
+variant perception. They do not replace each other.
+
+Question expansion is scoped to the current route and depth. If a lens shows
+that a broader scope or deeper package is needed, surface that as an explicit
+upgrade path or progressive follow-up rather than silently expanding the task.
 
 ## Lenses
 

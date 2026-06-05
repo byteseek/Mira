@@ -70,6 +70,11 @@
       "then": {"required": ["calculation_gate"]}
     },
     {
+      "$comment": "question lens: any active lens requires basis, data requirements, and failure mode",
+      "if": {"properties": {"primary_question_lens": {"enum": ["comparison_association", "scale_shift", "trend_dynamics", "anomaly_detection"]}}, "required": ["primary_question_lens"]},
+      "then": {"required": ["lens_selection_basis", "lens_data_required", "lens_failure_mode"]}
+    },
+    {
       "$comment": "route: decision_support interaction is actionability — must emit decision_pressure even if none (analysis-routing.md line 124 / Step 0.5)",
       "if": {"properties": {"interaction_mode": {"const": "decision_support"}}, "required": ["interaction_mode"]},
       "then": {"required": ["decision_pressure"]}

@@ -619,7 +619,7 @@ This loop is currently `candidate_internal_release`, not final external-grade.
 记录：
 
 - `primary_question_lens`: `none` / `comparison_association` / `scale_shift` / `trend_dynamics` / `anomaly_detection`
-- `selected_question_lenses`: 最多两个 lens；没有触发时为空或仅 `none`
+- `selected_question_lenses`: 完整有序列表，包含 `primary_question_lens`，最多两个；`primary_question_lens = none` 时省略或留空
 - `lens_selection_basis`: 为什么这个 lens 能改善当前 route
 - `lens_data_required`: 需要什么比较组、时间序列、baseline、口径或 source
 - `lens_failure_mode`: 如果缺少这些要求，最可能误导在哪里
@@ -630,6 +630,8 @@ This loop is currently `candidate_internal_release`, not final external-grade.
   falsification path、quant gate 或 progressive follow-up 时才触发。
 - 最多选两个 lens；不要把四个 lens 全部套上。若多个 lens 都可用，优先选择
   能改变结论强度、readiness 或下一 route 的那一个。
+- `question_lens` 只负责改写或锐化问题；单票路由里的 `selected_lenses`
+  负责选择分析框架（如 variant perception），二者不互相替代。
 - `comparison_association`: 问题需要“相对谁 / 与什么变量同动 / 是否有机制路径”。
 - `scale_shift`: 问题粒度不对，需要由事件上升到 thesis，或由宏大主题下钻到
   可测变量。
@@ -640,6 +642,8 @@ This loop is currently `candidate_internal_release`, not final external-grade.
 
 - lens 不新增研究对象，不绕过 task_mode、source quality、private state 或
   actionability 边界。
+- lens 默认在当前 route / depth 内锐化问题；如果它暴露出需要更大 scope 或
+  更深 package，只能作为显式 upgrade path 或 progressive follow-up，不得静默扩展任务。
 - 关联分析必须区分 correlation、mechanism 和 causality；没有机制路径时只能
   写 association，不得写因果。
 - 趋势或异常驱动 durable conclusion 时，继续进入 Step 3.5 quant dependency。

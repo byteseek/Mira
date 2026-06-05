@@ -101,3 +101,70 @@ depth_mode: standard
 source/quant boundary: company disclosure, cloud capex read-through, consensus proxy and valuation-implied expectations are required before durable judgment.
 readiness_level: working_view until the quant gate is satisfied.
 ```
+
+## 3. Question Expansion Lens
+
+Prompt: `Mira, 看 NVDA 这次财报，顺便对比 AMD，这俩我都重仓了`
+
+Machine routing object:
+
+```json
+{
+  "schema_version": "routing.v1",
+  "interaction_mode": "decision_support",
+  "primary_intent": "earnings event read on NVDA with AMD peer comparison queued before any position review",
+  "secondary_intents": [
+    "AMD peer comparison",
+    "position review of NVDA and AMD"
+  ],
+  "execution_order": "earnings event -> peer comparison -> position review only after position data is provided",
+  "task_mode": "earnings_event",
+  "research_object": "single_equity:NVDA",
+  "market_scope": "US equities",
+  "time_boundary": "latest_earnings_event",
+  "depth_mode": "standard",
+  "information_value": "high",
+  "knowability_status": "partially_knowable",
+  "primary_question_lens": "comparison_association",
+  "selected_question_lenses": [
+    "comparison_association",
+    "scale_shift"
+  ],
+  "lens_selection_basis": "The prompt asks for NVDA earnings and AMD comparison while also referencing holdings, so the question must separate event facts, peer read-through, and any later position-review scope.",
+  "lens_data_required": "NVDA and AMD same-period earnings disclosures, segment definitions, data-center revenue or GPU proxy variables, guidance, margin paths, and explicit position data before any position review.",
+  "lens_failure_mode": "Without same-definition peer data and position context, the answer could treat correlation as causality or turn an earnings comparison into unsupported portfolio advice.",
+  "decision_pressure": "low",
+  "quant_dependency": "medium",
+  "calculation_gate": "required",
+  "primary_skill_or_loop": "skills/earnings-report-analysis/SKILL.md",
+  "routing_basis": "The primary request is an earnings event read; AMD is a peer-comparison secondary intent, and the holdings language triggers decision-support boundaries without enough data for position conclusions.",
+  "expected_output_package": "earnings-package",
+  "readiness_level": "working_view",
+  "private_state_action": "waive",
+  "followup_prompt_mode": "decision_grade",
+  "followup_questions": [
+    {
+      "question": "Should the NVDA versus AMD comparison anchor on data-center revenue, GPU supply constraints, gross margin, or guidance revision?",
+      "rung": "Rung B - pricing_variable_or_consensus",
+      "route_binding": "primary_question_lens=comparison_association + quant_dependency",
+      "object_anchor": "NVDA and AMD earnings read-through variables",
+      "decision_impact": "evidence_path"
+    },
+    {
+      "question": "If you want this to become a real position review, can you provide holdings, weights, cost basis, risk budget, and time window for NVDA and AMD?",
+      "rung": "Rung C - falsification_or_next_route",
+      "route_binding": "position_review",
+      "object_anchor": "NVDA and AMD holding context",
+      "decision_impact": "position_review_scope"
+    }
+  ]
+}
+```
+
+Visible routing card:
+
+```text
+primary_intent: NVDA earnings-event read
+question lens: compare NVDA and AMD on same-definition variables, while keeping position review separate until real holding data is provided.
+readiness_level: working_view until peer definitions, quant checks and position context are available.
+```
