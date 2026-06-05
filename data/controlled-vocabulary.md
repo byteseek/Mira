@@ -106,6 +106,22 @@ Use in routing intake (analysis-routing Step 3.3), after `depth_mode` is selecte
 
 `depth_override_reason`: free-text basis when this gate changes the depth selected in Step 3.25.
 
+## Question Expansion Lenses
+
+Use in routing intake (analysis-routing Step 3.27), after `depth_mode` is
+selected and before information-value / knowability is finalized. Lens details
+live in [question-expansion-lenses.md](question-expansion-lenses.md).
+
+`question_expansion_lens`:
+
+<!-- vocab:question_expansion_lens start (tokens bound to schemas/vocab.json) -->
+- `none`: no question-expansion lens materially improves this route.
+- `comparison_association`: sharpen the question through peer, factor, macro, customer, supplier or variable association, while separating correlation from causality.
+- `scale_shift`: move the question up or down the evidence scale, such as event -> thesis, theme -> measurable variable, or company -> segment.
+- `trend_dynamics`: test level, direction, acceleration, persistence or regime change over time.
+- `anomaly_detection`: test whether an observation is unusual versus a defined baseline, and whether it is data error, one-time noise, cyclicality or structural signal.
+<!-- vocab:question_expansion_lens end -->
+
 ## Depth, Quant And Scope (Routing Intake)
 
 Routing-intake tokens used in analysis-routing Steps 3.25 / 3.5 / 0. Token sets are

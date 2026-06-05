@@ -45,6 +45,7 @@ refresh, safety or source-boundary discipline.
 | --- | --- | --- | --- | --- |
 | Decision pressure | actionability, position, portfolio or instrument language | `triggered_visible` | `full_visible` | `full_visible` |
 | Disconfirmation | `decision_pressure` medium/high or framing risk not `none` | `brief_visible` | `full_visible` | `full_visible` |
+| Question expansion lens | comparison, scale shift, trend or anomaly framing materially improves the route | `internal_check` or natural-language follow-up | `triggered_visible` | `full_visible` when it changes evidence path |
 | Quant / calculation gate | derived numbers, valuation, peer rank, trend or model-dependent conclusion | `brief_visible` source/calculation gap | `full_visible` | `full_visible` with ledger when retained |
 | Ingestion gate | newly supplied files, API pulls, vendor exports, portfolio data or retained derived datasets | `triggered_visible` | `full_visible` | `full_visible` |
 | Private state boundary | user-specific views, watchlists, holdings, weights or preferences | `triggered_visible` | `full_visible` | `full_visible` |

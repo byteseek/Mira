@@ -16,6 +16,7 @@ Every formal output must:
 - run [loops/analysis-routing.md](loops/analysis-routing.md) before formal analysis
 - route via the machine index first: read [data/routing-index.csv](data/routing-index.csv) (`task_mode` → one `primary_loop_or_skill` + trigger + `load_gate`), then load only that one loop/skill body; do not front-load the whole analysis-routing.md
 - choose `depth_mode`: `quick_map`, `standard` or `deep_dive`
+- when it improves the question, apply at most two [question expansion lenses](data/question-expansion-lenses.md) before source or calculation budget is spent
 - after choosing depth, run the information-value / knowability check; allow `irreducible_uncertainty` as an honest terminal instead of over-researching
 - separate `facts`, `inferences` and `judgments`, and label each material judgment with `judgment_confidence` and a `reversal_condition`
 - keep every durable conclusion tied to an evidence log or explicit source note
@@ -47,6 +48,7 @@ Every formal output must:
 | Route selection (which loop/skill) | [data/routing-index.csv](data/routing-index.csv) — `task_mode` → one loop/skill | only the matched `primary_loop_or_skill` body |
 | Any formal task | [data/interaction-kernel.md](data/interaction-kernel.md) | [loops/analysis-routing.md](loops/analysis-routing.md) for route detail, then selected loop |
 | Intent intake / decision pressure | [loops/analysis-routing.md](loops/analysis-routing.md) Step 0 / 0.5 | [data/actionability-risk-control.md](data/actionability-risk-control.md) when decision pressure is medium/high |
+| Question expansion | [data/question-expansion-lenses.md](data/question-expansion-lenses.md) | only when comparison, scale shift, trend or anomaly framing improves the current route |
 | Continue / save user view | [loops/view-continuity-loop.md](loops/view-continuity-loop.md) | `private/research/<OBJECT>/` and `private/views/view-register.csv` only when relevant |
 | First-pass single equity | [loops/research-loop.md](loops/research-loop.md) | thesis horizon, framework and overlay references |
 | Thesis update / expectation change | [loops/thesis-update-loop.md](loops/thesis-update-loop.md) | thesis ledger, expectation map and decision-log templates |

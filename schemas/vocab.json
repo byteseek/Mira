@@ -27,6 +27,9 @@
   "knowability_status": {
     "enum": ["knowable", "partially_knowable", "unknowable_now", "irreducible_uncertainty"]
   },
+  "question_expansion_lens": {
+    "enum": ["none", "comparison_association", "scale_shift", "trend_dynamics", "anomaly_detection"]
+  },
   "scope_confirmation_required": {
     "enum": ["yes", "no"]
   },
