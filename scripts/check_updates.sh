@@ -222,6 +222,10 @@ elif [ "$local_first" -eq 1 ]; then
   stored_upstream="$(state_get upstream || true)"
   stored_remote="$(state_get remote || true)"
   ttl_seconds=$((ttl_hours * 3600))
+  # Treat a non-numeric cached timestamp (corrupt, hand-edited, or a future
+  # format) as a missing cache, so it degrades to a re-fetch rather than
+  # aborting in the arithmetic below under `set -u`.
+  case "$last_attempt" in ''|*[!0-9]*) last_attempt="" ;; esac
   # Honor the TTL only when the cached attempt is recent AND was taken against
   # the same upstream/remote; otherwise re-fetch for the current target.
   if [ -n "$last_attempt" ] && [ "$ttl_seconds" -gt 0 ] \
@@ -229,6 +233,7 @@ elif [ "$local_first" -eq 1 ]; then
     && [ "$stored_upstream" = "$upstream" ] && [ "$stored_remote" = "$remote" ]; then
     last_status="$(state_get status || true)"
     last_ok="$(state_get last_remote_check_at || true)"
+    case "$last_ok" in ''|*[!0-9]*) last_ok="" ;; esac
     # Only claim "checked" when the last attempt actually succeeded within the
     # TTL; a recent failed attempt still throttles re-tries but must disclose
     # that remote freshness is unknown.
