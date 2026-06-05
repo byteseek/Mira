@@ -1,0 +1,83 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "routing.schema.json",
+  "title": "Mira Routing Card",
+  "description": "Machine contract for a Mira routing card. Canonical artifact: cases/<case-id>/routing.json (human-readable view: routing.md). Enforced by scripts/validate_repo.py via a stdlib subset checker supporting: type, enum, const, required, properties, minLength, minItems, allOf, if/then, and $ref to vocab.json. Enums $ref schemas/vocab.json — the single vocabulary source. Conditional required is orthogonal: depth-gated (quick_map<standard<deep_dive) AND route-gated (decision pressure) AND quant-gated AND follow-up-gated. NOTE: the multi-field actionability/position/portfolio trigger (route_family) is a round-2 item; round-1 enforces the decision_pressure -> disconfirmation coupling only.",
+  "type": "object",
+  "properties": {
+    "schema_version": {"type": "string", "minLength": 1},
+    "interaction_mode": {"$ref": "vocab.json#/interaction_mode"},
+    "primary_intent": {"type": "string", "minLength": 1},
+    "secondary_intents": {"type": "array"},
+    "execution_order": {"type": "string", "minLength": 1},
+    "task_mode": {"type": "string", "minLength": 1},
+    "research_object": {"type": "string", "minLength": 1},
+    "market_scope": {"type": "string", "minLength": 1},
+    "time_boundary": {"type": "string", "minLength": 1},
+    "depth_mode": {"$ref": "vocab.json#/depth_mode"},
+    "information_value": {"$ref": "vocab.json#/information_value"},
+    "knowability_status": {"$ref": "vocab.json#/knowability_status"},
+    "decision_pressure": {"$ref": "vocab.json#/decision_pressure"},
+    "framing_risk": {"$ref": "vocab.json#/framing_risk"},
+    "disconfirmation_required": {"$ref": "vocab.json#/disconfirmation_required"},
+    "quant_dependency": {"$ref": "vocab.json#/quant_dependency"},
+    "calculation_gate": {"$ref": "vocab.json#/calculation_gate"},
+    "scope_confirmation_required": {"$ref": "vocab.json#/scope_confirmation_required"},
+    "primary_skill_or_loop": {"type": "string", "minLength": 1},
+    "routing_basis": {"type": "string", "minLength": 1},
+    "routing_mismatch_risk": {"type": "string", "minLength": 1},
+    "expected_output_package": {"type": "string", "minLength": 1},
+    "readiness_level": {"type": "string", "minLength": 1},
+    "private_state_action": {"type": "string", "minLength": 1},
+    "followup_prompt_mode": {"$ref": "vocab.json#/followup_prompt_mode"},
+    "followup_questions": {"type": "array", "minItems": 1},
+    "followup_waiver_reason": {"type": "string", "minLength": 1}
+  },
+  "required": [
+    "schema_version",
+    "interaction_mode",
+    "primary_intent",
+    "task_mode",
+    "research_object",
+    "market_scope",
+    "time_boundary",
+    "depth_mode",
+    "information_value",
+    "knowability_status",
+    "primary_skill_or_loop",
+    "routing_basis",
+    "followup_prompt_mode"
+  ],
+  "allOf": [
+    {
+      "$comment": "depth: standard adds the package/readiness/private-state block",
+      "if": {"properties": {"depth_mode": {"const": "standard"}}, "required": ["depth_mode"]},
+      "then": {"required": ["expected_output_package", "readiness_level", "private_state_action"]}
+    },
+    {
+      "$comment": "depth: deep_dive additionally requires the full intent + mismatch block",
+      "if": {"properties": {"depth_mode": {"const": "deep_dive"}}, "required": ["depth_mode"]},
+      "then": {"required": ["expected_output_package", "readiness_level", "private_state_action", "secondary_intents", "execution_order", "routing_mismatch_risk"]}
+    },
+    {
+      "$comment": "quant: any non-none dependency requires a calculation gate",
+      "if": {"properties": {"quant_dependency": {"enum": ["low", "medium", "high"]}}, "required": ["quant_dependency"]},
+      "then": {"required": ["calculation_gate"]}
+    },
+    {
+      "$comment": "route: medium/high decision pressure requires an explicit disconfirmation=yes",
+      "if": {"properties": {"decision_pressure": {"enum": ["medium", "high"]}}, "required": ["decision_pressure"]},
+      "then": {"required": ["disconfirmation_required"], "properties": {"disconfirmation_required": {"enum": ["yes"]}}}
+    },
+    {
+      "$comment": "follow-up: light/standard/decision_grade require concrete questions (analysis-routing.md line 706)",
+      "if": {"properties": {"followup_prompt_mode": {"enum": ["light", "standard", "decision_grade"]}}, "required": ["followup_prompt_mode"]},
+      "then": {"required": ["followup_questions"]}
+    },
+    {
+      "$comment": "follow-up: explicit none must carry a route-specific waiver reason",
+      "if": {"properties": {"followup_prompt_mode": {"const": "none"}}, "required": ["followup_prompt_mode"]},
+      "then": {"required": ["followup_waiver_reason"]}
+    }
+  ]
+}

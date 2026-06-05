@@ -1,0 +1,41 @@
+# Legacy routing-artifact exemption list (grandfather list).
+#
+# Each line is a case directory under cases/ that predates the routing.json
+# contract (schemas/routing.schema.json). A case here is exempt from the
+# per-case rule "a case with investment-memo.md or evidence-log.csv must have
+# routing.json" (scripts/validate_repo.py: validate_case_routing).
+#
+# This list was FROZEN when the rule landed (2026-06-05) = a one-time snapshot
+# of existing cases without routing.json. It is the ONLY exemption mechanism:
+# default is "required". NEW cases must ship routing.json; adding a new entry
+# here should be rejected in review. Burn this list down over time (golden /
+# canonical cases come off first); when empty, delete the file and the exempt
+# branch in validate_repo.py.
+#
+# '#' comment lines and blank lines are ignored. One case-dir name per line.
+#
+# Round-1 backfilled (NOT exempt): aapl-2026-04, nvts-2026-05 (golden),
+# cpo-silicon-photonics-2026-06-bottleneck-recursion-trial,
+# defense-autonomy-drones-2026-05-value-capture-screen,
+# nuclear-ai-power-2026-05-value-capture-screen,
+# stablecoin-payments-2026-05-value-capture-screen.
+
+a-share-etf-options-underlyings-2026-05-26
+abf-2026-05
+ai-hardware-bottleneck-watchlist-2026-05
+cohr-2026-05
+cohr-2026-06-cpo-bottleneck-handoff
+crm-2026-05-product-workflow-trial
+crwv-2026-05
+eose-2026-05
+etf-discovery-2026-05-09
+etf-listing-analysis-2026-05-09
+etn-2026-05-long-term-workflow-trial
+figr-2026-05
+humanoid-robotics-2026-05-value-capture-screen
+lite-2026-06-cpo-bottleneck-handoff
+lly-2026-05-glp1-workflow-dry-run
+pton-2020-2022-failure-backtest
+tdoc-2020-2022-failure-backtest
+vrt-2026-05-long-term-workflow-trial
+wolf-2026-05

@@ -1,0 +1,32 @@
+{
+  "schema_version": "1.0",
+  "interaction_mode": "routed_research",
+  "primary_intent": "Stablecoin / tokenized cash / payment-network value-capture screen",
+  "secondary_intents": [
+    "Produce theme-to-company handoff candidates (Circle, Coinbase, Visa, Mastercard, PayPal, Block)",
+    "Separate reserve economics, partner costs, redemption liquidity and regulatory obligations"
+  ],
+  "execution_order": "setup -> theme-to-company handoff -> six-lens test -> trigger overlays -> build evidence log -> ordinary-vs-workflow delta -> decision -> refresh plan",
+  "task_mode": "methodology_review",
+  "research_object": "industry_concept",
+  "market_scope": "US-listed public equities plus public/private read-throughs",
+  "time_boundary": "gt_1y",
+  "depth_mode": "deep_dive",
+  "information_value": "high",
+  "knowability_status": "partially_knowable",
+  "decision_pressure": "none",
+  "framing_risk": "none",
+  "quant_dependency": "none",
+  "calculation_gate": "not_required",
+  "primary_skill_or_loop": "loops/long-term-thesis-loop.md",
+  "routing_basis": "The theme translates regulatory change and product adoption into public-company value capture across issuers, exchanges, card networks, payment processors, banks and blockchains.",
+  "routing_mismatch_risk": "A payment-adoption memo could overstate equity actionability if reserve economics, partner costs, redemption liquidity and regulatory obligations are not separated.",
+  "expected_output_package": "hot-theme value-capture screen (theme-value-capture-screen.csv, stablecoin-reserve-regulatory-check.csv, evidence-log.csv)",
+  "readiness_level": "working_view",
+  "private_state_action": "waive",
+  "followup_prompt_mode": "standard",
+  "followup_questions": [
+    "Complete an expectation map plus reserve-yield/regulatory check on issuers before actionability?",
+    "Confirm whether issuers or distribution partners are the clearest equity expression for each sub-theme?"
+  ]
+}

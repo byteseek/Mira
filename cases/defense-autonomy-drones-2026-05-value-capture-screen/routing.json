@@ -1,0 +1,32 @@
+{
+  "schema_version": "1.0",
+  "interaction_mode": "routed_research",
+  "primary_intent": "Defense autonomy / drones / counter-UAS value-capture screen",
+  "secondary_intents": [
+    "Produce theme-to-company handoff candidates (AVAV, KTOS, PLTR, LMT, RTX, NOC)",
+    "Separate funded programs-of-record from policy priority and prototype awards"
+  ],
+  "execution_order": "setup -> theme-to-company handoff -> six-lens test -> trigger overlays -> build evidence log -> ordinary-vs-workflow delta -> decision -> refresh plan",
+  "task_mode": "methodology_review",
+  "research_object": "industry_concept",
+  "market_scope": "US-listed public equities plus private defense-technology read-throughs",
+  "time_boundary": "gt_1y",
+  "depth_mode": "deep_dive",
+  "information_value": "high",
+  "knowability_status": "partially_knowable",
+  "decision_pressure": "none",
+  "framing_risk": "none",
+  "quant_dependency": "none",
+  "calculation_gate": "not_required",
+  "primary_skill_or_loop": "loops/long-term-thesis-loop.md",
+  "routing_basis": "The topic translates defense urgency into public-company value capture and depends on budget, program status, contract type, production ramp, compliance, allied sales and valuation expectations.",
+  "routing_mismatch_risk": "A single-equity memo could overstate actionability if policy priority and prototype awards are not separated from funded programs and delivery economics.",
+  "expected_output_package": "hot-theme value-capture screen (value-capture-map.csv, government-procurement-program-check.csv, evidence-log.csv, methodology-delta.md)",
+  "readiness_level": "working_view",
+  "private_state_action": "waive",
+  "followup_prompt_mode": "standard",
+  "followup_questions": [
+    "Complete expectation maps for AVAV/KTOS/PLTR before any actionability?",
+    "Confirm funded program-of-record path vs Replicator-style attritable awards in the value-capture map?"
+  ]
+}

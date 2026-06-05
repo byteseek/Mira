@@ -8,10 +8,12 @@ Human-readable explanation can be written in `basis`, `notes`, `risk`, `required
 
 Use in routing intake (analysis-routing Step 0).
 
+<!-- vocab:interaction_mode start (tokens bound to schemas/vocab.json) -->
 - `quick_answer`: user wants a one-line direction or fact; no full package.
 - `routed_research`: normal entry into a routed loop / skill.
 - `decision_support`: near actionability / position / portfolio; must run the decision pressure gate (Step 0.5).
 - `routing_unclear`: research object or time boundary is fully unclear; clarify definition only.
+<!-- vocab:interaction_mode end -->
 
 ## Decision Pressure And Framing Risk
 
@@ -19,24 +21,30 @@ Use in routing intake (analysis-routing Step 0.5). These are transient, per-turn
 
 `decision_pressure`:
 
+<!-- vocab:decision_pressure start (tokens bound to schemas/vocab.json) -->
 - `none`
 - `low`
 - `medium`
 - `high`
+<!-- vocab:decision_pressure end -->
 
 `framing_risk` (describe the question structure, not the user):
 
+<!-- vocab:framing_risk start (tokens bound to schemas/vocab.json) -->
 - `confirmation_seeking`: question is shaped to confirm an existing view.
 - `fomo`: question is driven by a recent move or fear of missing it.
 - `anchoring`: question anchors on a prior price, cost basis or target.
 - `loss_aversion`: question is shaped around avoiding a realized loss.
 - `position_defense`: question is shaped to justify keeping an existing exposure.
 - `none`
+<!-- vocab:framing_risk end -->
 
 `disconfirmation_required`:
 
+<!-- vocab:disconfirmation_required start (tokens bound to schemas/vocab.json) -->
 - `yes`
 - `no`
+<!-- vocab:disconfirmation_required end -->
 
 ## Routing Carryover
 
@@ -58,18 +66,69 @@ Use in routing intake (analysis-routing Step 3.3), after `depth_mode` is selecte
 
 `information_value`:
 
+<!-- vocab:information_value start (tokens bound to schemas/vocab.json) -->
 - `low`: another research round is unlikely to change the conclusion or decision.
 - `medium`: more research would sharpen but not flip the conclusion.
 - `high`: more research can change the conclusion or the decision at stake.
+<!-- vocab:information_value end -->
 
 `knowability_status`:
 
+<!-- vocab:knowability_status start (tokens bound to schemas/vocab.json) -->
 - `knowable`: key variables can be settled with available sources or reasonable research.
 - `partially_knowable`: some variables are knowable; core uncertainty remains.
 - `unknowable_now`: key variables cannot be known yet; awaits an event, disclosure or time.
 - `irreducible_uncertainty`: the conclusion is dominated by an inherently unknowable variable; deeper research will not improve quality. A legitimate honest terminal — pair with `watch_only` / `needs_refresh` and an observable refresh trigger.
+<!-- vocab:knowability_status end -->
 
 `depth_override_reason`: free-text basis when this gate changes the depth selected in Step 3.25.
+
+## Depth, Quant And Scope (Routing Intake)
+
+Routing-intake tokens used in analysis-routing Steps 3.25 / 3.5 / 0. Token sets are
+bound to `schemas/vocab.json` (the single source) and to
+[../schemas/routing.schema.json](../schemas/routing.schema.json).
+
+`depth_mode` (Step 3.25; the information-value/knowability gate above can override it downward):
+
+<!-- vocab:depth_mode start (tokens bound to schemas/vocab.json) -->
+- `quick_map`: fast read, early triage, or unclear source boundary.
+- `standard`: normal research / earnings / monitoring package.
+- `deep_dive`: long-term thesis, complex valuation, SEC deep dive or methodology review.
+<!-- vocab:depth_mode end -->
+
+`quant_dependency` (Step 3.5; how much the conclusion rests on derived numbers):
+
+<!-- vocab:quant_dependency start (tokens bound to schemas/vocab.json) -->
+- `none`
+- `low`
+- `medium`
+- `high`
+<!-- vocab:quant_dependency end -->
+
+`calculation_gate` (Step 3.5; required whenever `quant_dependency` is not `none`):
+
+<!-- vocab:calculation_gate start (tokens bound to schemas/vocab.json) -->
+- `not_required`: no derived number gates the conclusion.
+- `required`: a calculation gate must be satisfied before the conclusion stands.
+- `waived`: user accepted a faster read; related conclusions stay preliminary.
+<!-- vocab:calculation_gate end -->
+
+`scope_confirmation_required` (Step 0; set when a compound prompt needs scope confirmation before formal analysis):
+
+<!-- vocab:scope_confirmation_required start (tokens bound to schemas/vocab.json) -->
+- `yes`
+- `no`
+<!-- vocab:scope_confirmation_required end -->
+
+`followup_prompt_mode` (Step 4.5; `light` / `standard` / `decision_grade` must carry 1-3 route-bound questions, `none` must carry a `followup_waiver_reason`):
+
+<!-- vocab:followup_prompt_mode start (tokens bound to schemas/vocab.json) -->
+- `none`: no follow-up is useful; pair with an explicit `followup_waiver_reason`.
+- `light`: a single sharpening question.
+- `standard`: 1-3 route-bound questions.
+- `decision_grade`: near actionability / position / portfolio / instrument / PM handoff / durable thesis; 2-3 questions, each naming the next loop / skill.
+<!-- vocab:followup_prompt_mode end -->
 
 ## Data / Tool Ingestion
 
