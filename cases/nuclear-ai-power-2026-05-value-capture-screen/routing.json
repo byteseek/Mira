@@ -1,0 +1,32 @@
+{
+  "schema_version": "1.0",
+  "interaction_mode": "routed_research",
+  "primary_intent": "Nuclear / SMR / AI-power value-capture screen",
+  "secondary_intents": [
+    "Produce theme-to-company handoff candidates (CEG, VST, TLN, CCJ, LEU, OKLO)",
+    "Test value-capture routing before any single-equity actionability"
+  ],
+  "execution_order": "setup -> theme-to-company handoff -> six-lens test -> trigger overlays -> build evidence log -> ordinary-vs-workflow delta -> decision -> refresh plan",
+  "task_mode": "methodology_review",
+  "research_object": "industry_concept",
+  "market_scope": "US-listed public equities plus public/private read-throughs",
+  "time_boundary": "gt_1y",
+  "depth_mode": "deep_dive",
+  "information_value": "high",
+  "knowability_status": "partially_knowable",
+  "decision_pressure": "none",
+  "framing_risk": "none",
+  "quant_dependency": "none",
+  "calculation_gate": "not_required",
+  "primary_skill_or_loop": "loops/long-term-thesis-loop.md",
+  "routing_basis": "The topic translates a hot long-term theme into public-company value capture and depends on demand growth, power contracts, regulation, project execution, capital cycle and valuation expectations.",
+  "routing_mismatch_risk": "A pure industry note could overstate stock actionability; a single-equity memo would be premature without a value-capture and contract/regulatory screen.",
+  "expected_output_package": "hot-theme value-capture screen (theme-value-capture-screen.csv, power-contract-regulatory-check.csv, evidence-log.csv)",
+  "readiness_level": "working_view",
+  "private_state_action": "waive",
+  "followup_prompt_mode": "standard",
+  "followup_questions": [
+    "Complete an expectation map plus power-contract/regulatory check on CEG/VST before actionability?",
+    "Confirm which names are generators vs fuel suppliers vs infrastructure before single-equity handoff?"
+  ]
+}

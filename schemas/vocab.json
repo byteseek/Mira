@@ -1,0 +1,33 @@
+{
+  "$comment": "Single source of truth for Mira ROUTING controlled vocabulary. Consumed by schemas/routing.schema.json (via $ref) and scripts/validate_repo.py (enum sets are built from here, not hardcoded). Round-1 scope is routing-only by design; evidence/source/readiness/claim enums stay hardcoded in validate_repo.py until a later migration. INVARIANT: every enum below lives ONLY here — do not also hardcode it elsewhere.",
+  "interaction_mode": {
+    "enum": ["quick_answer", "routed_research", "decision_support", "routing_unclear"]
+  },
+  "depth_mode": {
+    "enum": ["quick_map", "standard", "deep_dive"]
+  },
+  "decision_pressure": {
+    "enum": ["none", "low", "medium", "high"]
+  },
+  "framing_risk": {
+    "enum": ["confirmation_seeking", "fomo", "anchoring", "loss_aversion", "position_defense", "none"]
+  },
+  "disconfirmation_required": {
+    "enum": ["yes", "no"]
+  },
+  "quant_dependency": {
+    "enum": ["none", "low", "medium", "high"]
+  },
+  "calculation_gate": {
+    "enum": ["not_required", "required", "waived"]
+  },
+  "information_value": {
+    "enum": ["low", "medium", "high"]
+  },
+  "knowability_status": {
+    "enum": ["knowable", "partially_knowable", "unknowable_now", "irreducible_uncertainty"]
+  },
+  "scope_confirmation_required": {
+    "enum": ["yes", "no"]
+  }
+}

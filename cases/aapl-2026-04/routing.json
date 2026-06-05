@@ -1,0 +1,28 @@
+{
+  "schema_version": "1.0",
+  "interaction_mode": "routed_research",
+  "primary_intent": "First-pass single-equity research on AAPL with full thesis system",
+  "task_mode": "research",
+  "research_object": "single_equity",
+  "market_scope": "US equities",
+  "time_boundary": "12-24 months",
+  "depth_mode": "standard",
+  "information_value": "high",
+  "knowability_status": "knowable",
+  "decision_pressure": "none",
+  "framing_risk": "none",
+  "disconfirmation_required": "no",
+  "quant_dependency": "high",
+  "calculation_gate": "required",
+  "primary_skill_or_loop": "loops/research-loop.md + equity-research-core",
+  "routing_basis": "Single-equity first pass with the full thesis system; serves as the canonical single-equity golden few-shot example case.",
+  "routing_mismatch_risk": "Low — scope is a research package, not a live trade call; the actionability-bridge stays research-bound with explicit invalidation.",
+  "expected_output_package": "investment-memo.md, evidence-log.csv, expectation-map.csv, thesis-ledger.md, decision-log.csv, actionability-bridge.md",
+  "readiness_level": "research_package",
+  "private_state_action": "waive",
+  "followup_prompt_mode": "standard",
+  "followup_questions": [
+    "Refresh before the next quarterly results release (stale_after 2026-07-13) before any live use?",
+    "Promote the thesis-ledger to a tracked thesis object if coverage continues?"
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "schema_version": "1.0",
+  "interaction_mode": "routed_research",
+  "primary_intent": "NVTS FY2026 Q1 earnings analysis package with peer verification",
+  "task_mode": "event_update",
+  "research_object": "single_equity",
+  "market_scope": "US equities",
+  "time_boundary": "next 1-2 quarters",
+  "depth_mode": "standard",
+  "information_value": "high",
+  "knowability_status": "knowable",
+  "decision_pressure": "none",
+  "framing_risk": "none",
+  "disconfirmation_required": "no",
+  "quant_dependency": "high",
+  "calculation_gate": "required",
+  "primary_skill_or_loop": "skills/earnings-report-analysis + event-delta-loop",
+  "routing_basis": "Earnings-event package with peer verification and event-impact framing; serves as the canonical earnings/event golden few-shot example case.",
+  "routing_mismatch_risk": "Low — scope is an earnings package, not a live trade call; actionability stays research-bound pending live refresh.",
+  "expected_output_package": "earnings-analysis.md, financial-snapshot.csv, peer-comparison.csv, evidence-log.csv, expectation-map.csv, actionability-bridge.md",
+  "readiness_level": "research_package",
+  "private_state_action": "waive",
+  "followup_prompt_mode": "standard",
+  "followup_questions": [
+    "Refresh on 2026 Q2 earnings or a guidance change (stale_after 2026-08-29) before live use?",
+    "Track distributor concentration and AI data-center customer/ramp disclosures as the next catalysts?"
+  ]
+}

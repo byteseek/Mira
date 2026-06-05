@@ -264,34 +264,29 @@ SOURCE_COVERAGE_MATRIX_COLUMNS = [
     "notes",
 ]
 
-INTERACTION_MODES = {
-    "quick_answer",
-    "routed_research",
-    "decision_support",
-    "routing_unclear",
-}
+# Routing controlled vocabulary lives in schemas/vocab.json (single source of
+# truth, also $ref'd by schemas/routing.schema.json). These sets are BUILT from
+# it — do not re-hardcode the values here. INVARIANT: each routing enum lives in
+# vocab.json only. Evidence/source/readiness/claim enums above stay hardcoded
+# until a later vocab migration (round-1 scope is routing-only).
+SCHEMA_DIR = Path(__file__).resolve().parent.parent / "schemas"
+_VOCAB = json.loads((SCHEMA_DIR / "vocab.json").read_text(encoding="utf-8"))
 
-DECISION_PRESSURES = {"none", "low", "medium", "high"}
-FRAMING_RISKS = {
-    "confirmation_seeking",
-    "fomo",
-    "anchoring",
-    "loss_aversion",
-    "position_defense",
-    "none",
-}
-DISCONFIRMATION_REQUIRED = {"yes", "no"}
-DEPTH_MODES = {"quick_map", "standard", "deep_dive"}
-QUANT_DEPENDENCIES = {"none", "low", "medium", "high"}
-CALCULATION_GATES = {"not_required", "required", "waived"}
-INFORMATION_VALUES = {"low", "medium", "high"}
-KNOWABILITY_STATUSES = {
-    "knowable",
-    "partially_knowable",
-    "unknowable_now",
-    "irreducible_uncertainty",
-}
-SCOPE_CONFIRMATION_REQUIRED = {"yes", "no"}
+
+def _vocab_set(key: str) -> set[str]:
+    return set(_VOCAB[key]["enum"])
+
+
+INTERACTION_MODES = _vocab_set("interaction_mode")
+DECISION_PRESSURES = _vocab_set("decision_pressure")
+FRAMING_RISKS = _vocab_set("framing_risk")
+DISCONFIRMATION_REQUIRED = _vocab_set("disconfirmation_required")
+DEPTH_MODES = _vocab_set("depth_mode")
+QUANT_DEPENDENCIES = _vocab_set("quant_dependency")
+CALCULATION_GATES = _vocab_set("calculation_gate")
+INFORMATION_VALUES = _vocab_set("information_value")
+KNOWABILITY_STATUSES = _vocab_set("knowability_status")
+SCOPE_CONFIRMATION_REQUIRED = _vocab_set("scope_confirmation_required")
 
 ROUTING_EXAMPLE_TOKEN_FIELDS = {
     "interaction_mode": INTERACTION_MODES,
@@ -1091,11 +1086,197 @@ def validate_routing_examples(root: Path) -> list[Issue]:
     return issues
 
 
+def _doc_backtick_token(line: str) -> str | None:
+    match = re.match(r"-\s*`([^`]+)`", line.strip())
+    return match.group(1) if match else None
+
+
+def validate_vocab_doc_consistency(root: Path) -> list[Issue]:
+    """Bind controlled-vocabulary.md routing token lists to schemas/vocab.json.
+
+    vocab.json is the single source for the routing token SET; the doc prose is
+    human-only. Each `<!-- vocab:FIELD start --> ... <!-- vocab:FIELD end -->`
+    region must enumerate exactly the vocab.json enum for that field, so the doc
+    cannot drift from the machine vocabulary (no second hand-maintained token
+    source).
+    """
+    doc = root / "data" / "controlled-vocabulary.md"
+    if not doc.exists():
+        return [Issue("ERROR", doc, 0, "missing data/controlled-vocabulary.md")]
+
+    start_re = re.compile(r"<!--\s*vocab:([a-z_]+)\s+start")
+    end_re = re.compile(r"<!--\s*vocab:([a-z_]+)\s+end")
+    regions: dict[str, set[str]] = {}
+    current: str | None = None
+    for line in read_text(doc).splitlines():
+        start = start_re.search(line)
+        if start:
+            current = start.group(1)
+            regions.setdefault(current, set())
+            continue
+        if end_re.search(line):
+            current = None
+            continue
+        if current is not None:
+            token = _doc_backtick_token(line)
+            if token:
+                regions[current].add(token)
+
+    issues: list[Issue] = []
+    for field, fragment in _VOCAB.items():
+        if not isinstance(fragment, dict) or "enum" not in fragment:
+            continue
+        expected = set(fragment["enum"])
+        documented = regions.get(field)
+        if documented is None:
+            issues.append(
+                Issue(
+                    "ERROR",
+                    doc,
+                    0,
+                    f"routing field `{field}` has no `<!-- vocab:{field} -->` token "
+                    "list; schemas/vocab.json is the source",
+                )
+            )
+            continue
+        missing = sorted(expected - documented)
+        extra = sorted(documented - expected)
+        if missing:
+            issues.append(Issue("ERROR", doc, 0, f"`{field}`: in vocab.json but undocumented: {missing}"))
+        if extra:
+            issues.append(Issue("ERROR", doc, 0, f"`{field}`: documented but not in vocab.json: {extra}"))
+    return issues
+
+
+# --- Routing card schema (stdlib subset checker) ---------------------------
+# Implements only the JSON Schema subset that schemas/routing.schema.json uses:
+# type, enum, const, required, properties, minLength, minItems, allOf, if/then,
+# and $ref to schemas/vocab.json. No third-party dependency, so the repo stays
+# clone-and-run. Staying inside this keyword subset keeps a standard JSON Schema
+# engine a drop-in replacement later.
+
+_SCHEMA_DOC_CACHE: dict[Path, dict] = {}
+
+
+def _load_schema_doc(path: Path) -> dict:
+    doc = _SCHEMA_DOC_CACHE.get(path)
+    if doc is None:
+        doc = json.loads(path.read_text(encoding="utf-8"))
+        _SCHEMA_DOC_CACHE[path] = doc
+    return doc
+
+
+def _resolve_ref(ref: str) -> dict:
+    file_part, _, fragment = ref.partition("#")
+    node: object = _load_schema_doc(SCHEMA_DIR / file_part)
+    for segment in fragment.split("/"):
+        if segment:
+            node = node[segment]  # type: ignore[index]
+    return node  # type: ignore[return-value]
+
+
+def schema_errors(instance: object, schema: dict) -> list[str]:
+    """Return human-readable validation errors for the supported subset."""
+    if "$ref" in schema:
+        merged = {key: value for key, value in schema.items() if key != "$ref"}
+        merged.update(_resolve_ref(schema["$ref"]))
+        schema = merged
+
+    errors: list[str] = []
+    expected_type = schema.get("type")
+    if expected_type == "object" and not isinstance(instance, dict):
+        return ["expected an object"]
+    if expected_type == "string" and not isinstance(instance, str):
+        return ["expected a string"]
+    if expected_type == "array" and not isinstance(instance, list):
+        return ["expected an array"]
+
+    if "const" in schema and instance != schema["const"]:
+        errors.append(f"must equal {schema['const']!r}")
+    if "enum" in schema and instance not in schema["enum"]:
+        errors.append(f"{instance!r} is not one of {sorted(schema['enum'])}")
+    if "minLength" in schema and isinstance(instance, str):
+        if len(instance.strip()) < schema["minLength"]:
+            errors.append("must not be empty")
+    if "minItems" in schema and isinstance(instance, list):
+        if len(instance) < schema["minItems"]:
+            errors.append(f"needs at least {schema['minItems']} item(s)")
+
+    if isinstance(instance, dict):
+        for field_name in schema.get("required", []):
+            value = instance.get(field_name)
+            missing = (
+                field_name not in instance
+                or (isinstance(value, str) and not value.strip())
+                or (isinstance(value, list) and not value)
+            )
+            if missing:
+                errors.append(f"missing required field `{field_name}`")
+        for field_name, subschema in schema.get("properties", {}).items():
+            if field_name in instance:
+                for message in schema_errors(instance[field_name], subschema):
+                    errors.append(f"`{field_name}`: {message}")
+
+    for subschema in schema.get("allOf", []):
+        errors.extend(schema_errors(instance, subschema))
+
+    if "if" in schema and not schema_errors(instance, schema["if"]):
+        errors.extend(schema_errors(instance, schema["then"]))
+
+    return errors
+
+
+def validate_routing_json(path: Path) -> list[Issue]:
+    try:
+        data = json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError) as exc:
+        return [Issue("ERROR", path, 0, f"invalid routing.json: {exc}")]
+    schema = _load_schema_doc(SCHEMA_DIR / "routing.schema.json")
+    return [Issue("ERROR", path, 0, message) for message in schema_errors(data, schema)]
+
+
+def load_routing_exempt(root: Path) -> set[str]:
+    exempt_file = root / "cases" / "legacy-routing-exempt.txt"
+    if not exempt_file.exists():
+        return set()
+    names: set[str] = set()
+    for line in exempt_file.read_text(encoding="utf-8").splitlines():
+        name = line.split("#", 1)[0].strip()
+        if name:
+            names.add(name)
+    return names
+
+
+def validate_case_routing(case_dir: Path, exempt: set[str]) -> list[Issue]:
+    has_research = (case_dir / "investment-memo.md").exists() or (
+        case_dir / "evidence-log.csv"
+    ).exists()
+    if not has_research or case_dir.name in exempt:
+        return []
+    if (case_dir / "routing.json").exists():
+        return []
+    return [
+        Issue(
+            "ERROR",
+            case_dir,
+            0,
+            "case has investment-memo.md or evidence-log.csv but no routing.json; "
+            "add routing.json per schemas/routing.schema.json, or list the case in "
+            "cases/legacy-routing-exempt.txt",
+        )
+    ]
+
+
 def validate_repo(root: Path, as_of: date) -> list[Issue]:
     issues = validate_root_readiness(root)
     issues.extend(validate_source_class_map(root))
     issues.extend(validate_source_coverage_matrix(root))
     issues.extend(validate_routing_examples(root))
+    issues.extend(validate_vocab_doc_consistency(root))
+    for path in sorted(root.glob("**/routing.json")):
+        if ".git" in path.parts:
+            continue
+        issues.extend(validate_routing_json(path))
     for path in sorted(root.glob("**/evidence-log.csv")):
         if ".git" in path.parts:
             continue
@@ -1125,8 +1306,10 @@ def validate_repo(root: Path, as_of: date) -> list[Issue]:
     issues.extend(validate_research_index(root / "memory" / "research" / "INDEX.md", as_of))
     cases_dir = root / "cases"
     if cases_dir.exists():
+        routing_exempt = load_routing_exempt(root)
         for case_dir in sorted(path for path in cases_dir.iterdir() if path.is_dir()):
             issues.extend(validate_case_readme(case_dir))
+            issues.extend(validate_case_routing(case_dir, routing_exempt))
     issues.extend(validate_methodology_adoption(root))
     return issues
 
@@ -1157,6 +1340,14 @@ def validate_paths(paths: list[Path], as_of: date) -> list[Issue]:
             manifest = path / "research-package-manifest.json"
             if manifest.exists():
                 issues.extend(validate_research_package_manifest(manifest))
+            routing = path / "routing.json"
+            if routing.exists():
+                issues.extend(validate_routing_json(routing))
+            issues.extend(
+                validate_case_routing(path, load_routing_exempt(path.parent.parent))
+            )
+        elif path.name == "routing.json":
+            issues.extend(validate_routing_json(path))
         elif path.name == "evidence-log.csv":
             issues.extend(validate_no_local_absolute_paths(path))
             issues.extend(validate_evidence_log(path))

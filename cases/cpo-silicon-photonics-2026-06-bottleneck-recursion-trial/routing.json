@@ -1,0 +1,32 @@
+{
+  "schema_version": "1.0",
+  "interaction_mode": "routed_research",
+  "primary_intent": "Trial the roadmap-to-bottleneck-recursion methodology on CPO / silicon photonics",
+  "secondary_intents": [
+    "Produce a company handoff (company-map.csv) for downstream single-equity cases",
+    "Record a methodology delta vs ordinary industry-concept analysis"
+  ],
+  "execution_order": "methodology setup -> bottleneck recursion -> company handoff -> methodology delta",
+  "task_mode": "methodology_review",
+  "research_object": "industry_concept",
+  "market_scope": "global with US-listed proxies",
+  "time_boundary": "12-36 months",
+  "depth_mode": "deep_dive",
+  "information_value": "high",
+  "knowability_status": "partially_knowable",
+  "decision_pressure": "none",
+  "framing_risk": "none",
+  "quant_dependency": "none",
+  "calculation_gate": "not_required",
+  "primary_skill_or_loop": "methodology-research-loop + industry-concept-analysis",
+  "routing_basis": "User asked to continue after approving the new methodology; CPO / silicon photonics was the first planned live trial.",
+  "routing_mismatch_risk": "High if read as a single-stock recommendation; this is only a bottleneck map and company handoff, not actionability.",
+  "expected_output_package": "industry-map.md, recursive-bottleneck-ladder.csv, company-map.csv, evidence-log.csv, methodology-delta.md",
+  "readiness_level": "working_view",
+  "private_state_action": "waive",
+  "followup_prompt_mode": "standard",
+  "followup_questions": [
+    "Run a company-level financial transmission test on the top bottleneck (external/InP laser) before adopting the methodology?",
+    "Add a follow-through refresh so the method can move from positive_partial to adopted?"
+  ]
+}
