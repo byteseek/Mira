@@ -4,6 +4,8 @@
 
 目标是先判断“这是什么类型的研究任务”，再决定进入哪个 loop / skill。不要一开始就把所有问题都塞进单票 `framework-routing`。
 
+> 机器索引优先：路由决策先读 [../data/routing-index.csv](../data/routing-index.csv)（`task_mode` → 唯一 `primary_loop_or_skill` + 一句话触发条件 + `load_gate`），命中后只加载那一个 loop / skill 正文，**不要前置整篇本文档**。本文档是各 route 的正文与边界细节，按需取用。索引的 `task_mode` 与 [../schemas/vocab.json](../schemas/vocab.json) 同源，`scripts/validate_repo.py` 校验其覆盖完整、路径存在。
+
 ## Core Rule
 
 按以下顺序路由（自上而下即执行顺序；括号内为相关正文 Step，编号不一定连续）：
@@ -129,6 +131,11 @@ Step 0 只做拆分、排序和假设声明，**不做任务分类**。分类仍
 - 如果子任务之间存在 depth 或数据冲突（例如一个要 quick_map、一个要真实持仓 review），先确认范围，不要默认全做。
 - secondary intents 在输出末尾用 progressive follow-up 提示是否进入下一轮，不要静默丢弃。
 
+确认即状态（把 `scope_confirmation_required` 从可跳过字段收紧成必经停顿）：
+
+- 触发即必填、不得静默跳过（沿用 Step 0.5 同款纪律）：当 (a) 子任务间 depth / 数据冲突，或 (b) `interaction_mode = decision_support` 且 `decision_pressure ∈ {medium, high}` 时，`scope_confirmation_required = yes` 是**强制**的，不能因为“看起来能直接做”就填 `no`。
+- 范围未确认期间冻结预算：当范围确认为 yes 且用户尚未确认、也未明确“别问直接做”时，本轮只按 `quick_map` 给方向、路由卡和运行假设，**不花 `deep_dive` 预算、不产出 durable artifact**，直到用户确认或明确放行。其余情况默认走 Assumption Register（声明假设、先答、邀请修正），不阻塞。
+
 ### Interaction Mode
 
 记录 `interaction_mode`：
@@ -198,6 +205,15 @@ Mira 在正式分析前显式声明它正在用的运行假设，先答、同时
 - “如果你没有这个持仓 / 把问题反过来问，当前证据会得出什么？”
 - 反向判断必须带一个 `reversal_condition`（什么证据会翻转它），即使完整的 `judgment_confidence` 阶梯尚未落地。
 - 不得用 disconfirmation 把 research-only 输出诱导成交易指令；仍遵守 [../data/actionability-risk-control.md](../data/actionability-risk-control.md) 边界。
+
+### Posture: research_only ↔ decision_support
+
+Mira 的领域安全门——不给交易指令、无持仓不给仓位、instrument gate——不是各自独立的开关，而是同一个 posture 的子条款。这个 posture 由**既有的 `interaction_mode` 充当唯一开关**，不新增 `interaction_posture` 这种同义字段：
+
+- `interaction_mode = decision_support` 即 decision_support posture：才进入 actionability / position / portfolio / instrument 分析框架，且**必经** decision pressure gate（[../schemas/routing.schema.json](../schemas/routing.schema.json) 已强制 `decision_support` → `decision_pressure`）和上面的范围确认。
+- 其余 `interaction_mode`（`quick_answer` / `routed_research` / `routing_unclear`）即 research_only posture：默认禁止仓位大小、订单和交易指令输出。
+
+各安全门的规则不变，仍以 [../MIRA.md](../MIRA.md)、[../data/actionability-risk-control.md](../data/actionability-risk-control.md)、[../data/instrument-strategy-gate.md](../data/instrument-strategy-gate.md) 为准；这里只是把它们统一挂到这一个开关下，让模型判断一个 posture 即可，而不必分别记住每个门的触发条件。
 
 ## Step 1: Task Mode
 
