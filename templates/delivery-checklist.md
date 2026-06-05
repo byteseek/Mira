@@ -4,6 +4,8 @@ Use this before handing off a formal research output.
 
 ## Required
 
+- [ ] Final strong-habit gate passed: evidence strength, refresh condition and progressive follow-up were all checked together before handoff.
+- [ ] Visible fields were scaled using `data/output-surface-matrix.md`; short outputs did not expose unnecessary package fields or omit required discipline.
 - [ ] The task was routed through `analysis-routing` or the route was explicitly waived with a reason.
 - [ ] Intent intake ran: compound prompts were split into `primary_intent` / `secondary_intents`, running assumptions were declared, and the routing card was scaled to `depth_mode`.
 - [ ] On actionability / position / portfolio routes, `decision_pressure` is emitted (even if `none`), with a disconfirmation check when pressure is medium/high.
@@ -27,6 +29,7 @@ Use this before handing off a formal research output.
 - [ ] No unresolved `{{ placeholder }}` remains.
 - [ ] `stale_after`, `must_refresh_if` or equivalent refresh condition is present.
 - [ ] Progressive follow-up is complete: either 1-3 route-bound, object-specific questions are present, or `followup_prompt_mode=none` has a concrete waiver reason.
+- [ ] For `quick_map`, follow-up was not silently omitted: 1 light follow-up is present unless the user explicitly requested no follow-up, the task is mechanical, or the next step is uniquely determined.
 - [ ] Weak evidence is downgraded to `source_gap`, `watch_only`, `needs_refresh` or equivalent.
 - [ ] Cross-skill handoffs preserve source IDs, evidence categories, freshness/conflict status and named gaps.
 - [ ] Output states `not_investment_advice` or an equivalent boundary.

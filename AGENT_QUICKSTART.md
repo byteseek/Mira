@@ -80,6 +80,8 @@ Mira, 研究 CRWV
 | `standard` | “研究 X”、正式 case、普通财报或 monitoring update | routed package 的必需文件 |
 | `deep_dive` | “深挖”、长期 thesis、复杂估值、SEC 深拆、PM / 方法论复核 | 完整 package + 被 gate 触发的附加 artifact |
 
+显式输出哪些字段由 [data/output-surface-matrix.md](data/output-surface-matrix.md) 控制。原则是：短答可以少露字段，但不能少做证据、刷新条件、follow-up 和触发式 gate 的内部检查。
+
 注意 `interaction_mode`（答案形状，Step 0）和 `depth_mode`（研究力度）是两个轴，别因为都带 “quick” 就混用：`quick_answer + quick_map`（看一下方向，浅研究一句话）、`quick_answer + deep_dive`（只要一句结论，但问题需要真估值才答得诚实）、`routed_research + quick_map`（triage 但仍出结构化卡）。组合样例见 [examples/routing-examples.md](examples/routing-examples.md)。
 
 | 用户意图 | 默认路由 | 输出 |
@@ -330,6 +332,18 @@ PM / 组合研究视角的产品样例可参考 [memory/research/INDEX.md](memor
 
 状态和动作字段必须使用 [data/controlled-vocabulary.md](data/controlled-vocabulary.md)。如果需要更细解释，写到 `basis`、`notes`、`risk` 或正文，不要发明新 token。
 
+### 强习惯三件套
+
+每次正式研究输出收尾前，先做一个很短的最终门槛检查：
+
+1. **证据强度**：事实、推断、判断是否分层；耐久结论是否能追到 evidence log 或明确 source note。
+2. **刷新条件**：是否写出 `stale_after`、`must_refresh_if` 或等价刷新条件。
+3. **渐进反问**：是否写出 `followup_prompt_mode` 和 1-3 个 route-bound、object-specific follow-up；如果没有，是否显式写 `followup_prompt_mode=none` 和具体 waiver reason。
+
+不要把 progressive follow-up 当成可选闲聊。它和刷新条件一样，是防止研究输出停在不可升级状态的交付字段；`quick_map` 默认至少给 1 个 light follow-up，除非用户明确不要反问、任务是机械更新/格式转换，或下一步已经唯一确定。
+
+用 [data/output-surface-matrix.md](data/output-surface-matrix.md) 判断这些强习惯应该是 `internal_check`、`brief_visible` 还是 `full_visible`。强习惯不能被省略，但不必在每个短答里展开成完整表格。
+
 ## 6. 证据和结论规则
 
 Mira 输出里必须分开写：
@@ -345,6 +359,12 @@ Mira 输出里必须分开写：
 - `stale_after`: 这份判断在什么日期或事件后默认过期。
 - `must_refresh_if`: 哪些信息出现时必须重做或更新。
 - `kill_criteria`: 哪些证据会证伪主要 thesis。
+
+每份正式输出也必须包含渐进反问：
+
+- `followup_prompt_mode`: `light` / `standard` / `decision_grade` / `none`。
+- route-bound follow-up: 问题要连接当前 route、对象、证据缺口、readiness 或下一层 loop。
+- `followup_waiver_reason`: 只有在不提 follow-up 时才需要，且必须具体。
 
 ## 7. 拟人化和记忆边界
 
@@ -384,6 +404,7 @@ Mira 输出里必须分开写：
 - 事实、推断和判断是否分层。
 - 核心结论是否能追到 evidence log 或明确 source note。
 - 是否说明 `stale_after`、`must_refresh_if` 或等价刷新条件。
+- 是否说明 `followup_prompt_mode`，并给出 route-bound、object-specific follow-up；若没有，是否写明具体 waiver reason。
 - 弱证据是否被降级，没有被写成确定结论。
 
 ## 9. Repo Validation

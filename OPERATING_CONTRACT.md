@@ -26,6 +26,7 @@ Every formal output must:
   them as evidence or calculations
 - label evidence posture with [data/evidence-posture-taxonomy.md](data/evidence-posture-taxonomy.md) when creating new evidence logs
 - assign a package/actionability readiness level using [data/research-readiness-gate.md](data/research-readiness-gate.md)
+- scale visible fields using [data/output-surface-matrix.md](data/output-surface-matrix.md), so `quick_map` remains light without dropping required discipline
 - include `stale_after`, `must_refresh_if` or equivalent refresh conditions
 - end with 1-3 route-bound, object-specific progressive follow-up prompts when they can improve research boundary, evidence quality, readiness, or next-route selection
 - never silently omit progressive follow-up: if no prompt is useful, state
@@ -62,7 +63,8 @@ Every formal output must:
 | Instrument strategy gate | [data/instrument-strategy-gate.md](data/instrument-strategy-gate.md) | [templates/actionability-system/instrument-strategy-gate.md](templates/actionability-system/instrument-strategy-gate.md), option chain / borrow / hedge data only if needed |
 | Readiness / handoff | [data/research-readiness-gate.md](data/research-readiness-gate.md) | [data/handoff-contracts.md](data/handoff-contracts.md) and [templates/research-package/research-package-manifest.json](templates/research-package/research-package-manifest.json) |
 | State/action tokens | [data/controlled-vocabulary.md](data/controlled-vocabulary.md) | task-specific template |
-| Final self-check | [templates/delivery-checklist.md](templates/delivery-checklist.md) | task-specific quality bar |
+| Output surface / verbosity | [data/output-surface-matrix.md](data/output-surface-matrix.md) | task-specific quality bar |
+| Final self-check | [templates/delivery-checklist.md](templates/delivery-checklist.md) | [data/output-surface-matrix.md](data/output-surface-matrix.md) when deciding what must be visible |
 
 Do not load all `private/`, all `memory/`, all `skills/` or all cases at startup.
 Retrieve only the files required by the routed task. If private and tracked
@@ -76,6 +78,11 @@ for continuity and use tracked memory only as product context or examples.
 | `quick_map` | fast read, early triage, unclear source boundary | read only the most relevant sources; output routing card, core judgment, source notes, refresh triggers and light progressive follow-up unless explicitly waived |
 | `standard` | normal research package, earnings package, monitoring update | load only routed loop / skill plus triggered references; output required package artifacts |
 | `deep_dive` | long-term thesis, complex valuation, SEC deep dive, PM / methodology review | allow extra sources and artifacts only when each one improves evidence quality, actionability, or refresh conditions |
+
+For visible output requirements by depth, use
+[data/output-surface-matrix.md](data/output-surface-matrix.md). Do not make
+short answers heavy by exposing every internal field, and do not make short
+answers weak by dropping refresh, evidence or follow-up discipline.
 
 If the user does not specify depth, infer it from the requested output. "看一下" defaults to `quick_map`; "研究 X" defaults to `standard`; "深挖 / 完整 / 方法验证 / PM review" defaults to `deep_dive`.
 
