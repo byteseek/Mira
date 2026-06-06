@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.0",
+  "interaction_mode": "routed_research",
+  "primary_intent": "Explain the 2026-06-05 US market selloff and persist a source-backed working view",
+  "secondary_intents": [
+    "Set refresh triggers for Monday premarket",
+    "Preserve evidence boundaries before any position or portfolio review"
+  ],
+  "execution_order": "live data gate -> macro trigger -> index and sector concentration -> evidence log -> working-view package",
+  "task_mode": "first_pass_research",
+  "research_object": "US major indices and AI/semiconductor-led selloff",
+  "market_scope": "US equities",
+  "time_boundary": "2026-06-05 US regular-session close",
+  "depth_mode": "standard",
+  "information_value": "high",
+  "knowability_status": "partially_knowable",
+  "primary_question_lens": "anomaly_detection",
+  "selected_question_lenses": [
+    "anomaly_detection",
+    "scale_shift"
+  ],
+  "lens_selection_basis": "The user asked why the market fell so much, requiring separation of normal noise, sharp selloff, and crash/panic labels.",
+  "lens_data_required": "Index moves, rate reaction, sector concentration, and cross-asset stress checks.",
+  "lens_failure_mode": "Treating a media attribution or price move as proof of fundamental deterioration.",
+  "live_data_gate": "required_quote_time",
+  "live_freshness_status": "delayed",
+  "cross_check_status": "partial",
+  "quote_time": "2026-06-05 US market close, as reported by AP/Reuters-syndicated market coverage",
+  "publish_time": "BLS Employment Situation released 2026-06-05 08:30 ET",
+  "source_boundary": "BLS official labor release plus AP, Reuters-syndicated, and Axios market coverage; no direct exchange feed, credit-spread feed, or options-positioning feed retained.",
+  "decision_pressure": "none",
+  "framing_risk": "none",
+  "disconfirmation_required": "no",
+  "quant_dependency": "low",
+  "calculation_gate": "waived",
+  "scope_confirmation_required": "no",
+  "primary_skill_or_loop": "loops/research-loop.md",
+  "routing_basis": "The prompt began as a time-sensitive market question and was upgraded to a standard documented research package at user request.",
+  "routing_mismatch_risk": "Medium if read as an actionable portfolio decision; this package explains market causality and refresh triggers only.",
+  "expected_output_package": "investment-memo.md, evidence-log.csv, case-notes.md, research-package-manifest.json",
+  "readiness_level": "working_view",
+  "private_state_action": "promote",
+  "followup_prompt_mode": "standard",
+  "followup_questions": [
+    "Refresh QQQ/SPY/SMH, Treasury yields, VIX, and credit spreads before 2026-06-08 US premarket?",
+    "If this affects real holdings, route next to position_review or portfolio_construction_review with weights and risk budget?"
+  ]
+}

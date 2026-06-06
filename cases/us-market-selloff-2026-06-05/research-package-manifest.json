@@ -1,0 +1,44 @@
+{
+  "manifest_version": "mira_research_package_v1",
+  "case_id": "us-market-selloff-2026-06-05",
+  "research_object": "US major indices and AI/semiconductor-led selloff",
+  "market_scope": "US equities",
+  "time_boundary": "2026-06-05 US regular-session close; written 2026-06-06 Asia/Singapore",
+  "research_cutoff_date": "2026-06-06",
+  "package_type": "research_package",
+  "readiness_level": "working_view",
+  "readiness_basis": "Official macro data and professional market reports support a clear explanation of the selloff, but direct exchange quote feed, credit/liquidity data, options positioning, and portfolio context were not retained.",
+  "blocking_gaps": [
+    "No direct exchange or index provider snapshot retained for all quotes.",
+    "No credit-spread, funding-market, or options-positioning data.",
+    "No user holdings, weights, mandate, or risk budget, so actionability is waived."
+  ],
+  "primary_loop": "loops/research-loop.md",
+  "lead_skill": "not_applicable",
+  "support_skills": [],
+  "hero_artifacts": [
+    "investment-memo.md"
+  ],
+  "support_artifacts": [
+    "evidence-log.csv",
+    "case-notes.md"
+  ],
+  "handoffs": [
+    "position_review if user asks what to do with holdings",
+    "portfolio_construction_review if user provides exposures and risk budget",
+    "monitoring_update after Monday premarket or next major Fed/rate signal"
+  ],
+  "source_scope": "BLS official labor release plus AP, Reuters-syndicated, and Axios market coverage for 2026-06-05 session-close selloff.",
+  "evidence_log_status": "draft_v1.2",
+  "quant_gate_status": "waived_low_dependency",
+  "calculation_artifacts": [],
+  "stale_after": "2026-06-08",
+  "must_refresh_if": [
+    "Nasdaq futures or QQQ moves another +/-2% before Monday cash open.",
+    "10-year Treasury yield moves above the post-jobs-report high or reverses sharply lower.",
+    "PHLX Semiconductor Index or SMH fails to rebound while broader market stabilizes.",
+    "New Fed communication changes the rate-path interpretation.",
+    "Fresh credit or liquidity indicators show stress beyond equities."
+  ],
+  "notes": "This package explains the selloff and sets refresh conditions. It is not an investment recommendation and does not include position sizing or trade execution."
+}
