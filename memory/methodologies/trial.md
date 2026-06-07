@@ -1,6 +1,6 @@
 # Methodology Queue: Trial
 
-- last_updated: 2026-06-03
+- last_updated: 2026-06-07
 
 ## Purpose
 
@@ -135,3 +135,9 @@
   expected_increment: 把“顶部 / 底部 / 过热 / 洗出”问题拆成 fundamental_slope、expectation_burden、positioning_liquidity、reaction_quality 和 next_catalyst_burden，避免把强基本面误判成好风险收益，或把大跌误判成底部。
   falsification_condition: 如果它只是重复 valuation / technical / macro 检查，不能改变 action label、refresh trigger 或 evidence gap，或系统性过早叫顶 / 抄底，就不升级到 `adopted`。
   notes: 方法论卡见 `memory/methodologies/top-bottom-risk-overlay.md`，填写模板见 `templates/top-bottom-risk-check.csv`。
+
+- `autoresearch-agent-loop`
+  target_case: `one methodology-card upgrade`, `one long-form research package`, and `one quant or evidence-classification experiment`
+  expected_increment: 把可复用研究产物从一次性 drafting 升级为有 baseline、冻结评价指标、iteration log、rollback rule 和 reviewer-routing 的受控改进循环。
+  falsification_condition: 如果它只是增加流程负担、诱发 metric hacking / self-review inflation，或不能比一次认真人工修订更好地改善 evidence quality、source coverage、unsupported-claim count 和 refresh conditions，就不升级到 `adopted`。
+  notes: 方法论卡见 `memory/methodologies/autoresearch-agent-loop.md`，搜索日志见 `memory/methodologies/autoresearch-agent-loop-search-log.csv`。
