@@ -2,9 +2,9 @@
 
 [English](README.md) | [中文](README.zh.md)
 
-Agent-native investment research workspace for evidence-tracked, refreshable investment theses.
+Agent-native investment research system for evidence-tracked, refreshable investment theses.
 
-Mira is a research workspace for AI agents and research users. It is designed to turn multi-source material into traceable, reviewable and refreshable investment judgment, rather than a one-off stock report or chat answer.
+Mira is an AI investment research system for agents and research users. It is designed to turn multi-source material into traceable, reviewable and refreshable investment judgment, rather than a one-off stock report or chat answer.
 
 Mira focuses on the investment thesis: what evidence supports it, when it is valid, what would disconfirm it, and how it should be monitored.
 
