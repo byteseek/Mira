@@ -16,12 +16,19 @@ This repository is for research workflow design, documentation, and historical e
 
 If you just want to start using Mira, read [START_HERE.md](START_HERE.md). It is the single user-facing entry card for layered prompts, examples, the help matrix and usage boundaries.
 
+If you are using a non-Codex / non-Claude product, or you are unsure whether the
+product will load project instructions, start with [MIRA_BOOTSTRAP.md](MIRA_BOOTSTRAP.md).
+It is the minimum entry gate that prevents direct generic answers and points to
+the copyable [ChatGPT conversation instructions](docs/chatgpt-conversation-instructions.md)
+when local repository access is missing.
+
 If you open the repository in an agent and only say `hi Mira`, `你好 Mira`, `Mira mode`, or ask how to use Mira, the agent should return a concise `START_HERE.md` summary. If the first prompt is already a concrete research task, it should route the task directly instead of interrupting with onboarding.
 
 If you want Codex, Claude Code or another code agent to use this repository directly, the main documents are:
 
 | Need | Read |
 | --- | --- |
+| Minimum entry gate for uncertain project-rule loading | [MIRA_BOOTSTRAP.md](MIRA_BOOTSTRAP.md) |
 | User entry, layered prompts and help matrix | [START_HERE.md](START_HERE.md) |
 | Wake word, identity boundary and memory contract | [MIRA.md](MIRA.md) |
 | One-screen agent loading contract | [OPERATING_CONTRACT.md](OPERATING_CONTRACT.md) |
@@ -106,6 +113,7 @@ Single-equity research should also run:
 
 | Topic | Document |
 | --- | --- |
+| Minimum entry gate for agents and chat products | [MIRA_BOOTSTRAP.md](MIRA_BOOTSTRAP.md) |
 | User entry, prompt examples and task cards | [START_HERE.md](START_HERE.md) |
 | Agent contract and lazy loading | [OPERATING_CONTRACT.md](OPERATING_CONTRACT.md) |
 | Agent execution quickstart and output locations | [AGENT_QUICKSTART.md](AGENT_QUICKSTART.md) |

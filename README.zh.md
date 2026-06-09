@@ -16,12 +16,18 @@ Mira 关注的是 investment thesis：这个判断基于什么证据、在什么
 
 如果你只是想开始使用，先看 [START_HERE.md](START_HERE.md)。它是统一的用户入口卡，包含从一句话启动到完整任务卡、help 类型矩阵和使用边界。
 
+如果你使用的是非 Codex / 非 Claude Code 产品，或不确定该产品是否会加载项目规则，先使用
+[MIRA_BOOTSTRAP.md](MIRA_BOOTSTRAP.md)。它是最低启动门槛，用来防止 agent
+直接按普通助手回答；如果产品无法读取本地仓库，它会引导用户粘贴
+[ChatGPT conversation instructions](docs/chatgpt-conversation-instructions.md)。
+
 如果你在 agent 里只说 `hi Mira`、`你好 Mira`、`Mira mode`，或问“怎么用 Mira”，默认应该先看到 `START_HERE.md` 的摘要；如果第一句话已经是具体研究任务，agent 应直接路由任务，不用打断式 onboarding。
 
 如果你想用 Codex、Claude Code 或其他代码型 agent 直接引用本项目，主要文档是：
 
 | 需求 | 文档 |
 | --- | --- |
+| 不确定项目规则是否会加载时的最低启动门槛 | [MIRA_BOOTSTRAP.md](MIRA_BOOTSTRAP.md) |
 | 用户入口、分层 prompt 和 help 矩阵 | [START_HERE.md](START_HERE.md) |
 | 唤醒词、身份边界和 memory contract | [MIRA.md](MIRA.md) |
 | 一屏版 agent lazy-loading contract | [OPERATING_CONTRACT.md](OPERATING_CONTRACT.md) |
@@ -106,6 +112,7 @@ Mira 不是交易机器人、行情后台程序或自动组合管理器。
 
 | 主题 | 文档 |
 | --- | --- |
+| Agent 和普通聊天产品的最低启动门槛 | [MIRA_BOOTSTRAP.md](MIRA_BOOTSTRAP.md) |
 | 用户入口、Prompt 示例和任务卡 | [START_HERE.md](START_HERE.md) |
 | Agent contract 和 lazy loading | [OPERATING_CONTRACT.md](OPERATING_CONTRACT.md) |
 | Agent 执行 quickstart 和输出位置 | [AGENT_QUICKSTART.md](AGENT_QUICKSTART.md) |

@@ -6,16 +6,18 @@ automation promise.
 
 ## Read Order
 
-1. `MIRA.md` for the wake word, identity boundary, and memory contract.
-2. `OPERATING_CONTRACT.md` for the one-screen lazy-loading map.
-3. `START_HERE.md` when the user asks how to start, what Mira covers, or wants prompt examples.
-4. `AGENT_QUICKSTART.md` only when agent execution details, output locations, or extended examples are needed.
+1. `MIRA_BOOTSTRAP.md` for the minimum entry gate and visible route signal.
+2. `MIRA.md` for the wake word, identity boundary, and memory contract.
+3. `OPERATING_CONTRACT.md` for the one-screen lazy-loading map.
+4. `START_HERE.md` when the user asks how to start, what Mira covers, or wants prompt examples.
+5. `AGENT_QUICKSTART.md` only when agent execution details, output locations, or extended examples are needed.
 
 ## Fast Paths
 
 | user intent | do this |
 | --- | --- |
 | empty first prompt, `hi Mira`, `你好 Mira`, `Mira mode`, or onboarding request | Return a concise `START_HERE.md` summary before any research workflow. |
+| non-Codex / non-Claude product, uncertain project-rule loading, or copied repository context | Start from `MIRA_BOOTSTRAP.md`; if local files are unavailable, ask for `docs/chatgpt-conversation-instructions.md` or source material before durable conclusions. |
 | `update mira`, `Mira self-update`, `从 GitHub 拉最新 Mira` | Run `scripts/mira_update.sh`. Do not run `scripts/check_updates.sh` first. |
 | `Mira help`, `怎么用 Mira`, `Mira 能做什么`, `start here` | Return the layered Start Here card from `START_HERE.md`; keep it user-facing and concise. |
 | start a `standard` / `deep_dive` research task | Run `scripts/check_updates.sh` once (local-first by default, 24h remote TTL; add `--always-fetch` to force a remote check now). Report if behind; never auto-update or elevate sandbox permissions — a blocked fetch degrades to cached local refs and is disclosed. |

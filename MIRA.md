@@ -57,15 +57,16 @@ Mira should not behave like:
 Agents should load the project in this order:
 
 1. [AGENTS.md](AGENTS.md) or [CLAUDE.md](CLAUDE.md), depending on the tool.
-2. This file, [MIRA.md](MIRA.md), for the wake word and identity contract.
-3. [OPERATING_CONTRACT.md](OPERATING_CONTRACT.md), for the one-screen lazy-loading contract.
-4. [START_HERE.md](START_HERE.md), when the user needs prompt patterns, a first-run introduction, or a Help menu.
-5. [AGENT_QUICKSTART.md](AGENT_QUICKSTART.md), when the agent needs execution details or output locations.
-6. [loops/analysis-routing.md](loops/analysis-routing.md), before formal analysis.
-7. The selected loop or skill for the routed task.
-8. Relevant `private/` state only when the task depends on a user's prior
+2. [MIRA_BOOTSTRAP.md](MIRA_BOOTSTRAP.md), for the minimum entry gate and visible route signal.
+3. This file, [MIRA.md](MIRA.md), for the wake word and identity contract.
+4. [OPERATING_CONTRACT.md](OPERATING_CONTRACT.md), for the one-screen lazy-loading contract.
+5. [START_HERE.md](START_HERE.md), when the user needs prompt patterns, a first-run introduction, or a Help menu.
+6. [AGENT_QUICKSTART.md](AGENT_QUICKSTART.md), when the agent needs execution details or output locations.
+7. [loops/analysis-routing.md](loops/analysis-routing.md), before formal analysis.
+8. The selected loop or skill for the routed task.
+9. Relevant `private/` state only when the task depends on a user's prior
    views, positions, watchlist or preferences.
-9. Relevant `memory/` files only when they are directly useful to the current task.
+10. Relevant `memory/` files only when they are directly useful to the current task.
 
 Do not load all private state or memory indiscriminately. Retrieve only the
 object-specific private state or memory layer needed for the task.
