@@ -1,0 +1,24 @@
+Leakage self-check — packets/*.md
+run_date: 2026-06-09
+method: case-insensitive grep over the three blind packets
+
+[1] identifiers / URLs (peloton|pton|teladoc|tdoc|livongo|apple|aapl|iphone|sec.gov|cik#|http|onepeloton|macrotrends|statmuse)
+    => CLEAN (no matches)
+
+[2] verdict / postmortem lexicon (collapse|impair|postmortem|fail|downgrad|broke|broken|bankrupt|fake|goodwill)
+    => CLEAN (no matches)
+
+[3] case_a post-cutoff dates (anything after 2021-08)
+    => CLEAN (no matches)
+
+[4] case_b post-cutoff dates (anything after 2022-02)
+    => CLEAN (no matches)
+
+Conclusion: framing/verdict leakage and post-cutoff-data leakage are removed.
+Residual IDENTITY recognizability remains (famous cases) and is handled by design,
+not by anonymization — see blind-packet-build-log.md "Why identity leakage does not
+sink the experiment" and "Residual recognizability".
+
+Retained on purpose (verified present): source-grade tags (L1/L4/L5), event dates,
+claim_type distinctions, exact reported numbers. These are required for fair reasoning
+and are not leakage.

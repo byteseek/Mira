@@ -1,0 +1,9 @@
+# arm-manifest.lock — locked 2026-06-09 after Stage 1. RUNS MUST USE THIS FILE.
+# Arm matrix is in arm-manifest.protocol.csv (unchanged). This lock records the actual
+# control/treatment file hashes, the one-change diff summary, and the emitted-field delta.
+# Assembly per arm = base contract with toggled file swapped control<->treatment; verify each
+# file against the sha256 below before a run. Field-delta detail in field-delta.md.
+intervention,toggles_file,control_sha256,treatment_path,treatment_sha256,change_summary,emitted_field_delta
+1_adversarial,data/interaction-kernel.md,a6caa3a3542cc2563e81462b541f030129b48940a3427efa41a730d7666544d0,treatments/interaction-kernel.treatment.md,384adc49f2a78884b37d0a19c4d8e5b6944a485ec7c26ff5735b8758158cd075,"Final Strong-Habit Gate gains an output-invisible adversarial pass (steelman / single flip-fact / consensus-is-measured check); feeds existing must_refresh_if / reversal_condition / source_gap. No new section, no new visible field.",0
+2_reasoning_chain,memory/methodologies/variant-perception.md,4c8cf98a654af2f64123bb446949ec4a6235db47803b86c73c3c78926286234f,treatments/variant-perception.treatment.md,4add2a9ca2d43fb15ac61dfe18cbb2f94673b3a651990739b56d83197f18c9dc,"Replace Required Inputs + Primary Signal (2 descriptive sections) with a 5-step executable Application Chain (1 procedural section); outputs map to existing evidence-log rows + existing downgrade states.",0 (net -1 section)
+3_quant_traps,skills/data-analysis-quality-gate/SKILL.md,ce2cdd97e8715d47b70a610882d358357524ae59f797b6f49965b959fddc1f31,treatments/data-analysis-quality-gate.SKILL.treatment.md,9bd0c8d0abd453f37bdb5c166789a3421ed4fd893c4ceddc5fb01365990d0c2a,"Add a Quant Traps Checklist + a decision-relevance WAIVE gate before Output Boundaries; gates existing calc fields (adds a waive path, no new emitted field).",0

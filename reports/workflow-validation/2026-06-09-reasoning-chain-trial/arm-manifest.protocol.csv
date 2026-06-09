@@ -1,0 +1,23 @@
+# arm-manifest.protocol — locked 2026-06-09. NO hashes yet (treatment files unbuilt).
+# Hashes + diff + field-delta go in arm-manifest.lock.csv after Stage 1; RUNS MUST USE THE LOCK VERSION.
+#
+# Switch definitions (file each intervention toggles; control -> treatment):
+#   intervention_1_adversarial     -> data/interaction-kernel.md
+#        treatment = Final Strong-Habit Gate gains an OUTPUT-INVISIBLE adversarial second pass
+#        (steelman the opposite; name the single flip fact; check the consensus is measured not strawman).
+#   intervention_2_reasoning_chain -> memory/methodologies/variant-perception.md
+#        treatment = static descriptive fields REPLACED by a 5-step executable Application Chain.
+#   intervention_3_quant_traps     -> skills/data-analysis-quality-gate/SKILL.md
+#        treatment = adds a quant-trap checklist + a "does this calc change the decision?" gate.
+#
+# Base contract (identical every arm): MIRA.md, OPERATING_CONTRACT.md, data/interaction-kernel.md,
+#   loops/analysis-routing.md, data/routing-index.csv, loops/research-loop.md,
+#   memory/methodologies/variant-perception.md, skills/data-analysis-quality-gate/SKILL.md,
+#   plus the standard data/ gates the route loads.
+# Assembly: an arm = base contract with the toggled file(s) swapped control <-> treatment.
+arm,intervention_1_adversarial,intervention_2_reasoning_chain,intervention_3_quant_traps,interaction_kernel_variant,variant_perception_variant,quant_gate_variant,role
+arm0,off,off,off,control,control,control,control baseline = current Mira
+arm1,on,off,off,treatment,control,control,isolate adversarial self-pass (intervention 1)
+arm2,off,on,off,control,treatment,control,isolate reasoning-chain card (intervention 2)
+arm3,off,off,on,control,control,treatment,isolate quant-trap checklist (intervention 3)
+arm4,on,on,on,treatment,treatment,treatment,shipped combination (all three)
