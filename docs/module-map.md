@@ -9,7 +9,7 @@ Use [README.md](../README.md) as the project entry point and [OPERATING_CONTRACT
 | Directory | Purpose |
 | --- | --- |
 | [agents/](../agents/) | Agent orchestration rules. |
-| [architecture/](../architecture/) | System design notes such as Thesis System and app skeleton. |
+| [architecture/](../architecture/) | Thesis System architecture and durable research-object design. |
 | [cases/](../cases/) | Historical examples and workflow validation cases. |
 | [data/](../data/) | Source, claim, evidence, readiness and vocabulary protocols. |
 | [docs/](./) | Reader-facing support docs that do not belong in the root README. |

@@ -39,9 +39,6 @@ next route is available.
 # Score recorded transcripts (no API needed):
 python3 scripts/score_behavior_eval.py --transcripts evals/transcripts
 
-# See what a violation looks like (the demo-fail dir holds a deliberately bad answer):
-python3 scripts/score_behavior_eval.py --transcripts evals/transcripts-demo-fail
-
 # Generate fresh outputs with your own model CLI, then score them.
 # {prompt} is substituted; if absent, the prompt is piped to stdin.
 python3 scripts/score_behavior_eval.py \
