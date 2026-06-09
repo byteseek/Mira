@@ -1,9 +1,29 @@
 # Data Acquisition Upgrade — Architecture Blueprint
 
-- status: approved-with-corrections; P1 in progress
+- status: P1 + P2 implemented; wiring + fundamentals deltas + methodology trial done (PR #74)
 - last_updated: 2026-06-09
 - scope: the executable substrate beneath Mira's data contract (sources, routing gates, ingestion, evidence, calculation ledger)
 - non_goal: redesigning the data model. The model is already strong; this fills the empty execution slots it already names.
+
+## 0. Positioning (lite + supplementary — not a data vendor)
+
+This is a **lite-level** fetch / process / analyse layer built on **free public
+data** (SEC, Yahoo, BLS). Its purpose is to give ordinary users *some*
+reproducible data support that strengthens analysis — **not** to replace
+commercial feeds (Bloomberg / FactSet / Refinitiv) or a user's own more-reliable
+proprietary data.
+
+Consequences (already enforced; stated here so they are never lost):
+
+- The data is delayed / secondary / daily by nature. The evidence tiers encode
+  exactly that (Yahoo = L5 `market_pricing`; aggregator fundamentals = secondary,
+  "verify vs filing"). The rigour lives in the **discipline**, not in any claim of
+  vendor-grade data.
+- Every conclusion inherits the `delayed` / `secondary` / `source_gap`
+  limitations; the substrate must never present itself as authoritative.
+- Stay lite: free keyless sources, stdlib core, no database, no comprehensive
+  market-data platform. When the user has better proprietary data, that wins —
+  this layer steps aside or becomes a cross-check; it does not compete.
 
 ## 1. Core Diagnosis
 
