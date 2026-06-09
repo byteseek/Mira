@@ -12,7 +12,7 @@ from __future__ import annotations
 import argparse
 import sys
 
-from . import config, net
+from . import config, net, technical
 from .adapters import bls, sec_companyfacts, yahoo_chart
 from .emit import emit_bundle
 
@@ -37,6 +37,14 @@ def main(argv: list[str] | None = None) -> int:
     f.add_argument("--market-scope", default="US")
     f.add_argument("--no-emit", action="store_true", help="print records only, don't write files")
 
+    t = sub.add_parser("technical", help="compute technical context for a symbol")
+    t.add_argument("symbol")
+    t.add_argument("--benchmark", default="SPY")
+    t.add_argument("--out", default="private/data-smoke")
+    t.add_argument("--as-of", default=None)
+    t.add_argument("--market-scope", default="US")
+    t.add_argument("--no-emit", action="store_true", help="print summary only, don't write files")
+
     sub.add_parser("config", help="show resolved data-substrate configuration")
 
     v = sub.add_parser("validate", help="validate an emitted artifact bundle")
@@ -45,12 +53,53 @@ def main(argv: list[str] | None = None) -> int:
     args = parser.parse_args(argv)
     if args.cmd == "fetch":
         return _do_fetch(args)
+    if args.cmd == "technical":
+        return _do_technical(args)
     if args.cmd == "config":
         return _do_config(args)
     if args.cmd == "validate":
         return _do_validate(args)
     parser.error("unknown command")
     return 2
+
+
+def _do_technical(args) -> int:
+    try:
+        res = technical.compute_technical(
+            args.symbol, benchmark=args.benchmark, as_of=args.as_of,
+            market_scope=args.market_scope,
+        )
+    except net.FetchError as exc:
+        print(f"source_gap: could not compute technical context for {args.symbol}: {exc}",
+              file=sys.stderr)
+        return 1
+
+    s = res.summary
+    print(f"# {args.symbol.upper()} technical context vs {args.benchmark.upper()} (as of {s['as_of']})")
+    for key in ("trend_state", "ma_stack_state", "volume_state", "volatility_state",
+                "positioning_risk", "technical_context_score"):
+        print(f"  {key:<24}: {s[key]}")
+    print(f"  {'relative_return_3m':<24}: {s['relative_return_3m']}")
+    lv = s["key_levels"]
+    print(f"  {'close / inval / trigger':<24}: {s['close_price']} / {lv['invalidation']} / {lv['trigger']}")
+
+    if args.no_emit:
+        return 0
+
+    check_path = technical.emit_check_row(args.out, res.row)
+    print(f"\n# emitted\n  {'technical_check':<20} {check_path}")
+    if res.derived:
+        result = emit_bundle(
+            res.derived, out_dir=args.out, research_object=args.symbol.upper(),
+            market_scope=args.market_scope, endpoint="derived://tools/mira_data/technical",
+            params=f"symbol={args.symbol.upper()};benchmark={args.benchmark.upper()}",
+        )
+        for key in ("evidence_log", "calculation_ledger", "manifest", "ingestion_log"):
+            if result.get(key):
+                print(f"  {key:<20} {result[key]}")
+        print(f"  derived={result['n_records']} ledgered={result['n_ledgered']} "
+              f"(Mira-computed -> ledger required, §8)")
+    return 0
 
 
 def _do_validate(args) -> int:

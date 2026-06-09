@@ -53,3 +53,7 @@ data-fetch FAMILY SYMBOL OUT="private/data-smoke":
 # Validate an emitted artifact bundle directory, e.g. `just data-validate private/data-smoke`.
 data-validate DIR:
     PYTHONPATH=tools python3 -m mira_data validate {{DIR}}
+
+# Compute technical context for a symbol (benchmark defaults to SPY), e.g. `just data-technical AAPL`.
+data-technical SYMBOL OUT="private/data-smoke":
+    PYTHONPATH=tools python3 -m mira_data technical {{SYMBOL}} --out {{OUT}}

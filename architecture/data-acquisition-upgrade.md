@@ -162,8 +162,10 @@ hook to fire the data gates, instead of relying on the model reading the full pr
   replaces.
 
 ### P2 — Compute + technical context
-- stdlib indicator engine (consumes `market_price`); YoY / QoQ / CAGR / peer deltas next.
-- `technical-context` overlay wired via the capability field (§5).
+- **Done:** stdlib indicator engine (`indicators.py` + `technical.py`) consuming `market_price`;
+  fills `technical-analysis-check.csv` + emits ledgered derived records.
+- Next: YoY / QoQ / CAGR / peer deltas (same derived-record path); `technical-context` overlay
+  wired via the capability field (§5).
 - Run the `technical-analysis` methodology trial (cohr, crwv earnings; aapl liquidity; one
   failed-breakout monitoring case; one ETF case) and decide adopt / keep-trial.
 
@@ -254,6 +256,17 @@ disclosed and market values emit `ledgered=0` (§8).
 Verified end-to-end against live SEC / Yahoo / BLS endpoints; all emitted evidence
 rows are `validate_repo`-clean (the period-aware SEC selection and the required
 `source_speaker` field were the two correctness fixes found during the build).
+
+**P2 compute engine — implemented.** `just data-technical AAPL` (benchmark
+defaults to SPY) consumes the `market_price` series and computes the daily subset
+of `technical-analysis-check.csv` in pure stdlib (`indicators.py` + `technical.py`
+— no numpy/pandas/db; single-name scale needs none). It derives the state tokens
+(`trend_state`, `ma_stack_state`, `volume_state`, `volatility_state`,
+`positioning_risk=source_gap`, `technical_context_score`), writes the 64-col
+check row, and emits a curated set of judgment-affecting **derived** records —
+which exercises the other side of §8: `ledgered=5`, every ledger row backed by a
+`derived_calculation` evidence row with `upstream_sources`, all `validate_repo`-
+clean. Options / short-interest / intraday stay `source_gap` (no free source).
 
 ## 9. Cheap Cleanups (worth doing regardless)
 
