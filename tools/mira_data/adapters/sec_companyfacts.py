@@ -57,19 +57,48 @@ def resolve_cik(ticker: str) -> str:
     raise net.FetchError(f"ticker not found in SEC company_tickers.json: {ticker}")
 
 
+def load_facts(ticker: str, cik: Optional[str] = None) -> tuple[str, dict, str]:
+    """Fetch raw companyfacts: returns ``(cik10, facts, url)``. Gated on contact."""
+    _require_contact()
+    cik10 = cik or resolve_cik(ticker)
+    url = COMPANYFACTS_URL.format(cik10=cik10)
+    facts = net.get_json(url).get("facts", {})
+    return cik10, facts, url
+
+
+def metric_observations(facts: dict, metric: str) -> list[dict]:
+    """All observations for a curated metric, sorted by period end then filed.
+
+    Each obs carries ``_unit``, ``_span`` (days, or None for instant) and ``_tag``.
+    Lets callers build YoY / QoQ / CAGR from a real series, not just the latest.
+    """
+    spec = next((s for s in CURATED_TAGS if s[0] == metric), None)
+    if spec is None:
+        return []
+    _, taxonomy, _kind, candidates = spec
+    block = _first_present(facts.get(taxonomy, {}), candidates)
+    if block is None:
+        return []
+    obs = []
+    for unit, rows in block["units"].items():
+        for row in rows:
+            if "end" not in row or "val" not in row:
+                continue
+            obs.append({**row, "_unit": unit, "_span": _span_days(row.get("start"), row.get("end")),
+                        "_tag": block["_tag"]})
+    return sorted(obs, key=lambda r: (r.get("end", ""), r.get("filed", "")))
+
+
 def fetch_company_financials(
     ticker: str,
     *,
     as_of: Optional[str] = None,
     market_scope: str = "US",
     cik: Optional[str] = None,
-) -> list[CanonicalRecord]:
+) -> FetchResult:
     """Fetch a curated financial snapshot as canonical reported metrics."""
-    _require_contact()
     as_of = as_of or _dt.date.today().isoformat()
-    cik10 = cik or resolve_cik(ticker)
-    url = COMPANYFACTS_URL.format(cik10=cik10)
-    facts = net.get_json(url).get("facts", {})
+    cik10, facts, url = load_facts(ticker, cik)
     posture = POSTURES["sec_companyfacts"]
 
     records: list[CanonicalRecord] = []

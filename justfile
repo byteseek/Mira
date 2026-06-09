@@ -57,3 +57,7 @@ data-validate DIR:
 # Compute technical context for a symbol (benchmark defaults to SPY), e.g. `just data-technical AAPL`.
 data-technical SYMBOL OUT="private/data-smoke":
     PYTHONPATH=tools python3 -m mira_data technical {{SYMBOL}} --out {{OUT}}
+
+# Compute fundamental deltas (YoY/CAGR, derived+ledgered) for a symbol, e.g. `just data-fundamentals AAPL`.
+data-fundamentals SYMBOL OUT="private/data-smoke":
+    PYTHONPATH=tools python3 -m mira_data fundamentals {{SYMBOL}} --out {{OUT}}

@@ -12,7 +12,7 @@ from __future__ import annotations
 import argparse
 import sys
 
-from . import config, net, technical
+from . import config, fundamentals, net, technical
 from .adapters import bls, sec_companyfacts, yahoo_chart
 from .emit import emit_bundle
 
@@ -45,6 +45,13 @@ def main(argv: list[str] | None = None) -> int:
     t.add_argument("--market-scope", default="US")
     t.add_argument("--no-emit", action="store_true", help="print summary only, don't write files")
 
+    fd = sub.add_parser("fundamentals", help="compute fundamental deltas (YoY/CAGR) for a symbol")
+    fd.add_argument("symbol")
+    fd.add_argument("--out", default="private/data-smoke")
+    fd.add_argument("--as-of", default=None)
+    fd.add_argument("--market-scope", default="US")
+    fd.add_argument("--no-emit", action="store_true", help="print deltas only, don't write files")
+
     sub.add_parser("config", help="show resolved data-substrate configuration")
 
     v = sub.add_parser("validate", help="validate an emitted artifact bundle")
@@ -55,12 +62,44 @@ def main(argv: list[str] | None = None) -> int:
         return _do_fetch(args)
     if args.cmd == "technical":
         return _do_technical(args)
+    if args.cmd == "fundamentals":
+        return _do_fundamentals(args)
     if args.cmd == "config":
         return _do_config(args)
     if args.cmd == "validate":
         return _do_validate(args)
     parser.error("unknown command")
     return 2
+
+
+def _do_fundamentals(args) -> int:
+    try:
+        records = fundamentals.compute_deltas(
+            args.symbol, as_of=args.as_of, market_scope=args.market_scope)
+    except net.FetchError as exc:
+        print(f"source_gap: could not compute deltas for {args.symbol}: {exc}", file=sys.stderr)
+        return 1
+
+    print(f"# {args.symbol.upper()} fundamental deltas (derived from SEC companyfacts)")
+    print(f"{'metric':<24}{'value':>12}  tier")
+    for r in records:
+        print(f"{r.metric:<24}{_fmt(r.value):>12}  {r.posture.claim_type}/{r.posture.authority_level}")
+
+    if args.no_emit:
+        return 0
+
+    result = emit_bundle(
+        records, out_dir=args.out, research_object=args.symbol.upper(),
+        market_scope=args.market_scope, endpoint="derived://tools/mira_data/fundamentals",
+        params=f"symbol={args.symbol.upper()}",
+    )
+    print("\n# emitted")
+    for key in ("evidence_log", "calculation_ledger", "manifest", "ingestion_log"):
+        if result.get(key):
+            print(f"  {key:<20} {result[key]}")
+    print(f"  derived={result['n_records']} ledgered={result['n_ledgered']} "
+          f"(Mira-computed -> ledger required, §8)")
+    return 0
 
 
 def _do_technical(args) -> int:
