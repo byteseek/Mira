@@ -107,6 +107,19 @@ overlay 不是新的主框架，而是额外的验证视角。
 - 基本面和价格都很弱，但下一步需要判断是否进入 `capitulation_watch` 或 `base_building`
 - 单看估值、技术面、宏观或供应链都不足以解释风险，因为价格、预期、仓位和事件路径必须同时看
 
+### `technical-context`
+
+适用于以下情形：
+
+- 研究动作依赖当前市场定价、事件反应或 follow-through 质量
+- thesis 更新需要把基本面证据与市场反应明确分开
+- 标的处于高波动、拥挤仓位、低流动性或事件驱动跳空
+- 用户问某只票现在能不能行动、观察、刷新还是降优先级
+
+这是市场定价与风险上下文层，不用于证明基本面执行、需求、利润率、护城河或长期 thesis 持久性（见 [../../../memory/skills/technical-analysis.md](../../../memory/skills/technical-analysis.md)）。
+
+可复现计算由 `tools/mira_data technical <ticker>`（stdlib、延迟 L5 日线）产出 trend / relative strength / volume / volatility / 关键位 / `technical_context_score`，自算指标进 calculation-ledger；options、short interest、intraday 无免费源，必须保持 `source_gap`，不得伪造。
+
 ## Selection Questions
 
 判断是否启用 `supply-chain` overlay 时，至少回答：
@@ -196,6 +209,14 @@ overlay 不是新的主框架，而是额外的验证视角。
 - 好消息和坏消息的 reaction quality 如何，是否出现 good-news fade、bad-news absorbed 或 gap fill？
 - 下一催化剂需要 upside surprise、confirmation、digest、reset 还是 capitulation？
 - 输出应该是 `watch_only`、`valuation_reset_watch`、`risk_reduction_context`、`event_setup` 还是回到主框架？
+
+判断是否启用 `technical-context` overlay 时，至少回答：
+
+- 当前 trend、relative strength、volume 和 volatility 是确认还是否定最近的事件解读？
+- 关键 `invalidation_level` 和 `trigger_level` 在哪里，价格相对它们处于什么位置？
+- 这个 setup 改变了研究动作（行动 / 观察 / 刷新 / 降优先级），还是只是图形评论？
+- 市场反应是否在用“好消息不涨 / 坏消息不跌”反驳基本面叙事？
+- 哪些字段必须保持 `source_gap`（options / short interest / intraday），不能伪造？
 
 ## Usage Rule
 
@@ -317,6 +338,24 @@ overlay 不是新的主框架，而是额外的验证视角。
 - `research_action`
 - `must_refresh_if`
 
+如果启用 `technical-context` overlay，还必须记录：
+
+- `technical_context_weight`
+  one of `none`, `context`, `secondary`, `primary`
+- `trend_state`
+- `relative_strength_state`
+- `volume_state`
+- `volatility_state`
+- `event_reaction_quality`
+- `positioning_risk`
+- `key_levels`
+- `invalidation_level`
+- `trigger_level`
+- `technical_context_score`
+- `evidence_limitations`
+- `stale_after`
+- `must_refresh_if`
+
 如果不启用，也允许明确写：
 
 - `selected_overlays: none`
@@ -414,6 +453,14 @@ overlay 不是新的主框架，而是额外的验证视角。
 - event reaction quality
 - next catalyst burden
 - research action and refresh trigger
+
+`technical-context` overlay 通常应补充以下内容：
+
+- trend / relative-strength / volume / volatility 状态
+- event-reaction quality 和 follow-through
+- key levels、trigger 和 invalidation
+- positioning / crowding 检查（无免费源时为 `source_gap`）
+- `technical_context_score` 和刷新条件
 
 ## Regime-Specific Notes
 

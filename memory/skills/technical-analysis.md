@@ -1,8 +1,9 @@
 # Skill Knowledge: Technical Analysis
 
-- last_updated: 2026-06-03
+- last_updated: 2026-06-09
 - status: trial
 - role: market-pricing and risk-context layer, not a standalone trade signal
+- executor: reproducible computation via `tools/mira_data technical <ticker>` (stdlib, delayed L5 daily); derived indicators are ledgered; options / short-interest / intraday = `source_gap`
 
 ## Scope
 

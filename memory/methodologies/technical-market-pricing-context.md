@@ -2,7 +2,7 @@
 
 - status: trial
 - role: market-pricing, event-reaction and risk-window layer
-- last_updated: 2026-06-03
+- last_updated: 2026-06-09
 - source_bucket: derived_internal; practitioner; market_data
 - source_quality: medium
 - credibility_score: 3
@@ -121,6 +121,40 @@ Use [../../templates/technical-analysis-check.csv](../../templates/technical-ana
 - It encourages thesis upgrades unsupported by fundamental evidence.
 - It cannot be reproduced from the recorded public data.
 
+## Trial Results (2026-06-09)
+
+Reproducible computation now exists: `tools/mira_data technical <ticker>` (stdlib,
+delayed L5 daily) replaces the prior hand-computed checklist. Live trial run:
+
+| ticker | trend_state | ma_stack | rel_return_3m | score | invalidation / trigger |
+| --- | --- | --- | --- | --- | --- |
+| COHR | uptrend_confirmed | bullish_stack | +50.0% | 82 | 212.39 / 440.00 |
+| CRWV | range_constructive | mixed | +28.3% | 68 | 99.98 / 132.15 (close 102.37 — thin cushion) |
+| AAPL | range_constructive | mixed | +6.9% | 72 | 265.57 / 317.40 |
+
+Assessment against the falsification conditions:
+
+- **Reproducible from public data — PASS.** Every derived number emits a
+  calculation-ledger row (formula + `yahoo_chart_api_v8` inputs) and is
+  `validate_repo`-clean. This clears the prior blocker: the method was only ever a
+  hand-computed checklist.
+- **Benchmark-adjusted, no false confidence — PASS.** Relative returns are vs SPY;
+  daily / delayed is labeled; options / short-interest / intraday are `source_gap`,
+  not fabricated.
+- **Does not upgrade fundamentals — PASS.** Output is market-pricing state only;
+  `technical_context_score` is a pricing composite, explicitly not a thesis score.
+- **Changes decision quality — PARTIAL, needs live follow-through.** The runs are
+  decision-relevant (CRWV sits ~2.4% above its 200-day invalidation — a thin risk
+  cushion; COHR's trigger 440 above a +50% RS leader flags extension) and they
+  separate the three names. Proof that this *improves* research actions still needs
+  outcome tracking across more event cases over time.
+
 ## Adoption Decision
 
-Keep in `trial`. It can be used in formal outputs as a market-pricing layer, but it is not yet an adopted Mira method until case follow-through proves that it improves actionability, refresh triggers and risk framing.
+Keep the methodology in `trial`, but the **reproducibility milestone is met**: the
+computation layer (`tools/mira_data technical`) is adopted as the standard executor,
+so technical context is reproducible + ledgered rather than hand-computed. The
+methodology itself stays `trial` until live follow-through across more earnings /
+event cases proves it improves actionability, refresh triggers and risk framing —
+not merely describes price. It may be used in formal outputs now as the
+`technical-context` market-pricing overlay.

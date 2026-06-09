@@ -743,6 +743,7 @@ This loop is currently `candidate_internal_release`, not final external-grade.
 - 付费、保密、账户级、专家访谈或 vendor 原始数据只能记录合规 metadata 和简短 effect note；不得提交原文或原始数据 dump。
 - 没有 date、permission、as-of 或 field coverage 的材料只能支持 discovery / working_view，不能支撑 durable conclusion。
 - 如果 material 会驱动估值、peer ranking、event reaction、position/portfolio review 或 actionability，继续进入 Step 3.5 quant dependency。
+- `public_on_demand` 的行情 / 财报 / 宏观取数与技术指标计算由可移植 stdlib 工具 `tools/mira_data` 执行（`fetch` / `technical` / `fundamentals`，见 [../architecture/data-acquisition-upgrade.md](../architecture/data-acquisition-upgrade.md)）。产物自带证据档位并落 evidence-log / calculation-ledger / dataset-manifest；披露值记为 reported，Mira 自算数（YoY、技术指标等）按 §8 必须进 ledger。SEC 取数需在 `private/mira-data.env` 配置真实联系方式。
 
 ## Step 3.5: Quant Dependency Check
 
@@ -1031,6 +1032,7 @@ overlay 是额外证据路径，不替代主框架。
 - `macro`
 - `market-structure-policy`
 - `commodity`
+- `technical-context`
 
 选择规则见：
 
