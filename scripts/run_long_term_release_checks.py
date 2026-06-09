@@ -171,6 +171,13 @@ def main() -> int:
     )
     checks.append(
         run_command(
+            "repo_validation_contract_tests",
+            [sys.executable, "scripts/test_repo_validation_contracts.py"],
+            {0},
+        )
+    )
+    checks.append(
+        run_command(
             "validation_case_set",
             [sys.executable, "scripts/validate_validation_case_set.py"],
             {0},
@@ -446,6 +453,7 @@ def main() -> int:
     print("  goal_completion_audit_validation: true")
     print("  release_verification_command_manifest_validation: true")
     print("  validation_case_set: true")
+    print("  repo_validation_contract_tests: true")
     print("  trial_theme_matrix_validation: true")
     print("  recent_theme_selection_validation: true")
     print("  theme_selection_refresh_audit_validation: true")
