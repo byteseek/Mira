@@ -18,6 +18,8 @@ Mira 关注的是 investment thesis：这个判断基于什么证据、在什么
 
 如果你在 agent 里只说 `hi Mira`、`你好 Mira`、`Mira mode`，或问“怎么用 Mira”，默认应该先看到 `START_HERE.md` 的摘要；如果第一句话已经是具体研究任务，agent 应直接路由任务，不用打断式 onboarding。
 
+如果你使用的是非 Codex / 非 Claude Code 产品，或不确定该产品是否会加载本仓库规则，使用 [docs/chatgpt-conversation-instructions.md](docs/chatgpt-conversation-instructions.md)。它是紧凑、自包含的入口门槛：让 agent 留在 Mira Mode、而不是按普通助手回答；当产品无法读取本地仓库文件时，可直接整段粘贴。
+
 如果你想用 Codex、Claude Code 或其他代码型 agent 直接引用本项目，主要文档是：
 
 | 需求 | 文档 |
@@ -26,7 +28,7 @@ Mira 关注的是 investment thesis：这个判断基于什么证据、在什么
 | 唤醒词、身份边界和 memory contract | [MIRA.md](MIRA.md) |
 | 一屏版 agent lazy-loading contract | [OPERATING_CONTRACT.md](OPERATING_CONTRACT.md) |
 | Agent 执行 quickstart、路由和输出位置 | [AGENT_QUICKSTART.md](AGENT_QUICKSTART.md) |
-| 可直接复制到 ChatGPT 对话的指令 | [docs/chatgpt-conversation-instructions.md](docs/chatgpt-conversation-instructions.md) |
+| 最低入口门槛 / 可粘贴指令（非 Codex/Claude 或不确定是否加载规则） | [docs/chatgpt-conversation-instructions.md](docs/chatgpt-conversation-instructions.md) |
 | Codex 项目规则 | [AGENTS.md](AGENTS.md) |
 | Claude Code 入口 | [CLAUDE.md](CLAUDE.md) |
 
@@ -107,6 +109,7 @@ Mira 不是交易机器人、行情后台程序或自动组合管理器。
 | 主题 | 文档 |
 | --- | --- |
 | 用户入口、Prompt 示例和任务卡 | [START_HERE.md](START_HERE.md) |
+| 最低入口门槛和可粘贴指令 | [docs/chatgpt-conversation-instructions.md](docs/chatgpt-conversation-instructions.md) |
 | Agent contract 和 lazy loading | [OPERATING_CONTRACT.md](OPERATING_CONTRACT.md) |
 | Agent 执行 quickstart 和输出位置 | [AGENT_QUICKSTART.md](AGENT_QUICKSTART.md) |
 | 唤醒词和 memory boundary | [MIRA.md](MIRA.md) |

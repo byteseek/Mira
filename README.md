@@ -18,6 +18,8 @@ If you just want to start using Mira, read [START_HERE.md](START_HERE.md). It is
 
 If you open the repository in an agent and only say `hi Mira`, `你好 Mira`, `Mira mode`, or ask how to use Mira, the agent should return a concise `START_HERE.md` summary. If the first prompt is already a concrete research task, it should route the task directly instead of interrupting with onboarding.
 
+If you are using a non-Codex / non-Claude product, or you are unsure whether the product will load this repository's rules, use [docs/chatgpt-conversation-instructions.md](docs/chatgpt-conversation-instructions.md). It is the compact, self-contained entry gate that keeps the agent in Mira Mode instead of answering as a generic assistant, and you can paste it directly when the product cannot read local repository files.
+
 If you want Codex, Claude Code or another code agent to use this repository directly, the main documents are:
 
 | Need | Read |
@@ -26,7 +28,7 @@ If you want Codex, Claude Code or another code agent to use this repository dire
 | Wake word, identity boundary and memory contract | [MIRA.md](MIRA.md) |
 | One-screen agent loading contract | [OPERATING_CONTRACT.md](OPERATING_CONTRACT.md) |
 | Agent execution quickstart, routing and output locations | [AGENT_QUICKSTART.md](AGENT_QUICKSTART.md) |
-| Copyable ChatGPT conversation instructions | [docs/chatgpt-conversation-instructions.md](docs/chatgpt-conversation-instructions.md) |
+| Minimum entry gate and copyable instructions (non-Codex/Claude or uncertain rule loading) | [docs/chatgpt-conversation-instructions.md](docs/chatgpt-conversation-instructions.md) |
 | Codex project rules | [AGENTS.md](AGENTS.md) |
 | Claude Code entry | [CLAUDE.md](CLAUDE.md) |
 
@@ -107,6 +109,7 @@ Single-equity research should also run:
 | Topic | Document |
 | --- | --- |
 | User entry, prompt examples and task cards | [START_HERE.md](START_HERE.md) |
+| Minimum entry gate and paste-able instructions | [docs/chatgpt-conversation-instructions.md](docs/chatgpt-conversation-instructions.md) |
 | Agent contract and lazy loading | [OPERATING_CONTRACT.md](OPERATING_CONTRACT.md) |
 | Agent execution quickstart and output locations | [AGENT_QUICKSTART.md](AGENT_QUICKSTART.md) |
 | Wake word and memory boundary | [MIRA.md](MIRA.md) |
