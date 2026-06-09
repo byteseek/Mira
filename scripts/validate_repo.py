@@ -398,6 +398,23 @@ ROUTING_EXAMPLE_EXPECTATIONS = {
     },
 }
 
+CALCULATION_LEDGER_COLUMNS = [
+    "calculation_id",
+    "research_object",
+    "question",
+    "metric",
+    "formula",
+    "input_sources",
+    "period",
+    "unit",
+    "result",
+    "cross_check",
+    "tool_used",
+    "verification_status",
+    "limitations",
+    "evidence_log_ref",
+]
+
 RESEARCH_PACKAGE_MANIFEST_REQUIRED_FIELDS = [
     "manifest_version",
     "case_id",
@@ -417,6 +434,25 @@ RESEARCH_PACKAGE_MANIFEST_REQUIRED_FIELDS = [
     "stale_after",
     "must_refresh_if",
 ]
+
+PACKAGE_TYPES = {
+    "case_package",
+    "company_handoff_package",
+    "earnings_package",
+    "etf_discovery_package",
+    "etf_listing_analysis_package",
+    "evidence_package",
+    "failure_backtest_package",
+    "industry_package",
+    "research_package",
+    "value_capture_package",
+    "watchlist_package",
+}
+
+MANIFEST_VERSIONS = {
+    "mira_package_manifest_v1",
+    "mira_research_package_v1",
+}
 
 
 @dataclass
@@ -477,6 +513,16 @@ def read_csv(path: Path) -> tuple[list[str], list[dict[str, str]], list[Issue]]:
     return header, rows, issues
 
 
+def calculation_ledger_refs(case_dir: Path) -> set[str]:
+    path = case_dir / "calculation-ledger.csv"
+    if not path.exists():
+        return set()
+    header, rows, issues = read_csv(path)
+    if issues or header != CALCULATION_LEDGER_COLUMNS:
+        return set()
+    return {row.get("evidence_log_ref", "").strip() for row in rows if row.get("evidence_log_ref", "").strip()}
+
+
 def validate_evidence_log(path: Path) -> list[Issue]:
     if is_legacy_evidence_schema(path):
         return [
@@ -522,6 +568,17 @@ def validate_evidence_log(path: Path) -> list[Issue]:
     if is_template(path):
         return issues
 
+    if is_v1:
+        issues.append(
+            Issue(
+                "WARN",
+                path,
+                1,
+                "canonical v1 evidence-log header lacks evidence posture fields; migrate active cases to v1.1 or mark archived cases with legacy_evidence_schema: true",
+            )
+        )
+
+    ledger_refs = calculation_ledger_refs(path.parent)
     for i, row in enumerate(rows, start=2):
         if is_v1_2:
             required_fields = CANONICAL_EVIDENCE_COLUMNS_V1_2
@@ -618,6 +675,19 @@ def validate_evidence_log(path: Path) -> list[Issue]:
                 )
             )
 
+        if claim_type == "derived_calculation":
+            notes = row.get("notes", "").lower()
+            source_id = row.get("source_id", "").strip()
+            if "formula:" not in notes and source_id not in ledger_refs:
+                issues.append(
+                    Issue(
+                        "ERROR",
+                        path,
+                        i,
+                        "derived_calculation requires a Formula: note or calculation-ledger.csv row with matching evidence_log_ref",
+                    )
+                )
+
         if claim_type == "rumor_signal" and confidence == "high":
             issues.append(Issue("ERROR", path, i, "rumor_signal cannot have high confidence"))
 
@@ -703,6 +773,10 @@ def validate_research_package_manifest(path: Path) -> list[Issue]:
         if field not in data:
             issues.append(Issue("ERROR", path, 0, f"missing manifest field `{field}`"))
 
+    version = str(data.get("manifest_version", "")).strip()
+    if version and not is_placeholder(version) and version not in MANIFEST_VERSIONS:
+        issues.append(Issue("ERROR", path, 0, f"invalid manifest_version `{version}`"))
+
     readiness = str(data.get("readiness_level", "")).strip()
     if readiness and not is_placeholder(readiness) and readiness not in READINESS_LEVELS:
         issues.append(Issue("ERROR", path, 0, f"invalid readiness_level `{readiness}`"))
@@ -712,7 +786,13 @@ def validate_research_package_manifest(path: Path) -> list[Issue]:
         if value and not is_placeholder(value) and not DATE_RE.match(value):
             issues.append(Issue("ERROR", path, 0, f"`{field}` must be YYYY-MM-DD"))
 
-    for field in ("blocking_gaps", "hero_artifacts", "support_artifacts", "must_refresh_if"):
+    for field in (
+        "blocking_gaps",
+        "hero_artifacts",
+        "support_artifacts",
+        "must_refresh_if",
+        "calculation_artifacts",
+    ):
         if field in data and not isinstance(data.get(field), list):
             issues.append(Issue("ERROR", path, 0, f"`{field}` must be a list"))
 
@@ -722,8 +802,86 @@ def validate_research_package_manifest(path: Path) -> list[Issue]:
         issues.append(Issue("ERROR", path, 0, "manifest must name support artifacts"))
 
     package_type = str(data.get("package_type", "")).strip()
-    if package_type and package_type != "research_package":
-        issues.append(Issue("WARN", path, 0, f"unexpected package_type `{package_type}`"))
+    if package_type and package_type not in PACKAGE_TYPES:
+        issues.append(Issue("ERROR", path, 0, f"invalid package_type `{package_type}`"))
+
+    for field in ("hero_artifacts", "support_artifacts", "calculation_artifacts"):
+        values = data.get(field, [])
+        if not isinstance(values, list):
+            continue
+        for value in values:
+            if not isinstance(value, str):
+                issues.append(Issue("ERROR", path, 0, f"`{field}` entries must be strings"))
+                continue
+            if is_placeholder(value):
+                continue
+            if not (path.parent / value).exists():
+                issues.append(Issue("ERROR", path, 0, f"`{field}` references missing artifact `{value}`"))
+
+    return issues
+
+
+def validate_calculation_ledger(path: Path) -> list[Issue]:
+    if is_template(path):
+        return []
+
+    header, rows, issues = read_csv(path)
+    if issues:
+        return issues
+
+    if header != CALCULATION_LEDGER_COLUMNS:
+        missing = [c for c in CALCULATION_LEDGER_COLUMNS if c not in set(header)]
+        extra = [c for c in header if c not in CALCULATION_LEDGER_COLUMNS]
+        issues.append(
+            Issue(
+                "ERROR",
+                path,
+                1,
+                f"non-canonical calculation-ledger header; missing={missing}; extra={extra}",
+            )
+        )
+        return issues
+
+    if not rows:
+        issues.append(Issue("ERROR", path, 1, "calculation-ledger.csv has no calculation rows"))
+        return issues
+
+    evidence_path = path.parent / "evidence-log.csv"
+    evidence_ids: set[str] = set()
+    if evidence_path.exists():
+        evidence_header, evidence_rows, evidence_issues = read_csv(evidence_path)
+        if not evidence_issues and "source_id" in evidence_header:
+            evidence_ids = {
+                row.get("source_id", "").strip()
+                for row in evidence_rows
+                if row.get("source_id", "").strip()
+            }
+
+    calculation_ids = [row.get("calculation_id", "").strip() for row in rows]
+    for calculation_id in sorted({value for value in calculation_ids if calculation_ids.count(value) > 1}):
+        issues.append(Issue("ERROR", path, 0, f"duplicate calculation_id `{calculation_id}`"))
+
+    for i, row in enumerate(rows, start=2):
+        for field in CALCULATION_LEDGER_COLUMNS:
+            if not (row.get(field) or "").strip():
+                issues.append(Issue("ERROR", path, i, f"missing required field `{field}`"))
+
+        verification_status = row.get("verification_status", "").strip()
+        if verification_status and verification_status not in VERIFICATION_STATUSES:
+            issues.append(
+                Issue("ERROR", path, i, f"invalid verification_status `{verification_status}`")
+            )
+
+        evidence_ref = row.get("evidence_log_ref", "").strip()
+        if evidence_ids and evidence_ref and evidence_ref not in evidence_ids:
+            issues.append(
+                Issue(
+                    "ERROR",
+                    path,
+                    i,
+                    f"evidence_log_ref `{evidence_ref}` not found in sibling evidence-log.csv",
+                )
+            )
 
     return issues
 
@@ -766,6 +924,28 @@ def validate_case_readme(case_dir: Path) -> list[Issue]:
         issues.append(Issue("ERROR", readme, 0, "missing refresh/staleness policy"))
     if not has_any(text, DISCLAIMER_MARKERS):
         issues.append(Issue("ERROR", readme, 0, "missing not-investment-advice disclaimer"))
+    lowered = text.lower()
+    if (
+        ("golden case" in lowered or "canonical example" in lowered or "canonical evidence log" in lowered)
+        and not (case_dir / "research-package-manifest.json").exists()
+    ):
+        issues.append(
+            Issue(
+                "WARN",
+                case_dir,
+                0,
+                "canonical/golden case should include research-package-manifest.json for machine handoff",
+            )
+        )
+    if (case_dir / "evidence-log.csv").exists() and not (case_dir / "research-package-manifest.json").exists():
+        issues.append(
+            Issue(
+                "ERROR",
+                case_dir,
+                0,
+                "case with evidence-log.csv must include research-package-manifest.json",
+            )
+        )
     return issues
 
 
@@ -1421,6 +1601,10 @@ def validate_repo(root: Path, as_of: date) -> list[Issue]:
         if ".git" in path.parts:
             continue
         issues.extend(validate_decision_log(path))
+    for path in sorted(root.glob("**/calculation-ledger.csv")):
+        if ".git" in path.parts:
+            continue
+        issues.extend(validate_calculation_ledger(path))
     for path in sorted(root.glob("**/research-package-manifest.json")):
         if ".git" in path.parts:
             continue
@@ -1473,6 +1657,10 @@ def validate_paths(paths: list[Path], as_of: date) -> list[Issue]:
             if decision_log.exists():
                 issues.extend(validate_no_local_absolute_paths(decision_log))
                 issues.extend(validate_decision_log(decision_log))
+            calculation_ledger = path / "calculation-ledger.csv"
+            if calculation_ledger.exists():
+                issues.extend(validate_no_local_absolute_paths(calculation_ledger))
+                issues.extend(validate_calculation_ledger(calculation_ledger))
             manifest = path / "research-package-manifest.json"
             if manifest.exists():
                 issues.extend(validate_research_package_manifest(manifest))
@@ -1490,6 +1678,9 @@ def validate_paths(paths: list[Path], as_of: date) -> list[Issue]:
         elif path.name == "decision-log.csv":
             issues.extend(validate_no_local_absolute_paths(path))
             issues.extend(validate_decision_log(path))
+        elif path.name == "calculation-ledger.csv":
+            issues.extend(validate_no_local_absolute_paths(path))
+            issues.extend(validate_calculation_ledger(path))
         elif path.name == "research-package-manifest.json":
             issues.extend(validate_research_package_manifest(path))
         elif path.as_posix().endswith("examples/routing-examples.md"):
@@ -1500,7 +1691,7 @@ def validate_paths(paths: list[Path], as_of: date) -> list[Issue]:
                     "ERROR",
                     path,
                     0,
-                    "expected evidence-log.csv, decision-log.csv, research-package-manifest.json or case directory",
+                    "expected evidence-log.csv, decision-log.csv, calculation-ledger.csv, research-package-manifest.json or case directory",
                 )
             )
     return issues

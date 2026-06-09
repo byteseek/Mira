@@ -11,6 +11,7 @@ A standard research package has three core files:
 - `investment memo`: investment judgment, key evidence, source limits, refresh conditions and disconfirmation conditions.
 - `evidence log`: source, claim area, claim type, use location, as-of date, confidence and notes.
 - `case notes`: intermediate observations, conflicts, gaps and fact/inference separation.
+- `research-package-manifest.json`: machine handoff metadata for package type, hero artifacts, support artifacts, readiness, source scope, quant status and refresh conditions.
 
 Every standard package should also state:
 
@@ -23,6 +24,17 @@ Every standard package should also state:
 - `must_refresh_if`
 
 Templates: [templates/research-package/](../templates/research-package/).
+
+Generate manifests for existing cases with:
+
+```sh
+python3 scripts/generate_case_manifests.py cases/<case-id>
+python3 scripts/generate_case_manifests.py --all
+```
+
+The repository validator checks manifest shape, allowed package types, date fields,
+list fields, referenced artifacts and whether every case with an `evidence-log.csv`
+has a manifest.
 
 ## Thesis System Package
 
@@ -184,7 +196,32 @@ entered the workflow and what it is allowed to support. Claim-level use still
 belongs in the evidence log, and material derived numbers still need
 `calculation-ledger.csv` or an explicit formula note.
 
+## Calculation Ledger And Quant Gate
+
+When a number is calculated by Mira or the researcher and affects thesis,
+event delta, valuation, peer comparison or actionability, it must not only
+appear as `claim_type=derived_calculation` in `evidence-log.csv`.
+
+Derived calculations need one of:
+
+- a `Formula:` note in the evidence row
+- a case-local `calculation-ledger.csv` row whose `evidence_log_ref` points back
+  to that evidence row
+
+The repository validator checks:
+
+- canonical `calculation-ledger.csv` headers and required fields
+- `evidence_log_ref` values against sibling `evidence-log.csv` source IDs
+- derived-calculation rows for either a formula note or ledger reference
+- manifest `calculation_artifacts` entries for referenced file existence
+
 ## Validation
+
+Run the full local quality gate:
+
+```sh
+python3 scripts/run_quality_gate.py
+```
 
 Validate a formal case:
 

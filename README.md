@@ -26,6 +26,7 @@ If you want Codex, Claude Code or another code agent to use this repository dire
 | Wake word, identity boundary and memory contract | [MIRA.md](MIRA.md) |
 | One-screen agent loading contract | [OPERATING_CONTRACT.md](OPERATING_CONTRACT.md) |
 | Agent execution quickstart, routing and output locations | [AGENT_QUICKSTART.md](AGENT_QUICKSTART.md) |
+| Copyable ChatGPT conversation instructions | [docs/chatgpt-conversation-instructions.md](docs/chatgpt-conversation-instructions.md) |
 | Codex project rules | [AGENTS.md](AGENTS.md) |
 | Claude Code entry | [CLAUDE.md](CLAUDE.md) |
 
@@ -133,6 +134,7 @@ All public cases are historical examples and should not be treated as live recom
 Validate the repository or a formal case:
 
 ```sh
+python3 scripts/run_quality_gate.py
 python3 scripts/validate_repo.py
 python3 scripts/validate_repo.py cases/<case-id>
 ```

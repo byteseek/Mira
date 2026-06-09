@@ -28,6 +28,7 @@ Use this before handing off a formal research output.
   ingestion artifact or an explicit ingestion waiver.
 - [ ] New evidence logs use the v1.2 schema (posture fields + `source_language` / `translation_basis`), or explicitly state why a legacy v1 / v1.1 schema is being used.
 - [ ] Non-English primary sources record `source_language` and `translation_basis`; judgment-bearing translated quotes keep `original_excerpt=` in `notes` (claim_text stays a single verifiable claim).
+- [ ] Formal case packages include `research-package-manifest.json` with hero artifacts, support artifacts, readiness, source scope and refresh conditions.
 - [ ] `readiness_level`, `readiness_basis` and `blocking_gaps` are stated before any actionability conclusion.
 - [ ] Numeric conclusions were routed through `data-analysis-quality-gate` or explicitly waived with a reason.
 - [ ] Derived calculations have a `calculation-ledger` row or explicit formula note.
