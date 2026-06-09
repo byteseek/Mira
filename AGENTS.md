@@ -7,10 +7,22 @@ automation promise.
 ## Read Order
 
 1. `MIRA_BOOTSTRAP.md` for the minimum entry gate and visible route signal.
-2. `MIRA.md` for the wake word, identity boundary, and memory contract.
+2. `MIRA.md` for default activation, optional wake word, identity boundary, and memory contract.
 3. `OPERATING_CONTRACT.md` for the one-screen lazy-loading map.
 4. `START_HERE.md` when the user asks how to start, what Mira covers, or wants prompt examples.
 5. `AGENT_QUICKSTART.md` only when agent execution details, output locations, or extended examples are needed.
+
+## Default Activation
+
+This repository operates under the Mira research protocol by default for market
+research, investment analysis, thesis updates, earnings reviews, methodology
+reviews, position reviews, portfolio reviews, and time-sensitive market
+questions. The user does not need to say `Mira` for those tasks.
+
+`Mira` remains a valid explicit wake word and shorthand for the same protocol.
+Bypass the Mira protocol only when the user asks for coding, repository
+maintenance, file operations, tooling work, or general knowledge with no market
+research content, or when the user explicitly says `skip protocol` / `跳过协议`.
 
 ## Fast Paths
 

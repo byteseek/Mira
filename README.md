@@ -16,6 +16,11 @@ This repository is for research workflow design, documentation, and historical e
 
 If you just want to start using Mira, read [START_HERE.md](START_HERE.md). It is the single user-facing entry card for layered prompts, examples, the help matrix and usage boundaries.
 
+In this repository, market research, investment analysis, thesis updates,
+earnings reviews, methodology reviews, position reviews, portfolio reviews, and
+time-sensitive market questions default to the Mira protocol. The `Mira` wake
+word is useful shorthand, but it is not required for those tasks.
+
 If you are using a non-Codex / non-Claude product, or you are unsure whether the
 product will load project instructions, start with [MIRA_BOOTSTRAP.md](MIRA_BOOTSTRAP.md).
 It is the minimum entry gate that prevents direct generic answers and points to
@@ -30,7 +35,7 @@ If you want Codex, Claude Code or another code agent to use this repository dire
 | --- | --- |
 | Minimum entry gate for uncertain project-rule loading | [MIRA_BOOTSTRAP.md](MIRA_BOOTSTRAP.md) |
 | User entry, layered prompts and help matrix | [START_HERE.md](START_HERE.md) |
-| Wake word, identity boundary and memory contract | [MIRA.md](MIRA.md) |
+| Default activation, optional wake word, identity boundary and memory contract | [MIRA.md](MIRA.md) |
 | One-screen agent loading contract | [OPERATING_CONTRACT.md](OPERATING_CONTRACT.md) |
 | Agent execution quickstart, routing and output locations | [AGENT_QUICKSTART.md](AGENT_QUICKSTART.md) |
 | Copyable ChatGPT conversation instructions | [docs/chatgpt-conversation-instructions.md](docs/chatgpt-conversation-instructions.md) |
@@ -117,7 +122,7 @@ Single-equity research should also run:
 | User entry, prompt examples and task cards | [START_HERE.md](START_HERE.md) |
 | Agent contract and lazy loading | [OPERATING_CONTRACT.md](OPERATING_CONTRACT.md) |
 | Agent execution quickstart and output locations | [AGENT_QUICKSTART.md](AGENT_QUICKSTART.md) |
-| Wake word and memory boundary | [MIRA.md](MIRA.md) |
+| Default activation and memory boundary | [MIRA.md](MIRA.md) |
 | Research artifacts and validation | [docs/research-artifacts.md](docs/research-artifacts.md) |
 | Modules, loops, skills, cases and roadmap | [docs/module-map.md](docs/module-map.md) |
 | Source and claim protocols | [data/](data/) |

@@ -7,7 +7,10 @@ or [AGENTS.md](AGENTS.md).
 
 ## Non-Negotiable Entry Rules
 
-When the user invokes `Mira` or asks this repository to do investment research:
+In this repository, any market research, investment analysis, thesis update,
+earnings review, methodology review, position review, portfolio review, or
+time-sensitive market question defaults to Mira Mode. The user does not need to
+say `Mira`.
 
 1. Do not answer as a generic assistant. Enter Mira Mode: a research protocol
    for routed, source-aware, refreshable analysis.
@@ -33,6 +36,10 @@ When the user invokes `Mira` or asks this repository to do investment research:
    only and run the relevant gate from [OPERATING_CONTRACT.md](OPERATING_CONTRACT.md).
    Do not issue trade instructions or position-size conclusions without the
    required user-provided context.
+
+Bypass this gate only for coding, repository maintenance, file operations,
+tooling work, or general knowledge with no market research content, or when the
+user explicitly says `skip protocol` / `跳过协议`.
 
 ## Minimum Visible Signal
 

@@ -7,11 +7,11 @@ Do not duplicate the rules manually; use the root files as the source of truth:
 
 1. Read [MIRA_BOOTSTRAP.md](MIRA_BOOTSTRAP.md) for the minimum entry gate and visible route signal.
 2. Read [AGENTS.md](AGENTS.md) for the operating rules.
-3. Read [MIRA.md](MIRA.md) for the wake word, identity contract, persona boundary, and memory rules.
+3. Read [MIRA.md](MIRA.md) for default activation, optional wake word, identity contract, persona boundary, and memory rules.
 4. Read [OPERATING_CONTRACT.md](OPERATING_CONTRACT.md) for the one-screen lazy-loading contract.
 5. Read [START_HERE.md](START_HERE.md) when the user asks how to start, what Mira covers, or wants prompt examples.
 6. Read [AGENT_QUICKSTART.md](AGENT_QUICKSTART.md) for agent execution details, routing, output locations, and required evidence discipline.
-7. When the user says `Mira`, enter Mira Mode.
+7. Enter Mira Mode by default for research tasks; `Mira` is an optional wake word.
 
 Minimum execution rules:
 
