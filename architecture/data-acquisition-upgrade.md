@@ -1,7 +1,7 @@
 # Data Acquisition Upgrade — Architecture Blueprint
 
-- status: P1 + P2 implemented; wiring + fundamentals deltas + methodology trial done (PR #74)
-- last_updated: 2026-06-09
+- status: P1 + P2 implemented; wiring + fundamentals deltas + methodology trial done (PR #74); candidate-list screening capability added
+- last_updated: 2026-06-10
 - scope: the executable substrate beneath Mira's data contract (sources, routing gates, ingestion, evidence, calculation ledger)
 - non_goal: redesigning the data model. The model is already strong; this fills the empty execution slots it already names.
 
@@ -276,6 +276,22 @@ disclosed and market values emit `ledgered=0` (§8).
 Verified end-to-end against live SEC / Yahoo / BLS endpoints; all emitted evidence
 rows are `validate_repo`-clean (the period-aware SEC selection and the required
 `source_speaker` field were the two correctness fixes found during the build).
+
+**Screening capability — implemented.** `just data-screen "AAPL,MSFT,..."
+"--min-fcf-yield 0.04"` (`python3 -m mira_data screen`) upgrades the
+`discovery_or_screening` fallback ("no skill → watchlist + source_gap") into an
+execution path. Deliberately lite: bounded candidate-list triage (≤30 tickers,
+explicit list — never a market crawl, per DATA_POLICY) over dimensions the
+existing substrate already supports — market cap, FCF yield (FY OCF − FY capex,
+which added a `capex` curated tag to the companyfacts adapter), debt/equity,
+net margin, revenue YoY; flow metrics use the latest complete FY to avoid the
+companyfacts Q2/Q3 YTD trap. Output: `screening-watchlist.csv`
+(templates/screening-watchlist.csv schema) plus, for passing tickers, ledgered
+L6 derived ratios over SEC L2 + Yahoo L5 upstreams. A failed single-ticker
+fetch degrades that row to `data_gap`; a fully failed run exits as
+`source_gap` so routing falls back to the watchlist-note path. Whole-market
+factor screens (SEC frames cross-sections) and non-US / estimates screening
+stay deferred (P4).
 
 **P2 compute engine — implemented.** `just data-technical AAPL` (benchmark
 defaults to SPY) consumes the `market_price` series and computes the daily subset

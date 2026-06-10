@@ -61,3 +61,8 @@ data-technical SYMBOL OUT="private/data-smoke":
 # Compute fundamental deltas (YoY/CAGR, derived+ledgered) for a symbol, e.g. `just data-fundamentals AAPL`.
 data-fundamentals SYMBOL OUT="private/data-smoke":
     PYTHONPATH=tools python3 -m mira_data fundamentals {{SYMBOL}} --out {{OUT}}
+
+# Screen an explicit candidate list on fundamental criteria (bounded triage, max 30 tickers),
+# e.g. `just data-screen "AAPL,MSFT,GOOGL" "--min-fcf-yield 0.03 --max-debt-to-equity 1.5"`.
+data-screen TICKERS CRITERIA OUT="private/data-smoke":
+    PYTHONPATH=tools python3 -m mira_data screen {{TICKERS}} {{CRITERIA}} --out {{OUT}}

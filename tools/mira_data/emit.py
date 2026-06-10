@@ -177,7 +177,7 @@ def _evidence_row(r: CanonicalRecord, policy, used_by_agent, used_by_skill) -> d
     verification = "verified" if cat in {"reported_fact", "market_pricing", "verified_fact"} else "unverified"
     if r.derived:
         # ledger carries the reproducibility; the row points to its ledger via source_id.
-        ev_source_id = f"mira_calc__{r.metric}__{r.period}".lower().replace(" ", "_")
+        ev_source_id = _calc_id(r)
         notes = f"Formula: {r.formula}" if r.formula else "Formula: derived"
         upstream = r.upstream_sources or r.posture.source_id
     else:
@@ -210,8 +210,14 @@ def _evidence_row(r: CanonicalRecord, policy, used_by_agent, used_by_skill) -> d
     }
 
 
+def _calc_id(r: CanonicalRecord) -> str:
+    # research_object is part of the id: a multi-object bundle (e.g. a screen)
+    # must not collide two tickers' identical metric/period into one ledger ref.
+    return f"mira_calc__{r.research_object}__{r.metric}__{r.period}".lower().replace(" ", "_")
+
+
 def _ledger_row(r: CanonicalRecord) -> dict:
-    ev_source_id = f"mira_calc__{r.metric}__{r.period}".lower().replace(" ", "_")
+    ev_source_id = _calc_id(r)
     return {
         "calculation_id": ev_source_id,
         "research_object": r.research_object,

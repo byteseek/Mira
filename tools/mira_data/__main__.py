@@ -12,7 +12,7 @@ from __future__ import annotations
 import argparse
 import sys
 
-from . import config, fundamentals, net, technical
+from . import config, fundamentals, net, screening, technical
 from .adapters import bls, sec_companyfacts, yahoo_chart
 from .emit import emit_bundle
 
@@ -52,6 +52,25 @@ def main(argv: list[str] | None = None) -> int:
     fd.add_argument("--market-scope", default="US")
     fd.add_argument("--no-emit", action="store_true", help="print deltas only, don't write files")
 
+    sc = sub.add_parser(
+        "screen",
+        help="screen an explicit candidate list on fundamental criteria (bounded triage)")
+    sc.add_argument("tickers",
+                    help="comma-separated tickers, or @file with one ticker per line "
+                         f"(max {screening.MAX_TICKERS})")
+    sc.add_argument("--min-market-cap", type=float, default=None, help="USD floor")
+    sc.add_argument("--min-fcf-yield", type=float, default=None,
+                    help="(FY OCF - FY capex) / market cap floor, e.g. 0.04")
+    sc.add_argument("--max-debt-to-equity", type=float, default=None,
+                    help="long-term debt / equity ceiling, e.g. 1.0")
+    sc.add_argument("--min-net-margin", type=float, default=None, help="FY net margin floor")
+    sc.add_argument("--min-revenue-yoy", type=float, default=None,
+                    help="latest same-period revenue YoY floor, e.g. 0.0")
+    sc.add_argument("--out", default="private/data-smoke")
+    sc.add_argument("--as-of", default=None)
+    sc.add_argument("--market-scope", default="US")
+    sc.add_argument("--no-emit", action="store_true", help="print results only, don't write files")
+
     sub.add_parser("config", help="show resolved data-substrate configuration")
 
     v = sub.add_parser("validate", help="validate an emitted artifact bundle")
@@ -64,6 +83,8 @@ def main(argv: list[str] | None = None) -> int:
         return _do_technical(args)
     if args.cmd == "fundamentals":
         return _do_fundamentals(args)
+    if args.cmd == "screen":
+        return _do_screen(args)
     if args.cmd == "config":
         return _do_config(args)
     if args.cmd == "validate":
@@ -100,6 +121,66 @@ def _do_fundamentals(args) -> int:
     print(f"  derived={result['n_records']} ledgered={result['n_ledgered']} "
           f"(Mira-computed -> ledger required, §8)")
     return 0
+
+
+def _do_screen(args) -> int:
+    criteria = {name: getattr(args, name) for name in screening.CRITERIA
+                if getattr(args, name) is not None}
+    try:
+        tickers = _parse_tickers(args.tickers)
+        res = screening.screen_candidates(
+            tickers, criteria, as_of=args.as_of, market_scope=args.market_scope)
+    except ValueError as exc:
+        print(f"error: {exc}", file=sys.stderr)
+        return 2
+    except net.FetchError as exc:
+        print(f"source_gap: screen could not run: {exc}", file=sys.stderr)
+        return 1
+
+    s = res.summary
+    print(f"# screen {s['as_of']}: {s['n_candidates']} candidates -> "
+          f"{s['pass']} pass / {s['fail']} fail / {s['data_gap']} data_gap")
+    print(f"  criteria: {s['criteria']}")
+    print(f"{'ticker':<12}{'status':<10}{'mkt_cap':>18}{'fcf_yld':>11}{'d/e':>11}"
+          f"{'margin':>11}{'rev_yoy':>11}  gaps")
+    for row in res.rows:
+        print(f"{row['ticker']:<12}{row['screen_status']:<10}"
+              f"{_fmt_metric(row['market_cap_usd']):>18}{_fmt_metric(row['fcf_yield']):>11}"
+              f"{_fmt_metric(row['debt_to_equity']):>11}{_fmt_metric(row['net_margin']):>11}"
+              f"{_fmt_metric(row['revenue_yoy']):>11}  {row['data_gaps']}")
+
+    if args.no_emit:
+        return 0
+
+    watchlist = screening.emit_watchlist_rows(args.out, res.rows)
+    print(f"\n# emitted\n  {'watchlist':<20} {watchlist}")
+    if res.derived:
+        result = emit_bundle(
+            res.derived, out_dir=args.out,
+            research_object=f"SCREEN_{s['as_of']}", market_scope=args.market_scope,
+            endpoint="derived://tools/mira_data/screening", params=s["criteria"],
+        )
+        for key in ("evidence_log", "calculation_ledger", "manifest", "ingestion_log"):
+            if result.get(key):
+                print(f"  {key:<20} {result[key]}")
+        print(f"  derived={result['n_records']} ledgered={result['n_ledgered']} "
+              f"(Mira-computed -> ledger required, §8)")
+    else:
+        print("  no passing ticker -> no derived bundle (watchlist only)")
+    return 0
+
+
+def _parse_tickers(arg: str) -> list[str]:
+    if arg.startswith("@"):
+        with open(arg[1:], encoding="utf-8") as fh:
+            return [line.strip() for line in fh if line.strip() and not line.startswith("#")]
+    return arg.split(",")
+
+
+def _fmt_metric(v) -> str:
+    if isinstance(v, float):
+        return f"{v:,.0f}" if v > 1000 else f"{v:.4f}"
+    return str(v)
 
 
 def _do_technical(args) -> int:

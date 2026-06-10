@@ -13,4 +13,4 @@ position_review,"review 单一真实头寸是否匹配 thesis",loops/position-re
 portfolio_review,"PM 视角 review 多 thesis 研究簿 / thesis board / 哪些 thesis 需要看（无真实持仓或权重）",loops/portfolio-review-loop.md,on_hit
 portfolio_construction_review,"真实组合结构 / 集中度 / 重复 bet / 因子暴露 / 风险预算",loops/portfolio-construction-review-loop.md,on_hit_decision_support
 decision_quality_review,"复盘过去研究判断 / 头寸动作 / 组合决策质量",loops/decision-quality-review-loop.md,on_hit
-discovery_or_screening,"找候选 / 筛选 / 发现标的；按 research_object 分派对应 discovery skill（ETF→etf-listing-discovery，产业链→industry-concept-analysis）",loops/analysis-routing.md,on_hit
+discovery_or_screening,"找候选 / 筛选 / 发现标的；按 research_object 分派（ETF→etf-listing-discovery，产业链→industry-concept-analysis，通用财务指标筛选→tools/mira_data screen 候选清单制；数据拿不到时降级 watchlist+source_gap）",loops/analysis-routing.md,on_hit

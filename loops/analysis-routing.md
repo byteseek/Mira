@@ -409,9 +409,22 @@ Mira 的领域安全门——不给交易指令、无持仓不给仓位、instru
 
 ### `discovery_or_screening`
 
-用于找候选、发现新 ETF、发现产业链标的或建立 watchlist。
+用于找候选、发现新 ETF、发现产业链标的、按财务指标筛选股票或建立 watchlist。
 
-默认进入相应 discovery skill，而不是直接写投资 memo。
+默认按对象分派，而不是直接写投资 memo：
+
+- ETF / 新产品发现：`skills/etf-listing-discovery/SKILL.md`
+- 产业链 / 主题标的发现：`skills/industry-concept-analysis/SKILL.md`
+- 通用财务指标筛选（美股）：`tools/mira_data screen`（`just data-screen`）。
+  输入是显式候选清单（≤30 个；来自用户、`data/market-default-packs.csv` 或上游
+  discovery skill 的产出），不做全市场爬取。可筛维度限于现有数据底座直接支持的：
+  market cap、FCF yield、debt-to-equity、net margin、revenue YoY。产出
+  `screening-watchlist.csv` 并自动落 evidence-log + calculation-ledger；结果是
+  screening 档（SEC companyfacts L2 + Yahoo 价格 L5，自算比率 L6），进入单票
+  研究前必须对照 filing 核验。
+
+降级规则：候选清单缺失、SEC 联系方式未配置或数据拿不到时，降级为 watchlist note +
+`source_gap`，不得即兴产出筛选结果。
 
 ## Step 2: Research Object
 

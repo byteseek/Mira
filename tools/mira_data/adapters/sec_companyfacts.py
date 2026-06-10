@@ -29,7 +29,8 @@ def _require_contact() -> None:
 # kind drives period selection: "instant" = balance-sheet point-in-time (pick
 # latest end); "duration" = flow metric (pick latest clean QUARTER, else annual,
 # explicitly skipping 6-/9-month YTD rows that share the same tag).
-# First candidate tag that exists wins, so issuer tag drift is tolerated.
+# Among present candidate tags, the one with the most recent observation wins,
+# so issuer tag drift is tolerated and an abandoned tag never shadows the live one.
 CURATED_TAGS: list[tuple[str, str, str, list[str]]] = [
     ("revenue", "us-gaap", "duration", ["RevenueFromContractWithCustomerExcludingAssessedTax", "Revenues", "SalesRevenueNet"]),
     ("gross_profit", "us-gaap", "duration", ["GrossProfit"]),
@@ -37,6 +38,7 @@ CURATED_TAGS: list[tuple[str, str, str, list[str]]] = [
     ("net_income", "us-gaap", "duration", ["NetIncomeLoss"]),
     ("rnd_expense", "us-gaap", "duration", ["ResearchAndDevelopmentExpense"]),
     ("operating_cash_flow", "us-gaap", "duration", ["NetCashProvidedByUsedInOperatingActivities"]),
+    ("capex", "us-gaap", "duration", ["PaymentsToAcquirePropertyPlantAndEquipment", "PaymentsToAcquireProductiveAssets"]),
     ("total_assets", "us-gaap", "instant", ["Assets"]),
     ("total_liabilities", "us-gaap", "instant", ["Liabilities"]),
     ("stockholders_equity", "us-gaap", "instant", ["StockholdersEquity", "StockholdersEquityIncludingPortionAttributableToNoncontrollingInterest"]),
@@ -142,13 +144,26 @@ def fetch_company_financials(
 
 
 def _first_present(taxonomy_block: dict, candidates: list[str]) -> Optional[dict]:
+    """Pick the candidate tag with the most recent observation end.
+
+    Issuers drift between tags over time (e.g. NVDA stopped filing
+    PaymentsToAcquirePropertyPlantAndEquipment in 2011 and now uses
+    PaymentsToAcquireProductiveAssets); candidate order alone would let the
+    abandoned tag shadow the live one and surface decade-old values as latest.
+    """
+    best: Optional[dict] = None
+    best_end = ""
     for tag in candidates:
         block = taxonomy_block.get(tag)
-        if block and block.get("units"):
-            block = dict(block)
-            block["_tag"] = tag
-            return block
-    return None
+        if not (block and block.get("units")):
+            continue
+        last_end = max((row.get("end", "") for rows in block["units"].values()
+                        for row in rows), default="")
+        if last_end > best_end:
+            best = dict(block)
+            best["_tag"] = tag
+            best_end = last_end
+    return best
 
 
 def _select_observation(tagblock: dict, kind: str) -> tuple[str, Optional[dict]]:
