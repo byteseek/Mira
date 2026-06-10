@@ -63,6 +63,7 @@ Mira supports:
 
 - first-pass coverage or thesis rebuild for a stock, industry, ETF, macro variable or market theme
 - monitoring updates that separate incremental evidence from thesis-changing evidence
+- daily and weekly market briefings that separate market snapshot, driver attribution, calendar risk and research escalation
 - earnings, SEC filing, macro, industry-concept and ETF specialty analysis
 - structured interpretation of sell-side, institutional or user-provided research reports, including claim extraction, valuation assumptions, expectation deltas and thesis impact
 - evidence logs that classify facts, claims, assumptions, opinions, market pricing and derived calculations
@@ -92,6 +93,7 @@ Formal work starts with [loops/analysis-routing.md](loops/analysis-routing.md). 
 | --- | --- | --- |
 | Establish or rebuild an investment thesis | [loops/research-loop.md](loops/research-loop.md) | Standard research package |
 | Update an existing thesis | [loops/monitoring-loop.md](loops/monitoring-loop.md) | Monitoring summary and thesis impact |
+| Produce a daily brief, close wrap or weekly market review | [loops/market-briefing-loop.md](loops/market-briefing-loop.md) | Market snapshot, driver map, calendar and escalation queue |
 | Analyze earnings or guidance | [skills/earnings-report-analysis/](skills/earnings-report-analysis/) | Earnings package and update decision |
 | Interpret sell-side, institutional or user-provided research reports | [skills/research-report-interpretation/](skills/research-report-interpretation/) | Report readout, claim map and thesis impact |
 | Analyze industry or supply-chain concept | [skills/industry-concept-analysis/](skills/industry-concept-analysis/) | Industry map and stock handoff |

@@ -49,6 +49,7 @@
     "enum": [
       "first_pass_research",
       "monitoring_update",
+      "market_briefing",
       "earnings_event",
       "research_report_interpretation",
       "methodology_review",

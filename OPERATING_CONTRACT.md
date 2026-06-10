@@ -61,6 +61,7 @@ research task, skip onboarding and route the task normally.
 | Intent intake / decision pressure | [loops/analysis-routing.md](loops/analysis-routing.md) Step 0 / 0.5 | [data/actionability-risk-control.md](data/actionability-risk-control.md) when decision pressure is medium/high |
 | Question expansion | [data/question-expansion-lenses.md](data/question-expansion-lenses.md) | only when comparison, scale shift, trend or anomaly framing improves the current route |
 | Live / time-sensitive market data | [data/live-data-source-policy.md](data/live-data-source-policy.md) | [data/public-source-targets.md](data/public-source-targets.md) Live Market Snapshot Targets and market default pack |
+| Daily / weekly market briefing | [loops/market-briefing-loop.md](loops/market-briefing-loop.md) | [templates/market-briefing-package/](templates/market-briefing-package/) and live-data policy for current markets |
 | Continue / save user view | [loops/view-continuity-loop.md](loops/view-continuity-loop.md) | `private/research/<OBJECT>/` and `private/views/view-register.csv` only when relevant |
 | First-pass single equity | [loops/research-loop.md](loops/research-loop.md) | thesis horizon, framework and overlay references |
 | Research report interpretation | [skills/research-report-interpretation/SKILL.md](skills/research-report-interpretation/SKILL.md) | [data/ingestion-layer.md](data/ingestion-layer.md), [templates/research-report-interpretation-package/](templates/research-report-interpretation-package/) and restricted source note when the report is user-provided, paid or licensed |
@@ -94,7 +95,7 @@ for continuity and use tracked memory only as product context or examples.
 | depth_mode | use when | default cost control |
 | --- | --- | --- |
 | `quick_map` | fast read, early triage, unclear source boundary | read only the most relevant sources; output routing card, core judgment, source notes, refresh triggers and light progressive follow-up unless explicitly waived |
-| `standard` | normal research package, earnings package, monitoring update | load only routed loop / skill plus triggered references; output required package artifacts |
+| `standard` | normal research package, earnings package, monitoring update, daily/weekly market briefing | load only routed loop / skill plus triggered references; output required package artifacts |
 | `deep_dive` | long-term thesis, complex valuation, SEC deep dive, PM / methodology review | allow extra sources and artifacts only when each one improves evidence quality, actionability, or refresh conditions |
 
 For visible output requirements by depth, use

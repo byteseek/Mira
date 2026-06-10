@@ -71,6 +71,7 @@ Claude Code 默认读取根目录 [CLAUDE.md](CLAUDE.md)。该文件会要求 Cl
 | --- | --- | --- |
 | 首次研究或重建 thesis | [loops/research-loop.md](loops/research-loop.md) | `investment-memo.md`, `case-notes.md`, `evidence-log.csv` |
 | 更新已有 thesis | [loops/monitoring-loop.md](loops/monitoring-loop.md) | monitor summary, impact assessment, escalation decision |
+| 日报 / 周报 / 盘前简报 / 收盘复盘 | [loops/market-briefing-loop.md](loops/market-briefing-loop.md) | market brief, driver map, calendar, escalation queue |
 | 更新 thesis object / 看预期差 / 复盘判断 | [loops/thesis-update-loop.md](loops/thesis-update-loop.md) | thesis-ledger, expectation-map, decision-log, postmortem |
 | 事件前后 delta | [loops/event-delta-loop.md](loops/event-delta-loop.md) | event-delta, expectation map update, thesis impact |
 | 财报、业绩会、指引 | [skills/earnings-report-analysis/SKILL.md](skills/earnings-report-analysis/SKILL.md) | earnings package |

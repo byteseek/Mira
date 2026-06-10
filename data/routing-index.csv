@@ -1,6 +1,7 @@
 task_mode,trigger_one_liner,primary_loop_or_skill,load_gate
 first_pass_research,"首次覆盖 / 重建 thesis / 从零建研究包",loops/research-loop.md,on_hit
 monitoring_update,"已有 thesis 的增量更新",loops/monitoring-loop.md,on_hit
+market_briefing,"日报 / 周报 / 盘前简报 / 收盘复盘 / 特定市场或主题观察",loops/market-briefing-loop.md,on_hit
 earnings_event,"新财报 / 业绩会 / 指引 / 财报后市场反应",skills/earnings-report-analysis/SKILL.md,on_hit
 research_report_interpretation,"券商/机构研报、目标价/评级变化、initiation/update note、用户提供研究 PDF 或专家研究解读",skills/research-report-interpretation/SKILL.md,on_hit
 methodology_review,"研究方法 / 框架质量 / 是否值得纳入 Mira",loops/methodology-research-loop.md,on_hit

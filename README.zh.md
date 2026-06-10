@@ -63,6 +63,7 @@ Mira 支持：
 
 - 首次覆盖或重建股票、产业、ETF、宏观变量或市场主题的 thesis
 - 对已有 thesis 做增量监控，区分普通更新和改变 thesis 的证据
+- 生成市场日报、周报、盘前简报和收盘复盘，区分市场快照、驱动归因、事件日历和研究升级线索
 - 财报、SEC filing、宏观、产业概念和 ETF 专项分析
 - 券商、机构或用户提供研报的结构化解读，拆分 claim、估值假设、预期差和 thesis impact
 - 用 evidence log 区分事实、公司口径、假设、观点、市场定价和派生计算
@@ -92,6 +93,7 @@ Mira 不是交易机器人、行情后台程序或自动组合管理器。
 | --- | --- | --- |
 | 建立或重建 investment thesis | [loops/research-loop.md](loops/research-loop.md) | 标准 research package |
 | 更新已有 thesis | [loops/monitoring-loop.md](loops/monitoring-loop.md) | monitoring summary 和 thesis impact |
+| 生成日报、周报、盘前简报或收盘复盘 | [loops/market-briefing-loop.md](loops/market-briefing-loop.md) | market snapshot、driver map、calendar 和 escalation queue |
 | 分析财报或指引 | [skills/earnings-report-analysis/](skills/earnings-report-analysis/) | earnings package 和更新决策 |
 | 解读券商/机构/用户提供研报 | [skills/research-report-interpretation/](skills/research-report-interpretation/) | report readout、claim map 和 thesis impact |
 | 分析产业或供应链概念 | [skills/industry-concept-analysis/](skills/industry-concept-analysis/) | industry map 和 stock handoff |

@@ -26,6 +26,7 @@ is bound to `schemas/vocab.json`. `position_review` and
 <!-- vocab:task_mode start (tokens bound to schemas/vocab.json) -->
 - `first_pass_research`
 - `monitoring_update`
+- `market_briefing`
 - `earnings_event`
 - `research_report_interpretation`
 - `methodology_review`

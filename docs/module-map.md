@@ -14,7 +14,7 @@ Use [README.md](../README.md) as the project entry point and [OPERATING_CONTRACT
 | [data/](../data/) | Source, claim, evidence, readiness and vocabulary protocols. |
 | [docs/](./) | Reader-facing support docs that do not belong in the root README. |
 | [examples/](../examples/) | Case reading order and public-example boundaries. |
-| [loops/](../loops/) | Task loops for research, monitoring, thesis updates, event deltas and reviews. |
+| [loops/](../loops/) | Task loops for research, market briefings, monitoring, thesis updates, event deltas and reviews. |
 | [memory/](../memory/) | Wiki-style slow-variable memory and adopted methodology notes. |
 | [reports/](../reports/) | Validation reports and workflow trial records. |
 | [skills/](../skills/) | Reusable analysis capabilities. |
@@ -27,6 +27,7 @@ Use [README.md](../README.md) as the project entry point and [OPERATING_CONTRACT
 | Analysis routing | First step before formal analysis | [loops/analysis-routing.md](../loops/analysis-routing.md) |
 | Investment research | First coverage, topic research or thesis rebuild | [loops/research-loop.md](../loops/research-loop.md) |
 | Monitoring | Incremental update and thesis impact check | [loops/monitoring-loop.md](../loops/monitoring-loop.md) |
+| Market briefing | Daily briefs, close wraps, weekly reviews, sector/theme weeklies and risk watches | [loops/market-briefing-loop.md](../loops/market-briefing-loop.md) |
 | Methodology research | Evaluate research methods for trial/adoption/retirement | [loops/methodology-research-loop.md](../loops/methodology-research-loop.md) |
 | Thesis update | Update thesis state, expectation map and decision log | [loops/thesis-update-loop.md](../loops/thesis-update-loop.md) |
 | Event delta | Compare pre-event setup with actual disclosure or market event | [loops/event-delta-loop.md](../loops/event-delta-loop.md) |
