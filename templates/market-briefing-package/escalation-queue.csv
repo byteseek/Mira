@@ -1,0 +1,2 @@
+object,market_scope,briefing_type,trigger,source_id,source_time,suggested_route,urgency,information_value,source_quality,refresh_condition,notes
+{{ object }},{{ market_scope }},{{ briefing_type }},{{ trigger }},{{ source_id }},{{ source_time }},{{ suggested_route }},{{ urgency }},{{ low_medium_high }},{{ source_quality }},{{ refresh_condition }},{{ notes }}

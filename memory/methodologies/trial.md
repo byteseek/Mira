@@ -15,6 +15,12 @@
 
 ## Current Items
 
+- `market-briefing-loop`
+  target_case: `US equities daily_market_brief`, `US equities weekly_market_review`, `AI semiconductors sector_theme_weekly`, and optional `HK equities weekly_market_review`
+  expected_increment: 把日报/周报从新闻摘要升级为 market triage：明确 market scope、time boundary、source freshness、driver attribution、calendar risk 和 research escalation queue，避免把固定频率市场观察误塞进单票 monitoring。
+  falsification_condition: 如果连续三次 brief 只能产出泛泛新闻摘要、driver attribution 无来源支撑、无法形成有效 escalation queue，或 stale_after 经常被忽略，就不升级到 `adopted`。
+  notes: 方法论卡见 `memory/methodologies/market-briefing-loop.md`，执行 loop 见 `loops/market-briefing-loop.md`，模板见 `templates/market-briefing-package/`。
+
 - `framework-routing`
   target_case: `3-5 single-equity cases across micro-small, mid-cap, and large-mega`
   expected_increment: 根据主导定价变量选择研究框架，避免所有股票套同一模板。

@@ -249,6 +249,20 @@ Mira 的领域安全门——不给交易指令、无持仓不给仓位、instru
 
 如果新增信息改变核心前提，再升级回 `research-loop`。
 
+### `market_briefing`
+
+用于日报、周报、盘前简报、收盘复盘、特定市场/行业/主题观察和风险/仓位信号观察。
+它从 `market_scope` 和 `time_boundary` 出发，不要求已有 thesis。
+
+默认进入：
+
+- `loops/market-briefing-loop.md`
+
+如果 brief 识别出高信息量对象，再按 escalation queue 升级到
+`quick_map`、`monitoring_update`、`earnings_event`、`research_report_interpretation`
+或 `first_pass_research`。时间敏感 brief 默认运行
+[../data/live-data-source-policy.md](../data/live-data-source-policy.md)。
+
 ### `earnings_event`
 
 用于新财报、业绩会、指引或财报后市场反应。
@@ -944,6 +958,12 @@ progressive follow-up 不是平铺 checklist。先判断当前答案已经爬到
 
 - 这次增量信息要更新 thesis state、expectation map，还是只放入 watchlist note？
 - 你希望我只判断事件影响，还是同步检查原框架是否仍然有效？
+
+`market_briefing`:
+
+- 这次 brief 是盘前、收盘复盘、周度回顾，还是特定行业/主题周报？
+- 你要覆盖整个市场，还是只覆盖一个 watchlist / sector / theme？
+- 这次输出只要 market triage，还是要把高信息量对象放入 research escalation queue？
 
 `earnings_event`:
 
