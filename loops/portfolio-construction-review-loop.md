@@ -26,6 +26,11 @@ Classify the review:
 - `real_portfolio`: holdings or weights are provided
 - `mixed`: some real holdings plus watchlist objects
 
+If the whole book is `research_book` and the user is asking for a PM-style
+multi-thesis review rather than structure/exposure analysis, reroute to
+`portfolio_review` ([portfolio-review-loop.md](portfolio-review-loop.md))
+instead of continuing here.
+
 If holdings or weights are absent, do not infer position size.
 
 ### `load-thesis-and-position-registers`

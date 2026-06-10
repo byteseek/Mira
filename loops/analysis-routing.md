@@ -375,6 +375,16 @@ Mira 的领域安全门——不给交易指令、无持仓不给仓位、instru
 
 如果没有提供真实持仓、权重、成本、约束或组合语境，只能输出 `research_only` 或 `no_position_data`，不能做 position-size 结论。
 
+### `portfolio_review`
+
+用于 PM 视角 review 多 thesis 研究簿，例如 thesis board、"哪些 thesis 需要看"、研究优先级排序或 thesis register 维护，且没有真实持仓或权重。
+
+默认进入：
+
+- `loops/portfolio-review-loop.md`
+
+如果用户提供了真实持仓、权重或组合约束，升级到 `portfolio_construction_review`。
+
 ### `portfolio_construction_review`
 
 用于真实投资组合或多头寸结构复盘，例如主题集中、因子暴露、重复 bet、催化剂拥挤、流动性风险、风险预算或组合层 thesis 冲突。
@@ -383,7 +393,7 @@ Mira 的领域安全门——不给交易指令、无持仓不给仓位、instru
 
 - `loops/portfolio-construction-review-loop.md`
 
-如果只是多 thesis 维护、没有真实持仓或权重，保留在：
+如果只是多 thesis 维护、没有真实持仓或权重，降级为 `portfolio_review`，进入：
 
 - `loops/portfolio-review-loop.md`
 
@@ -989,6 +999,11 @@ progressive follow-up 不是平铺 checklist。先判断当前答案已经爬到
 
 - 这次 review 是检查 thesis 是否变了、仓位是否匹配 thesis，还是是否需要风险降级？
 - 如果要讨论仓位动作，需要补持仓、权重、成本、风险预算、时间窗口和 mandate。
+
+`portfolio_review`:
+
+- 这次 book review 要按什么排序：证据缺口、stale risk、即将到来的催化剂，还是 thesis 之间的冲突？
+- 输出要落在 thesis register 更新、escalation 清单，还是只给本周 review 优先级？
 
 `portfolio_construction_review`:
 

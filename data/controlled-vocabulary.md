@@ -35,6 +35,7 @@ is bound to `schemas/vocab.json`. `position_review` and
 - `thesis_system_update`
 - `view_continuity`
 - `position_review`
+- `portfolio_review`
 - `portfolio_construction_review`
 - `decision_quality_review`
 - `discovery_or_screening`

@@ -10,6 +10,7 @@ sec_filing_deep_dive,"专项拆 10-K / 10-Q / S-1 / 8-K exhibit / proxy",skills/
 thesis_system_update,"thesis 更新 / 预期差 / 事件 delta / 状态变更 / 复盘",loops/thesis-update-loop.md,on_hit
 view_continuity,"保存 / 延续 / 更新 / 对比上次观点或 working view",loops/view-continuity-loop.md,on_hit
 position_review,"review 单一真实头寸是否匹配 thesis",loops/position-review-loop.md,on_hit_decision_support
+portfolio_review,"PM 视角 review 多 thesis 研究簿 / thesis board / 哪些 thesis 需要看（无真实持仓或权重）",loops/portfolio-review-loop.md,on_hit
 portfolio_construction_review,"真实组合结构 / 集中度 / 重复 bet / 因子暴露 / 风险预算",loops/portfolio-construction-review-loop.md,on_hit_decision_support
 decision_quality_review,"复盘过去研究判断 / 头寸动作 / 组合决策质量",loops/decision-quality-review-loop.md,on_hit
 discovery_or_screening,"找候选 / 筛选 / 发现标的；按 research_object 分派对应 discovery skill（ETF→etf-listing-discovery，产业链→industry-concept-analysis）",loops/analysis-routing.md,on_hit
