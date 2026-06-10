@@ -111,7 +111,7 @@
 - `expectation map changes`
 - `thesis impact`
 - `state change decision`
-- `required follow-up`
+- `required research follow-up`（内部研究待办，字段名 `required_research_followup`；区别于 Step 4.5 的 progressive follow-up）
 
 ## Stop Rules
 

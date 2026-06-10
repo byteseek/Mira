@@ -62,7 +62,7 @@ Use this before handing off a formal research output.
 
 - [ ] Thesis ledger has current thesis, supporting claims, key assumptions, variant view, disconfirming evidence and state.
 - [ ] Expectation map states consensus proxy, Mira view, price-in status and next check.
-- [ ] Decision log records basis, risk and required follow-up.
+- [ ] Decision log records basis, risk and required research follow-up.
 - [ ] Event deltas state pre-event setup, actual disclosure, delta vs expectation and thesis impact.
 - [ ] Postmortem is required when an outcome invalidates a prior judgment or exposes a process error.
 

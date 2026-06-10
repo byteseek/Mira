@@ -65,9 +65,9 @@
 
 {{ methodology_implication }}
 
-## Required Follow-Up
+## Required Research Follow-Up
 
-{{ required_followup }}
+{{ required_research_followup }}
 
 ## Source Notes
 

@@ -247,7 +247,7 @@ Evidence strength rules：
 - `price_reaction_quality`
 - `thesis_impact`
 - `expectation_map_updates`
-- `required_followup`
+- `required_research_followup`
 
 ## Scoring
 

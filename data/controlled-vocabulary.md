@@ -2,7 +2,16 @@
 
 This file is the canonical vocabulary source for Mira research state and action fields.
 
-Human-readable explanation can be written in `basis`, `notes`, `risk`, `required_followup` or prose sections. Machine-facing fields should use the tokens below so outputs can be aggregated across cases, memory and PM registers.
+Human-readable explanation can be written in `basis`, `notes`, `risk`, `required_research_followup` or prose sections. Machine-facing fields should use the tokens below so outputs can be aggregated across cases, memory and PM registers.
+
+Naming note: `required_research_followup` is the internal research to-do field
+(open research work Mira still owes on the object — pending checks, refresh
+items, missing evidence). It is deliberately named apart from the user-facing
+progressive follow-up prompts (analysis-routing Step 4.5;
+`followup_prompt_mode` / `followup_questions` / `followup_waiver_reason`), which
+are questions offered to the user, not research debt. Do not mix the two.
+`required_followup` is the legacy name of this field; it survives only in
+pre-2026-06 case artifacts and stays valid there as a point-in-time record.
 
 ## Interaction Mode
 

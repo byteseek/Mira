@@ -71,9 +71,9 @@ If any material control fails, downgrade to `watch_only`, `needs_refresh`,
 `normal_only_after_confirmation` rather than forcing a stronger actionability
 claim.
 
-## Required Follow-Up
+## Required Research Follow-Up
 
-{{ required_followup }}
+{{ required_research_followup }}
 
 If the user explicitly asks about options, short selling, hedges, pair trades,
 margin, leverage or other instruments, attach

@@ -1,2 +1,2 @@
-review_date,book_scope,research_object,theme,thesis_state,horizon,conviction,research_exposure,primary_risk_driver,stale_after,next_catalyst,actionability,primary_refs,required_followup,notes
-{{ review_date }},{{ book_scope }},{{ research_object }},{{ theme }},{{ thesis_state }},{{ horizon }},{{ conviction }},{{ research_exposure }},{{ primary_risk_driver }},{{ stale_after }},{{ next_catalyst }},{{ actionability }},{{ primary_refs }},{{ required_followup }},{{ notes }}
+review_date,book_scope,research_object,theme,thesis_state,horizon,conviction,research_exposure,primary_risk_driver,stale_after,next_catalyst,actionability,primary_refs,required_research_followup,notes
+{{ review_date }},{{ book_scope }},{{ research_object }},{{ theme }},{{ thesis_state }},{{ horizon }},{{ conviction }},{{ research_exposure }},{{ primary_risk_driver }},{{ stale_after }},{{ next_catalyst }},{{ actionability }},{{ primary_refs }},{{ required_research_followup }},{{ notes }}

@@ -105,7 +105,7 @@ Output:
 - `position-review.md`
 - updated `position-register.csv` if maintaining a portfolio file
 - updated `decision-log.csv` if a research action changed
-- follow-up list and refresh triggers
+- required research follow-up list and refresh triggers
 
 ## Exit Criteria
 

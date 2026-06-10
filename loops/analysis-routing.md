@@ -1238,7 +1238,7 @@ lens 是对 thesis 的约束视角，不是额外研究对象。
 - `position-review.md`
 - `position-register.csv`，如维护组合文件
 - updated `decision-log.csv`，如研究动作变化
-- required follow-up and refresh triggers
+- required research follow-up and refresh triggers
 
 输出必须使用 `position_data_status`、`position_sizing_context` 和 `position_review_action` token。
 

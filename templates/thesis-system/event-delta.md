@@ -41,6 +41,6 @@
 
 {{ fact_vs_inference }}
 
-## Required Follow-Up
+## Required Research Follow-Up
 
-{{ required_followup }}
+{{ required_research_followup }}

@@ -50,7 +50,7 @@
 
 - position_review_action: {{ position_review_action }}
 - action_basis: {{ action_basis }}
-- required_followup: {{ required_followup }}
+- required_research_followup: {{ required_research_followup }}
 
 ## Source Notes
 

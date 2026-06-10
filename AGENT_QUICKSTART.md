@@ -79,7 +79,7 @@ Claude Code 默认读取根目录 [CLAUDE.md](CLAUDE.md)。该文件会要求 Cl
 | SEC 补充核验 | [skills/sec-filing-analysis/SKILL.md](skills/sec-filing-analysis/SKILL.md) | `sec-supplement-source-note.csv` + active case updates |
 | SEC 文件专项拆解 | [skills/sec-filing-analysis/SKILL.md](skills/sec-filing-analysis/SKILL.md) | SEC filing analysis package |
 | 多 thesis / PM 研究 book 视角 | [loops/portfolio-review-loop.md](loops/portfolio-review-loop.md) | thesis register, exposure notes, follow-up queue |
-| 单一真实头寸复盘 | [loops/position-review-loop.md](loops/position-review-loop.md) | position review, sizing context, required follow-up |
+| 单一真实头寸复盘 | [loops/position-review-loop.md](loops/position-review-loop.md) | position review, sizing context, required research follow-up |
 | 真实组合结构复盘 | [loops/portfolio-construction-review-loop.md](loops/portfolio-construction-review-loop.md) | portfolio exposure review, duplicate-bet notes, position-review queue |
 | 决策质量复盘 | [loops/decision-quality-review-loop.md](loops/decision-quality-review-loop.md) | decision-quality review, postmortem, methodology update candidate |
 | 单一股票 | [skills/equity-research-core/SKILL.md](skills/equity-research-core/SKILL.md) | research package |

@@ -1,2 +1,2 @@
-date,research_object,decision_type,basis,risk,required_followup
-{{ date }},{{ research_object }},{{ decision_type }},{{ basis }},{{ risk }},{{ required_followup }}
+date,research_object,decision_type,basis,risk,required_research_followup
+{{ date }},{{ research_object }},{{ decision_type }},{{ basis }},{{ risk }},{{ required_research_followup }}

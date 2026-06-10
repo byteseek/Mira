@@ -88,7 +88,7 @@ Mira, 研究 CRWV
 | 预期差判断 | `Mira, <ticker/company> 的预期差在哪？` | variant-perception 路由、consensus proxy、可证伪条件 |
 | 财报/指引 | `Mira, 分析 <ticker/company> 最新财报` | earnings analysis、financial snapshot、peer comparison、evidence log |
 | 研报解读 | `Mira, 解读这篇 <ticker/company> 研报` | report readout、claim map、权限边界、独立核验和 thesis impact |
-| 事件 delta | `Mira, 看 <ticker/company> 这次 <事件> 是否改变 thesis` | pre-event setup、actual vs expectation、event-delta、required follow-up |
+| 事件 delta | `Mira, 看 <ticker/company> 这次 <事件> 是否改变 thesis` | pre-event setup、actual vs expectation、event-delta、required research follow-up |
 | SEC / 招股书 | `Mira, 拆一下 <ticker/company> 的 <10-K/10-Q/S-1>` | filing analysis、metric table、risk delta、accounting-quality check |
 | 产业/供应链 | `Mira, 研究 <产业/技术/供应链概念>` | industry map、company map、stock research handoff |
 | 宏观传导 | `Mira, 看 <宏观变量> 对 <资产/行业/股票> 的影响` | transmission chain、asset impact、what would change the view |
