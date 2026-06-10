@@ -23,9 +23,14 @@ PY_COMPILE_TARGETS = [
     "scripts/generate_case_manifests.py",
     "scripts/migrate_evidence_log_v1_to_v1_1.py",
     "scripts/test_repo_validation_contracts.py",
-    "scripts/test_long_term_release_validators.py",
-    "scripts/run_long_term_release_checks.py",
+    "scripts/validate_release.py",
 ]
+
+# Historical regression target for the release gate: the one case that
+# exercised the full 2026-05 release workflow (pipeline since removed;
+# recoverable from git history).
+RELEASE_GATE_CASE = "cases/long-term-workflow-validation-2026-05-30"
+RELEASE_GATE_AS_OF = "2026-05-30"
 
 
 @dataclass
@@ -75,7 +80,18 @@ def build_checks(args: argparse.Namespace) -> list[tuple[str, list[str], set[int
 
     if not args.skip_long_term:
         checks.append(
-            ("long_term_release_checks", [sys.executable, "scripts/run_long_term_release_checks.py"], {0}, True)
+            (
+                "release_gate",
+                [
+                    sys.executable,
+                    "scripts/validate_release.py",
+                    RELEASE_GATE_CASE,
+                    "--as-of",
+                    RELEASE_GATE_AS_OF,
+                ],
+                {0},
+                True,
+            )
         )
 
     return checks
@@ -83,7 +99,11 @@ def build_checks(args: argparse.Namespace) -> list[tuple[str, list[str], set[int
 
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--skip-long-term", action="store_true", help="skip the long release QA suite")
+    parser.add_argument(
+        "--skip-long-term",
+        action="store_true",
+        help="skip the release-gate check (scripts/validate_release.py)",
+    )
     parser.add_argument(
         "--check-updates",
         action="store_true",

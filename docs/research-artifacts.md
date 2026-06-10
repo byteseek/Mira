@@ -244,10 +244,13 @@ python3 scripts/validate_sec_filing_package.py path/to/sec-supplement-source-not
 python3 scripts/validate_sec_filing_package.py path/to/sec-filing-package-dir
 ```
 
-Long-term workflow release checks:
+Release-gate validation for a case directory (objective readiness, goal
+completion, go/no-go gate coverage, freshness):
 
 ```sh
-python3 scripts/run_long_term_release_checks.py
+python3 scripts/validate_release.py cases/<case-dir>
+# for a real external-release go decision:
+python3 scripts/validate_release.py cases/<case-dir> --require-external-ready
 ```
 
-Long-term workflow release QA evidence is a release snapshot, not a stable product claim. See [cases/long-term-workflow-validation-2026-05-30/release-qa-report-2026-05-30.md](../cases/long-term-workflow-validation-2026-05-30/release-qa-report-2026-05-30.md).
+Long-term workflow release QA evidence is a release snapshot, not a stable product claim. See [cases/long-term-workflow-validation-2026-05-30/release-qa-report-2026-05-30.md](../cases/long-term-workflow-validation-2026-05-30/release-qa-report-2026-05-30.md). The original multi-stage release pipeline (~39 scripts) was removed on 2026-06-10 in favor of `validate_release.py`; it remains recoverable from git history.
