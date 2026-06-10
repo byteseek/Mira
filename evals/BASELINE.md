@@ -34,6 +34,15 @@ The first run scored 9/12; two failures were the eval's own brittleness, now fix
 
 That a fresh eval caught two of its own false positives on the first run is the harness working as intended: it measures, and the measurements are themselves falsifiable.
 
+## Increment — 2026-06-10 (routing review round)
+
+- 3 new cases pre-registered, then transcripts generated test-blind (assertions written and committed to `behavior-eval-cases.jsonl` **before** generation; generator agents were forbidden from reading `evals/`):
+  - `portfolio-review-book-boundary-01` — locks the PR #81 `portfolio_review` research-book boundary (no holdings → no upgrade to construction review, no sizing).
+  - `sec-mode-dispatch-supplement-01` — locks `sec_supplement` vs `sec_filing_deep_dive` dispatch (fact verification must not inflate into a full filing autopsy).
+  - `followup-none-waiver-01` — locks the waiver path: explicit `followup_prompt_mode=none` + reason when the user asks for no follow-up (guards against ceremony creep, the reverse failure of the two existing follow-up cases).
+- generator: 3 test-blind subagents on Claude Fable 5 (earlier 25 transcripts remain from the Opus 4.8 baseline run).
+- result: **28 passed / 28** (`--require-all`). All three new cases passed on the first blind run — i.e., the current contract + model pair already exhibits these behaviors; the cases are regression locks, not bug reports.
+
 ## How to refresh this baseline
 
 Re-record transcripts (a new model, or a contract edit) and re-run. A drop here after a contract edit is the early-warning signal that "subtraction" (roadmap step 2) cut something load-bearing.

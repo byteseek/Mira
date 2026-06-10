@@ -22,7 +22,8 @@
   "private_state_action": "waive",
   "followup_prompt_mode": "standard",
   "followup_questions": [
-    "Refresh before the next quarterly results release (stale_after 2026-07-13) before any live use?",
-    "Promote the thesis-ledger to a tracked thesis object if coverage continues?"
+    "Which variable should anchor the thesis into the next quarter: Services growth/margin resilience or iPhone-cycle continuation? (Rung B -> expectation-map consensus proxy)",
+    "If AAPL decisively breaks the ~245 support, does that trigger a full thesis downgrade review or only a technical-context overlay refresh? (Rung C -> thesis_state / readiness_level)",
+    "Before live use ahead of stale_after 2026-07-13, refresh the missing valuation anchor (source_gap) first or the tariff/margin disclosure delta? (Rung A -> calculation_depth / readiness_level)"
   ]
 }

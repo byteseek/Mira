@@ -105,6 +105,7 @@ Output:
 
 ## Exit Criteria
 
+- `decision_pressure` is emitted (even if `none`), with a disconfirmation check when medium/high, per `analysis-routing.md` Step 0.5 (this route is `load_gate=on_hit_decision_support`).
 - Review scope is classified as `research_book`, `real_portfolio` or `mixed`.
 - Every portfolio-level claim lists the objects behind it.
 - Real portfolio conclusions use user-provided weights or explicitly state `no_position_data`.

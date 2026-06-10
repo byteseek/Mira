@@ -423,8 +423,9 @@ Mira 的领域安全门——不给交易指令、无持仓不给仓位、instru
   screening 档（SEC companyfacts L2 + Yahoo 价格 L5，自算比率 L6），进入单票
   研究前必须对照 filing 核验。
 
-降级规则：候选清单缺失、SEC 联系方式未配置或数据拿不到时，降级为 watchlist note +
-`source_gap`，不得即兴产出筛选结果。
+降级规则：筛选对象没有对应执行路径、候选清单缺失、SEC 联系方式未配置或数据拿不到时，
+降级为 watchlist note + `source_gap`（说明缺哪类数据或工具），不得即兴产出筛选结果
+当作完整研究。
 
 ## Step 2: Research Object
 
@@ -993,10 +994,38 @@ progressive follow-up 不是平铺 checklist。先判断当前答案已经爬到
 - 你更关心业绩是否超预期、指引是否改变 FY1/FY2，还是长期 thesis 是否被改写？
 - 是否需要把财报 delta 转成 actionability bridge？如果需要，必须补时间窗口、持仓语境和失效条件。
 
+`research_report_interpretation`:
+
+- 你要的是这篇研报的可信度评估、与已有 thesis 的差异定位，还是把它的方法 / 数据吸收进研究包？
+- 报告的目标价 / 评级变化，你想验证市场是否已计价，还是它改变了哪个定价变量的共识？
+- 如果研报的关键假设被证伪，应该触发 thesis 降级，还是只记一条 watch item？
+
 `methodology_review`:
 
 - 这个方法准备用于生成候选、验证 thesis，还是管理组合风险？
 - 你接受它作为辅助 lens，还是需要达到能写入 methodology memory 的证据标准？
+
+`sec_supplement`:
+
+- 这次核验的事实要支撑哪个具体结论：share count、SBC、债务 / 现金流，还是管理层口径与 filing 的一致性？
+- 如果 filing 数字与 release 或聚合数据冲突，要升级为 `sec_filing_deep_dive`，还是先记 `source_gap` 等下一份披露？
+
+`sec_filing_deep_dive`:
+
+- 这次拆 filing 的核心目标是会计质量、风险因素 delta、股权 / 稀释结构，还是某个 thesis 变量的一手证据？
+- 哪类披露（segment 口径、关联方交易、客户集中度）一旦异常，应该直接降级当前 thesis？
+- 拆完后结论要回写 research package / thesis ledger，还是只作为独立 filing 结论存档？
+
+`thesis_system_update`:
+
+- 这次更新是改 thesis state、expectation map，还是只记一条事件 delta？
+- 新证据改变的是哪个定价变量上的共识差，还是只改变证据强度和置信度？
+- 什么样的后续证据会把这次 delta 升级为核心前提变更，触发完整 research-loop 重跑？
+
+`view_continuity`:
+
+- 这个观点要保存为 working_view，还是准备升级为正式 thesis？升级还缺哪些来源、计算或刷新条件？
+- 与上次观点相比，这次变化的是结论方向、置信度，还是只有证据细节？
 
 `industry_concept`:
 
@@ -1022,6 +1051,17 @@ progressive follow-up 不是平铺 checklist。先判断当前答案已经爬到
 
 - 你更想检查集中度、重复 bet、因子暴露、催化剂拥挤，还是 thesis stale risk？
 - 哪些组合约束是硬约束：最大单票、行业上限、流动性、回撤、杠杆或现金比例？
+
+`decision_quality_review`:
+
+- 这次复盘以决策时点可知的信息为界，还是允许事后信息参与评估？
+- 你想定位的是流程错误（路由 / 证据 / 计算），还是判断校准（置信度 vs 实际结果）？
+- 复盘结论要回写 methodology memory、thesis scorecard，还是只记 postmortem？
+
+`discovery_or_screening`:
+
+- 这次筛选的对象是 ETF / 新产品、产业链公司，还是别的资产类型？入选标准里哪一条是硬条件？
+- 筛出的候选要直接建 watchlist，还是对 top 1-2 个候选立即启动 `first_pass_research`？
 
 ### Output Shape
 

@@ -163,3 +163,21 @@ Near-term thesis impact is mildly positive: Q1 reduces the risk that Q4 2025 was
 ## Refresh Triggers
 
 Refresh if NVTS reports Q2 2026, revises guidance, discloses material AI data center design wins or production ramps, changes distributor concentration, raises capital, or if POWI/Infineon/onsemi/Wolfspeed commentary contradicts the high-power demand backdrop.
+
+## Progressive Follow-Up
+
+1. Should AI data-center content-per-MW — gated on customer qualification and production-ramp evidence — become the tracked core variable on the expectation map, ahead of raw Q2/Q3 revenue acceleration?
+   - rung: `Rung B`
+   - route_binding: `thesis_system_update / expectation-map.csv`
+   - object_anchor: `NVTS AI data-center content-per-MW claims`
+   - decision_impact: `evidence_path` — fixes the consensus proxy and the next evidence round
+2. If Distributor A concentration (59% of revenue, 58% of receivables) rises again in Q2, should that trigger a thesis downgrade or remain a watch item?
+   - rung: `Rung C`
+   - route_binding: `thesis-ledger state change / research-readiness-gate`
+   - object_anchor: `Distributor A revenue/receivables concentration`
+   - decision_impact: `thesis_state` — defines the falsification line for the recovery thesis
+3. Before live use after Q2 2026 results (stale_after 2026-08-29), should the refresh prioritize backlog/design-win quantification or cash-burn moderation?
+   - rung: `Rung A`
+   - route_binding: `live_data_gate / monitoring_update`
+   - object_anchor: `NVTS backlog/design wins vs operating cash flow`
+   - decision_impact: `boundary` and `readiness_level`

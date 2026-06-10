@@ -89,3 +89,21 @@ This is a research-action bridge only. It is not an instruction to trade AAPL.
 - 折叠屏 iPhone 或核心 AI 产品出现明确延期或节奏变更
 - 管理层披露关税成本、毛利压力或资本配置政策出现重大变化
 - 股价有效跌破 245 美元附近关键支撑并持续失守
+
+## Progressive Follow-Up
+
+1. 下一份财报里，你更想把哪个变量确立为这条 thesis 的主定价变量：Services 增长与利润率韧性，还是 iPhone 周期延续性？
+   - rung: `Rung B`
+   - route_binding: `thesis_system_update / expectation-map.csv`
+   - object_anchor: `AAPL Services 利润率 vs iPhone 周期`
+   - decision_impact: `evidence_path`——主变量确定后，expectation-map 的共识代理和下一轮证据收集随之改写
+2. 若股价有效跌破 245 美元并持续失守（Must Refresh If 条件之一），要触发完整 thesis 降级复核，还是只刷新 technical-context overlay？
+   - rung: `Rung C`
+   - route_binding: `thesis_system_update / research-readiness-gate`
+   - object_anchor: `245 美元关键支撑 / 市场对 AAPL 成长性的重定价`
+   - decision_impact: `thesis_state` 与 `readiness_level`——降级复核会把结论锁回 working_view，直至估值与财报刷新完成
+3. 这个 case 在 stale_after（2026-07-13 或下一份财报）前若要 live use，优先补当前缺失的估值锚（`source_gap`），还是 10-K 关税/毛利披露的最新变化？
+   - rung: `Rung A`
+   - route_binding: `live_data_gate / data-analysis-quality-gate`
+   - object_anchor: `AAPL 估值锚 source_gap / 关税风险因素`
+   - decision_impact: `calculation_depth` 与 `readiness_level`——补齐估值锚才能解除 actionability 的 source_gap 限制

@@ -109,6 +109,7 @@ Output:
 
 ## Exit Criteria
 
+- `decision_pressure` is emitted (even if `none`), with a disconfirmation check when medium/high, per `analysis-routing.md` Step 0.5 (this route is `load_gate=on_hit_decision_support`).
 - Real position data is either provided or explicitly marked `no_position_data`.
 - Thesis state, stale status and source trail are stated before action implication.
 - Any sizing or risk conclusion is tied to position data and, when numeric, to a reproducible calculation.
