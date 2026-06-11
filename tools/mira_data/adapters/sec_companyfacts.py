@@ -9,13 +9,24 @@ concern that must be emitted as ``derived_calculation`` rows.
 from __future__ import annotations
 
 import datetime as _dt
+import json
+from pathlib import Path
 from typing import Optional
 
 from .. import config, net
 from ..canonical import POSTURES, CanonicalRecord, FetchResult
 
 TICKER_MAP_URL = "https://www.sec.gov/files/company_tickers.json"
+TICKER_EXCHANGE_URL = "https://www.sec.gov/files/company_tickers_exchange.json"
 COMPANYFACTS_URL = "https://data.sec.gov/api/xbrl/companyfacts/CIK{cik10}.json"
+SEC_HEADERS = {"Accept-Encoding": "identity"}
+SEC_MAP_RETRIES = 5
+SEC_MAP_BACKOFF = 0.5
+SEC_FACT_RETRIES = 4
+SEC_FACT_BACKOFF = 0.5
+_REPO_ROOT = Path(__file__).resolve().parents[3]
+_TICKER_CACHE_PATH = _REPO_ROOT / "local" / "mira-data-cache" / "sec-ticker-cik-map.json"
+_TICKER_CACHE_MAX_AGE = _dt.timedelta(days=7)
 
 
 def _require_contact() -> None:
@@ -50,13 +61,82 @@ CURATED_TAGS: list[tuple[str, str, str, list[str]]] = [
 
 def resolve_cik(ticker: str) -> str:
     """Return the 10-digit zero-padded CIK for ``ticker`` (case-insensitive)."""
-    _require_contact()
-    data = net.get_json(TICKER_MAP_URL)
     want = ticker.strip().upper()
-    for row in data.values():
-        if str(row.get("ticker", "")).upper() == want:
-            return f"{int(row['cik_str']):010d}"
+    cik = load_ticker_cik_map().get(want)
+    if cik:
+        return cik
     raise net.FetchError(f"ticker not found in SEC company_tickers.json: {ticker}")
+
+
+def load_ticker_cik_map() -> dict[str, str]:
+    """Load the SEC ticker map, preferring the smaller exchange payload."""
+    _require_contact()
+    cached = _read_ticker_cache()
+    if cached:
+        return cached
+
+    errors = []
+    for url in (TICKER_EXCHANGE_URL, TICKER_MAP_URL):
+        try:
+            result = _parse_ticker_cik_map(
+                net.get_json(
+                    url,
+                    headers=SEC_HEADERS,
+                    retries=SEC_MAP_RETRIES,
+                    backoff=SEC_MAP_BACKOFF,
+                )
+            )
+        except net.FetchError as exc:
+            errors.append(f"{url}: {exc}")
+            continue
+        if result:
+            _write_ticker_cache(result)
+            return result
+        errors.append(f"{url}: no ticker rows")
+    raise net.FetchError("SEC ticker-map fetch failed; " + "; ".join(errors))
+
+
+def _read_ticker_cache() -> dict[str, str]:
+    try:
+        modified = _dt.datetime.fromtimestamp(_TICKER_CACHE_PATH.stat().st_mtime)
+        if _dt.datetime.now() - modified > _TICKER_CACHE_MAX_AGE:
+            return {}
+        payload = json.loads(_TICKER_CACHE_PATH.read_text(encoding="utf-8"))
+    except (OSError, ValueError, TypeError):
+        return {}
+    return payload if isinstance(payload, dict) else {}
+
+
+def _write_ticker_cache(payload: dict[str, str]) -> None:
+    try:
+        _TICKER_CACHE_PATH.parent.mkdir(parents=True, exist_ok=True)
+        temporary = _TICKER_CACHE_PATH.with_suffix(".tmp")
+        temporary.write_text(json.dumps(payload, sort_keys=True), encoding="utf-8")
+        temporary.replace(_TICKER_CACHE_PATH)
+    except OSError:
+        # The cache is an optimization; a read-only checkout must still work.
+        return
+
+
+def _parse_ticker_cik_map(payload: dict) -> dict[str, str]:
+    if isinstance(payload.get("fields"), list) and isinstance(payload.get("data"), list):
+        fields = payload["fields"]
+        try:
+            ticker_idx = fields.index("ticker")
+            cik_idx = fields.index("cik")
+        except ValueError:
+            return {}
+        return {
+            str(row[ticker_idx]).upper(): f"{int(row[cik_idx]):010d}"
+            for row in payload["data"]
+            if len(row) > max(ticker_idx, cik_idx) and row[ticker_idx] and row[cik_idx] is not None
+        }
+
+    return {
+        str(row.get("ticker", "")).upper(): f"{int(row['cik_str']):010d}"
+        for row in payload.values()
+        if isinstance(row, dict) and row.get("ticker") and row.get("cik_str") is not None
+    }
 
 
 def load_facts(ticker: str, cik: Optional[str] = None) -> tuple[str, dict, str]:
@@ -64,7 +144,12 @@ def load_facts(ticker: str, cik: Optional[str] = None) -> tuple[str, dict, str]:
     _require_contact()
     cik10 = cik or resolve_cik(ticker)
     url = COMPANYFACTS_URL.format(cik10=cik10)
-    facts = net.get_json(url).get("facts", {})
+    facts = net.get_json(
+        url,
+        headers=SEC_HEADERS,
+        retries=SEC_FACT_RETRIES,
+        backoff=SEC_FACT_BACKOFF,
+    ).get("facts", {})
     return cik10, facts, url
 
 

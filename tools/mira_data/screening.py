@@ -337,14 +337,9 @@ def _last_close(sym: str) -> tuple[float, str]:
 
 def _cik_map(symbols: list) -> dict:
     """One ticker-map fetch resolves every candidate (vs one fetch per ticker)."""
-    data = net.get_json(scf.TICKER_MAP_URL)
+    data = scf.load_ticker_cik_map()
     want = set(symbols)
-    out = {}
-    for row in data.values():
-        t = str(row.get("ticker", "")).upper()
-        if t in want:
-            out[t] = f"{int(row['cik_str']):010d}"
-    return out
+    return {ticker: cik for ticker, cik in data.items() if ticker in want}
 
 
 def _criteria_label(criteria: dict) -> str:
