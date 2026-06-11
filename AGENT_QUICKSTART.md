@@ -332,4 +332,10 @@ python3 scripts/validate_sec_filing_package.py templates/sec-filing-analysis-pac
 python3 scripts/score_behavior_eval.py --transcripts evals/transcripts
 ```
 
-它把 [templates/delivery-checklist.md](templates/delivery-checklist.md) 的语义纪律变成对模型输出的可打分断言。用例、schema 和录制 transcript 的方法见 [evals/README.md](evals/README.md)。
+严格覆盖检查使用：
+
+```sh
+just eval-strict
+```
+
+普通 eval 允许用例先于 transcript 增长；严格 eval 会把缺少 transcript 当成失败。它把 [templates/delivery-checklist.md](templates/delivery-checklist.md) 的语义纪律变成对模型输出的可打分断言。用例、schema 和录制 transcript 的方法见 [evals/README.md](evals/README.md)。

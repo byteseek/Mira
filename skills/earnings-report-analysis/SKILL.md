@@ -74,6 +74,7 @@
 - `investment-memo.md`
 - `case-notes.md`
 - `evidence-log.csv`
+- Step 4.5 critical interaction: one natural-language next question that routes to transcript review, SEC supplement, event delta, thesis update, or an explicit waiver.
 
 ## Analysis Flow
 

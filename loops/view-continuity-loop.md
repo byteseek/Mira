@@ -147,6 +147,7 @@ Promote to tracked `memory/` or `cases/` only with explicit user instruction and
 - `must_refresh_if`
 - `next_update_trigger`
 - `promotion_status`
+- Step 4.5 critical interaction asks one natural-language question about saving, updating, promoting, or waiving the working view; active follow-up state remains transient routing state, not preference memory.
 
 ## Stop Rules
 

@@ -89,6 +89,7 @@ Output:
 - Outcome attribution is supported or downgraded.
 - Process error, market-pricing error and execution constraint are not conflated.
 - Methodology changes trace to a specific failure mode.
+- Step 4.5 critical interaction asks one natural-language question that selects the next methodology fix, missing outcome evidence, or follow-up review target.
 
 ## Stop Rules
 

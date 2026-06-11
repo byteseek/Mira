@@ -181,6 +181,34 @@ bound to `schemas/vocab.json` (the single source) and to
 - `decision_grade`: near actionability / position / portfolio / instrument / PM handoff / durable thesis; 2-3 questions, each naming the next loop / skill.
 <!-- vocab:followup_prompt_mode end -->
 
+`critical_interaction_mode` (Step 4.5; every formal routing card declares the workflow's interaction outcome):
+
+<!-- vocab:critical_interaction_mode start (tokens bound to schemas/vocab.json) -->
+- `blocking_clarification`: stop before analysis because a missing boundary would mislead.
+- `progressive_followup`: answer now, then ask a route-bound question that can improve the next step.
+- `workflow_handoff`: ask whether to save, update, promote or route the output into a workflow object.
+- `followup_answer_continuation`: current user input answers a prior follow-up; continue the recorded route.
+- `waive_with_reason`: no useful interaction or the user explicitly opted out; pair with a concrete waiver reason.
+<!-- vocab:critical_interaction_mode end -->
+
+`active_followup_status` (Step 4.5; ephemeral session/routing state, not preference memory):
+
+<!-- vocab:active_followup_status start (tokens bound to schemas/vocab.json) -->
+- `none`
+- `open`
+- `answered`
+- `expired`
+- `waived`
+<!-- vocab:active_followup_status end -->
+
+`answer_match_confidence` (Step 4.5 continuation; used only when matching a user reply to an active follow-up):
+
+<!-- vocab:answer_match_confidence start (tokens bound to schemas/vocab.json) -->
+- `low`
+- `medium`
+- `high`
+<!-- vocab:answer_match_confidence end -->
+
 ## Live Data Freshness
 
 Use in analysis-routing Step 3.35 and live market source notes. These tokens

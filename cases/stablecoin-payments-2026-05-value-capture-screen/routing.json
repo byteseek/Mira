@@ -28,5 +28,7 @@
   "followup_questions": [
     "Complete an expectation map plus reserve-yield/regulatory check on issuers before actionability?",
     "Confirm whether issuers or distribution partners are the clearest equity expression for each sub-theme?"
-  ]
+  ],
+  "critical_interaction_mode": "progressive_followup",
+  "active_followup_status": "open"
 }

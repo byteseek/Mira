@@ -35,9 +35,14 @@ Every formal output must:
 - assign a package/actionability readiness level using [data/research-readiness-gate.md](data/research-readiness-gate.md)
 - scale visible fields using [data/output-surface-matrix.md](data/output-surface-matrix.md), so `quick_map` remains light without dropping required discipline
 - include `stale_after`, `must_refresh_if` or equivalent refresh conditions
-- end with 1-3 route-bound, object-specific progressive follow-up prompts when they can improve research boundary, evidence quality, readiness, or next-route selection
-- never silently omit progressive follow-up: if no prompt is useful, state
-  `followup_prompt_mode=none` and a route-specific waiver reason
+- run the `critical_interaction_step` before handoff: decide whether this
+  workflow needs blocking clarification, progressive follow-up, workflow
+  handoff, follow-up answer continuation, or an explicit waiver
+- end with 1-3 route-bound, object-specific progressive follow-up prompts when
+  they can improve research boundary, evidence quality, readiness, thesis
+  state, actionability boundary or next-route selection
+- never silently omit the interaction step: if no question or handoff is useful,
+  state `followup_prompt_mode=none` and a route-specific waiver reason
 - downgrade conclusions when evidence quality is weak
 - avoid autonomous trade instructions; use research actions only
 - for buy, sell, add, trim, chase, dip-buying or event participation prompts,

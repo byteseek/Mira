@@ -1589,38 +1589,43 @@ def validate_repo(root: Path, as_of: date) -> list[Issue]:
     issues.extend(validate_vocab_doc_consistency(root))
     issues.extend(validate_localization_glossary(root))
     issues.extend(validate_routing_index(root))
+    ignored_dirs = {".git", ".claude", "private", "local"}
+
+    def ignored(path: Path) -> bool:
+        return any(part in ignored_dirs for part in path.parts)
+
     for path in sorted(root.glob("**/routing.json")):
-        if ".git" in path.parts:
+        if ignored(path):
             continue
         issues.extend(validate_routing_json(path))
     for path in sorted(root.glob("**/evidence-log.csv")):
-        if ".git" in path.parts:
+        if ignored(path):
             continue
         issues.extend(validate_evidence_log(path))
     for path in sorted(root.glob("**/decision-log.csv")):
-        if ".git" in path.parts:
+        if ignored(path):
             continue
         issues.extend(validate_decision_log(path))
     for path in sorted(root.glob("**/calculation-ledger.csv")):
-        if ".git" in path.parts:
+        if ignored(path):
             continue
         issues.extend(validate_calculation_ledger(path))
     for path in sorted(root.glob("**/research-package-manifest.json")):
-        if ".git" in path.parts:
+        if ignored(path):
             continue
         issues.extend(validate_research_package_manifest(path))
     for path in sorted(root.glob("**/*.md")):
-        if ".git" in path.parts:
+        if ignored(path):
             continue
         issues.extend(validate_no_local_absolute_paths(path))
         issues.extend(validate_staleness(path, as_of))
         issues.extend(validate_markdown_vocabulary(path))
     for path in sorted(root.glob("**/*.csv")):
-        if ".git" in path.parts:
+        if ignored(path):
             continue
         issues.extend(validate_no_local_absolute_paths(path))
     for path in sorted(root.glob("**/*.py")):
-        if ".git" in path.parts:
+        if ignored(path):
             continue
         issues.extend(validate_no_local_absolute_paths(path))
     issues.extend(validate_research_index(root / "memory" / "research" / "INDEX.md", as_of))

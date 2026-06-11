@@ -98,6 +98,7 @@ Optional outputs when relevant:
 - `thesis-impact.md`
 - `event-delta.md`
 - updated research package or earnings package
+- Step 4.5 critical interaction: one natural-language next question that routes to SEC supplement, event delta, thesis update, or an explicit waiver.
 
 ## Analysis Flow
 

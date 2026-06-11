@@ -36,6 +36,7 @@ refresh, safety or source-boundary discipline.
 | Evidence log or source note | `brief_visible` source note | `full_visible` evidence/source notes | `full_visible` evidence artifacts |
 | Readiness level and blocking gaps | `brief_visible` if not decision-ready | `full_visible` | `full_visible` |
 | Refresh condition: `stale_after` / `must_refresh_if` | `brief_visible` | `full_visible` | `full_visible` |
+| Critical interaction step | `brief_visible` one high-leverage question, handoff or waiver | `full_visible` follow-up / handoff | `full_visible` decision-grade handoff or waiver |
 | Progressive follow-up | `brief_visible` light follow-up or `waive_with_reason` | `full_visible` standard follow-up | `full_visible` decision-grade follow-up when relevant |
 | Non-investment-advice / research boundary | `brief_visible` when action language appears | `full_visible` | `full_visible` |
 
@@ -78,11 +79,14 @@ surface:
 - key facts versus inferences, at least in prose
 - largest `source_gap` or `calculation_gap`
 - `stale_after` or `must_refresh_if`
-- one route-bound, object-specific light follow-up, unless explicitly waived
+- one route-bound, object-specific critical interaction: a light follow-up,
+  workflow handoff or explicit waiver
 
 If `interaction_mode=quick_answer`, keep this surface compact: answer first,
 then only show the source boundary, uncertainty, refresh/reversal condition and
-follow-up when they materially affect the answer.
+critical interaction in the smallest useful form. The critical interaction must
+still appear as one brief object-specific follow-up / handoff, or as
+`followup_prompt_mode=none` with an explicit waiver reason.
 
 ### `standard`
 
@@ -95,6 +99,7 @@ coverage. Minimum visible surface:
 - triggered gates and named gaps
 - readiness level
 - refresh condition
+- critical interaction step: follow-up, handoff or waiver
 - standard follow-up with at least one pricing-variable, consensus,
   falsification or next-route question when more than one follow-up is shown
 
@@ -107,11 +112,14 @@ PM review or portfolio construction. Minimum visible surface:
 - complete triggered artifacts
 - explicit calculations or ledgers when conclusions depend on numbers
 - thesis, expectation, decision or postmortem artifacts when applicable
-- decision-grade follow-up with rung progression, or explicit waiver
+- decision-grade critical interaction: blocking clarification, workflow
+  handoff, follow-up continuation, rung progression or explicit waiver
 
 ## Failure Modes This Matrix Prevents
 
 - treating `quick_map` as a casual answer with no follow-up
+- treating progressive follow-up as an optional closing line instead of a
+  workflow control point
 - turning every `quick_answer` interaction into a full compliance template
 - hiding triggered risks such as quant dependency or actionability pressure
 - showing package-only artifacts before they improve the answer
