@@ -28,5 +28,7 @@
   "followup_questions": [
     "Complete expectation maps for AVAV/KTOS/PLTR before any actionability?",
     "Confirm funded program-of-record path vs Replicator-style attritable awards in the value-capture map?"
-  ]
+  ],
+  "critical_interaction_mode": "progressive_followup",
+  "active_followup_status": "open"
 }

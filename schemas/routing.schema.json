@@ -41,7 +41,37 @@
     "readiness_level": {"type": "string", "minLength": 1},
     "private_state_action": {"type": "string", "minLength": 1},
     "followup_prompt_mode": {"$ref": "vocab.json#/followup_prompt_mode"},
-    "followup_questions": {"type": "array", "minItems": 1},
+    "critical_interaction_mode": {"$ref": "vocab.json#/critical_interaction_mode"},
+    "active_followup_status": {"$ref": "vocab.json#/active_followup_status"},
+    "active_followup_id": {"type": "string", "minLength": 1},
+    "answer_match_confidence": {"$ref": "vocab.json#/answer_match_confidence"},
+    "followup_questions": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "anyOf": [
+          {"type": "string", "minLength": 1},
+          {
+            "type": "object",
+            "properties": {
+              "followup_id": {"type": "string", "minLength": 1},
+              "question": {"type": "string", "minLength": 1},
+              "rung": {"type": "string", "minLength": 1},
+              "route_binding": {"type": "string", "minLength": 1},
+              "object_anchor": {"type": "string", "minLength": 1},
+              "decision_impact": {"type": "string", "minLength": 1},
+              "next_route_if_answered": {"type": "string", "minLength": 1},
+              "state_update_if_answered": {"type": "string", "minLength": 1}
+            },
+            "required": ["question"]
+          }
+        ]
+      }
+    },
+    "followup_id": {"type": "string", "minLength": 1},
+    "next_route_if_answered": {"type": "string", "minLength": 1},
+    "state_update_if_answered": {"type": "string", "minLength": 1},
+    "state_update_applied": {"type": "string", "minLength": 1},
     "followup_waiver_reason": {"type": "string", "minLength": 1}
   },
   "required": [
@@ -57,7 +87,9 @@
     "knowability_status",
     "primary_skill_or_loop",
     "routing_basis",
-    "followup_prompt_mode"
+    "followup_prompt_mode",
+    "critical_interaction_mode",
+    "active_followup_status"
   ],
   "allOf": [
     {
@@ -114,6 +146,16 @@
       "$comment": "follow-up: explicit none must carry a route-specific waiver reason",
       "if": {"properties": {"followup_prompt_mode": {"const": "none"}}, "required": ["followup_prompt_mode"]},
       "then": {"required": ["followup_waiver_reason"]}
+    },
+    {
+      "$comment": "critical interaction: continuation requires an active follow-up id and match confidence",
+      "if": {"properties": {"critical_interaction_mode": {"const": "followup_answer_continuation"}}, "required": ["critical_interaction_mode"]},
+      "then": {"required": ["active_followup_id", "answer_match_confidence", "next_route_if_answered"]}
+    },
+    {
+      "$comment": "critical interaction: waived interaction should align active follow-up status",
+      "if": {"properties": {"critical_interaction_mode": {"const": "waive_with_reason"}}, "required": ["critical_interaction_mode"]},
+      "then": {"required": ["followup_waiver_reason"], "properties": {"active_followup_status": {"enum": ["waived", "none"]}}}
     }
   ]
 }

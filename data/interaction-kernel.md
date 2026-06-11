@@ -45,6 +45,9 @@ Every substantive Mira answer must check:
 - Whether model summaries, tool output or agent interpretations are being used
   only as processing artifacts unless the underlying sources are mapped.
 - Whether the answer needs a refresh condition.
+- Whether the workflow has reached a `critical_interaction_step`: a user
+  response could materially change boundary, evidence path, calculation depth,
+  readiness, thesis state, actionability boundary or the next route.
 - Whether a route-bound, object-specific progressive follow-up would improve
   boundary, evidence path, calculation depth, readiness or next route.
   For `standard`, `deep_dive` or decision-grade contexts, at least one follow-up
@@ -85,6 +88,9 @@ Before handoff, run this final gate:
    For multi-question follow-up, avoid a flat checklist: include at least one
    question that advances from boundary/data collection to pricing-variable,
    consensus, falsification or next-route work.
+4. Interaction continuity: if the user appears to answer a prior follow-up,
+   treat it as `followup_answer_continuation` and route into the recorded
+   `next_route_if_answered` instead of restarting as a generic new question.
 
-The three checks can be brief in `quick_map`, but they cannot be silently
+These checks can be brief in `quick_map`, but they cannot be silently
 dropped.

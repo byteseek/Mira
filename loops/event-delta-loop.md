@@ -91,6 +91,7 @@
 - `thesis impact`
 - `escalation decision`
 - `required research follow-up`（内部研究待办，字段名 `required_research_followup`；区别于 Step 4.5 的 progressive follow-up）
+- Step 4.5 critical interaction: ask one natural-language next question that routes the user into expectation-map update, thesis update, SEC supplement, or a waiver if no useful next interaction exists.
 
 ## Stop Rules
 

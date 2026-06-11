@@ -25,5 +25,7 @@
     "Should AI data-center content-per-MW (customer qualification + production-ramp evidence) become the tracked core variable on the expectation map? (Rung B -> consensus proxy / evidence path)",
     "If Distributor A concentration (59% of revenue, 58% of receivables) rises again in Q2, thesis downgrade or watch item? (Rung C -> thesis_state falsification line)",
     "Before live use after Q2 2026 (stale_after 2026-08-29), refresh backlog/design-win quantification first or cash-burn moderation? (Rung A -> boundary / readiness_level)"
-  ]
+  ],
+  "critical_interaction_mode": "progressive_followup",
+  "active_followup_status": "open"
 }

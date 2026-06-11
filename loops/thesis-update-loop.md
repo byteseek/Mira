@@ -112,6 +112,7 @@
 - `thesis impact`
 - `state change decision`
 - `required research follow-up`（内部研究待办，字段名 `required_research_followup`；区别于 Step 4.5 的 progressive follow-up）
+- Step 4.5 critical interaction: ask one natural-language next question that tests the key state-change uncertainty, confirms escalation, or records why follow-up is waived.
 
 ## Stop Rules
 

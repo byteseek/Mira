@@ -28,5 +28,7 @@
   "followup_questions": [
     "Run a company-level financial transmission test on the top bottleneck (external/InP laser) before adopting the methodology?",
     "Add a follow-through refresh so the method can move from positive_partial to adopted?"
-  ]
+  ],
+  "critical_interaction_mode": "progressive_followup",
+  "active_followup_status": "open"
 }

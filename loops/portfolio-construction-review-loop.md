@@ -111,6 +111,7 @@ Output:
 - Real portfolio conclusions use user-provided weights or explicitly state `no_position_data`.
 - Numeric concentration or risk claims have a calculation note or are marked `calculation_gap`.
 - Follow-up queue is sorted by research or portfolio-review urgency.
+- Step 4.5 critical interaction asks one natural-language question that obtains the missing portfolio constraint, confirms the next position-review priority, or waives follow-up with a reason.
 
 ## Stop Rules
 

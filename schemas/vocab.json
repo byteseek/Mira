@@ -45,6 +45,15 @@
   "followup_prompt_mode": {
     "enum": ["none", "light", "standard", "decision_grade"]
   },
+  "critical_interaction_mode": {
+    "enum": ["blocking_clarification", "progressive_followup", "workflow_handoff", "followup_answer_continuation", "waive_with_reason"]
+  },
+  "active_followup_status": {
+    "enum": ["none", "open", "answered", "expired", "waived"]
+  },
+  "answer_match_confidence": {
+    "enum": ["low", "medium", "high"]
+  },
   "task_mode": {
     "enum": [
       "first_pass_research",

@@ -30,6 +30,8 @@ Machine routing object:
   "primary_skill_or_loop": "skills/equity-research-core/SKILL.md",
   "routing_basis": "User asked for a one-line direction, so answer shape is quick_answer and research depth is quick_map.",
   "followup_prompt_mode": "light",
+  "critical_interaction_mode": "progressive_followup",
+  "active_followup_status": "open",
   "followup_questions": [
     {
       "question": "Should the AAPL quick map focus on near-term revision or long-term services and AI durability?",
@@ -74,6 +76,8 @@ Machine routing object:
   "readiness_level": "working_view",
   "private_state_action": "waive",
   "followup_prompt_mode": "standard",
+  "critical_interaction_mode": "progressive_followup",
+  "active_followup_status": "open",
   "followup_questions": [
     {
       "question": "Should consensus proxy be anchored to FY1/FY2 data-center revenue, gross margin, or hyperscaler capex read-through?",
@@ -143,6 +147,8 @@ Machine routing object:
   "readiness_level": "working_view",
   "private_state_action": "waive",
   "followup_prompt_mode": "decision_grade",
+  "critical_interaction_mode": "blocking_clarification",
+  "active_followup_status": "none",
   "followup_questions": [
     {
       "question": "Should the NVDA versus AMD comparison anchor on data-center revenue, GPU supply constraints, gross margin, or guidance revision?",
@@ -196,6 +202,8 @@ Machine routing object:
   "primary_skill_or_loop": "loops/monitoring-loop.md",
   "routing_basis": "The prompt asks about today/current market state and uses a strong crash label, so Mira must refresh or search live sources before judging and must show quote time plus freshness caveat.",
   "followup_prompt_mode": "light",
+  "critical_interaction_mode": "progressive_followup",
+  "active_followup_status": "open",
   "followup_questions": [
     {
       "question": "Should the live read use US indexes, A-shares, Hong Kong, or another market as the default broad-market scope?",

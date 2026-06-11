@@ -233,6 +233,8 @@ For a follow-through refresh:
 - updated workflow scorecard
 - review-log entry
 
+Every standard output also includes Step 4.5 critical interaction: one natural-language next question tied to the highest-value evidence gap, workflow handoff, or explicit waiver.
+
 ## Release Status
 
 This loop is approved for internal candidate use.

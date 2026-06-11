@@ -122,6 +122,7 @@ Output:
 - Any sizing or risk conclusion is tied to position data and, when numeric, to a reproducible calculation.
 - Position-management implication stays separate from trade execution.
 - `stale_after` and `must_refresh_if` are present.
+- Step 4.5 critical interaction asks one natural-language question that obtains the missing position context, verifies the disconfirming variable, or confirms the next research action.
 
 ## Stop Rules
 

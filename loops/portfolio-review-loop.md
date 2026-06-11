@@ -117,6 +117,7 @@ Do not run repo validation solely because user-private `private/` state changed.
 - If real position data is provided, routing either remains explicitly research-only or escalates to the position/portfolio construction loops.
 - Stale or source-gap items are marked before any stronger conclusion.
 - Follow-up list is sorted by research urgency.
+- Step 4.5 critical interaction asks one natural-language question that chooses the next review object, missing portfolio context, or follow-up queue priority.
 
 ## Stop Rules
 

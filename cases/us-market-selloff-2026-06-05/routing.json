@@ -44,5 +44,7 @@
   "followup_questions": [
     "Refresh QQQ/SPY/SMH, Treasury yields, VIX, and credit spreads before 2026-06-08 US premarket?",
     "If this affects real holdings, route next to position_review or portfolio_construction_review with weights and risk budget?"
-  ]
+  ],
+  "critical_interaction_mode": "progressive_followup",
+  "active_followup_status": "open"
 }

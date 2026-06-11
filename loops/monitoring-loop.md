@@ -133,3 +133,4 @@
 - `escalation decision`
 - `framework still valid?`
 - `overlay still valid?`
+- Step 4.5 critical interaction: ask one natural-language next question that either confirms the escalation path, closes the most important source gap, or waives follow-up with a reason.
