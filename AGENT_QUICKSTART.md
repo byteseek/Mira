@@ -51,7 +51,7 @@ Claude Code 默认读取根目录 [CLAUDE.md](CLAUDE.md)。该文件会要求 Cl
 
 正式分析前必须先运行 [loops/analysis-routing.md](loops/analysis-routing.md)，不要直接套股票模板。
 
-路由第一步是 Step 0 意图入口：先把复合 prompt 拆成 `primary_intent` / `secondary_intents`，显式声明本轮运行假设，并按 `depth_mode` 给出可缩放的路由卡（quick_map 只需一行假设条）。如果问题接近“能不能买 / 加 / 减 / 冲 / 抄底 / 目标价到了还能买”或 position / portfolio，必须同时跑 Step 0.5 decision pressure gate：标注 `decision_pressure` 与 `framing_risk`（锚问题不锚人、瞬时不存储），压力为 medium/high 时给一个反向检验。选定 depth 后，用 Step 3.3 校验信息价值和可知性；主导变量不可知时输出 `irreducible_uncertainty`，不要强行深挖。
+路由第一步是 Step 0 意图入口：先把复合 prompt 拆成 `primary_intent` / `secondary_intents`，显式声明本轮运行假设，并按 `depth_mode` 给出可缩放的路由卡（quick_map 只需一行假设条）。如果问题接近“能不能买 / 卖 / 加 / 减 / 冲 / 追 / 抄底 / 目标价到了还能买”或 position / portfolio，必须同时跑 Step 0.5 decision pressure gate：标注 `decision_pressure` 与 `framing_risk`（锚问题不锚人、瞬时不存储），压力为 medium/high 时给一个反向检验，并在 actionability posture 前跑 `data/marginal-buyer-payoff-bridge.md`。选定 depth 后，用 Step 3.3 校验信息价值和可知性；主导变量不可知时输出 `irreducible_uncertainty`，不要强行深挖。
 
 如果 context 紧张，先读 [OPERATING_CONTRACT.md](OPERATING_CONTRACT.md)。它给出最短 loading map：每一步只读当前需要的 loop、skill 或模板。
 

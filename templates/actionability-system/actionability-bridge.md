@@ -28,6 +28,23 @@ Use [../../data/controlled-vocabulary.md](../../data/controlled-vocabulary.md) `
 | revision_path | {{ revision_path }} |
 | implied_risk_reward | {{ implied_risk_reward }} |
 
+## Marginal Buyer / Payoff Bridge
+
+Use [../../data/marginal-buyer-payoff-bridge.md](../../data/marginal-buyer-payoff-bridge.md)
+before assigning the participation posture.
+
+| item | value |
+| --- | --- |
+| decision_direction | {{ decision_direction }} |
+| marginal_buyer | {{ marginal_buyer }} |
+| remaining_marginal_buyer | {{ remaining_marginal_buyer }} |
+| marginal_seller | {{ marginal_seller }} |
+| payoff_source | {{ payoff_source }} |
+| repricing_trigger | {{ repricing_trigger }} |
+| priced_in_status | {{ priced_in_status }} |
+| seller_or_buyer_error | {{ seller_or_buyer_error }} |
+| failure_mode | {{ failure_mode }} |
+
 ## Scenario And Risk
 
 | scenario | key_assumption | valuation_or_level | implication |
@@ -60,6 +77,7 @@ Use [../../data/controlled-vocabulary.md](../../data/controlled-vocabulary.md) `
 | --- | --- | --- |
 | source_control | {{ source_control_status }} | {{ source_control_note }} |
 | valuation_control | {{ valuation_control_status }} | {{ valuation_control_note }} |
+| payoff_control | {{ payoff_control_status }} | {{ payoff_control_note }} |
 | event_control | {{ event_control_status }} | {{ event_control_note }} |
 | confirmation_control | {{ confirmation_control_status }} | {{ confirmation_control_note }} |
 | invalidation_control | {{ invalidation_control_status }} | {{ invalidation_control_note }} |

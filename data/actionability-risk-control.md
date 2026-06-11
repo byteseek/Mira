@@ -4,9 +4,13 @@ Mira can translate research into a participation frame, but it must not become
 an autonomous trading system.
 
 Use this policy whenever a user asks whether a research object is "buyable",
-"can participate", "can add", "can chase", "can trade around an event", or any
-similar actionability question. If the user asks about options, short selling,
-pair trades, hedges or other instruments, also load
+"can participate", "can add", "can chase", "can sell", "can trim", "can trade
+around an event", or any similar actionability question. Before assigning a
+participation posture, run
+[marginal-buyer-payoff-bridge.md](marginal-buyer-payoff-bridge.md) to identify
+the next marginal buyer or seller, payoff source, repricing trigger and
+priced-in status. If the user asks about options, short selling, pair trades,
+hedges or other instruments, also load
 [instrument-strategy-gate.md](instrument-strategy-gate.md).
 
 ## Boundary
@@ -48,11 +52,13 @@ trim, size or rebalance.
 A participation frame answers:
 
 1. why participation is being considered
-2. what evidence is already confirmed
-3. what evidence remains unconfirmed
-4. what price, valuation or expectation burden is being accepted
-5. what would invalidate the view
-6. what must happen before the participation posture can strengthen
+2. who the next marginal buyer or seller is
+3. what payoff source or downside repricing source remains from here
+4. what evidence is already confirmed
+5. what evidence remains unconfirmed
+6. what price, valuation or expectation burden is being accepted
+7. what would invalidate the view
+8. what must happen before the participation posture can strengthen
 
 It is not a trade ticket.
 
@@ -66,6 +72,9 @@ participation answer.
   `needs_refresh`.
 - `valuation_control`: If price, valuation or expected return matters, state a
   valuation anchor. If missing, downgrade actionability.
+- `payoff_control`: If the next marginal buyer or seller, payoff source,
+  repricing trigger or priced-in status cannot be stated, downgrade
+  actionability.
 - `event_control`: Before binary or near-term catalysts, default to
   `starter_only` or `watchlist_only` unless the user has provided explicit risk
   budget and confirms event-risk tolerance.
@@ -136,6 +145,10 @@ For a quick participation answer, include:
 
 - `research_object`
 - `time_boundary`
+- `marginal_buyer_or_seller`
+- `payoff_source`
+- `repricing_trigger`
+- `priced_in_status`
 - `participation_posture`
 - `basis`
 - `confirmation_required`

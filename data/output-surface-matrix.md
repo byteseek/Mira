@@ -45,6 +45,7 @@ refresh, safety or source-boundary discipline.
 | --- | --- | --- | --- | --- |
 | Decision pressure | actionability, position, portfolio or instrument language | `triggered_visible` | `full_visible` | `full_visible` |
 | Disconfirmation | `decision_pressure` medium/high or framing risk not `none` | `brief_visible` | `full_visible` | `full_visible` |
+| Marginal buyer / payoff bridge | buy, sell, add, trim, chase, dip-buying or event participation language | `brief_visible` natural-language buyer/seller + payoff source | `full_visible` | `full_visible` |
 | Question expansion lens | comparison, scale shift, trend or anomaly framing materially improves the route | `internal_check` or natural-language follow-up | `triggered_visible` | `full_visible` when it changes evidence path |
 | Live data gate | today/now/latest/intraday market or event-reaction question | `brief_visible` time/source/freshness caveat | `full_visible` | `full_visible` |
 | Quant / calculation gate | derived numbers, valuation, peer rank, trend or model-dependent conclusion | `brief_visible` source/calculation gap | `full_visible` | `full_visible` with ledger when retained |
@@ -61,6 +62,7 @@ refresh, safety or source-boundary discipline.
 | Calculation ledger | formula note or gap only | triggered by quant dependency | required when calculations drive conclusions |
 | Thesis ledger / expectation map | `not_required` unless continuing a thesis | triggered by thesis/update/actionability route | required for durable thesis work |
 | Decision log | `not_required` | triggered by actionability or thesis-state change | required when thesis/actionability changes |
+| Actionability bridge | source/posture summary only | triggered by durable actionability route | required when actionability changes a thesis or review |
 | Case notes / package manifest | `not_required` | required for package work | required |
 
 ## Minimum Surface Contracts

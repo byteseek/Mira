@@ -201,7 +201,7 @@ Mira 在正式分析前显式声明它正在用的运行假设，先答、同时
 
 触发绑定到确定性的 route，而不是对 prompt 的模糊感知（沿用 Step 4.5 “禁止静默跳过” 的同一纪律）：
 
-- 凡是路由进入 actionability（能不能买 / 加 / 减 / 冲 / 抄底 / 目标价到了还能不能买 / 预期差兑现后能不能加）、position review、portfolio construction review，就**强制输出** `decision_pressure`，哪怕是 `none`。
+- 凡是路由进入 actionability（能不能买 / 卖 / 加 / 减 / 冲 / 追 / 抄底 / 目标价到了还能不能买 / 预期差兑现后能不能加）、position review、portfolio construction review，就**强制输出** `decision_pressure`，哪怕是 `none`。
 - 裸 `预期差 / 预期差在哪` 是 variant-perception 研究问题，默认不进 actionability、`decision_pressure=none`；只有叠加动作语（能不能加 / 冲）或持仓语境时才触发本 gate。
 - Step 0 若把 `interaction_mode` 标为 `decision_support`，本 gate 先给出初判，待 task_mode / research_object 确定 route 后再终判。
 - 不允许因为“没看出压力”而静默跳过本 gate。
@@ -227,7 +227,7 @@ Mira 的领域安全门——不给交易指令、无持仓不给仓位、instru
 - `interaction_mode = decision_support` 即 decision_support posture：才进入 actionability / position / portfolio / instrument 分析框架，且**必经** decision pressure gate（[../schemas/routing.schema.json](../schemas/routing.schema.json) 已强制 `decision_support` → `decision_pressure`）和上面的范围确认。
 - 其余 `interaction_mode`（`quick_answer` / `routed_research` / `routing_unclear`）即 research_only posture：默认禁止仓位大小、订单和交易指令输出。
 
-各安全门的规则不变，仍以 [../MIRA.md](../MIRA.md)、[../data/actionability-risk-control.md](../data/actionability-risk-control.md)、[../data/instrument-strategy-gate.md](../data/instrument-strategy-gate.md) 为准；这里只是把它们统一挂到这一个开关下，让模型判断一个 posture 即可，而不必分别记住每个门的触发条件。
+各安全门的规则不变，仍以 [../MIRA.md](../MIRA.md)、[../data/marginal-buyer-payoff-bridge.md](../data/marginal-buyer-payoff-bridge.md)、[../data/actionability-risk-control.md](../data/actionability-risk-control.md)、[../data/instrument-strategy-gate.md](../data/instrument-strategy-gate.md) 为准；这里只是把它们统一挂到这一个开关下，让模型判断一个 posture 即可，而不必分别记住每个门的触发条件。
 
 ## Step 1: Task Mode
 
@@ -336,6 +336,13 @@ Mira 的领域安全门——不给交易指令、无持仓不给仓位、instru
 
 - `loops/thesis-update-loop.md`
 
+无真实持仓语境的动作问（能不能买 / 卖 / 加 / 减 / 冲 / 追 / 抄底）也先走本路由或当前研究路由加载 thesis / source context，然后加载：
+
+- `data/marginal-buyer-payoff-bridge.md`
+- `data/actionability-risk-control.md`
+
+输出必须先回答边际买家/卖家、边际收益来源、重定价触发器和 price-in 状态，再给 research-bound participation posture。
+
 如果触发点是明确事件，例如财报、FOMC、产品发布、监管决定或同业 read-through，先进入：
 
 - `loops/event-delta-loop.md`
@@ -372,6 +379,11 @@ Mira 的领域安全门——不给交易指令、无持仓不给仓位、instru
 默认进入：
 
 - `loops/position-review-loop.md`
+
+带真实持仓语境的动作问（能不能买 / 卖 / 加 / 减 / 出）必须同时加载：
+
+- `data/marginal-buyer-payoff-bridge.md`
+- `data/actionability-risk-control.md`
 
 如果没有提供真实持仓、权重、成本、约束或组合语境，只能输出 `research_only` 或 `no_position_data`，不能做 position-size 结论。
 
@@ -711,6 +723,46 @@ This loop is currently `candidate_internal_release`, not final external-grade.
   `source_gap`、`calculation_gap`、`working_view` 或 `needs_refresh`。
 - `quick_map` 通常不展示 lens token，只把 lens 变成一句自然语言 source gap
   或 progressive follow-up。
+
+## Step 3.28: Marginal Buyer / Payoff Bridge
+
+当问题接近 actionability（能不能买 / 卖 / 加 / 减 / 冲 / 追 / 抄底 / event
+participation）时，在给 participation posture 之前加载：
+
+- `data/marginal-buyer-payoff-bridge.md`
+
+这个 bridge 是 actionability 的分析内核，不是交易信号，也不是独立重型 loop。
+它必须先回答：
+
+- 下一批边际买家或边际卖家是谁？
+- 从当前价格开始，边际收益或下行重定价来源是什么？
+- 什么证据、事件或价格行为会触发重新定价？
+- 当前价格已经吃掉多少 upside / downside？
+- 现在的交易对手方错在哪里？
+- 如果判断错了，最可能的 failure mode 是什么？
+
+记录：
+
+- `decision_direction`: `buy` / `sell` / `add` / `trim` / `chase` /
+  `buy_the_dip` / `hold_review` / `event_participation`
+- `marginal_buyer`
+- `remaining_marginal_buyer`
+- `marginal_seller`
+- `payoff_source`
+- `repricing_trigger`
+- `priced_in_status`
+- `seller_or_buyer_error`
+- `failure_mode`
+
+边界规则：
+
+- 如果 `marginal_buyer` / `remaining_marginal_buyer`、`payoff_source` 或
+  `repricing_trigger` 说不清，不能升级 actionability；输出
+  `watch_only`、`needs_refresh`、`research_only` 或等价降级。
+- 如果收益来源只是价格动量或流动性，标记 `technical_liquidity_only`，除非任务明确是短期市场结构判断。
+- 如果是 `now` / `today` / `latest` / 盘前盘后 / 日内动作问，必须先跑 live-data gate，再判断 price-in 状态。
+- 有真实持仓时，本 bridge 只回答收益/接盘逻辑；仓位大小、减仓或退出含义仍由 position / portfolio route 决定。
+- quick_map 只需自然语言展示关键判断；standard / deep_dive 或 durable actionability 才写入 `actionability-bridge.md`。
 
 ## Step 3.3: Information Value And Knowability Gate
 

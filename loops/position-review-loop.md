@@ -67,6 +67,11 @@ Separate:
 - inferences: what appears priced in, what changed since entry, what evidence strengthened or weakened
 - judgments: whether position size still matches thesis quality, downside path and time boundary
 
+For buy, sell, add, trim or exit questions, also run
+[../data/marginal-buyer-payoff-bridge.md](../data/marginal-buyer-payoff-bridge.md)
+before action implication. The position review must distinguish remaining
+payoff source from position-size or risk-budget fit.
+
 If valuation, return, drawdown, exposure, concentration or risk budget claims are material, run the quant dependency gate or mark `calculation_gap`.
 
 ### `size-vs-evidence-check`
@@ -110,6 +115,8 @@ Output:
 ## Exit Criteria
 
 - `decision_pressure` is emitted (even if `none`), with a disconfirmation check when medium/high, per `analysis-routing.md` Step 0.5 (this route is `load_gate=on_hit_decision_support`).
+- Buy/sell/add/trim prompts include the marginal buyer / payoff bridge before
+  position-management implication.
 - Real position data is either provided or explicitly marked `no_position_data`.
 - Thesis state, stale status and source trail are stated before action implication.
 - Any sizing or risk conclusion is tied to position data and, when numeric, to a reproducible calculation.

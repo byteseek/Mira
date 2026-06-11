@@ -22,6 +22,7 @@ automation promise.
 | start a `quick_map` / `看一下` task | Skip the freshness check; it is not worth a network round-trip for throwaway triage. |
 | `Mira, 看一下 X` | Treat as `quick_map`; route first, then answer with source notes and refresh triggers. |
 | time-sensitive market question (`今天`, `现在`, `目前`, `latest`, intraday, premarket, after-hours, crash/pullback) | Run `data/live-data-source-policy.md`; search or refresh live sources before judging, and show quote/publish time plus freshness caveat. |
+| `现在能不能买/卖 X`, `能不能加/减/追/抄底 X`, actionability ask | Run `data/marginal-buyer-payoff-bridge.md` before `data/actionability-risk-control.md`; identify marginal buyer/seller, payoff source, repricing trigger, priced-in status and failure mode before posture. |
 | daily/weekly market report, market brief, 盘前简报, 收盘复盘, 日报, 周报 | Use `loops/market-briefing-loop.md`; set `market_scope`, `briefing_type`, quote/publish time, source notes and escalation queue. |
 | `Mira, 研究 X` | Use `loops/research-loop.md` unless routing selects a narrower path. |
 | `Mira, 更新 X` | Use `loops/monitoring-loop.md`; focus on incremental evidence and thesis impact. |
