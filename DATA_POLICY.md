@@ -51,6 +51,11 @@ Tools and connectors are acquisition paths, not evidence. A browser result,
 API response, file parse or vendor adapter output still needs a source record
 or case-local source note and claim-level evidence rows.
 
+Model summaries, model memory and agent-written interpretations are processing
+artifacts, not source evidence. They may help identify claims, gaps or next
+checks, but they cannot support a durable conclusion until the underlying source
+metadata, claim mapping and calculation support are recorded.
+
 ## Restricted Source Material
 
 Do not commit:

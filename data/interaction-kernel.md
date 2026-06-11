@@ -42,6 +42,8 @@ Every substantive Mira answer must check:
 - Whether material claims are facts, inferences or judgments.
 - Whether each material judgment has confidence basis and a reversal condition.
 - Whether every durable conclusion has source notes or evidence-log support.
+- Whether model summaries, tool output or agent interpretations are being used
+  only as processing artifacts unless the underlying sources are mapped.
 - Whether the answer needs a refresh condition.
 - Whether a route-bound, object-specific progressive follow-up would improve
   boundary, evidence path, calculation depth, readiness or next route.
@@ -74,7 +76,8 @@ The visible routing card is only a depth-scaled rendering of that object.
 Before handoff, run this final gate:
 
 1. Evidence strength: facts, inferences and judgments are not blended; durable
-   conclusions have a source note or evidence trail.
+   conclusions have a source note or evidence trail; model summaries are not
+   treated as evidence without source mapping.
 2. Refresh condition: `stale_after`, `must_refresh_if`, `kill_criteria` or an
    equivalent condition is present when the claim is time-sensitive or durable.
 3. Progressive follow-up: include 1-3 route-bound, object-specific questions,

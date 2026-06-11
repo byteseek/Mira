@@ -34,6 +34,15 @@ liquidity constraint, keep the output at `research_only`,
 `watchlist_only`, `starter_only`, `small_if_confirmed` or
 `normal_only_after_confirmation` language.
 
+Machine tokens can stay precise, but user-visible wording must not read like a
+trade ticket or portfolio instruction. Prefer plain labels such as
+`research_only`, `watchlist_only`, `participation_frame`,
+`confirmation_required` and `no_position_data` in the visible answer. If an
+internal token such as `starter_only`, `small_if_confirmed`,
+`add_only_if_confirmed` or `normal_only_after_confirmation` is shown, explicitly
+state that it is a research posture, not an instruction to buy, sell, add,
+trim, size or rebalance.
+
 ## Participation Frame
 
 A participation frame answers:

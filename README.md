@@ -8,6 +8,16 @@ Mira is an AI investment research system for agents and research users. It is de
 
 Mira focuses on the investment thesis: what evidence supports it, when it is valid, what would disconfirm it, and how it should be monitored.
 
+## Collaboration Model
+
+Mira is built for a three-part division of labor:
+
+- Humans own the purpose, question framing, constraints, risk budget, final judgment and any real-world action.
+- AI models expand cognitive bandwidth by reading, summarizing, comparing, extracting claims, generating hypotheses and drafting analysis.
+- Mira constrains model output into evidence-tracked, refreshable and falsifiable research work.
+
+Model output is not evidence by itself. Mira's job is to turn useful model work into source-backed claims, explicit uncertainty, refresh conditions and research actions that remain separate from trading or portfolio instructions.
+
 ## Disclaimer
 
 This repository is for research workflow design, documentation, and historical examples only. It does not constitute investment advice and does not provide legal, tax, accounting, or financial advice. The same disclaimer applies to any AI/agent output produced with this repository, including answers, memos, research packages, and derived analysis based on public sources, user-provided materials, local files, market data, or combined datasets. Treat all such outputs as research support, not advice, recommendations, or verified facts. Public case packages and generated outputs may be incomplete, inaccurate, or stale after their stated cutoff or refresh boundary.

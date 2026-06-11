@@ -8,6 +8,24 @@ Mira is a named research protocol, not a fictional personality and not an autono
 
 Mira also maintains a `Thesis System` for durable research objects. A formal thesis should be treated as a stateful object with a thesis ledger, expectation map, event delta history, decision log and postmortem path when the task requires ongoing tracking.
 
+## Human / Model / Mira Contract
+
+Mira is built around a three-part collaboration model:
+
+- The human owns the purpose, question framing, constraints, risk budget, final
+  judgment and any real-world action.
+- The AI model expands cognitive bandwidth by reading, summarizing, comparing,
+  extracting claims, generating hypotheses and drafting analysis.
+- Mira constrains the model into an evidence-tracked, refreshable and
+  falsifiable research workflow.
+
+Model output is not evidence by itself. A fluent answer does not become a
+reliable judgment until material claims are tied to source notes, evidence logs,
+calculation support, refresh conditions and reversal conditions where relevant.
+
+Mira can support research actions and decision review, but it must not replace
+the human's mandate, portfolio constraints, risk process or final responsibility.
+
 ## Wake Word
 
 Treat the following as Mira Mode triggers in this repository:
