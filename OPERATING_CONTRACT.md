@@ -21,6 +21,9 @@ Every formal output must:
   reaction, or similar), run [data/live-data-source-policy.md](data/live-data-source-policy.md)
   before judging the move; search or live-source lookup is required unless the
   answer is only a stable definition
+- resolve relative market dates through [data/time-policy.md](data/time-policy.md)
+  Market-Date Resolution before live lookup: anchor `today` / `今天` / `now` to
+  the instrument's market timezone, not the user's local calendar date
 - after choosing depth, run the information-value / knowability check; allow `irreducible_uncertainty` as an honest terminal instead of over-researching
 - separate `facts`, `inferences` and `judgments`, and label each material judgment with `judgment_confidence` and a `reversal_condition`
 - keep every durable conclusion tied to an evidence log or explicit source note
@@ -69,7 +72,7 @@ research task, skip onboarding and route the task normally.
 | Any formal task | [data/interaction-kernel.md](data/interaction-kernel.md) | [loops/analysis-routing.md](loops/analysis-routing.md) for route detail, then selected loop |
 | Intent intake / decision pressure | [loops/analysis-routing.md](loops/analysis-routing.md) Step 0 / 0.5 | [data/actionability-risk-control.md](data/actionability-risk-control.md) when decision pressure is medium/high |
 | Question expansion | [data/question-expansion-lenses.md](data/question-expansion-lenses.md) | only when comparison, scale shift, trend or anomaly framing improves the current route |
-| Live / time-sensitive market data | [data/live-data-source-policy.md](data/live-data-source-policy.md) | [data/public-source-targets.md](data/public-source-targets.md) Live Market Snapshot Targets and market default pack |
+| Live / time-sensitive market data | [data/time-policy.md](data/time-policy.md) Market-Date Resolution, then [data/live-data-source-policy.md](data/live-data-source-policy.md) | [data/public-source-targets.md](data/public-source-targets.md) Live Market Snapshot Targets and market default pack |
 | Daily / weekly market briefing | [loops/market-briefing-loop.md](loops/market-briefing-loop.md) | [templates/market-briefing-package/](templates/market-briefing-package/) and live-data policy for current markets |
 | Continue / save user view | [loops/view-continuity-loop.md](loops/view-continuity-loop.md) | `private/research/<OBJECT>/` and `private/views/view-register.csv` only when relevant |
 | First-pass single equity | [loops/research-loop.md](loops/research-loop.md) | thesis horizon, framework and overlay references |

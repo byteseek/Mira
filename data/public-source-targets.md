@@ -101,6 +101,7 @@ Yahoo Finance 适合做公开市场数据入口，但不作为公司原始事实
 ## Live Market Snapshot Targets
 
 当问题涉及“今天 / 现在 / latest / 盘中 / premarket / after-hours / 是否调整或崩盘”等同日判断时，先套用
+[time-policy.md](time-policy.md) 的 Market-Date Resolution，再套用
 [live-data-source-policy.md](live-data-source-policy.md)。默认目标不是固定供应商，而是按市场选择最窄的可用实时或延迟源：
 
 | need | preferred targets | fallback targets | output requirement |
@@ -113,6 +114,9 @@ Yahoo Finance 适合做公开市场数据入口，但不作为公司原始事实
 
 Rules:
 
+- Relative dates are market dates. For US snapshots, record
+  `market_timezone=America/New_York` and the US `market_session_date`; do not
+  substitute the user's China/Singapore date for the US session date.
 - Search or source lookup is required for time-sensitive market questions.
 - Use at least two independent market-data sources when the classification is
   material (`崩盘`, `panic`, `squeeze`, `breakout`, `sharp selloff`), unless one

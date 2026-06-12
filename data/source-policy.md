@@ -87,7 +87,9 @@
 - `web_read` 用于已知 URL 的按需读取和解析；`web_search` 用于先搜索发现来源再读取。
 - `web_search`、`web_read` 和 `public_api` 都是按需读取入口，不代表后台订阅、定时采集、批量抓取或本地落库。
 - 对 time-sensitive market questions（today / now / latest / 盘中 / 是否崩盘或调整），
-  `web_search` 或 live-source lookup 是必需步骤，除非问题只是稳定定义。
+  先按 [time-policy.md](time-policy.md) 的 Market-Date Resolution 确认
+  `market_timezone` 和 `market_session_date`，再执行 `web_search` 或
+  live-source lookup，除非问题只是稳定定义。
   具体 freshness、cross-check 和降级规则见 [live-data-source-policy.md](live-data-source-policy.md)。
 - `public_api` 用于 SEC、FRED、BLS、BEA 等公开 JSON/API 页面入口；只在具体研究需要时请求。
 - `free_with_key` 表示免费但需要申请 API key、注册账号或遵守明确限流。

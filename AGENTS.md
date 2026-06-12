@@ -21,7 +21,7 @@ automation promise.
 | start a `standard` / `deep_dive` research task | Run `scripts/check_updates.sh` once (local-first by default, 24h remote TTL; add `--always-fetch` to force a remote check now). Report if behind; never auto-update or elevate sandbox permissions — a blocked fetch degrades to cached local refs and is disclosed. |
 | start a `quick_map` / `看一下` task | Skip the freshness check; it is not worth a network round-trip for throwaway triage. |
 | `Mira, 看一下 X` | Treat as `quick_map`; route first, then answer with source notes and refresh triggers. |
-| time-sensitive market question (`今天`, `现在`, `目前`, `latest`, intraday, premarket, after-hours, crash/pullback) | Run `data/live-data-source-policy.md`; search or refresh live sources before judging, and show quote/publish time plus freshness caveat. |
+| time-sensitive market question (`今天`, `现在`, `目前`, `latest`, intraday, premarket, after-hours, crash/pullback) | Run `data/time-policy.md` Market-Date Resolution, then `data/live-data-source-policy.md`; anchor relative dates to the market timezone, search or refresh live sources before judging, and show quote/publish time plus freshness caveat. |
 | `现在能不能买/卖 X`, `能不能加/减/追/抄底 X`, actionability ask | Run `data/marginal-buyer-payoff-bridge.md` before `data/actionability-risk-control.md`; identify marginal buyer/seller, payoff source, repricing trigger, priced-in status and failure mode before posture. |
 | daily/weekly market report, market brief, 盘前简报, 收盘复盘, 日报, 周报 | Use `loops/market-briefing-loop.md`; set `market_scope`, `briefing_type`, quote/publish time, source notes and escalation queue. |
 | `Mira, 研究 X` | Use `loops/research-loop.md` unless routing selects a narrower path. |
@@ -42,6 +42,10 @@ line that `Mira help` shows the full prompt menu.
 - Before formal analysis, run `loops/analysis-routing.md`.
 - For time-sensitive market questions, run `data/live-data-source-policy.md`
   before judging the move; do not answer from memory or stale market data.
+- For relative market dates (`今天`, `现在`, `latest`), resolve the date in the
+  instrument's market timezone first. US equities default to
+  `America/New_York`; do not use China/Singapore/user-local date as the US
+  `market_session_date`.
 - For daily or weekly market briefings, use `loops/market-briefing-loop.md`
   instead of `monitoring-loop.md`; briefings start from a market/time window,
   then route high-information objects into follow-up research.

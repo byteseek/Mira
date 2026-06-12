@@ -796,6 +796,7 @@ participation）时，在给 participation posture 之前加载：
 
 当 prompt 依赖同日、盘中、最新价格、最新新闻或实时市场反应时，先运行：
 
+- `data/time-policy.md` 的 Market-Date Resolution
 - `data/live-data-source-policy.md`
 
 触发词包括但不限于：`today`、`now`、`current`、`latest`、`premarket`、
@@ -807,6 +808,9 @@ participation）时，在给 participation posture 之前加载：
 - `live_data_gate`: `required_quote_time` / `required_publish_time` / `waived_definition` / `not_applicable`
 - `live_freshness_status`: `live` / `delayed` / `stale` / `unavailable`
 - `cross_check_status`: `passed` / `partial` / `failed`
+- `user_local_datetime`（已知时记录）
+- `market_timezone`
+- `market_session_date`
 - `quote_time`
 - `publish_time`
 - `source_boundary`
@@ -819,6 +823,10 @@ participation）时，在给 participation posture 之前加载：
   或未标注时间的数据回答。行情/价格/指数/波动率类使用
   `live_data_gate=required_quote_time`；宏观发布、监管公告或新闻发布类没有可用盘中报价时使用
   `live_data_gate=required_publish_time`。
+- `今天` / `now` / `latest` 这类相对日期必须按 `market_scope` 的主交易时区解释。
+  美股、美国指数和美股期权默认 `market_timezone=America/New_York`；中文用户身处
+  中国/新加坡日期的次日时，美股 `market_session_date` 仍按纽约日期和 session
+  判定。用户本地日期只能作为辅助上下文，不能替代行情 `as_of_date`。
 - 对 `崩盘`、`panic`、`squeeze`、`breakout`、`sharp selloff` 这类强标签，
   默认需要两个独立市场数据源，或一个官方/交易所/指数源加明确 source
   boundary。

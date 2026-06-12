@@ -20,13 +20,27 @@ Do not rely on model memory, old case notes or stale market data.
 Minimum live chain:
 
 ```text
-time-sensitive prompt -> live data gate -> source cross-check
+time-sensitive prompt -> market-date resolution -> live data gate -> source cross-check
 -> quote_time or publish_time/as_of -> facts/inferences/judgment
 -> stale_after/must_refresh_if
 ```
 
 If fresh data is unavailable, say so and downgrade the answer to `needs_refresh`,
 `source_gap` or `watch_only`.
+
+Before source lookup, apply [time-policy.md](time-policy.md) Market-Date
+Resolution: relative words like `today`, `now`, `今天` and `目前` are anchored
+to the instrument's market timezone, not to the user's local calendar date. For
+US equities, indexes and options, default to `America/New_York`; if the user is
+in China/Singapore on June 12 while New York is still June 11, a US-market
+"today" quote must use the June 11 US market session unless the user explicitly
+asks for China-date reporting.
+
+The same rule applies in reverse. If the user is in the US on June 11 while an
+East Asian market is already on June 12, a China/Korea/Japan/HK/Taiwan market
+"today" quote must use that local market session date, not the US local date.
+Use `Asia/Shanghai`, `Asia/Seoul`, `Asia/Tokyo`, `Asia/Hong_Kong` or
+`Asia/Taipei` according to `market_scope`.
 
 ## Source Stack
 
@@ -51,6 +65,9 @@ Every live or same-day market-pricing answer should state or carry internally:
 - `research_object`
 - `market_scope`
 - `time_boundary`
+- `user_local_datetime` when known
+- `market_timezone`
+- `market_session_date`
 - `source_boundary`
 - `quote_time` or `publish_time`
 - `as_of_date`
@@ -120,6 +137,7 @@ Common live-data failures:
 
 - source is delayed but not labeled as delayed
 - quote time is missing or from a previous session
+- the user's local date is treated as the market session date
 - search result headline is current but underlying article is old
 - one aggregator has a stale cached quote
 - futures, ETF and cash index are mixed without naming the instrument
