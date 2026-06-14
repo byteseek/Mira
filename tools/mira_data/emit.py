@@ -65,6 +65,12 @@ SOURCE_POLICY = {
         redistribution_allowed="derived_only", readiness_impact="supports_working_view",
         freshness_status="acceptable_for_period", confidence="medium",
     ),
+    "ibkr_gateway_local": dict(
+        provider="Interactive Brokers local Gateway", speaker="broker_gateway",
+        license_scope="user_authorized_brokerage_session", storage_scope="private",
+        redistribution_allowed="no", readiness_impact="supports_working_view",
+        freshness_status="current", confidence="medium",
+    ),
 }
 
 _DEFAULT_POLICY = dict(

@@ -13,7 +13,7 @@ import argparse
 import sys
 
 from . import config, fundamentals, net, screening, technical
-from .adapters import bls, sec_companyfacts, yahoo_chart
+from .adapters import bls, ibkr_gateway, sec_companyfacts, yahoo_chart
 from .emit import emit_bundle
 
 FETCHERS = {
@@ -22,6 +22,16 @@ FETCHERS = {
     "market_price": ("Yahoo v8 chart", yahoo_chart.fetch_market_price,
                      yahoo_chart.CHART_URL),
     "macro_series": ("BLS public data", bls.fetch_macro_series, bls.SERIES_URL),
+    "ibkr_market_price": ("IBKR local Gateway", ibkr_gateway.fetch_market_price,
+                          ibkr_gateway.GATEWAY_ENDPOINT),
+    "ibkr_positions": ("IBKR local Gateway positions", ibkr_gateway.fetch_positions,
+                       ibkr_gateway.GATEWAY_ENDPOINT),
+    "ibkr_account_summary": ("IBKR local Gateway account summary",
+                             ibkr_gateway.fetch_account_summary,
+                             ibkr_gateway.GATEWAY_ENDPOINT),
+    "ibkr_historical_bars": ("IBKR local Gateway historical bars",
+                             ibkr_gateway.fetch_historical_bars,
+                             ibkr_gateway.GATEWAY_ENDPOINT),
 }
 
 
@@ -31,7 +41,7 @@ def main(argv: list[str] | None = None) -> int:
 
     f = sub.add_parser("fetch", help="fetch a canonical family and emit artifacts")
     f.add_argument("family", choices=sorted(FETCHERS))
-    f.add_argument("symbol")
+    f.add_argument("symbol", nargs="?")
     f.add_argument("--out", default="private/data-smoke", help="output directory")
     f.add_argument("--as-of", default=None, help="as-of date YYYY-MM-DD (default today)")
     f.add_argument("--market-scope", default="US")
@@ -76,6 +86,20 @@ def main(argv: list[str] | None = None) -> int:
     v = sub.add_parser("validate", help="validate an emitted artifact bundle")
     v.add_argument("dir")
 
+    ib = sub.add_parser("ibkr", help="read-only IBKR Gateway utilities")
+    ib_sub = ib.add_subparsers(dest="ibkr_cmd", required=True)
+
+    acct = ib_sub.add_parser("accounts", help="list managed accounts, masked by default")
+    acct.add_argument("--show-full", action="store_true",
+                      help="print full account ids (console-sensitive)")
+
+    snap = ib_sub.add_parser("position-snapshot", help="write a private position snapshot CSV")
+    snap.add_argument("--account", default=None,
+                      help="account id; default MIRA_IBKR_ACCOUNT, or ALL if unset")
+    snap.add_argument("--out", default="private/portfolio",
+                      help="private output directory")
+    snap.add_argument("--as-of", default=None)
+
     args = parser.parse_args(argv)
     if args.cmd == "fetch":
         return _do_fetch(args)
@@ -89,6 +113,8 @@ def main(argv: list[str] | None = None) -> int:
         return _do_config(args)
     if args.cmd == "validate":
         return _do_validate(args)
+    if args.cmd == "ibkr":
+        return _do_ibkr(args)
     parser.error("unknown command")
     return 2
 
@@ -236,13 +262,45 @@ def _do_validate(args) -> int:
     return 1 if errors else 0
 
 
+def _do_ibkr(args) -> int:
+    if args.ibkr_cmd == "accounts":
+        try:
+            accounts = ibkr_gateway.managed_accounts(mask=not args.show_full)
+        except net.FetchError as exc:
+            print(f"source_gap: could not list IBKR accounts: {exc}", file=sys.stderr)
+            return 1
+        print(f"# ibkr accounts ({len(accounts)})")
+        for account in accounts:
+            print(account)
+        return 0
+
+    if args.ibkr_cmd == "position-snapshot":
+        try:
+            path = ibkr_gateway.emit_position_snapshot(
+                args.out, account=args.account, as_of=args.as_of)
+        except net.FetchError as exc:
+            print(f"source_gap: could not write IBKR position snapshot: {exc}", file=sys.stderr)
+            return 1
+        print("# emitted")
+        print(f"  position_snapshot  {path}")
+        print("  storage_scope      private")
+        return 0
+
+    print(f"error: unknown ibkr command {args.ibkr_cmd}", file=sys.stderr)
+    return 2
+
+
 def _do_config(_args) -> int:
     ua, configured = config.contact_ua()
     print("# mira_data config")
     print(f"  contact_configured : {configured}")
     print(f"  user_agent         : {ua}")
-    for key in ("MIRA_CONTACT_EMAIL", "MIRA_CONTACT_NAME", "FRED_API_KEY", "BEA_API_KEY"):
-        print(f"  {key:<18} : {'set' if config.get(key) else '—'}")
+    for key in (
+        "MIRA_CONTACT_EMAIL", "MIRA_CONTACT_NAME", "FRED_API_KEY", "BEA_API_KEY",
+        "MIRA_IBKR_HOST", "MIRA_IBKR_PORT", "MIRA_IBKR_CLIENT_ID",
+        "MIRA_IBKR_ACCOUNT", "MIRA_IBKR_READONLY", "MIRA_IBKR_MARKET_DATA_TYPE",
+    ):
+        print(f"  {key:<18} : {'set' if config.get(key) else '-'}")
     print(f"  searched files     : {', '.join(config._candidate_paths())}")
     if not configured:
         print("\n" + config.config_hint())
@@ -251,14 +309,24 @@ def _do_config(_args) -> int:
 
 def _do_fetch(args) -> int:
     label, fetcher, endpoint_tmpl = FETCHERS[args.family]
+    symbol = args.symbol
+    if args.family in {"ibkr_positions", "ibkr_account_summary"} and not symbol:
+        symbol = config.get("MIRA_IBKR_ACCOUNT", "ALL") or "ALL"
+    elif not symbol:
+        print(f"error: fetch {args.family} requires a symbol", file=sys.stderr)
+        return 2
     try:
-        res = fetcher(args.symbol, as_of=args.as_of, market_scope=args.market_scope)
+        res = fetcher(symbol, as_of=args.as_of, market_scope=args.market_scope)
     except net.FetchError as exc:
-        print(f"source_gap: could not fetch {args.family} for {args.symbol}: {exc}", file=sys.stderr)
+        print(f"source_gap: could not fetch {args.family} for {symbol}: {exc}", file=sys.stderr)
         return 1
 
     records = res.records
-    print(f"# {args.symbol.upper()} {args.family} via {label}  ({len(records)} claims)")
+    display_object = {
+        "ibkr_positions": "IBKR_POSITIONS",
+        "ibkr_account_summary": "IBKR_ACCOUNT_SUMMARY",
+    }.get(args.family, symbol.upper())
+    print(f"# {display_object} {args.family} via {label}  ({len(records)} claims)")
     print(f"{'metric':<22}{'value':>20}  {'unit':<12}{'period':<12}{'tier'}")
     for r in records:
         tier = f"{r.posture.claim_type}/{r.posture.authority_level}"
@@ -269,11 +337,23 @@ def _do_fetch(args) -> int:
     if args.no_emit:
         return 0
 
-    endpoint = endpoint_tmpl.format(symbol=args.symbol.upper(), cik10="<cik>", series_id=args.symbol)
+    endpoint = endpoint_tmpl.format(
+        symbol=symbol.upper(),
+        cik10="<cik>",
+        series_id=symbol,
+        host=config.get("MIRA_IBKR_HOST", "127.0.0.1") or "127.0.0.1",
+        port=config.get("MIRA_IBKR_PORT", "7497") or "7497",
+    )
+    ingestion_route = "authorized_provider" if args.family.startswith("ibkr_") else "public_on_demand"
+    must_refresh_if = (
+        "new broker snapshot, session reconnect, entitlement change, or position/account change"
+        if args.family.startswith("ibkr_") else ""
+    )
     result = emit_bundle(
-        records, out_dir=args.out, research_object=args.symbol.upper(),
+        records, out_dir=args.out, research_object=display_object,
         market_scope=args.market_scope, endpoint=endpoint,
-        params=f"symbol={args.symbol.upper()}", series=res.series,
+        params=f"symbol={display_object}", series=res.series,
+        ingestion_route=ingestion_route, must_refresh_if=must_refresh_if,
     )
     print("\n# emitted")
     for key in ("manifest", "evidence_log", "ingestion_log", "calculation_ledger", "series"):

@@ -1,0 +1,57 @@
+# PR-safe connector registry example for a local IBKR Gateway/TWS connection.
+# Do not put real account ids, entitlement details, or exported broker data here.
+
+connector_id: "ibkr_gateway_local"
+provider_name: "Interactive Brokers local Gateway"
+provider_type: "authorized_provider"
+status: "trial"
+
+access:
+  access_method: "local_gateway"
+  acquisition_mode: "authorized_provider"
+  credential_location: "private_or_environment_only"
+  entitlement_owner: "user"
+  license_scope: "user_authorized_brokerage_session"
+  redistribution_allowed: "no"
+  storage_scope: "private"
+
+coverage:
+  market_scope: "multi"
+  asset_classes: ["equity", "etf", "option", "future", "cash", "other_supported_by_account"]
+  datasets: ["market_snapshot", "historical_bars", "account_summary", "positions"]
+  field_families: ["market_price", "portfolio_position"]
+  history_start: "account_or_gateway_dependent"
+  update_frequency: "on_demand"
+  latency_class: "live_or_delayed_by_entitlement"
+
+canonical_outputs:
+  - output_family: "market_price"
+    field_map: "templates/ingestion-layer/field-map.yaml"
+    evidence_log_mapping: "market_pricing/L5"
+    calculation_ledger_required: "no"
+  - output_family: "portfolio_position"
+    field_map: "templates/ingestion-layer/field-map.yaml"
+    evidence_log_mapping: "fact/L5"
+    calculation_ledger_required: "no"
+
+quality_controls:
+  as_of_date_required: "yes"
+  source_date_required: "yes"
+  known_failure_modes:
+    - "Gateway not running or socket API disabled"
+    - "Market data entitlement missing or delayed"
+    - "Ambiguous contract mapping without primary exchange"
+    - "Client id already in use"
+  fallback_source_path: "public market data or user-provided broker export"
+  refresh_rule: "Refresh on new broker snapshot, session reconnect, entitlement change, or position/account change."
+
+compliance:
+  allowed_use: "Private research, position review, exposure analysis, and source-backed context."
+  blocked_use: "Autonomous trading, public redistribution of raw broker/account data, or publishing account identifiers."
+  public_case_use: "metadata_only"
+  restricted_source_note_required: "yes"
+
+last_review:
+  reviewed_by: "Mira"
+  reviewed_at: "2026-06-14"
+  notes: "Template only; real configuration belongs in private/mira-data.env or environment variables."

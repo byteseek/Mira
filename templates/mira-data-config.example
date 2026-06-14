@@ -26,3 +26,28 @@ MIRA_CONTACT_EMAIL=you@your-domain.com
 # --- Optional API keys (only for keyed sources; not needed for SEC/BLS/Yahoo) -
 # FRED_API_KEY=
 # BEA_API_KEY=
+
+# --- Optional local Interactive Brokers Gateway / TWS connection -----------
+# Keep these in private/mira-data.env or environment variables only.
+# Typical ports:
+#   7497 = TWS paper trading
+#   7496 = TWS live
+#   4002 = IB Gateway paper trading
+#   4001 = IB Gateway live
+# The adapter is read-only and requires optional Python package: ib_insync.
+# MIRA_IBKR_HOST=127.0.0.1
+# MIRA_IBKR_PORT=4002
+# MIRA_IBKR_CLIENT_ID=19
+# MIRA_IBKR_CLIENT_ID_AUTO=1
+# MIRA_IBKR_CLIENT_ID_RETRIES=5
+# MIRA_IBKR_ACCOUNT=
+# MIRA_IBKR_PORTFOLIO_ID=ibkr_default
+# MIRA_IBKR_READONLY=1
+# MIRA_IBKR_MARKET_DATA_TYPE=3
+# MIRA_IBKR_EXCHANGE=SMART
+# MIRA_IBKR_CURRENCY=USD
+# MIRA_IBKR_PRIMARY_EXCHANGE=
+# MIRA_IBKR_HIST_DURATION=1 Y
+# MIRA_IBKR_HIST_BAR_SIZE=1 day
+# MIRA_IBKR_HIST_WHAT=TRADES
+# MIRA_IBKR_HIST_USE_RTH=1

@@ -75,6 +75,26 @@ POSTURES: dict[str, Posture] = {
         acquisition_mode="free",
         latency_class="delayed",
     ),
+    "ibkr_gateway": Posture(
+        source_id="ibkr_gateway_local",
+        source_class="market_price_and_trading",
+        authority_level="L5",
+        claim_type="market_pricing",
+        evidence_category="market_pricing",
+        access_method="local_gateway",
+        acquisition_mode="authorized_provider",
+        latency_class="live",
+    ),
+    "ibkr_gateway_positions": Posture(
+        source_id="ibkr_gateway_local",
+        source_class="market_price_and_trading",
+        authority_level="L5",
+        claim_type="fact",
+        evidence_category="reported_fact",
+        access_method="local_gateway",
+        acquisition_mode="authorized_provider",
+        latency_class="live",
+    ),
 }
 
 

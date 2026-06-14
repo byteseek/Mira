@@ -106,5 +106,5 @@ def config_hint() -> str:
     """One-line instruction for configuring a contact."""
     return (
         "Set your contact in private/mira-data.env "
-        "(MIRA_CONTACT_EMAIL=you@domain.com) — see templates/mira-data-config.example."
+        "(MIRA_CONTACT_EMAIL=you@domain.com) - see templates/mira-data-config.example."
     )

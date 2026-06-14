@@ -30,6 +30,7 @@ bls_public_data_api,official_macro_and_industry,L2 official labor and price API,
 bea_data_api,official_macro_and_industry,L2 official national accounts API,reviewed,"Official macro data."
 stooq_history_csv_endpoint,market_price_and_trading,L5 historical quote CSV endpoint,reviewed,"Cross-check symbol mapping before citing."
 yahoo_chart_api_v8,market_price_and_trading,L5 keyless OHLCV chart API,reviewed,"Programmatic series source for tools/mira_data; delayed L5 market pricing, not a fundamentals fact source."
+ibkr_gateway_local,market_price_and_trading,L5 authorized local broker gateway,reviewed,"Private/local Interactive Brokers Gateway or TWS API session. Use for user-authorized market snapshots and portfolio-position reads; do not commit account-level outputs."
 stockanalysis_company_pages,aggregated_financial_data,L5 company data aggregation,reviewed,"Financial and valuation screening."
 macrotrends_company_pages,aggregated_financial_data,L5 company history aggregation,reviewed,"Long-range financial and price context."
 finviz_snapshot_page,market_price_and_trading,L5 screening snapshot,reviewed,"Signal only; cross-check important values."
