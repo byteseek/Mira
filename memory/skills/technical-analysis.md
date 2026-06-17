@@ -35,6 +35,9 @@ Do not use technical analysis to prove fundamental execution, demand, margin, mo
 - 1M / 3M / 6M / 12M relative return vs benchmark and sector ETF
 - maximum drawdown from recent high
 - support, resistance and failed breakout / failed breakdown levels
+- MA20 extension, current-entry reward/risk and pullback-entry reward/risk when
+  the user asks whether a move is buyable, chaseable or worth waiting for
+- chase-risk state and preferred wait zone as price-discipline fields only
 
 ### Volume And Participation
 
@@ -78,6 +81,11 @@ Do not use technical analysis to prove fundamental execution, demand, margin, mo
 - invalidation_level
 - trigger_level
 - technical_context_score
+- extension_from_ma20_pct
+- current_entry_rr
+- pullback_entry_rr
+- chase_risk_state
+- preferred_wait_zone
 - evidence_limitations
 - stale_after
 - must_refresh_if
@@ -129,3 +137,15 @@ Use these values in `positioning_risk`:
 - over-weighting low-liquidity moves
 - reading options flow without expiry, quote time, open interest and liquidity context
 - using technical confirmation to override stale or weak fundamental evidence
+
+## Actionability Boundary
+
+The reward/risk fields are a technical-price overlay for actionability
+questions. They can downgrade a buy/chase posture when the current price is
+extended or the current-entry reward/risk is poor. They cannot upgrade a thesis
+whose marginal buyer, payoff source, repricing trigger, valuation anchor or
+fundamental evidence remains weak.
+
+Use these fields after the marginal-buyer / payoff bridge, not instead of it.
+They describe whether the market-pricing setup is stretched, not whether the
+company is fundamentally attractive.

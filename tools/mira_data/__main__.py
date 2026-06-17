@@ -228,6 +228,12 @@ def _do_technical(args) -> int:
     print(f"  {'relative_return_3m':<24}: {s['relative_return_3m']}")
     lv = s["key_levels"]
     print(f"  {'close / inval / trigger':<24}: {s['close_price']} / {lv['invalidation']} / {lv['trigger']}")
+    ac = s["actionability"]
+    print(f"  {'chase_risk_state':<24}: {ac['chase_risk_state']}")
+    current_rr = _fmt_metric(ac["current_entry_rr"]) if ac["current_entry_rr"] is not None else "source_gap"
+    pullback_rr = _fmt_metric(ac["pullback_entry_rr"]) if ac["pullback_entry_rr"] is not None else "source_gap"
+    print(f"  {'current / pullback R:R':<24}: {current_rr} / {pullback_rr}")
+    print(f"  {'preferred_wait_zone':<24}: {ac['preferred_wait_zone']}")
 
     if args.no_emit:
         return 0

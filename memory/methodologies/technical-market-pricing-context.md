@@ -158,3 +158,22 @@ methodology itself stays `trial` until live follow-through across more earnings 
 event cases proves it improves actionability, refresh triggers and risk framing —
 not merely describes price. It may be used in formal outputs now as the
 `technical-context` market-pricing overlay.
+
+## Actionability Extension (2026-06-17)
+
+A reverse-engineered local technical dashboard for `00189.HK` added one useful
+method delta: make chase risk explicit by comparing the current entry setup with
+a pullback setup. The useful part is not the dashboard's wave / pattern labels;
+it is the reproducible price-discipline question:
+
+- how far price is extended from MA20
+- what reward/risk exists if entering at the current close
+- what reward/risk exists if waiting for nearest support / MA reference
+- whether the setup should be labeled `low`, `medium` or `high` chase risk
+- which wait zone would improve the payoff, if any
+
+This extension is merged into the existing `technical-context` overlay rather
+than becoming a separate methodology. It must remain downstream of the
+marginal-buyer / payoff bridge: poor technical reward/risk can downgrade
+participation, but good technical reward/risk cannot upgrade weak fundamental
+evidence or an unverified theme.
