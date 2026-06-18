@@ -7,6 +7,7 @@ required by some official endpoints (notably SEC), so it is configurable via
 
 from __future__ import annotations
 
+import http.client
 import json
 import time
 import urllib.error
@@ -46,7 +47,13 @@ def get(url: str, *, headers: dict | None = None, timeout: int = DEFAULT_TIMEOUT
         req = urllib.request.Request(url, headers=hdrs)
         try:
             with urllib.request.urlopen(req, timeout=timeout) as resp:
-                return _read_body(resp)
+                try:
+                    return _read_body(resp)
+                except http.client.IncompleteRead as exc:
+                    partial = _decode_body(exc.partial, resp.headers.get("Content-Encoding"))
+                    if _is_complete_json(partial, url, resp.headers.get("Content-Type")):
+                        return partial
+                    raise
         except urllib.error.HTTPError as exc:
             last_exc = exc
             if exc.code in (429, 500, 502, 503, 504) and attempt < retries:
@@ -59,6 +66,12 @@ def get(url: str, *, headers: dict | None = None, timeout: int = DEFAULT_TIMEOUT
                 _sleep(backoff * (attempt + 1))
                 continue
             raise FetchError(f"network error for {url}: {exc.reason}", url=url) from exc
+        except (http.client.HTTPException, OSError, EOFError) as exc:
+            last_exc = exc
+            if attempt < retries:
+                _sleep(backoff * (attempt + 1))
+                continue
+            raise FetchError(f"incomplete or invalid response from {url}: {exc}", url=url) from exc
 
     raise FetchError(f"exhausted retries for {url}: {last_exc}", url=url)
 
@@ -75,15 +88,29 @@ def get_json(url: str, **kwargs) -> dict:
 
 def _read_body(resp) -> bytes:
     body = resp.read()
-    if resp.headers.get("Content-Encoding") == "gzip":
+    return _decode_body(body, resp.headers.get("Content-Encoding"))
+
+
+def _decode_body(body: bytes, content_encoding: str | None) -> bytes:
+    if content_encoding == "gzip":
         import gzip
 
         body = gzip.decompress(body)
-    elif resp.headers.get("Content-Encoding") == "deflate":
+    elif content_encoding == "deflate":
         import zlib
 
         body = zlib.decompress(body)
     return body
+
+
+def _is_complete_json(body: bytes, url: str, content_type: str | None) -> bool:
+    if "json" not in (content_type or "").lower() and not url.split("?", 1)[0].endswith(".json"):
+        return False
+    try:
+        json.loads(body.decode("utf-8"))
+    except (ValueError, UnicodeDecodeError):
+        return False
+    return True
 
 
 def _sleep(seconds: float) -> None:
