@@ -44,6 +44,10 @@ conclusion depends on:
 - unresolved source conflict
 - stale market data, filings, guidance, estimate revisions or macro releases
 - unclear consensus proxy or valuation anchor for an actionability claim
+- left-side participation claim without a named reversal variable, observation
+  window, further-drawdown test and invalidation path
+- thesis requiring cycle endurance without a path-fit note, observable refresh
+  variables and evidence for waiting through the cycle
 - market pricing treated as fundamental validation
 
 ## Handoff Rule

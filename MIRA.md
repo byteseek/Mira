@@ -236,6 +236,10 @@ For thesis-system work, also include or explicitly waive:
 
 For participation or actionability questions, also include or explicitly waive:
 
+- `participation_stage`
+- `left_side_check_ref_or_waiver`
+- `path_fit_control`
+- `cycle_burden_or_waiver`
 - `participation_posture`
 - `confirmation_required`
 - `invalidation`

@@ -30,6 +30,15 @@ Use this before handing off a formal research output.
 - [ ] Non-English primary sources record `source_language` and `translation_basis`; judgment-bearing translated quotes keep `original_excerpt=` in `notes` (claim_text stays a single verifiable claim).
 - [ ] Formal case packages include `research-package-manifest.json` with hero artifacts, support artifacts, readiness, source scope and refresh conditions.
 - [ ] `readiness_level`, `readiness_basis` and `blocking_gaps` are stated before any actionability conclusion.
+- [ ] Actionability separates `watch_only`, `left_side_candidate` and
+  `confirmed_participation`; "worth watching" is not upgraded without a stage
+  basis.
+- [ ] Left-side / before-confirmation participation has a left-side check
+  artifact or an explicit waiver with downgrade; it names reversal variable,
+  observation window, further-drawdown test and invalidation path.
+- [ ] Cycle-endurance theses have a path-fit note: expected pain path, evidence
+  for waiting through the cycle, alternative waiting condition and refresh
+  trigger.
 - [ ] Numeric conclusions were routed through `data-analysis-quality-gate` or explicitly waived with a reason.
 - [ ] Derived calculations have a `calculation-ledger` row or explicit formula note.
 - [ ] Numeric claims that affect thesis/actionability were cross-checked, or downgraded to `calculation_gap`, `source_gap`, `watch_only`, `needs_refresh` or equivalent.
@@ -49,6 +58,8 @@ Use this before handing off a formal research output.
 - [ ] Valuation and expectation quant is present or explicitly waived.
 - [ ] Actionability bridge is present or explicitly waived.
 - [ ] Actionability uses only [../data/controlled-vocabulary.md](../data/controlled-vocabulary.md) research-action tokens.
+- [ ] If `left_side_candidate` is used, `left-side-participation-check.md` is
+  present in support artifacts or the waiver/downgrade is explicit.
 
 ## SEC Additions
 

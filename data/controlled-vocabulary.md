@@ -362,6 +362,19 @@ Use in `actionability-bridge.md`.
 - `needs_refresh`
 - `no_action`
 
+## Participation Stage
+
+Use in `actionability-bridge.md` to separate observation, left-side research
+setup and confirmed participation. These are research stages, not trade
+instructions.
+
+- `watch_only`: interesting enough to track, but not enough for participation.
+- `left_side_candidate`: participation is being researched before confirmation;
+  requires a reversal variable, observation window, further-drawdown test,
+  valuation or expectation anchor, and invalidation path.
+- `confirmed_participation`: the key confirmation variable has arrived and the
+  remaining payoff source is still identifiable.
+
 ## Position Sizing Implication
 
 Research-only qualitative sizing language. These are not trade instructions.

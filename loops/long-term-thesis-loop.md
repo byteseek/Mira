@@ -49,6 +49,11 @@ Use this loop only when routing confirms a long-term thesis or regime-transition
 
 Define research object, market scope, time boundary, thesis horizon, current market narrative, source availability and expected decision use.
 
+Also state whether the thesis requires enduring a business, commodity, product,
+inventory, funding or market-pricing cycle. If the answer is yes, name the
+expected pain path and the alternative waiting condition that would let the
+research stay engaged without requiring cycle endurance.
+
 ### `theme-to-company-handoff`
 
 Use this when a hot theme is being converted into a stock idea.
@@ -88,6 +93,14 @@ Run all six lenses and name the weakest lens:
 6. valuation expectations
 
 Keep facts, inferences and judgments separate.
+
+For long-term theses, add a path-fit note after the weakest lens:
+
+- whether the conclusion can be realized only by waiting through a cycle
+- which lens is most likely to break during that waiting period
+- what evidence justifies continuing to wait
+- what observable condition would move the thesis from cycle endurance to
+  `watch_only`, `needs_refresh` or `reject_for_now`
 
 ### `right-tail-gate`
 
@@ -179,6 +192,7 @@ Use explicit labels:
 - `watch_only_pending_normalized_hardware_demand`
 - `watch_only_pending_backlog_quality`
 - `watch_only_pending_acquisition_value_capture`
+- `watch_only_pending_path_fit`
 - `industry_map_first`
 - `reject_for_now`
 
@@ -251,6 +265,9 @@ Use `cases/long-term-workflow-validation-2026-05-30/public-release-gate-tracker.
 
 - No source trail -> no durable conclusion.
 - No expectation map -> no actionability when valuation is material.
+- Long-term conclusion requires cycle endurance but lacks a path-fit note,
+  observable refresh variables and evidence for waiting through the cycle ->
+  watch-only.
 - Product usage without monetization bridge -> watch-only.
 - Clinical demand without payer/access and net-price evidence -> watch-only.
 - Shock-era demand without normalized demand evidence -> watch-only.

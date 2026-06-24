@@ -203,6 +203,16 @@
 - `downside_path`
 - `valuation_anchor_quality`
 
+如果研究对象被描述为“左侧”“埋伏”“跌下来接”“值得盯一盯”或类似提前参与语境，不要直接升级到 actionability。先把它拆成：
+
+- `watch_only`: 只是值得观察
+- `left_side_candidate`: 反转变量、观察窗口、估值/预期锚和失效条件都能说清
+- `confirmed_participation`: 关键确认变量已经出现，且剩余收益来源仍可识别
+
+左侧候选必须运行
+[../templates/actionability-system/left-side-participation-check.md](../templates/actionability-system/left-side-participation-check.md)
+或显式 waiver 并降级。继续下跌时，必须判断 thesis 是增强、未变还是被破坏；不能把“跌多了”本身当作证据。
+
 ### `gap-check`
 
 识别缺口、冲突、低可信结论，以及框架错配风险。
@@ -243,6 +253,8 @@
 - kill criteria
 
 如果 `valuation-expectation` 无法给出 valuation anchor 或 base/bull/bear，必须标记 `source_gap`，并把 `actionability_bridge` 降级为 `watch_only` 或 `no_action`。
+
+如果 participation 需要等待一个完整或部分业务/商品/产品/市场周期，必须记录 `path_fit_control`：说明预期痛苦路径、支持穿越周期的证据、替代等待条件和刷新触发。缺少这些字段时，不得把结论升级到 `actionable_with_caveats`。
 
 ### `package`
 

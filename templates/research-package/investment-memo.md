@@ -81,6 +81,18 @@ Use this as a research-action bridge only. Do not write autonomous trade instruc
 
 For `quick_map`, actionability must default to `watch_only`, `needs_refresh` or `no_action` unless valuation anchor, consensus proxy, catalyst path and invalidation condition are all source-backed.
 
+When the setup is being considered before confirmation, state the
+`participation_stage`: `watch_only`, `left_side_candidate` or
+`confirmed_participation`. A `left_side_candidate` requires the left-side
+participation check or a downgrade. Do not convert "worth watching" into
+actionability without naming the reversal variable, observation window,
+valuation or expectation anchor, and failure mode.
+
+If the thesis requires waiting through a business, commodity, product or
+market-pricing cycle, include the path-fit note: expected pain path, evidence
+for waiting through the cycle, alternative waiting condition, and what would
+prove the cycle wait is no longer justified.
+
 ## Evidence Quality
 
 {{ evidence_quality }}

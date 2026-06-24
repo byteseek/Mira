@@ -53,6 +53,14 @@ Every formal output must:
   before actionability risk control, so the answer states the next marginal
   buyer or seller, payoff source, repricing trigger and priced-in status
 - apply [data/actionability-risk-control.md](data/actionability-risk-control.md) before any participation, add, trim, chase or event-trade framing
+- when participation is being considered before confirmation, separate
+  `watch_only`, `left_side_candidate` and `confirmed_participation`; a left-side
+  candidate must name the reversal variable, observation window,
+  further-drawdown test, valuation or expectation anchor and invalidation path,
+  or stay downgraded to watch / refresh
+- when a thesis requires waiting through a business, commodity, product,
+  inventory, funding or market-pricing cycle, state the path-fit burden,
+  evidence for waiting, alternative waiting condition and refresh trigger
 - load [data/instrument-strategy-gate.md](data/instrument-strategy-gate.md) only when the user explicitly asks about options, short selling, hedges, pair trades, margin, leverage or other instruments
 
 Onboarding and Help prompts are not formal research outputs. If the user sends
@@ -92,6 +100,7 @@ research task, skip onboarding and route the task normally.
 | Numeric / calculation gate | [skills/data-analysis-quality-gate/SKILL.md](skills/data-analysis-quality-gate/SKILL.md) | [templates/data-requirement-brief.md](templates/data-requirement-brief.md) and [templates/calculation-ledger.csv](templates/calculation-ledger.csv) |
 | Marginal buyer / payoff lens | [data/marginal-buyer-payoff-bridge.md](data/marginal-buyer-payoff-bridge.md) | [data/actionability-risk-control.md](data/actionability-risk-control.md) and actionability bridge template when participation language appears |
 | Actionability / participation risk control | [data/actionability-risk-control.md](data/actionability-risk-control.md) | [templates/actionability-system/actionability-bridge.md](templates/actionability-system/actionability-bridge.md), position or portfolio loop if real holdings are provided |
+| Left-side participation check | [templates/actionability-system/left-side-participation-check.md](templates/actionability-system/left-side-participation-check.md) | only when a setup is considered before confirmation; otherwise waive with downgrade |
 | Instrument strategy gate | [data/instrument-strategy-gate.md](data/instrument-strategy-gate.md) | [templates/actionability-system/instrument-strategy-gate.md](templates/actionability-system/instrument-strategy-gate.md), option chain / borrow / hedge data only if needed |
 | Readiness / handoff | [data/research-readiness-gate.md](data/research-readiness-gate.md) | [data/handoff-contracts.md](data/handoff-contracts.md) and [templates/research-package/research-package-manifest.json](templates/research-package/research-package-manifest.json) |
 | State/action tokens | [data/controlled-vocabulary.md](data/controlled-vocabulary.md) | task-specific template |
@@ -147,6 +156,10 @@ Stop or downgrade when:
 - the key conclusion rests only on L4/L6, sentiment, opinion or rumor
 - consensus proxy cannot be stated at variable level
 - valuation anchor is missing for an actionability claim
+- left-side participation claim lacks reversal variable, observation window,
+  further-drawdown test or invalidation path
+- cycle-endurance thesis lacks path-fit burden, evidence for waiting,
+  alternative waiting condition or refresh trigger
 - participation framing lacks confirmation and invalidation conditions
 - instrument framing lacks objective, risk budget, access, data status or named failure modes
 - the case is past `stale_after` and the user wants live use

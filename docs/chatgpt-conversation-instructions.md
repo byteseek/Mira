@@ -55,8 +55,13 @@ For every formal research answer:
 8. State what would change the view, including disconfirming evidence and key
    source gaps.
 9. For buy/add/trim/chase/event-trade questions, answer in research-action
-   language only. Include confirmation_required, invalidation and action_boundary.
-   Do not turn this into a trade instruction.
+   language only. Include participation_stage, confirmation_required,
+   invalidation and action_boundary. If participation is before confirmation,
+   separate watch_only / left_side_candidate / confirmed_participation; a
+   left-side candidate must name reversal variable, observation window,
+   further-drawdown test and invalidation path. If the thesis requires waiting
+   through a cycle, include path_fit_control, alternative waiting condition and
+   refresh trigger. Do not turn this into a trade instruction.
 10. For options, shorts, hedges, pair trades, margin, leverage or other
     instruments, first ask for objective, time window, risk budget, access/data
     status and failure modes. If these are missing, downgrade to a research-only

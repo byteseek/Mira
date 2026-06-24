@@ -62,6 +62,38 @@ A participation frame answers:
 
 It is not a trade ticket.
 
+## Participation Stage Gate
+
+Before assigning a participation posture, separate the setup into one of three
+research stages:
+
+| stage | meaning | default posture |
+| --- | --- | --- |
+| `watch_only` | Interesting object, but evidence, valuation, pricing or timing is not strong enough for participation. | `watch_only` / `needs_refresh` |
+| `left_side_candidate` | Participation is being considered before confirmation because the payoff may be asymmetric, but the reversal evidence is incomplete. | `starter_only` or `small_if_confirmed` only after the left-side check passes |
+| `confirmed_participation` | The core confirmation variable has arrived and the remaining payoff source is still identifiable. | `normal_only_after_confirmation` only if other controls pass |
+
+Do not let "worth watching" become "buyable" without crossing this gate. If the
+object is only thematically attractive, down a lot, or owned by a high-quality
+company, keep it at `watch_only` until the marginal buyer, payoff source,
+valuation or expectation anchor, and invalidation path are all named.
+
+When the setup is a `left_side_candidate`, complete the left-side evidence check
+in [../templates/actionability-system/left-side-participation-check.md](../templates/actionability-system/left-side-participation-check.md)
+or explicitly waive it with a downgrade. A left-side setup is not valid merely
+because price has fallen. It must state:
+
+- whether the drawdown is valuation compression, cycle pressure, sentiment /
+  liquidity pressure, or thesis damage
+- the reversal variable and observation window
+- why the next marginal buyer has not acted yet
+- whether further drawdown would strengthen the setup, leave it unchanged, or
+  falsify the thesis
+- the cost or opportunity-cost risk of waiting through the cycle
+
+If these cannot be answered, keep the actionability label at `watch_only`,
+`needs_refresh` or `research_only`.
+
 ## Default Controls
 
 Use the controls below before issuing an actionability bridge or a quick
@@ -80,6 +112,11 @@ participation answer.
   budget and confirms event-risk tolerance.
 - `confirmation_control`: Adding or moving beyond starter exposure requires a
   named confirmation variable, not merely a lower price or emotional conviction.
+- `path_fit_control`: If the thesis requires waiting through a business,
+  commodity, product or market cycle, state the expected pain path, the evidence
+  that justifies enduring it, and the alternative waiting condition. If the
+  path cannot be held inside the stated horizon or risk context, downgrade to
+  `watch_only`, `valuation_reset_watch` or `needs_refresh`.
 - `invalidation_control`: Every participation frame needs thesis-level
   invalidation. Price drawdown can be a risk-control trigger, but should not be
   the only invalidation condition.
@@ -153,6 +190,8 @@ For a quick participation answer, include:
 - `basis`
 - `confirmation_required`
 - `invalidation`
+- `participation_stage`
+- `path_fit`
 - `refresh_condition`
 - `action_boundary`
 

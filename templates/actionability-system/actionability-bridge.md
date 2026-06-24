@@ -17,6 +17,26 @@ Allowed values:
 
 Use [../../data/controlled-vocabulary.md](../../data/controlled-vocabulary.md) `setup_type` tokens.
 
+## Participation Stage
+
+Use [../../data/actionability-risk-control.md](../../data/actionability-risk-control.md)
+to separate "worth watching" from "left-side candidate" and "confirmed
+participation" before assigning posture.
+
+| item | value |
+| --- | --- |
+| participation_stage | {{ participation_stage }} |
+| stage_basis | {{ stage_basis }} |
+| left_side_check_ref | {{ left_side_check_ref }} |
+| confirmation_status | {{ confirmation_status }} |
+
+Allowed `participation_stage` values: `watch_only`, `left_side_candidate`,
+`confirmed_participation`.
+
+If `participation_stage = left_side_candidate`, attach
+[left-side-participation-check.md](left-side-participation-check.md) or state
+why it was waived and downgrade the posture.
+
 ## Valuation / Expectation Frame
 
 | item | value |
@@ -44,6 +64,20 @@ before assigning the participation posture.
 | priced_in_status | {{ priced_in_status }} |
 | seller_or_buyer_error | {{ seller_or_buyer_error }} |
 | failure_mode | {{ failure_mode }} |
+
+## Path Fit / Cycle Burden
+
+| item | value |
+| --- | --- |
+| thesis_requires_cycle_endurance | {{ thesis_requires_cycle_endurance }} |
+| expected_pain_path | {{ expected_pain_path }} |
+| evidence_for_waiting_through_cycle | {{ evidence_for_waiting_through_cycle }} |
+| alternative_waiting_condition | {{ alternative_waiting_condition }} |
+| path_fit_control_status | {{ path_fit_control_status }} |
+
+Do not infer personal tolerance without position data, mandate and risk budget.
+This section states the research path burden and whether a non-cycle-enduring
+waiting condition exists.
 
 ## Scenario And Risk
 
@@ -80,6 +114,7 @@ Use [../../data/controlled-vocabulary.md](../../data/controlled-vocabulary.md) `
 | payoff_control | {{ payoff_control_status }} | {{ payoff_control_note }} |
 | event_control | {{ event_control_status }} | {{ event_control_note }} |
 | confirmation_control | {{ confirmation_control_status }} | {{ confirmation_control_note }} |
+| path_fit_control | {{ path_fit_control_status }} | {{ path_fit_control_note }} |
 | invalidation_control | {{ invalidation_control_status }} | {{ invalidation_control_note }} |
 | position_data_control | {{ position_data_control_status }} | {{ position_data_control_note }} |
 | refresh_control | {{ refresh_control_status }} | {{ refresh_control_note }} |

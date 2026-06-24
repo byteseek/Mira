@@ -33,6 +33,12 @@ Every substantive Mira answer must check:
 - Whether the task requires `analysis-routing` or a route-specific waiver.
 - Whether actionability, position, portfolio or instrument language triggers
   decision pressure, disconfirmation or risk-control gates.
+- Whether actionability needs participation-stage separation:
+  `watch_only`, `left_side_candidate` or `confirmed_participation`.
+- Whether a before-confirmation / left-side setup needs a left-side check or a
+  waiver with downgrade.
+- Whether the thesis requires cycle endurance and therefore needs a path-fit
+  burden, alternative waiting condition and refresh trigger.
 - Whether new user material, public pulls, vendor data, portfolio data or
   retained derived datasets trigger ingestion handling.
 - Whether derived numbers, valuation, peer ranking, trend comparison or
@@ -83,6 +89,8 @@ Before handoff, run this final gate:
    treated as evidence without source mapping.
 2. Refresh condition: `stale_after`, `must_refresh_if`, `kill_criteria` or an
    equivalent condition is present when the claim is time-sensitive or durable.
+   For actionability, left-side and cycle-endurance setups also include the
+   relevant confirmation, invalidation, path-fit and refresh variables.
 3. Progressive follow-up: include 1-3 route-bound, object-specific questions,
    or state `followup_prompt_mode=none` with a concrete route-specific waiver.
    For multi-question follow-up, avoid a flat checklist: include at least one

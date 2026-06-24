@@ -70,6 +70,11 @@ Assess:
 - disconfirming evidence handling
 - sizing discipline if position context exists
 - refresh discipline
+- path-fit discipline: whether the original decision required enduring a cycle,
+  whether that burden was stated, and whether the later outcome came from thesis
+  validity, market beta, timing, or simply surviving the pain path
+- stage discipline: whether the original setup was only `watch_only`, a valid
+  `left_side_candidate`, or genuinely `confirmed_participation`
 
 Use postmortem error categories from [../architecture/thesis-system.md](../architecture/thesis-system.md) and add a methodology update candidate when a process error is found.
 

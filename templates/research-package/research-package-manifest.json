@@ -19,6 +19,11 @@
     "evidence-log.csv",
     "case-notes.md"
   ],
+  "triggered_artifact_policy": {
+    "actionability_bridge": "When actionability is retained or changes thesis state, add actionability-bridge.md to support_artifacts.",
+    "left_side_participation_check": "When participation_stage is left_side_candidate, add left-side-participation-check.md to support_artifacts or record an explicit waiver/downgrade in notes.",
+    "handoffs": "When an artifact changes actionability, position review, portfolio review or thesis state, add the next loop or review target to handoffs."
+  },
   "handoffs": [],
   "source_scope": "{{brief description of source coverage}}",
   "evidence_log_status": "draft",
